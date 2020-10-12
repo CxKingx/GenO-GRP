@@ -5,8 +5,8 @@ Welcome to the **Gen-O readme**
 ## Table of Contents
 | **No.** | **Section**                       | **Quick Navigation**                        |
 |---------|-----------------------------------|---------------------------------------------|
-| 1       | Contributors                      | [Get to know us!](#the-mi-team)             |
-| 2       | Lab analyses and tasks            | [Check our work!](#analyses-from-labs)      |
+| 1       | The Gen-O Team                    | [Get to know us!](#the-mi-team)             |
+| 2       | Project Development               | [Check our work!](#analyses-from-labs)      |
 | 3       | Assessment Deliverables           | [Assessment info](#assessment-deliverables) |
 | 4       | Source Code                       | [Inspect code](#source-code)                |
 
@@ -29,7 +29,7 @@ Listed as per the Team List order.
 - Professor Dave Towey 
 
 
-## Analyses from Labs
+## Project Development 
 <table>
   <tr>
     <td align="center"><b>No.</b></td>

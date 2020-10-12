@@ -20,7 +20,7 @@ Listed as per the Team List order.
 - Gabrielle Hadian
 - Aurelie U-King
 - Patricia Wong 
-- Kevin Ferdinand
+- Kevin Ferdinand 
 - Ivan Halim
 - Li-Kai Wu (Kelvin)
 

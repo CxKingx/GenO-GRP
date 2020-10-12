@@ -1,5 +1,5 @@
 # Gen-O
-
+![alt text](images/gen-o_logo.png "Gen-O")
 Welcome to the **Gen-O readme**
 
 ## Table of Contents

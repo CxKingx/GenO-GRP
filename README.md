@@ -17,12 +17,12 @@ To get to know us, visit our website http://gen-o.josephthenara.com/home.php to 
 Listed as per the Team List order.
 
 - Joseph Manuel Thenara (Team leader)
-- Gabrielle Hadian
-- Aurelie U-King
-- Patricia Wong 
-- Kevin Ferdinand
-- Ivan Halim
-- Li-Kai Wu (Kelvin)
+- Gabrielle Hadian (UX/UI Leader)
+- Aurelie U-King Im (Project Manager)
+- Patricia Wong (Report Manager)
+- Kevin Ferdinand 
+- Ivan Halim (Lead )
+- Li-Kai Wu (Kelvin) (Repository Assistant Manager)
 
 
 ##### GRP Supervisor 

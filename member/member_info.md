@@ -7,3 +7,5 @@
 ### Aurelie: project manager ... Hello!
 
 ### Ivan : Chief Not Multitasker
+
+### Joseph : Digital Overlord - I command the codes!

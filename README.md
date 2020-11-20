@@ -1,5 +1,5 @@
 ![alt text](images/gen-o_logo.png "Gen-O")
-
+![alt text](/images/fubuki.jpg "Fubuki Desu")
 Welcome to the **Gen-O readme**
 
 ## Table of Contents

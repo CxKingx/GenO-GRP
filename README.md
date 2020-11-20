@@ -1,5 +1,4 @@
-![alt text](images/gen-o_logo.png "Gen-O")
-
+![alt text](images/GRP_GENO_LOGO_HORIZONTAL.png "Gen-O")
 Welcome to the **Gen-O readme**
 
 ## Table of Contents
@@ -12,21 +11,21 @@ Welcome to the **Gen-O readme**
 
 
 ## The Gen-O Team
-To get to know us, visit our website http://gen-o.josephthenara.com/home.php to view our profile.
+To get to know us, visit our [website](http://gen-o.josephthenara.com/) to view our profile.
 ##### Members
-Listed as per the Team List order.
+The project won't happen without these awesome people!
 
-- Joseph Manuel Thenara (Team leader)
-- Gabrielle Hadian
-- Aurelie U-King
-- Patricia Wong 
-- Kevin Ferdinand
-- Ivan Halim
-- Li-Kai Wu (Kelvin)
+- Joseph M. THENARA
+- Gabrielle S. HADIAN
+- Aurelie U-KING IM
+- Patricia WONG 
+- Kevin FERDINAND
+- Ivan C. HALIM
+- Li-Kai (Kelvin) WU 
 
 
 ##### GRP Supervisor 
-- Professor Dave Towey 
+- Dr Dave Towey 
 
 
 ## Project Development 
@@ -70,3 +69,4 @@ Listed as per the Team List order.
     </td>
   </tr>
 </table>
+e>

@@ -28,6 +28,11 @@ Listed as per the Team List order.
 ##### GRP Supervisor 
 - Professor Dave Towey 
 
+## Installing the Virtual Environment
+- go to Website_GRP File
+- in your terminal , type "conda env create -f environment.yml"
+- it will download everything and says to activate this environment use "conda activate gen-o-grp-2020"
+- activate the virtual environment in your Terminal
 
 ## Project Development 
 <table>

@@ -80,6 +80,8 @@ WSGI_APPLICATION = 'Website_GRP.wsgi.application'
 #Django admin login
     # Username : gen-o-grp-2020
     # Password : PainAuChocolate
+
+    #database name  = test Website_Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

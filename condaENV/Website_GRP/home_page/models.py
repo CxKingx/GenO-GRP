@@ -7,7 +7,8 @@ from django.utils import timezone
 #One User can have more than 1project
 # ex I have Arduino Project to make the robot count binary up to 1000
 # in that project I have multiple "Artefacts" or pictures/videos to show to the public
-
+# Django supposed to create their own ID for us , so we do not need to put the IDs ,however we can override it if we want
+# Which one should we use ?
 
 # class User(models.Model):
 #     Account_Status_Choice = (
@@ -26,7 +27,7 @@ from django.utils import timezone
 #
 # class login_credential (models.Model):
 #       UserID = models.ForeignKey(User)
-#     User_Username = models.CharField(max_length=50)
+#     User_Username = models.CharField(max_length=50 , unique = True)
 #     Password = models.CharField (max_length=50)
 #
 # class Project (models.Model):
@@ -48,7 +49,7 @@ from django.utils import timezone
 #  # User_ID = models.ForeignKey(User)
 #  # Project_ID = models.ForeignKey(Project)
 #
-# class Project Artefact Connector
+# class Project_Artefact_Connector
 #  Project_ID = models.ForeignKey(Project)
 #  Artefact_ID = models.ForeignKey(ArtefactInfo)
 #
@@ -57,7 +58,7 @@ from django.utils import timezone
 #         ('Vid','Video'),
 #         ('Pic','Picture'),
 #     ] #these choices are kind of confusing
-#     ArtefactID = models.PositiveIntegerField(unique = True)
+#     #ArtefactID = models.PositiveIntegerField(unique = True)
 #     ArtefactType = models.CharField(max_length=50 , choices = ArtefactTypeChoice )
 #     ArtefactName = models.CharField(max_length=50)
 #     ArtefactSize = models.CharField(max_length=50) #might not be needed

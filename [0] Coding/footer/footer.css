@@ -1,0 +1,39 @@
+
+
+/******************FOOTER *********************/
+/* '@import' is used to import the colour gradient used in the footer backgound */
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+@font-face{
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+footer{
+	background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+	width: 100%;
+	font-family: 'circular';
+}
+a {
+	color: white;
+}
+a:hover {
+	color: #d3d3d3;
+}
+.copyright{
+	text-align: center;
+}
+footer.btn {
+	/* for border of button
+	border-style: solid;
+	border-color: white;*/
+	border-radius: 5px;   /* rounded corner */
+	border: white 2px;
+				
+	color: white;
+	background-color: transparent; /* transparent button background */
+}
+
+
+

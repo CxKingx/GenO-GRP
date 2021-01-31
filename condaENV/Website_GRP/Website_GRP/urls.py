@@ -19,7 +19,10 @@ from home_page import views
 from django.conf.urls import include
 
 urlpatterns = [
+    #Add paths here to add new pages -Ivan
     path('',views.index, name='index'),
+    path('Login/',views.loginPage, name='loginPage'),
+
     path('website_base/', include('home_page.urls')), #website_base/ is the name of the extension can be anything.
     path('admin/', admin.site.urls),
 ]

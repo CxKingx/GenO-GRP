@@ -83,6 +83,11 @@ footer.btn {
   	float: right;
 }
 
+
+.header {
+	padding-bottom: 50px;
+}
+
 .search-box .search-btn {	
 	position: absolute;
 	top:50%;

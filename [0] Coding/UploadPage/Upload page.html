@@ -65,7 +65,7 @@
 
 
     <div class="container">
-    <form>
+    <form autocomplete="off" action="/tags.js">
       <div class="row">
         <div class="col-25">
           <label for="title">Project Title:</label>
@@ -92,7 +92,7 @@
         <div class="buttons">
           <a class="btn btn-primary" href="UploadImage.html" role="button">Image</a>
           <a class="btn btn-primary" href="UploadVideo.html" role="button">Video</a>
-          
+          <!-- https://www.w3schools.com/jsref/dom_obj_fileupload.asp -- for individual image and video upload page -->
         </div>
       </div>
 
@@ -134,14 +134,17 @@
 
 
       <!--- autocomplete box link: https://www.w3schools.com/howto/howto_js_autocomplete.asp --->
-      <div class="row">
+      <div class="autocomplete">
         <div class="col-25">
           <label for="tag">Tag(s):</label>
         </div>
         <div class="col-75">
-          <input type="text" class="form-control" id="tag" name="tag" placeholder="Name of tag(s)...">
+          <input type="text" class="form-control" id="myTag" name="tag" placeholder="Name of tag(s)...">
         </div>
       </div>
+      	<script>
+    		autocomplete(document.getElementById("myTag"), tags);
+    	</script>
 
 
       <div class="submit-button">
@@ -150,6 +153,8 @@
 
     </form>
     </div>
+
+    
 
     <!--------------- UPLOAD PROJECT PAGE ------------------------->
     

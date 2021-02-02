@@ -136,17 +136,18 @@ h3 {
 	color: #18194f;
 	text-align: center;
 }
-/*.buttons{
+.buttons{
 	text-align: center;
-}*/
+
+}
 .btn-primary{
 	font-family: 'circular';
 	font-size: 25px;
 	background-color: #005597;
 	color: white;
 	text-align: center
-	margin-right: 50px;
-	margin-left: 50px;
+	margin-right: 100px;
+	margin-left: 100px;
 }
 .submit-button{
 	font-family: 'circular';

@@ -24,25 +24,4 @@ thead {
 
 .table-hover tbody tr:hover {
     background-color: rgb(159, 218, 231);
-  }
-
-
-div.card {
-    width: 12rem;
-    height: 10rem;
-    background-color: #007ca7;
-    border-radius: 15px;
-    border-width: 2px;
-    border-color: #18194f;
-    font-size: 12px;
-    color: white;
-    text-align: center;
-}
-
-hr {
-    border-top: 1px solid #1a296b;
-}
-  
-p {
-    font-size: 16px;
 }

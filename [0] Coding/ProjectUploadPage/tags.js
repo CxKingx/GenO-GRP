@@ -1,4 +1,4 @@
-var tags = {'Data Scholarship', 'Digital Media Production', 'Technologies for Learning'};
+var tags = ['Data Scholarship', 'Digital Media Production', 'Technologies for Learning'];
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,

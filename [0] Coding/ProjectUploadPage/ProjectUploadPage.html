@@ -77,14 +77,14 @@
 
       <div class="row">
         <div class="col-25">
-          <label for="description">Project Description:</label>
+          <label for="description">Project Description:  <span class="max-word">  (Max of 500 words)</span></label>
         </div>
         <div class="col-75">
-          <textarea class="form-control" id="description" name="description" placeholder="Write something.." style="height:400px"></textarea>
+          <textarea class="form-control" id="description" name="description" placeholder="Write something.." style="height:400px" maxlength="5500"></textarea>
         </div>
       </div>
 
-      <div class="row">
+      <div class="upload">
         <!-- <div class="col-25"> -->
         <div class="upload-artefact">
           <h3><label for="artefact">Upload Artefact(s):</label> </h3><br>
@@ -92,7 +92,9 @@
         <div class="buttons">
           <a class="btn btn-primary" href="UploadImage.html" role="button">Image</a>
           <a class="btn btn-primary" href="UploadVideo.html" role="button">Video</a>
+          <br>
           <!-- https://www.w3schools.com/jsref/dom_obj_fileupload.asp -- for individual image and video upload page -->
+          <!-- will the table displaying the files be generated from python?? -->
         </div>
       </div>
 
@@ -125,10 +127,10 @@
 
       <div class="row">
         <div class="col-25">
-          <label for="comments">Author comments:</label>
+          <label for="comments">Author comments:  <span class="max-word">  (Max of 300 words)</span></label>
         </div>
         <div class="col-75">
-          <textarea class="form-control" id="comments" name="comments" placeholder="Write something.." style="height:200px"></textarea>
+          <textarea class="form-control" id="comments" name="comments" placeholder="Write something.." style="height:200px" maxlength="3300"></textarea>
         </div>
       </div>
 
@@ -142,9 +144,9 @@
           <input type="text" class="form-control" id="myTag" name="tag" placeholder="Name of tag(s)...">
         </div>
       </div>
-      	<!--<script>
+      	<script>
     		autocomplete(document.getElementById("myTag"), tags);
-    	</script> -->
+    	</script>
 
 
       <div class="submit-button">

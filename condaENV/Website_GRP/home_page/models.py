@@ -31,7 +31,7 @@ class User(models.Model):
 
 
 class login_credential(models.Model):
-    UserID = models.ForeignKey(User, on_delete=models.CASCADE)
+    UserID = models.ForeignKey(User, on_delete=models.CASCADE) #Paling user ID ga perlu, soalnya USername udah unique dari UNiv, so bisa di delete atau ganti
     User_Username = models.CharField(max_length=50, unique=True)
     Password = models.CharField(max_length=50)
 

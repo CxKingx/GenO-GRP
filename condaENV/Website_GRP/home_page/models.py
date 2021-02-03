@@ -36,7 +36,6 @@ class login_credential(models.Model):
     Password = models.CharField(max_length=50)
 
 
-#
 class Project(models.Model):
     ApprovalChoice = [
         ('Apvd', 'Approved'),
@@ -47,7 +46,7 @@ class Project(models.Model):
     Project_Name = models.CharField(max_length=50)
     Project_Description = models.TextField()
     Upload_Date = models.DateTimeField(default=timezone.now)
-    Approval_Date = models.DateTimeField(blank=True, null=True) #date cannot be null
+    Approval_Date = models.DateTimeField(blank=True, null=True)  # date cannot be null
     Last_Updated = models.DateTimeField(blank=True, null=True)
     Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pndg')  # Approval
     Authors = models.CharField(max_length=100)
@@ -59,6 +58,8 @@ class Project(models.Model):
 class Account_Project_Connector(models.Model):
     User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
+
+
 
 
 class Artefact_Info(models.Model):

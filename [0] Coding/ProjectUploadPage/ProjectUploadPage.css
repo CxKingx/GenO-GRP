@@ -147,9 +147,13 @@ h3 {
 .max-word{
 	color: grey;
 	font-size: 10px;
-	
-	/*margin-left: 900px;*/
+	margin-left: 20px;
 }
+.count{
+	color: grey;
+	font-size: 10px;
+	margin-left: 900px;
+	}
 .btn-primary{
 	font-family: 'circular';
 	font-size: 25px;

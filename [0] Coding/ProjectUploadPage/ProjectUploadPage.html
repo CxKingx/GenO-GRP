@@ -65,7 +65,7 @@
 
 
     <div class="container">
-    <form autocomplete="off" action="/tags.js">
+    <form autocomplete="off" action="ProjectUploadPage.js">
       <div class="row">
         <div class="col-25">
           <label for="title">Project Title:</label>
@@ -77,10 +77,10 @@
 
       <div class="row">
         <div class="col-25">
-          <label for="description">Project Description:  <span class="max-word">  (Max of 500 words)</span></label>
+          <label for="description">Project Description:<span class="max-word">(Max of 500 words)</span></label><div class="count">Words: <span id="result__words"></span> </div>
         </div>
         <div class="col-75">
-          <textarea class="form-control" id="description" name="description" placeholder="Write something.." style="height:400px" maxlength="5500"></textarea>
+          <textarea class="form-control" id="countableArea" name="description" placeholder="Write something.." style="height:400px" maxlength="5500"></textarea>
         </div>
       </div>
 
@@ -127,12 +127,46 @@
 
       <div class="row">
         <div class="col-25">
-          <label for="comments">Author comments:  <span class="max-word">  (Max of 300 words)</span></label>
-        </div>
+          <label for="comments">Author comments:<span class="max-word">(Max of 300 words)</span><div class="count">Words: <span id="result__words">0</span> </div>
+        </div> 
         <div class="col-75">
-          <textarea class="form-control" id="comments" name="comments" placeholder="Write something.." style="height:200px" maxlength="3300"></textarea>
+          <textarea class="form-control" autofocusid="countableArea" name="comments" placeholder="Write something.." style="height:200px" maxlength="3300"></textarea>
+ <!--   <ul class="result">
+			<li><strong>Paragraphs: </strong><span id="result__paragraphs">0</span></li>
+			<li><strong>Words: </strong><span id="result__words">0</span></li>
+			<li><strong>Characters: </strong><span id="result__characters">0</span></li>
+			<li><strong>Characters (with spaces): </strong><span id="result__all">0</span></li>
+		</ul>  -->
+
+    	  
         </div>
       </div>
+
+<script src="Countable-master/Countable.js"> </script>
+      <script>
+    	var area = document.getElementById('countableArea'),
+   			results = {
+      		words: document.getElementById('result__words'),
+      	/*	paragraphs: document.getElementById('result__paragraphs'),
+      		characters: document.getElementById('result__characters'),
+      		all: document.getElementById('result__all')  */
+    	}
+
+	new Countable(area, function (counter) {
+  		if ('textContent' in document.body) {
+  			results.words.textContent = counter.words
+    	/*	results.paragraphs.textContent = counter.paragraphs
+    		results.characters.textContent = counter.characters
+    		results.all.textContent = counter.all  */
+  		} else {
+  			results.words.innerText = counter.words
+    	/*	results.paragraphs.innerText = counter.paragraphs
+    		results.characters.innerText = counter.characters
+    		results.all.textContent = counter.all  */
+  		}
+	})
+
+    </script>
 
 
       <!--- autocomplete box link: https://www.w3schools.com/howto/howto_js_autocomplete.asp --->
@@ -144,9 +178,9 @@
           <input type="text" class="form-control" id="myTag" name="tag" placeholder="Name of tag(s)...">
         </div>
       </div>
-      	<script>
+<!--      	<script>
     		autocomplete(document.getElementById("myTag"), tags);
-    	</script>
+    	</script>  -->
 
 
       <div class="submit-button">
@@ -158,12 +192,16 @@
 
     
 
-    <!--------------- UPLOAD PROJECT PAGE ------------------------->
+ 
+     <!--------------- UPLOAD PROJECT PAGE ------------------------->
     
   </div>
       <!-- Bootstrap Javascript -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+        
+
 
   </body>
 </html>

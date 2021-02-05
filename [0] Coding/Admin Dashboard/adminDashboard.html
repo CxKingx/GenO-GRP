@@ -15,14 +15,16 @@
   </head>
 
   <body>
-        <div class="squares">
+        <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="three-cards">
-                        <div class="card">
-                            <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
                                 <p class="card-title">Artefact</p>
-                                <hr>
+                            </div>
+                            <hr>
+                            <div class="artefact_number">
                                 <!-- FETCH NUMBER OF ARTEFACT FROM BACKEND-->
                             </div>
                         </div>
@@ -31,51 +33,60 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <p class="card-title">Accounts</p>
+                            <div>
+                                <p class="card-title">Accounts</p>
+                            </div>
                             <hr>
-                            <!-- FETCH NUMBER OF ARTEFACT FROM BACKEND-->
+                            <div class="account_number">
+                                <!-- FETCH NUMBER OF ACCOUNTS FROM BACKEND-->
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card" id="access">
+                    <div class="card">
                         <div class="card-body">
-                            <p class="card-title">Manage Students Access</p>
-                            <hr>
-                            <img src="people.png" />
+                            <div>
+                                <p class="card-title">Manage Students Access</p>
+                            </div>
+                            <div>
+                                <img src="people.png" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <br><br>
 
         <div class="notification">
             <h2> Notification Table </h2>
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Artefact Name</th>
-                        <th>Visit</th>
-                    </tr>
-                </thead> 
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Artefact Name</th>
+                                <th>Visit</th>
+                            </tr>
+                        </thead> 
 
-                <!-- Fill the table using sql query -->
-                <tbody>
-                <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
-                    <tr>
-                        <td><!-- FETCH INPUT FROM BACKEND --> a</td>
-                        <td><!-- FETCH INPUT FROM BACKEND --> b</td>
-                        <td><!-- FETCH INPUT FROM BACKEND --> thisisanartefactname.thisisanartefactname.thisisanartefactname.</td>
-                        <td><button type="button" class="btn btn-primary">Visit Now</button></td>
-                    </tr>
-                </tbody>
+                        <!-- Fill the table using sql query -->
+                        <tbody>
+                        <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
+                            <tr>
+                                <td><!-- FETCH INPUT FROM BACKEND --> a</td>
+                                <td><!-- FETCH INPUT FROM BACKEND --> b</td>
+                                <td><!-- FETCH INPUT FROM BACKEND --> c</td>
+                                <td><button type="button" class="btn btn-primary">Visit Now</button></td>
+                            </tr>
+                        </tbody>
 
-                <!-- Close table -->
-            </table> 
+                        <!-- Close table -->
+                    </table> 
+                </div>
         </div>
 
 

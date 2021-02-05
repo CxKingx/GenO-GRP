@@ -12,14 +12,9 @@ h2 {
     text-align: center;
 }
 
-div.admin-table {
-    width: 40%;
-    margin-left: 450px;
-}
-
-div.students-table {
-    width: 75%;
-    margin-left: 175px;
+.table { 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 thead {

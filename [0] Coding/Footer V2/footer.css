@@ -19,6 +19,8 @@ h5 {
 }
 
 footer{
+	position: fixed;
+	bottom: 0;
 	background: linear-gradient(to right, #18194f, #009bbd);
 	color: white;
 	width: 100%;
@@ -36,7 +38,14 @@ a:hover {
 .copyright{
 	text-align: center;
 }
-
+.container .p-4{
+	width: 100%;
+	margin: 2%;
+}
+.column{
+	width: 30%;
+	margin: 0%;
+}
 footer.btn {
 	/* for border of button
 	border-style: solid;

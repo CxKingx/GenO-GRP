@@ -117,9 +117,9 @@ h3 {
 /* ----------------------- upload project (start) ----------------------- */
 .form-control{
 	border-color: #18194f;
-	margin-left: 200px;
-	margin-right: 200px;
-	width: 800px;
+	margin-left: 10%;
+	margin-right: 10%;
+	
 	font-family: 'circular';
 
 }
@@ -130,6 +130,9 @@ h3 {
 }
 .col-75{
 	margin-bottom: 50px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
 }
 .upload{
 	text-align: center;
@@ -140,27 +143,23 @@ h3 {
 	color: #18194f;
 	text-align: center;
 }
-.buttons{
-	/*text-align: center;*/
-
-}
 .max-word{
 	color: grey;
 	font-size: 10px;
-	margin-left: 20px;
+	margin-left: 5%;
 }
 .count{
 	color: grey;
 	font-size: 10px;
-	margin-left: 900px;
+	margin-right: 20%;
 	}
 .btn-primary{
 	font-family: 'circular';
 	font-size: 25px;
 	background-color: #005597;
 	color: white;
-	margin-right: 100px;
-	margin-left: 100px;
+	margin-right: 10%;
+	margin-left: 10%;
 	margin-bottom: 50px
 }
 .submit-button{

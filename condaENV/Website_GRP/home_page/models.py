@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -11,7 +12,7 @@ from django.utils import timezone
 # Django supposed to create their own ID for us , so we do not need to put the IDs ,however we can override it if we want
 # Which one should we use ?
 
-class User(models.Model):
+class Student_User(models.Model):
     Account_Status_Choice = (
         ('Act', 'Active'),
         ('P', 'Pending'),
@@ -24,16 +25,27 @@ class User(models.Model):
     StudentID = models.PositiveIntegerField(unique=True)
     Date_Created = models.DateTimeField(default=timezone.now)
     Account_Status = models.CharField(max_length=50, choices=Account_Status_Choice, default='Act')
-    Last_Online = models.DateTimeField()
+    Last_Online = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.User_Username
 
 
-class login_credential(models.Model):
-    UserID = models.ForeignKey(User, on_delete=models.CASCADE) #Paling user ID ga perlu, soalnya USername udah unique dari UNiv, so bisa di delete atau ganti
-    User_Username = models.CharField(max_length=50, unique=True)
-    Password = models.CharField(max_length=50)
+class UserProfileInfo(models.Model):
+    # Create relationship (don't inherit from User!)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    StudentID = models.PositiveIntegerField(unique=True, default=0)
+
+    # Testchar = models.CharField(max_length=50)
+    # Add any additional attributes you want
+    # portfolio_site = models.URLField(blank=True)
+    # pip install pillow to use this!
+    # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
+    # profile_pic = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
+
+    def __str__(self):
+        # Built-in attribute of django.contrib.auth.models.User !
+        return self.user.username
 
 
 class Project(models.Model):
@@ -59,7 +71,8 @@ class Account_Project_Connector(models.Model):
     User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
 
-
+    def __str__(self):
+        return self.User_ID.username + ' ' + self.Project_ID.Project_Name
 
 
 class Artefact_Info(models.Model):

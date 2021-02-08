@@ -33,6 +33,9 @@ Listed as per the Team List order.
 - in your terminal , type "conda env create -f environment.yml"
 - it will download everything and says to activate this environment use "conda activate gen-o-grp-2020"
 - activate the virtual environment in your Terminal
+-pip install bcrypt
+-pip install django[argon2]
+-pip install pillow (for images future use)  
 
 ## Project Development 
 <table>

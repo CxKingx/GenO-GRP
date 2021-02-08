@@ -25,8 +25,9 @@ class ArtefactAdmin(admin.ModelAdmin):
 # models.
 
 
-admin.site.register(models.User, UserAdmin)
-admin.site.register(models.login_credential)
+admin.site.register(models.Student_User, UserAdmin)
+admin.site.register(models.UserProfileInfo)
+#admin.site.register(models.login_credential)
 admin.site.register(models.Project, ProjectAdmin)
 admin.site.register(models.Account_Project_Connector)
 admin.site.register(models.Project_Artefact_Connector)

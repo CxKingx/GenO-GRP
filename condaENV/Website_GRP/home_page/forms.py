@@ -8,4 +8,10 @@ class UserForm(forms.ModelForm):
 
     class Meta():
         model = User
-        fields = ('username', 'email', 'password') # can add first name last name
+        fields = ('username', 'email', 'first_name', 'last_name', 'password')  # can add first name last name
+
+
+class UserProfileInfoForm(forms.ModelForm):
+    class Meta():
+        model = UserProfileInfo
+        fields = ('StudentID',)

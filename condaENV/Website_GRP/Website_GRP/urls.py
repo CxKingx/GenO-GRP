@@ -22,7 +22,7 @@ urlpatterns = [
     #Add paths here to add new pages -Ivan
     path('',views.index, name='index'),
     path('Login/',views.loginPage, name='loginPage'),
-
+    path('register/', views.register, name='register'),
     path('website_base/', include('home_page.urls')), #website_base/ is the name of the extension can be anything.
     path('admin/', admin.site.urls),
 ]

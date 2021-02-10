@@ -6,14 +6,14 @@ from . import models
 
 # admin.site.register()
 
-class UserAdmin(admin.ModelAdmin):
-    search_fields = ['User_Username']
-
-    list_display = ['User_Username','StudentID'] #add display as u wish
-
-    list_filter =['User_Username','StudentID']
-
-    list_editable =['StudentID']
+# class UserAdmin(admin.ModelAdmin):
+#     search_fields = ['User_Username']
+#
+#     list_display = ['User_Username','StudentID'] #add display as u wish
+#
+#     list_filter =['User_Username','StudentID']
+#
+#     list_editable =['StudentID']
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -25,7 +25,7 @@ class ArtefactAdmin(admin.ModelAdmin):
 # models.
 
 
-admin.site.register(models.Student_User, UserAdmin)
+#admin.site.register(models.Student_User, UserAdmin)
 admin.site.register(models.UserProfileInfo)
 #admin.site.register(models.login_credential)
 admin.site.register(models.Project, ProjectAdmin)

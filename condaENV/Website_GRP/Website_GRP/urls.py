@@ -9,7 +9,7 @@ Function views
 Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
+Including another URL conf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
@@ -19,10 +19,13 @@ from home_page import views
 from django.conf.urls import include
 
 urlpatterns = [
-    #Add paths here to add new pages -Ivan
-    path('',views.index, name='index'),
-    path('Login/',views.loginPage, name='loginPage'),
+    # Add paths here to add new pages -Ivan
+    path('', views.index, name='index'),
+    #path('Login/', views.loginPage, name='loginPage'),
+
+    path('Login/', views.loginPage, name='loginPage'),
     path('register/', views.register, name='register'),
-    path('website_base/', include('home_page.urls')), #website_base/ is the name of the extension can be anything.
+    path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
     path('admin/', admin.site.urls),
+    path('logout/', views.user_logout, name='logout'),
 ]

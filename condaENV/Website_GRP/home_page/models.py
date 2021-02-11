@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 # One User can have more than 1project
 # ex I have Arduino Project to make the robot count binary up to 1000
 # in that project I have multiple "Artefacts" or pictures/videos to show to the public
-# Django supposed to create their own ID for us , so we do not need to put the IDs ,however we can override it if we want
+# Django supposed to create their own ID for us , so we do not need to put the IDs ,however we can override it
 # Which one should we use ?
 
 # class Student_User(models.Model):

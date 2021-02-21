@@ -207,8 +207,8 @@
 
 .heading1 {
 	font-family: 'circular';
-	font-size: 20px;
-	color: #005597;
+	font-size: 28px;
+	color: #18194f;
 }
 
 .heading2 {
@@ -224,7 +224,7 @@
 
 .btn-primary{
 	font-family: 'circular';
-	font-size: 15px;
+	font-size: 25px;
 	background-color: #005597;
 	color: white;
 	margin-right: 10%;

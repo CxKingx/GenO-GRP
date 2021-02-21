@@ -99,11 +99,11 @@ document.addEventListener("click", function (e) {
 
 
 
-/** COUNTING IN TEXT AREA **/
- $('input.form-control').maxlength({
+/** COUNTING IN TEXT AREA  from bootstrap example **/
+/** $('input.form-control').maxlength({
             alwaysShow: true,
             threshold: 3300,
             warningClass: "label label-success",
             limitReachedClass: "label label-danger"
         });
-
+**/

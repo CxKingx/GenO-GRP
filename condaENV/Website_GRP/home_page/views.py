@@ -15,8 +15,10 @@ def index(request):
     return render(request, 'home_page/front_page.html', context=my_dict)
 
 
+# to help redirect back to login page
+
 def loginPage(request):
-    return render(request, 'home_page/testlogin.html')
+    return render(request, 'home_page/login.html')
 
     # return HttpResponse("hello world")
 
@@ -33,9 +35,10 @@ def user_logout(request):
     # Log out the user.
     logout(request)
     # Return to homepage.
-    return HttpResponseRedirect(reverse('index')) #There is a problem here to return logout page
+    return HttpResponseRedirect(reverse('index'))  # There is a problem here to return logout page
 
-#After logout , redirect using here
+
+# After logout , redirect using here
 
 
 def register(request):
@@ -109,8 +112,11 @@ def user_login(request):
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username, password))
-            return HttpResponse("Invalid login details supplied.")
+            # I must edit this to redirect back to login
+            return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
+                                "right now only back to login but no text invalid login")
+            # return render(request, 'home_page/login.html', {})
 
     else:
         # Nothing has been provided for username or password.
-        return render(request, 'home_page/testlogin.html', {})
+        return render(request, 'home_page/login.html', {})

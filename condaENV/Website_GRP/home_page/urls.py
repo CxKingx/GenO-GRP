@@ -4,6 +4,8 @@ from django.conf.urls import url, include
 
 app_name = 'home_page'
 
+# for helping taking actions against user activities
+
 urlpatterns = [
     path('', views.index, name='front_page'),
     # path('register/', views.register, name='register'),

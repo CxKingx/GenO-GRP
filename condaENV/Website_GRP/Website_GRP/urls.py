@@ -19,6 +19,7 @@ from home_page import views
 from django.conf.urls import include
 
 # naming convention , all is small letters , spaces use _ , so ex like hello_world
+# this is the base redirection
 
 urlpatterns = [
     # Add paths here to add new pages -Ivan

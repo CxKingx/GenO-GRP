@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -11,26 +12,36 @@
         <!-- Own CSS Link HERE -->
         
         <title>Login page</title>
-        <link rel="stylesheet" type="text/css" href="login.css"/> 
+        <link rel="stylesheet" href="{% static 'css/login.css' %}"/>
 </head>
   <body>
     
-      <img src="logo.jpg" width=243px height=90px>
-      <h1>Login Page</h1>  
-      <!-- <div id="container"> -->
+      <!-- <img src="logo.jpg" width=243px height=90px>-->
+
+      <img src="{% static 'images/logo.jpg' %}" alt="something went wrong" width=243px height=90px>
+      {% if user.is_authenticated %}
+            <h1>Welcome {{ user.username }}!</h1>
+            <h1>You are logged in.</h1>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <!-- <div id="container">
+            <h1>Please Login</h1> -->
+      <h1>Login Page</h1>
+
       <div class="container">
-      
-            <form action="" method="">
+
+            <form method="post" action="{% url 'home_page:user_login' %}">
+                {% csrf_token %}
               <br>
                   <div>
                     <div>Username</div>
-                    <input type="text" id="username" class="form-control" placeholder="&nbsp;&nbsp;username123@nottingham.edu.cn">
+                    <input type="text" id="username" class="form-control" name="username" placeholder="&nbsp;&nbsp;username123@nottingham.edu.cn">
                     <br><br>
                   </div>
 
                   <div>
                     <div>Password</div>
-                    <input type="password" id="password" class="form-control" placeholder="&nbsp;&nbsp;12345678">
+                    <input type="password" id="password" class="form-control" name="password" placeholder="&nbsp;&nbsp;12345678">
                     <br>
                   </div>
 
@@ -38,12 +49,14 @@
                     <table>
                       <tr>
                         <td><button type="submit" id="submit" class="btn btn-primary" style="margin-right: 6px";>Cancel</button></td>
-                        <td><button type="submit" id="submit" class="btn btn-primary">Submit</button></td>
+                        <td><button type="submit" id="submit" value = "Login" class="btn btn-primary">Submit</button></td>
                       </tr>
-                    </table>  
-                  </div> 
+                    </table>
+                  </div>
             </form>
       </div>
+      {% endif %}
+
 
       <!-- Bootstrap Javascript -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

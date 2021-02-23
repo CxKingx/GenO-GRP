@@ -217,6 +217,21 @@
 	color: #000000;
 }
 
+.form-control{
+	border-color: #18194f;
+	font-family: 'circular';
+}
+
+label {
+	font-size: 20px;	
+	margin-right: 5%;
+}
+
+p {
+	font-size: 20px;	
+	display: inline-block;
+}
+
 .max-word{
 	color: grey;
 	font-size: 10px;
@@ -238,3 +253,9 @@
 	color: white;
 	text-align: center
 }
+
+#field {
+	margin-left: 33.3%;
+}
+
+

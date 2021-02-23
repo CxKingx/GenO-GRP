@@ -61,39 +61,50 @@
     <!-- End of Header -->
 
         <div class="container" style="margin-top: 50px;">
-            <form>               
-                <input type="file" accept="image/*" multiple>
+        <form>  
+
+            <input type="file" accept="image/*" multiple>
+
+          <br><br><br>
                 <!--<input type="file" accept=".xlsx,.xls,image/*,.doc,audio/,.docx,video/*,.ppt,.pptx,.txt,.pdf*" multiple>-->
-            </form>
+            <!--</form>
 
         <br><br><br>
-        <div class="row">        
+        <div class="container2">
+        <form autocomplete="off" action="imageuploadify.js">-->
+
+          <div class="row">     
+
             <p class = "heading1">Enter Artefact Details:</p>  
-        </div>
+          </div>
 
-        <div class="row">
-            <p class = "heading2">Artefact Title:</p> 
-            <div class="title_field">
-              <input type="text" class="form-control" id="title_field" name="title_field">
+          <div class="row">
+            <div class="col-4">
+              <label for="title"/>Artefact Title:</label>
+            </div> 
+            <div class="col-8">
+                <input type="text" class="form-control" id="title_field" name="title_field">
             </div>
-        </div>
+          </div>
 
-        <br><br>
+          <br><br>
 
-        <div class="row">
-            <p class = "heading2">Artefact Description: <span class="max-word">(Max of 100 words)</span></p>
-            <div class="title_field">
-              <textarea class="form-control" autofocusid="countableArea" name="comments" style="height:100px" maxlength="100"></textarea> 
+          <div class="row">
+            <div class="col-4">
+              <p class = "heading2">Artefact Description: <span class="max-word">(Max of 100 words)</span></p>
+            </div>  
+            <div class="col-8" id="field">
+                <textarea class="form-control" autofocusid="countableArea" name="comments" style="height:150px" maxlength="600"></textarea>
             </div>
-        </div>
+          </div>
 
-        <br><br>
+          <br><br>
 
-        <div class="submit-button">
+          <div class="submit-button">
             <button type="submit" class="btn btn-primary btn-sm">Upload File</button>
-        </div>
+          </div>
 
-
+        </form>
         </div>
 
         <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>

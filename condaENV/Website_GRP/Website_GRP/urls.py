@@ -18,14 +18,17 @@ from django.urls import path
 from home_page import views
 from django.conf.urls import include
 
+# naming convention , all is small letters , spaces use _ , so ex like hello_world
+
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.index, name='index'),
-    #path('Login/', views.loginPage, name='loginPage'),
+    # path('Login/', views.loginPage, name='loginPage'),
 
     path('Login/', views.loginPage, name='loginPage'),
     path('register/', views.register, name='register'),
     path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
+    # to help
     path('admin/', admin.site.urls),
     path('logout/', views.user_logout, name='logout'),
 ]

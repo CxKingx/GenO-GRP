@@ -34,7 +34,7 @@ Listed as per the Team List order.
 - it will download everything and says to activate this environment use "conda activate gen-o-grp-2020"
 - activate the virtual environment in your Terminal
 -pip install bcrypt
--pip install django[argon2]
+-pip install django[argon2] for password hashing
 -pip install pillow (for images future use)  
 
 ## Project Development 

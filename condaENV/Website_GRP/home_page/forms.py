@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from .models import UserProfileInfo
 
 
+# this is for asking forms from models we have created
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 

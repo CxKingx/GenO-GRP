@@ -1,83 +1,70 @@
-@font-face{
+@font-face {
     font-family: 'circular';
     src: url('./circular-bold.ttf');
 }
 
-html{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-style: sans-serif;
-}
+html {   
+    width: 100%;   
+    height: 100%;   
+    overflow: hidden;   
+    font-style: sans-serif;   
+}  
 
 body {
-    width: 100%;
-    height: 100%;
-    font-family: 'circular';
-    margin: 0;
-    height:1000px;
-    margin-top:0px;
+    width: 100%;   
+    height: 100%;   
+    font-family: 'circular';   
+    height: 1000px;
     background: -webkit-linear-gradient(white,#007CA7);
     background: -o-linear-gradient(white,#007CA7);
     background: -moz-linear-gradient(white,#007CA7);
     background: linear-gradient(white,#007CA7);
 }
 
-#container{
-    position: fixed;
-    text-align:center;
-    background-color: white;
-    border-radius: 15px;
-    filter: opacity(0.8);
-    position: absolute;
-    top: 50%;
-    left:43%;
-    margin: -150px 0 0 -150px;
-    width: 550px;
-    height: 300px;
-}
 
-h1 {
-    color: black;
-    font-size: 2.5em;
-    margin: 1.4em 0;
-    letter-spacing: 1px;
-    margin-left: 45%;
-}
+h1 {   
+    color: black;   
+    font-size: 2.5em;   
+    margin-top: 5%;
+    letter-spacing: 1px;   
+    text-align: center;
+}   
 
-input{
-    width: 278px;
-    height: 18px;
-    margin-bottom: 10px;
-    outline: none;
-    padding: 10px;
-    font-size: 13px;
-}
+input {   
+    width: 278px;   
+    height: 18px;   
+    margin-bottom: 10px;   
+    outline: none;   
+    padding: 10px;   
+    font-size: 13px;   
+}   
 
-.div1{
-    position: fixed;
-    width: 450px;
-    height: 280px;
-    border-radius: 15px;
-    filter: opacity(0.8);
-   }
-
-.box {
-    width: 450px;
-    height: 30px;
+.form-control {
+    /* width: 425px;
+    height: 35px; */
+    width: 95%;
     border: gray 2px solid;
     border-radius: 5px;
+    margin-bottom: 1%; 
+    margin-top: 1%;
 }
 
-.log {
-    width: 120px;
-    height: 40px;
-    background-color: #005597;
+.container {
+    background-color: white;
+    filter: opacity(0.85);
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 20px;
-    border: #005597 2px solid;
-    margin-left: 50%;
-    color: #fff;
-    font-size: 1em;
-    text-align: center;
-    padding-bottom: 25%;
+    width: 500px;
+    height: 300px;
+    padding-left: 2.5%;
+}
+
+#form_table {
+    padding-left: 58%;
+}
+
+.btn-primary {
+    border-radius: 10px;
+    background-color: #005597;
 }

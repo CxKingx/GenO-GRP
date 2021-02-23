@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
+# views for doing activities behind the scenes
 
 def index(request):
     my_dict = {'insert_me': "Hello from home_page in template", 'insert_new': 'do something'}
@@ -32,7 +33,9 @@ def user_logout(request):
     # Log out the user.
     logout(request)
     # Return to homepage.
-    return HttpResponseRedirect(reverse('front_page')) #There is a problem here to return logout page
+    return HttpResponseRedirect(reverse('index')) #There is a problem here to return logout page
+
+#After logout , redirect using here
 
 
 def register(request):

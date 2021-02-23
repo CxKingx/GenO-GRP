@@ -26,6 +26,8 @@ h3 {
 	font-size: 28px;
 
 }
+
+
 /* ----------------------- Search Bar ----------------------- */
 
 .search-box {
@@ -117,26 +119,18 @@ h3 {
 /* ----------------------- upload project (start) ----------------------- */
 .form-control{
 	border-color: #18194f;
-	margin-left: 10%;
-	margin-right: 10%;
-	
 	font-family: 'circular';
+}
 
+label {
+	font-size: 20px;	
+	margin-right: 5%;
 }
-.col-25{
-	font-family: 'circular';
-	font-size: 20px;
-	color: black;
-}
-.col-75{
-	margin-bottom: 50px;
-	margin-left: 10%;
-	margin-right: 10%;
-	width: 80%;
-}
+
 .upload{
 	text-align: center;
 }
+
 .upload-artefact{
 	font-family: 'circular';
 	font-size: 30px;
@@ -152,21 +146,48 @@ h3 {
 	color: grey;
 	font-size: 10px;
 	margin-right: 20%;
-	}
+}
+
 .btn-primary{
 	font-family: 'circular';
-	font-size: 25px;
+	font-size: 20px;
 	background-color: #005597;
 	color: white;
 	margin-right: 10%;
 	margin-left: 10%;
-	margin-bottom: 50px
+	margin-bottom: 50px;
+	border-radius: 10px;
 }
+
 .submit-button{
 	font-family: 'circular';
 	font-size: 25px;
 	color: white;
 	text-align: center
-
 }
+
+.max {
+	font-size: 12px;
+	color: gray;
+}
+
+p {
+	font-size: 20px;	
+	display: inline-block;
+}
+
+p.word_count {
+	font-size: 15px;
+}
+
+div.count {
+	width: 100%;
+	text-align: right;
+	margin-right: 2%;
+}
+
+#field {
+	margin-left: 33.3%;
+}
+
 /* ----------------------- upload project (end) ----------------------- */

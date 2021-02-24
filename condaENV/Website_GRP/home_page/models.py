@@ -92,3 +92,11 @@ class Artefact_Info(models.Model):
 class Project_Artefact_Connector(models.Model):
     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
     Artefact_ID = models.ForeignKey(Artefact_Info, on_delete=models.CASCADE)
+
+
+class Video_Artefact(models.Model):
+    name = models.CharField(max_length=500)
+    videofile = models.FileField(upload_to='videos/', null=True, verbose_name="") #path to video
+
+    def __str__(self):
+        return self.name + ": " + str(self.videofile)

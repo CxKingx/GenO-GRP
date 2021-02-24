@@ -16,6 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = Path(BASE_DIR) / 'templates'
 STATIC_DIR = Path(BASE_DIR) / "static"
+MEDIA_DIR = Path(BASE_DIR) / "media"
 
 #print(BASE_DIR) uncomment this to see the path -Ivan
 
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -139,8 +141,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+#either use the one above or use os.path.join(BASE_DIR, 'media/') this one need to import os
 #LOGIN_URL = '/ login page location

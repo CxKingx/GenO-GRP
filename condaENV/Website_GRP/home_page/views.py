@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import UserForm, UserProfileInfoForm
+
+from home_page.models import Video_Artefact
+from .forms import UserForm, UserProfileInfoForm, VideoForm
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -124,3 +126,19 @@ def user_login(request):
     else:
         # Nothing has been provided for username or password.
         return render(request, 'home_page/login.html', {})
+
+
+def showvideo(request):
+    lastvideo = Video_Artefact.objects.last()
+
+    videofile = lastvideo.videofile
+
+    form = VideoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+
+    context = {'videofile': videofile,
+               'form': form
+               }
+
+    return render(request, 'home_page/UploadTest.html', context)

@@ -18,6 +18,10 @@ from django.urls import path
 from home_page import views
 from django.conf.urls import include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 # naming convention , all is small letters , spaces use _ , so ex like hello_world
 # this is the base redirection
 
@@ -33,4 +37,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', views.user_logout, name='logout'),
     path('welcome/', views.welcomepage, name='welcomepage'),
-]
+    path('upload_artefact/', views.showvideo, name = 'showvideo'),
+]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

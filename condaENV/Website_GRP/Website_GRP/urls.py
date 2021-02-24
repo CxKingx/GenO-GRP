@@ -33,4 +33,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', views.user_logout, name='logout'),
     path('welcome/', views.welcomepage, name='welcomepage'),
+
+
+    path('footertest/', views.footertest, name='footertest'),
+    path('indexbase/', views.indexbase, name='indexbase'),
+
 ]

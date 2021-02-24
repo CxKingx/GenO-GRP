@@ -27,6 +27,14 @@ def welcomepage(request):
     return render(request, 'home_page/WelcomePage.html', {})
 
 
+def indexbase(request):
+    return render(request, 'home_page/testextention.html', {})
+
+
+def footertest(request):
+    return render(request, 'home_page/footer.html', {})
+
+
 @login_required
 def special(request):
     # Remember to also set login url in settings.py!

@@ -23,6 +23,10 @@ def loginPage(request):
     # return HttpResponse("hello world")
 
 
+def welcomepage(request):
+    return render(request, 'home_page/WelcomePage.html', {})
+
+
 @login_required
 def special(request):
     # Remember to also set login url in settings.py!

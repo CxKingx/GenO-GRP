@@ -55,7 +55,7 @@ class Project(models.Model):
         ('Rjct', 'Rejected'),
     ]
     # Project_ID = models.PositiveIntegerField(unique = True)
-    Project_Name = models.CharField(max_length=50)
+    Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
     Upload_Date = models.DateTimeField(default=timezone.now)
     Approval_Date = models.DateTimeField(blank=True, null=True)  # date cannot be null

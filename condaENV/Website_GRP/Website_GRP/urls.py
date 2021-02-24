@@ -23,7 +23,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     # Add paths here to add new pages -Ivan
-    path('', views.index, name='index'),
+    path('', views.welcomepage, name='index'),
     # path('Login/', views.loginPage, name='loginPage'),
 
     path('Login/', views.loginPage, name='loginPage'),
@@ -32,4 +32,5 @@ urlpatterns = [
     # to help
     path('admin/', admin.site.urls),
     path('logout/', views.user_logout, name='logout'),
+    path('welcome/', views.welcomepage, name='welcomepage'),
 ]

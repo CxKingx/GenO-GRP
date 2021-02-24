@@ -1,0 +1,205 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+@font-face{
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+
+/************************drag and drop start*******************************/
+.videouploadify {
+	border:2px dashed #d2d2d2;
+	position:relative;
+	min-height:350px;
+	min-width:250px;
+	max-width:1000px;
+	margin:auto;display:
+	flex;padding:0;
+	flex-direction:column;
+	text-align:center;
+	background-color:#fff;
+	color:#3AA0FF
+}
+
+.videouploadify .videouploadify-overlay {
+	z-index:10;
+	width:100%;
+	height:100%;
+	position:absolute;
+	flex-direction:column;
+	top:0;
+	left:0;
+	display:none;
+	font-size:7em;
+	background-color:rgba(242,242,242,.7);
+	text-align:center;
+	pointer-events:none
+}
+
+.videouploadify .videouploadify-overlay i{
+	z-index:10;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	pointer-events:none
+}
+
+.videouploadify .videouploadify-videos-list{
+	display:inline-block
+}
+
+.videouploadify .videouploadify-videos-list i{
+	display:block;
+	font-size:7em;
+	text-align:center;
+	margin-top:.5em;
+	padding-bottom:12px
+}
+
+.videouploadify .videouploadify-videos-list span.videouploadify-message{
+	font-size:24px;
+	border-top:1px solid #3AA0FF;
+	border-bottom:1px solid #3AA0FF;
+	padding:10px;display:inline-block
+}
+.videouploadify .videouploadify-videos-list button.btn-default{
+	display:block;
+	color:#3AA0FF;
+	border-color:#3AA0FF;
+	border-radius:1em;
+	margin:25px auto;
+	width:100%;max-width:500px
+}
+
+.videouploadify .videouploadify-videos-list .videouploadify-container{
+	width:100px;
+	height:100px;
+	position:relative;
+	overflow:hidden;
+	margin-bottom:1em;
+	float:left;
+	border-radius:12px;
+	box-shadow:0 0 4px 0 #888
+}
+
+.videouploadify .videouploadify-videos-list .videouploadify-container button.btn-danger{
+	position:absolute;
+	top:3px;
+	right:3px;
+	width:20px;
+	height:20px;
+	border-radius:15px;
+	font-size:10px;
+	line-height:1.42;
+	padding:2px 0;
+	text-align:center;z-index:3
+}
+.videouploadify .videouploadify-videos-list .videouploadify-container /*img */video{
+	height:100px;
+	left:50%;
+	position:absolute;
+	top:50%;
+	transform:translate(-50%,-50%);width:auto
+}
+
+.videouploadify .videouploadify-videos-list .videouploadify-container .videouploadify-details{
+	position:absolute;
+	top:0;
+	padding-top:20px;
+	width:100%;height:100%;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	background:rgba(255,255,255,.5);
+	z-index:2;
+	opacity:0
+}
+
+.videouploadify .videouploadify-videos-list .videouploadify-container .videouploadify-details span{
+	display:block
+}
+
+/*************************drag and drop end********************************/
+
+.heading1 {
+	font-family: 'circular';
+	font-size: 28px;
+	color: #18194f;
+}
+
+.heading2 {
+	font-family: 'circular';
+	font-size: 20px;
+	color: #000000;
+}
+
+.form-control{
+	border-color: #18194f;
+	font-family: 'circular';
+	float: right;
+}
+
+label {
+	font-size: 20px;
+	font-family: 'circular';	
+	margin-right: 5%;
+	float: left;
+}
+
+p {
+	font-size: 20px;	
+	display: inline-block;
+}
+
+.max-word{
+	color: grey;
+	font-size: 10px;
+}
+
+.count{
+	color: grey;
+	font-size: 10px;
+	margin-right: 20%;
+}
+
+.btn-primary{
+	font-family: 'circular';
+	font-size: 20px;
+	background-color: #005597;
+	color: white;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 50px;
+	border-radius: 10px;
+}
+
+.submit-button{
+	font-family: 'circular';
+	font-size: 25px;
+	color: white;
+	text-align: center
+}
+
+.max {
+	font-size: 12px;
+	color: gray;
+}
+
+p {
+	font-size: 20px;	
+	display: inline-block;
+}
+
+p.word_count {
+	font-size: 15px;
+}
+
+div.count {
+	width: 100%;
+	text-align: right;
+	margin-right: 2%;
+}
+
+#field {
+	margin-left: 33.3%;
+}
+

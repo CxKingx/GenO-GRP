@@ -22,3 +22,27 @@ else if($(inputs[index]).getAttribute("type") !="file"){formData.append(inputs[
 for(var i=0;i<totalFiles.length;i++){formData.append(self.name,totalFiles[i].file);}
 var xhr=new XMLHttpRequest();xhr.onreadystatechange=function(e){if(xhr.status==200&&xhr.readyState===XMLHttpRequest.DONE){window.location.replace(xhr.responseURL);}}
 xhr.open("POST",$(this).attr("action"),true);xhr.send(formData);return false;});$(self).hide();dragbox.insertAfter(this);});return this;};$.fn.imageuploadify.defaults={};}(jQuery,window,document));
+
+
+// Check character count for 'Artefact Description'
+$('#artefact_desc').keyup(function() {
+    
+    // Initialize variables
+    var count = $(this).val().length;
+    var current_desc = $('#current_desc');
+    var maximum = $('#max_desc');
+    var count_desc = $('#count_desc');
+      
+    current_desc.text(count);
+  
+    // If word limit (600 chars) is reached, change color to Red
+    if (count >= 600) {
+      maximum.css('color','#FF0000');
+      count_desc.css('color', '#FF0000');
+    }
+    else {
+      maximum.css('color','#787575');
+      count_desc.css('color', '#787575');
+    }
+  
+  });

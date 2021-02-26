@@ -90,17 +90,24 @@
 
           <div class="row">
             <div class="col-4">
-              <p class = "heading2">Artefact Description: <span class="max-word">(Max of 100 words)</span></p>
-            </div>  
+              <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
+            </div>
+  
+            <!-- WORD COUNT JAVASCRIPT -->
+            <div id="count_desc" class="count">
+              <span id="current_desc">0</span>
+              <span id="max_desc">/ 600</span>
+            </div>
+  
             <div class="col-8" id="field">
-                <textarea class="form-control" autofocusid="countableArea" name="comments" style="height:150px" maxlength="600"></textarea>
+              <textarea class="form-control" id="artefact_desc" placeholder="Enter description.." style="height:150px" maxlength="600" required></textarea>
             </div>
           </div>
 
           <br><br>
 
           <div class="submit-button">
-            <button type="submit" class="btn btn-primary btn-sm">Upload File</button>
+            <button type="submit" class="btn btn-primary btn-sm">Upload file</button>
           </div>
 
         </form>

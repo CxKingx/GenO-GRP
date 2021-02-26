@@ -1,9 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 @font-face{
     font-family: 'circular';
     src: url('./circular-bold.ttf');
 }
 
+body {
+	font-family: 'circular';
+}
 
 .imageuploadify {
 	border:2px dashed #d2d2d2;
@@ -179,7 +181,7 @@
 	right: 4px;
 	height: 30px;
 	width: 30px;
-	color: #3D3D3D3;
+	color: #D3D3D3; 
 	background: #007ca7;
 	line-height: 30px; 
 	font-size: 16px;
@@ -237,28 +239,35 @@ p {
 
 .max-word{
 	color: grey;
-	font-size: 10px;
+	font-size: 12px;
 }
 
-.btn-primary{
+.btn-primary {
 	font-family: 'circular';
-	font-size: 25px;
+	font-size: 18px;
 	background-color: #005597;
 	color: white;
 	margin-right: 10%;
 	margin-left: 10%;
 	margin-bottom: 50px;
+	border-radius: 10px;
 }
 
 .submit-button{
 	font-family: 'circular';
-	font-size: 25px;
 	color: white;
-	text-align: center
+	text-align: center;
+	font-size: 18px;
 }
+
 
 #field {
 	margin-left: 33.3%;
 }
 
+div.count {
+	width: 100%;
+	text-align: right;
+	margin-right: 2%;
+}
 

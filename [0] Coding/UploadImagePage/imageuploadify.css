@@ -5,6 +5,7 @@
 
 body {
 	font-family: 'circular';
+	font-size: 12px;
 }
 
 .imageuploadify {
@@ -269,5 +270,6 @@ div.count {
 	width: 100%;
 	text-align: right;
 	margin-right: 2%;
+	color: grey;
 }
 

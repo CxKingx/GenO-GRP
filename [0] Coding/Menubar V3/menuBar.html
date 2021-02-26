@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <html>
+        <title>Updated Menu Bar</title>
+        <head>
+            <link rel="stylesheet" type="text/css" href="menuBar.css">
+            <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+            <script src="menuBar.js"></script>
+        </head>
+
+        <body>
+            
+            <div id="mySidenav" class="sidenav">
+                <!-- Hamburger menu icon to open the side bar -->
+                <p class="menu_inside">Menu</p>
+
+                <!-- Close button -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <!-- Content of the side bar -->
+                <hr class="white">
+                <a href="#">
+                    <i class="fa fa-home fa-lg"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+
+                <hr class="gray">
+                <a href="#">
+                    <i class="fa fa-trophy fa-lg"></i>
+                    <span class="nav-text">Nottingham Advantage Award</span>
+                </a>
+
+                <hr class="gray">
+                <a href="#">
+                    <i class="fa fa-line-chart"></i>
+                    <span class="nav-text">Data Scholarship</span>
+                </a>
+
+                <hr class="gray">
+                <a href="#">
+                    <i class="fa fa-picture-o"></i>
+                    <span class="photo-media">Digital Media Production</span>
+                </a>
+
+                <hr class="gray">
+                <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span class="nav-text">Technologies for Learning</span>
+                </a>
+                <hr class="white">
+
+                <!-- BREAK HERE -->
+                <br><br><br><br><br><br><br>
+                <hr class="white">
+                <a href="#">
+                    <i class="fa fa-table fa-lg"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <hr class="gray">
+                <a href="#">
+                    <i class="fa fa-upload fa-lg"></i>
+                    <span class="nav-text">Upload A Project</span>
+                </a>
+
+            </div>
+              
+              <!-- Hamburger menu icon to open the side bar -->
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+              <p class="menu">Menu</p>
+              
+              <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+              <div id="main">
+                
+              </div>
+        </body>
+</html>

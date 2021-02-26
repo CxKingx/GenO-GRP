@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+
+body {
+    font-family: 'circular';
+}
+
+/* The side navigation menu */
+.sidenav {
+  font-size: 14px;
+  height: 75%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color:#1a296b; 
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: 0.5s; 
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+/* Hover effects */
+.sidenav a:hover {
+  color: #009bbd;
+}
+
+/* Close button */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Push content to the right */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* Responsive is window is minimized */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 10%;}
+  .sidenav {padding-bottom: 5%;}
+  .sidenav a {font-size: 12px;}
+}
+
+.menu {
+    margin-top: 0px;
+    color: #007ca7;
+}
+
+.menu_inside {
+    margin-left: 10%;
+    font-size: 25px;
+    color: #009bbd;
+}
+
+hr.gray {
+    border-width: 0;
+    height: 1.5px;
+    color: gray;
+    width: 155px;
+    background-color: gray;
+    margin-left: 10%;
+}
+  
+hr.white {
+    border-width: 0;
+    height: 1.5px;
+    color: white;
+    width: 235px;
+    background-color: white;
+    margin-left: 10%;
+}
+
+i {
+    margin-right: 5%;
+    color: #009bbd;
+}

@@ -1,3 +1,26 @@
+// Check character count for 'Artefact Description'
+$('#artefact_desc').keyup(function() {
+    
+    // Initialize variables
+    var count = $(this).val().length;
+    var current_desc = $('#current_desc');
+    var maximum = $('#max_desc');
+    var count_desc = $('#count_desc');
+      
+    current_desc.text(count);
+  
+    // If word limit (600 chars) is reached, change color to Red
+    if (count >= 600) {
+      maximum.css('color','#FF0000');
+      count_desc.css('color', '#FF0000');
+    }
+    else {
+      maximum.css('color','#787575');
+      count_desc.css('color', '#787575');
+    }
+  
+});
+
 /* drag and drop start */
 ;(function($,window,document,undefined){
 	window.addEventListener("dragover",function(e){
@@ -247,7 +270,6 @@
 //drag and drop end
 
 
-/* word count */
 document.getElementById('title').addEventListener('blur', validateTitle);
 
 // Project title must be between 4 to 150 characters
@@ -265,26 +287,3 @@ function validateTitle() {
       document.getElementById('submit').disabled = false;
   }
 }
-
-// Check character count for 'Artefact Description'
-$('#text_artefact').keyup(function() {
-    
-  // Initialize variables
-  var count = $(this).val().length;
-  var current_project = $('#current_artefact');
-  var maximum = $('#max_artefact');
-  var count_project = $('#count_artefact');
-    
-  current_project.text(count);
-
-  // If word limit (600 chars) is reached, change color to Red
-  if (count >= 600) {
-    maximum.css('color','#FF0000');
-    count_project.css('color', '#FF0000');
-  }
-  else {
-    maximum.css('color','#787575');
-    count_project.css('color', '#787575');
-  }
-
-});

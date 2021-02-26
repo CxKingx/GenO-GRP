@@ -50,25 +50,24 @@
 
           <div class="row">
             <div class="col-4">
-              <p class = "heading2">Artefact Description: </p>
-              <p class="max">(MAX of 600 characters)</p>
+              <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
             </div>
-                <!-- WORD COUNT JAVASCRIPT -->
-                <div id="count_artefact" class="count">
-                  <span id="current_artefact">0</span>
-                  <span id="max_artefact">/ 600</span>
-                </div>
-                <!--<span class="max-word">(Max of 100 words)</span></p> 
-            </div>  -->
+  
+            <!-- WORD COUNT JAVASCRIPT -->
+            <div id="count_desc" class="count">
+              <span id="current_desc">0</span>
+              <span id="max_desc">/ 600</span>
+            </div>
+  
             <div class="col-8" id="field">
-                <textarea class="form-control" id="text_artefact" name="description" placeholder="Enter description.." style="height:150px" maxlength="600" required></textarea>
+              <textarea class="form-control" id="artefact_desc" placeholder="Enter description.." style="height:150px" maxlength="600" required></textarea>
             </div>
           </div>
 
           <br><br>
 
           <div class="submit-button">
-            <button type="submit" class="btn btn-primary btn-sm">Upload File</button>
+            <button type="submit" class="btn btn-primary btn-sm">Upload file</button>
           </div>
 
         </form>
@@ -82,7 +81,7 @@
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
         <!-- Own Javascript -->
-        <script type="text/javascript" src="videouploadify.js"></script>
+        <script src="videouploadify.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {

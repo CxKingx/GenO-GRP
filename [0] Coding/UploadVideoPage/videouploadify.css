@@ -1,7 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 @font-face{
     font-family: 'circular';
     src: url('./circular-bold.ttf');
+}
+
+body {
+	font-family: 'circular';
+	font-size: 12px;
 }
 
 /************************drag and drop start*******************************/
@@ -152,18 +156,18 @@ p {
 
 .max-word{
 	color: grey;
-	font-size: 10px;
+	font-size: 12px;
 }
 
 .count{
 	color: grey;
-	font-size: 10px;
+	font-size: 12px;
 	margin-right: 20%;
 }
 
-.btn-primary{
+.btn-primary {
 	font-family: 'circular';
-	font-size: 20px;
+	font-size: 18px;
 	background-color: #005597;
 	color: white;
 	margin-right: 10%;
@@ -174,19 +178,15 @@ p {
 
 .submit-button{
 	font-family: 'circular';
-	font-size: 25px;
 	color: white;
-	text-align: center
+	text-align: center;
+	font-size: 18px;
 }
+
 
 .max {
 	font-size: 12px;
 	color: gray;
-}
-
-p {
-	font-size: 20px;	
-	display: inline-block;
 }
 
 p.word_count {

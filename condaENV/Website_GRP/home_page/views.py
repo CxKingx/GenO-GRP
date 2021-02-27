@@ -35,6 +35,17 @@ def footertest(request):
     return render(request, 'home_page/footer.html', {})
 
 
+def studentdashboard(request):
+    if request.user.is_authenticated:
+        return render(request, 'home_page/studentDashboard.html', {})
+    else:
+        return render(request, 'home_page/login.html')
+
+
+def error_404(request, exception):
+    return render(request, 'home_page/ivanoldlogin.html')
+# add other errors
+
 @login_required
 def special(request):
     # Remember to also set login url in settings.py!

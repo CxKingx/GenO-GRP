@@ -18,6 +18,8 @@ from django.urls import path
 from home_page import views
 from django.conf.urls import include
 
+from django.contrib.auth import views as auth_views
+
 # naming convention , all is small letters , spaces use _ , so ex like hello_world
 # this is the base redirection
 
@@ -37,5 +39,15 @@ urlpatterns = [
 
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
+    path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
+    #path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 
 ]
+# https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes
+
+handler404 = 'home_page.views.error_404'
+handler400 = 'home_page.views.error_404'
+handler403 = 'home_page.views.error_404'
+# handler500 = 'home_page.views.error_404'
+
+

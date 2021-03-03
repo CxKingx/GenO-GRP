@@ -4,46 +4,50 @@
         <head>
             <link rel="stylesheet" type="text/css" href="menuBar.css">
             <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-            <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
             <script src="menuBar.js"></script>
         </head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <body>
-            
+            <!-- Hamburger menu icon to open the side bar -->
+            <div id="hamburger">
+                <span style="font-size:35px;cursor:pointer" onclick="openNav()">&#9776;</span><span id="menu">Menu</span>
+            </div>
+
             <div id="mySidenav" class="sidenav">
-                <!-- Hamburger menu icon to open the side bar -->
                 <p class="menu_inside">Menu</p>
 
                 <!-- Close button -->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
                 <!-- Content of the side bar -->
+                <!-- Section 1 -->
                 <hr class="white">
-                <a href="#">
-                    <i class="fa fa-home fa-lg"></i>
-                    <span class="nav-text">Home</span>
-                </a>
+                    <a href="#" class="item">
+                        <i class="fa fa-home fa-lg"></i>
+                        <span class="nav-text">Home</span>
+                    </a>
+                <br>
 
-                <hr class="gray">
-                <a href="#">
+                <a href="#" class="item">
                     <i class="fa fa-trophy fa-lg"></i>
                     <span class="nav-text">Nottingham Advantage Award</span>
                 </a>
+                <br>
 
-                <hr class="gray">
-                <a href="#">
+                <a href="#" class="item">
                     <i class="fa fa-line-chart"></i>
                     <span class="nav-text">Data Scholarship</span>
                 </a>
+                <br>
 
-                <hr class="gray">
-                <a href="#">
+                <a href="#" class="item">
                     <i class="fa fa-picture-o"></i>
                     <span class="photo-media">Digital Media Production</span>
                 </a>
+                <br>
 
-                <hr class="gray">
-                <a href="#">
+                <a href="#" class="item">
                     <i class="fa fa-laptop"></i>
                     <span class="nav-text">Technologies for Learning</span>
                 </a>
@@ -51,33 +55,30 @@
 
                 <!-- BREAK HERE -->
                 <br><br><br><br><br><br><br>
+
+                <!-- Section 2 -->
                 <hr class="white">
-                <a href="#">
+                <a href="#" class="item">
                     <i class="fa fa-table fa-lg"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
 
-                <hr class="gray">
-                <a href="#">
+                <br>
+                <a href="#" class="item">
                     <i class="fa fa-upload fa-lg"></i>
                     <span class="nav-text">Upload a project</span>
                 </a>
 
             </div>
               
-              <!-- Hamburger menu icon to open the side bar -->
-              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-              <p class="menu">Menu</p>
-              
-              <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-
-              <h1> TEST TEXT </h1>
-              <p> some text, this text does not move with the side bar </p>
+              <!--Push page content to the right -->
               <div id="main">
-                
+                <h1> TEST TEXT </h1>
+                <p> some text, this text does not move with the side bar </p>
+                <br><br><br><br><br><br><br> <br><br><br><br><br><br><br>
+                <p> some text, this text does not move with the side bar </p>
+                <br><br><br><br><br><br><br> <br><br><br><br><br><br><br>
+                <p> some text, this text does not move with the side bar </p>
               </div>
-
-              <h1> TEST TEXT </h1>
-              <p> some text here... this text is not moved </p>
         </body>
 </html>

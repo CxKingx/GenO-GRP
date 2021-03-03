@@ -22,39 +22,7 @@
     <a href="updateImage.html" class="logo"><img src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
 
     <!-- Search Bar -->
-    <div class="header-right">
-       <div class="search-box">
-        <input type="text" placeholder="Type to search...">
-        <div class="search-btn">
-          <i class="fas fa-search"></i>
-        </div>
-        <div class="cancel-btn">
-          <i class="fas fa-times"></i>
-        </div>
-     </div>
-    </div>
-
-    <script>
-      const searchBtn = document.querySelector(".search-btn");
-      const cancelBtn = document.querySelector(".cancel-btn");
-      const searchBox = document.querySelector(".search-box");
-      const searchInput = document.querySelector("input");
-    
-      searchBtn.onclick = () =>{
-        searchBox.classList.add("active");
-        searchInput.classList.add("active");
-        searchBtn.classList.add("active");
-        cancelBtn.classList.add("active");
-      }
-
-      cancelBtn.onclick = () =>{
-        searchBox.classList.remove("active");
-        searchInput.classList.remove("active");
-        searchBtn.classList.remove("active");
-        cancelBtn.classList.remove("active");
-        searchInput.value = "";
-      }
-    </script>
+      <!-- removed searchBar -->
     <!-- End of Search Bar -->
 
     </div>
@@ -107,7 +75,8 @@
           <br><br>
 
           <div class="submit-button">
-            <button type="submit" class="btn btn-primary btn-sm">Upload file</button>
+            <button type="submit" class="btn btn-primary btn-sm" href="ProjectUploadPage.html">Save and back to Project</button>
+            <button type="submit" class="btn btn-primary btn-sm" href="UploadImagePage.html">Save and Add new image</button>
           </div>
 
         </form>

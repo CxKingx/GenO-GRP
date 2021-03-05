@@ -55,9 +55,9 @@ $('#artefact_desc').keyup(function() {
 		const settings=$.extend({},$.fn.videouploadify.defaults,opts);
 		this.each(function(){
 			const self=this;
-			if(!$(self).attr("multiple")){
+			/*if(!$(self).attr("multiple")){
 				return;
-			}
+			}*/
 			let accept=$(self).attr("accept")?$(self).attr("accept").replace(/\s/g,"").split(","):null;
 			let result=[];
 			accept.forEach((item)=>{
@@ -232,7 +232,7 @@ $('#artefact_desc').keyup(function() {
 				const inputs=this.querySelectorAll("input, textarea, select, button");
 				const formData=new FormData();
 				for(let index=0;index<inputs.length;++index){
-					if(inputs[index].tagName==="SELECT"&&inputs[index].hasAttribute("multiple")){
+					/*if(inputs[index].tagName==="SELECT"&&inputs[index].hasAttribute("multiple")){
 						const options=inputs[index].options;
 						for(let i=0;options.length>i;++i){
 							if(options[i].selected){
@@ -240,7 +240,7 @@ $('#artefact_desc').keyup(function() {
 							}
 						}
 					}
-					else if(!inputs[index].getAttribute("type")||((inputs[index].getAttribute("type").toLowerCase())!=="checkbox"&&(inputs[index].getAttribute("type").toLowerCase())!=="radio")||inputs[index].checked){
+					else */if(!inputs[index].getAttribute("type")||((inputs[index].getAttribute("type").toLowerCase())!=="checkbox"&&(inputs[index].getAttribute("type").toLowerCase())!=="radio")||inputs[index].checked){
 						formData.append(inputs[index].name,inputs[index].value);
 					}
 					else if($(inputs[index]).getAttribute("type") !="file"){

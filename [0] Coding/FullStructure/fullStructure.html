@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="fullStructure.css">
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        
+        <title>Welcome Page</title>
+  </head>
+
+  <body>
+  <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
+  <div>
+    <nav class="navbar fixed-top navbar-light bg-light">
+      <a class="navbar-brand" WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
+      <div class="header-right">
+        <div class="search-box">
+            <input type="text" placeholder="Type to search...">
+            <div class="search-btn">
+              <i class="fas fa-search"></i>
+            </div>
+
+            <div class="cancel-btn">
+              <i class="fas fa-times"></i>
+            </div>
+        </div>
+      </div>
+
+      <!-- Open and close search bar -->
+      <script>
+        const searchBtn = document.querySelector(".search-btn");
+        const cancelBtn = document.querySelector(".cancel-btn");
+        const searchBox = document.querySelector(".search-box");
+        const searchInput = document.querySelector("input");
+      
+        searchBtn.onclick = () =>{
+          searchBox.classList.add("active");
+          searchInput.classList.add("active");
+          searchBtn.classList.add("active");
+          cancelBtn.classList.add("active");
+        }
+
+        cancelBtn.onclick = () =>{
+          searchBox.classList.remove("active");
+          searchInput.classList.remove("active");
+          searchBtn.classList.remove("active");
+          cancelBtn.classList.remove("active");
+          searchInput.value = "";
+        }
+      </script>
+    </nav>
+  </div>
+  <!------------------------------------------------------------------- END OF SEARCH BAR ----------------------------------------------------------------->
+
+  <!------------------------------------------------------------------- SIDE NAVIGATION BAR ---------------------------------------------------------------->
+  <div class="wrapper">
+    <div>
+      <nav id="sidebar">
+          <div class="sidebar-header">
+              <h3>Digital Artefact Showcase</h3>
+          </div>
+
+          <ul class="list-unstyled components">
+              <!-- Menu Bar Items -->
+              <hr class="white">
+              <li>
+                  <a href="#"><i class="fa fa-home fa-lg"></i>Home</a>
+              </li>
+              <br><br>
+              <li>
+                  <a href="#"><i class="fa fa-university"></i>University of Nottingham</a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa fa-trophy fa-lg"></i>Nottingham Advantage Award</a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa fa-line-chart"></i>Data Scholarship</a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa fa-picture-o"></i>Digital Media Production</a>
+              </li>
+              <li>
+                  <a href="#"><i class="fa fa-laptop"></i>Technologies for Learning</a>
+              </li>
+          </ul>
+
+          <!-- Dashboard and Upload Project buttons -->
+          <div>
+            <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
+            <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
+          </div>
+      </nav> <!-- Close nav sidebar -->
+    </div>
+
+    <!-- Page Content  -->
+
+    <div class="container">
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="small-navbar">
+                <div class="container-fluid">
+
+                    <!-- Small navigation bar for Toggle Menu and Sort Methods -->
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-info">
+                        <i class="fa fa-bars"></i>
+                        <span>Toggle Menu</span>
+                    </button>
+    
+                    <button class="btn btn-outline-info d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <div class="dropdown">
+                              <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort by..
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Project name</a>
+                                <a class="dropdown-item" href="#">Latest upload</a>
+                                <a class="dropdown-item" href="#">Most viewed</a>
+                              </div>
+                            </div>  
+                        </ul>
+                    </div>
+                </div> <!-- CLose container fluid -->
+            </nav>
+
+            <h2>Collapsible Sidebar Using Bootstrap 4</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h3>Lorem Ipsum Dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+ 
+      <!----------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------->
+        
+      <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
+            <footer>
+              <div class = "footer">
+                <div class="container p-4">
+                  <div class="row">
+                      <div class="column">
+                        <h5>Address</h5>
+
+                        <p>University of Nottingham Ningbo China<br>
+                          199, Taikang East Road Ningbo,<br>
+                          315100, China</p>
+                      </div>
+
+                      <div class = "column">
+                        <h5>Essentials</h5>
+
+                        <ul class="list-unstyled">
+                          <li><a href = "#!">Nottingham Advantage Award</a></li>
+                          <li><a href = "#!">Contact Us</a></li>
+                        </ul>
+                      </div>
+
+                      <div class = "column">
+                        <h5>Artefact portal</h5>
+                        <button type="button" class="btn btn-outline-light"><a href="loginpage.html">Login</a></button>
+                      </div>
+
+                    </div><!--Close row-->
+                </div><!-- Close container -->
+
+                  <!-- Copyright -->
+                  <div class = "copyright">
+                    © All rights reserved
+                  </div>
+              </div> <!-- Close footer-->
+            </footer> 
+        </div> <!-- Close content -->
+      </div>
+
+      <!-- jQuery CDN - Slim version (=without AJAX) -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <!-- Popper.JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <!-- jQuery Custom Scroller CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+      <!-- Own Javascript-->
+      <script src = "WelcomePage.js"></script>
+
+      <!-- Open and close side menu -->
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $("#sidebar").mCustomScrollbar({
+                  theme: "minimal"
+              });
+
+              $('#sidebarCollapse').on('click', function () {
+                  $('#sidebar, #content').toggleClass('active');
+                  $('.collapse.in').toggleClass('in');
+                  $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+              });
+          });
+      </script>
+  </body>
+</html>

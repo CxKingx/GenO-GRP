@@ -50,7 +50,7 @@
               <label for="title"/>Artefact Title:</label>
             </div> 
             <div class="col-8" id="field">
-                <input type="text" class="form-control" id="title_field" name="title_field">
+                <input type="text" class="form-control" id="title_field" name="title_field" placeholder="Title.." required>
             </div>
           </div>
 
@@ -70,6 +70,9 @@
             <div class="col-8" id="field">
               <textarea class="form-control" id="artefact_desc" placeholder="Enter description.." style="height:150px" maxlength="600" required></textarea>
             </div>
+            <small id="artefact_desc" class="form-text text-muted">
+              The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
+            </small>
           </div>
 
           <br><br>

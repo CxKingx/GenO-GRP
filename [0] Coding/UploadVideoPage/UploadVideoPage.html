@@ -61,12 +61,8 @@
   
             <div class="col-8" id="field">
               	<textarea class="form-control" id="artefact_desc" placeholder="Enter description.." style="height:150px" maxlength="600" required></textarea>
-          
 				<small id="artefact_desc" class="form-text text-muted2">
-  					The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
-				</small> </br>
-				<small id="artefact_desc" class="form-text text-muted">
-  					The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
+  					*The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
 				</small>
             </div>
           </div>
@@ -74,9 +70,21 @@
           <br><br>
 
           <div class="submit-button">
-            <button type="submit" class="btn btn-primary btn-sm"><a href="ProjectUploadPage.html">Save and back to Project</a></button>
-            <button type="submit" class="btn btn-primary btn-sm"><a href="UploadVideoPage.html">Save and Add new video </a></button>
-            <a class="btn btn-primary" href="UploadVideoPage.html" role="button">Test</a> <!-- this is to be erased -->
+          	<!-- the "required" does not work here  -->
+            <a class="btn btn-primary" href="ProjectUploadPage.html" role="button">Save and back to Project</a>
+            <a class="btn btn-primary" href="UploadVideoPage.html" role="button">Save and Add new video</a> 
+          </div>
+
+          <div class="submit-button">
+          	<!-- "required" works, but the link does not work -->
+            <button type="submit" class="btn btn-primary btn-sm" href="ProjectUploadPage.html">Save and back to Project</button>
+            <button type="submit" class="btn btn-primary btn-sm" href="UploadVideoPage.html">Save and Add new video</button>
+          </div>
+
+          <div class="submit-button">
+          	<!-- "required" does not work, but the link work -->
+            <button type="submit"><a class="btn btn-primary btn-sm" href="ProjectUploadPage.html">Save and back to Project </a></button>
+            <button type="submit"><a class="btn btn-primary btn-sm" href="UploadVideoPage.html">Save and Add new video</a></button>
           </div>
 
         </form>

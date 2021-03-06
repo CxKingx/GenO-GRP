@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 # Which one should we use ?
 
 # class Student_User(models.Model):
+# #No Longer used because Django have all of this pre built in
 #     Account_Status_Choice = (
 #         ('Act', 'Active'),
 #         ('P', 'Pending'),
@@ -32,9 +33,10 @@ from django.contrib.auth.models import User
 
 
 class UserProfileInfo(models.Model):
-    # Create relationship (don't inherit from User!)
+    # Add any extra information to connect with user
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentID = models.PositiveIntegerField(unique=True, default=0)
+    #Date_Created , Account_Status and Last_Online is built-in Django Attributes in User
 
     # Testchar = models.CharField(max_length=50)
     # Add any additional attributes you want
@@ -55,6 +57,9 @@ class Project(models.Model):
         ('Rjct', 'Rejected'),
     ]
     # Project_ID = models.PositiveIntegerField(unique = True)
+    #This is to connect , which Owner have dis project
+    User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
+
     Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
     Upload_Date = models.DateTimeField(default=timezone.now)
@@ -67,20 +72,23 @@ class Project(models.Model):
         return self.Project_Name
 
 
-class Account_Project_Connector(models.Model):
-    User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
-    Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.User_ID.username + ' ' + self.Project_ID.Project_Name
+# class Account_Project_Connector(models.Model):
+#     User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
+#     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.User_ID.username + ' ' + self.Project_ID.Project_Name
 
 
 class Artefact_Info(models.Model):
+    Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+
     ArtefactTypeChoice = [
         ('Vid', 'Video'),
         ('Pic', 'Picture'),
     ]  # these choices are kind of confusing
     # ArtefactID = models.PositiveIntegerField(unique = True)
+
     ArtefactType = models.CharField(max_length=50, choices=ArtefactTypeChoice)
     ArtefactName = models.CharField(max_length=50)
     ArtefactSize = models.CharField(max_length=50)  # might not be needed
@@ -89,6 +97,6 @@ class Artefact_Info(models.Model):
         return self.ArtefactName
 
 
-class Project_Artefact_Connector(models.Model):
-    Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
-    Artefact_ID = models.ForeignKey(Artefact_Info, on_delete=models.CASCADE)
+# class Project_Artefact_Connector(models.Model):
+#     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
+#     Artefact_ID = models.ForeignKey(Artefact_Info, on_delete=models.CASCADE)

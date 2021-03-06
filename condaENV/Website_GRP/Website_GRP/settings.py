@@ -26,15 +26,15 @@ STATIC_DIR = Path(BASE_DIR) / "static"
 SECRET_KEY = '_-ewjc6*gs8#k7qog02q20d(dn3@&+8r0se3_3v=a%wh$f9qg_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 # if wanted to test the eror pages , uncomment this 2 lines below , and comment the top one
 
-DEBUG = False
+#DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -146,5 +146,6 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/login'
+#redirect files back to login page
+LOGIN_URL = 'loginPage'
+LOGIN_REDIRECT_URL = 'loginPage'

@@ -67,6 +67,9 @@
     <div>
       <nav id="sidebar">
           <div class="sidebar-header">
+              <div class="cancel-btn" id="cancel-btn">
+                <i class="fas fa-times"></i>
+              </div>
               <h3>Digital Artefact Showcase</h3>
           </div>
 
@@ -110,7 +113,7 @@
                 <div class="container-fluid">
 
                     <!-- Small navigation bar for Toggle Menu and Sort Methods -->
-                    <button type="button" id="sidebarCollapse" class="btn btn-outline-info">
+                    <button type="button" id="toggle-menu" class="btn btn-outline-info">
                         <i class="fa fa-bars"></i>
                         <span>Toggle Menu</span>
                     </button>
@@ -195,6 +198,7 @@
             </footer> 
         </div> <!-- Close content -->
       </div>
+      <!---------------------------------------------------------------------- END OF FOOTER ------------------------------------------------------------------->
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -207,19 +211,35 @@
       <!-- Own Javascript-->
       <script src = "WelcomePage.js"></script>
 
-      <!-- Open and close side menu -->
+      <!-- Script for Toggle menu button -->
       <script type="text/javascript">
           $(document).ready(function () {
               $("#sidebar").mCustomScrollbar({
                   theme: "minimal"
               });
 
-              $('#sidebarCollapse').on('click', function () {
+              $('#toggle-menu').on('click', function () {
                   $('#sidebar, #content').toggleClass('active');
                   $('.collapse.in').toggleClass('in');
                   $('a[aria-expanded=true]').attr('aria-expanded', 'false');
               });
           });
       </script>
+
+      <!-- Script for cross button in side navigation menu -->
+      <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#cancel-btn').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+      </script>
+
   </body>
 </html>

@@ -13,78 +13,7 @@ h5 {
 	font-size: 14px;
 }
 
-/*-------------------------------------- Footer -------------------------------------*/
-footer{
-	bottom: 0;
-	background: linear-gradient(to right, #18194f, #009bbd);
-	color: white;
-	width: 100%;
-	font-family: 'circular';
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-
-a {
-	color: white;
-}
-
-a:hover {
-	color: #d3d3d3;
-}
-
-.copyright{
-	text-align: center;
-}
-
-.container .p-4{
-	width: 100%;
-	margin: 2%;
-}
-
-.column{
-	width: 30%;
-	margin: 0%;
-}
-
-footer.btn {
-	border-radius: 5px; 
-	border: white 2px;
-	color: white;
-	background-color: transparent; 
-}
-
-.btn-outline-light:hover {
-	color: #18194f;
-}
-
-/*------------------------------- Small navigation bar ---------------------------*/
-#small-navbar {
-	padding: 5px;
-	margin-bottom: 5%;
-}
-
-button#sidebarCollapse {
-	padding: 5px;
-	width: 150px;
-	margin: 5px;
-	border-color: #009bbd;
-}
-
-button#sidebarCollapse:hover {
-    background-color: #009bbd;
-    color: white;
-}
-
-a.dropdown-item {
-	font-size: 12px;
-}
-
-i.fa-bars:before {
-	color: #1a296b;
-}
-
 /*-------------------------- Top navigation and Search Bar ------------------------*/
-
 .navbar {
 	top: 0;
 	padding-top: 0px;
@@ -128,6 +57,7 @@ a.navbar-brand {
 }
 
 .search-box input.active {
+	background-color: rgb(235, 235, 235);
 	opacity: 1;
 }
 
@@ -174,6 +104,10 @@ a.navbar-brand {
 .search-box .cancel-btn.active {	
 	right: -30px;
 	transform: translateY(-50%) rotate(360deg);
+}
+
+.fa-search {
+	color: white;
 }
 
 /*---------------------------------- Side Menu Bar --------------------------*/
@@ -293,6 +227,16 @@ i.fa-bars {
     color: #007ca7;
 }
 
+i.fa-times {
+	cursor: pointer;
+	font-size: 16px;
+	color: #009bbd;
+}
+
+div.cancel-btn {
+	text-align: right;
+}
+
 h3 {
     margin-bottom: 10px;
     color: #009bbd;
@@ -368,3 +312,75 @@ button#upload-project {
         display: none;
     }
 }
+
+
+/*-------------------------------------- Footer -------------------------------------*/
+footer{
+	bottom: 0;
+	background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+	width: 100%;
+	font-family: 'circular';
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: #d3d3d3;
+}
+
+.copyright{
+	text-align: center;
+}
+
+.container .p-4{
+	width: 100%;
+	margin: 2%;
+}
+
+.column{
+	width: 30%;
+	margin: 0%;
+}
+
+footer.btn {
+	border-radius: 5px; 
+	border: white 2px;
+	color: white;
+	background-color: transparent; 
+}
+
+.btn-outline-light:hover {
+	color: #18194f;
+}
+
+/*------------------------------- Small navigation bar ---------------------------*/
+#small-navbar {
+	padding: 5px;
+	margin-bottom: 5%;
+}
+
+button#toggle-menu {
+	padding: 5px;
+	width: 150px;
+	margin: 5px;
+	border-color: #009bbd;
+}
+
+button#toggle-menu:hover {
+    background-color: #009bbd;
+    color: white;
+}
+
+a.dropdown-item {
+	font-size: 12px;
+}
+
+i.fa-bars:before {
+	color: #1a296b;
+}
+

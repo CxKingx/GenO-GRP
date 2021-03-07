@@ -190,4 +190,21 @@ div.count {
 	margin-left: 33.3%;
 }
 
+/******** table start **********/
+.table {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+thead {
+    background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgb(159, 218, 231);
+}
+/********* table end ***********/
+
 /* ----------------------- upload project (end) ----------------------- */

@@ -120,6 +120,12 @@
       const retrieveFiles = (files) => {
 
         for(let index = 0; index < files.length; ++index) {
+
+          if(files[index].size > 500) {
+            alert("File is too big!");
+            break;
+          }
+
           if (!accept || compareMimeType(result, files[index].type, /(?:\.([^.]+))?$/.exec(files[index].name)[1])) {
             // Unique number to save the image.
             const id = Math.random().toString(36).substr(2, 9);

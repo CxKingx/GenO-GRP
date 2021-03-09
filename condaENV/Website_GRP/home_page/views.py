@@ -134,10 +134,17 @@ def studentdashboard(request):
     print("Model12")
     thismodel12 = Project.objects.filter(User_Owner_id=thismodel10.id)
     print(thismodel12)
-    print(thismodel12[0].Project_Name)
-    print(thismodel12[0].Project_Description)
-    print(thismodel12[1].Project_Name)
-    print(thismodel12[1].Project_Description)
+
+    if thismodel12.exists():
+        print("not empty")
+    else:
+        print("empty")
+    #print(thismodel12[0].Project_Name)
+    #print(thismodel12[0].Project_Description)
+    #print(thismodel12[1].Project_Name)
+    #print(thismodel12[1].Project_Description)
+    print(thismodel12[0].Project_Approval_Status)
+    print(type(thismodel12[0].Project_Approval_Status))
     #Projects.object.get(id = thismodel9.id )
 
     #User_Owner

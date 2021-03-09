@@ -172,7 +172,7 @@ def studentdashboard(request):
     #print(thismodel5)
     # thisuser2 = UserProfileInfo.objects.select_related('').all()
     # print(thisuser)
-
+    # test
     context = {'thismodel12': thismodel12}
     return render(request, 'home_page/studentDashboard.html', context)
     #return render(request, 'home_page/studentDashboard.html', {})

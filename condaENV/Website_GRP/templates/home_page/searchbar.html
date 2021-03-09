@@ -14,7 +14,12 @@
         <h1> item found</h1>
         <br>
     {% for i in post %}
-        {{ i.ArtefactType }}, {{ i.ArtefactName }}
+        {{ i.name }}, {{ i.videofile }}
+    <source src='{{ MEDIA_URL }}{{ i.videofile  }}' type='video/mp4'>
+    <video width='400' controls>
+        <source src="{{ MEDIA_URL }}{{ i.videofile  }}" type='video/mp4'>
+        Your browser does not support the video tag.
+    </video>
     <br>
     {% endfor %}
     {% endif %}

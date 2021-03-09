@@ -77,7 +77,7 @@ def studentdashboard(request):
     #print(newobject5)
     print("allo")
 
-    print(newobject2[0].Project_Name + " ,"+newobject2[0].Project_Description )
+    #print(newobject2[0].Project_Name + " ,"+newobject2[0].Project_Description )
 
     thismodel = UserProfileInfo.objects.select_related().all()
     #thismodel2 = UserProfileInfo.objects.get(user='thisuser')
@@ -97,12 +97,12 @@ def studentdashboard(request):
     print(thismodel4)
     #print(thismodel4.Project_Name)
 
-    print("Model5")
-    thismodel5 = Artefact_Info.objects.select_related('Project_Owner').get(ArtefactName = 'CxKingx no video')
-    print(thismodel5 )
+    #print("Model5")
+    #thismodel5 = Artefact_Info.objects.select_related('Project_Owner').get(ArtefactName = 'CxKingx no video')
+    #print(thismodel5 )
     #print(thismodel5)
-    print(thismodel5.Project_Owner)
-    print(thismodel5.ArtefactName)
+    #print(thismodel5.Project_Owner)
+    #print(thismodel5.ArtefactName)
 
     print("Model6")
     thismodel6 = UserProfileInfo.objects.select_related('user').all()
@@ -111,7 +111,7 @@ def studentdashboard(request):
     print("Model7")
     thismodel7 = Project.objects.all()
     print(thismodel7)
-    print(thismodel7[0].Project_Name)
+    #print(thismodel7[0].Project_Name)
     # for i in thismodel7:
     #     {
     #         i.
@@ -119,6 +119,8 @@ def studentdashboard(request):
     #print("Model8")
     #thismodel8 = Project.objects.select_related('User_Owner').get(User_Owner='20182120')
     #print(thismodel8)
+
+    #most important 9 10 12
 
     print("Model9")
     thismodel9 = User.objects.prefetch_related().get(username=thisuser)
@@ -141,6 +143,7 @@ def studentdashboard(request):
     print("Model12")
     thismodel12 = Project.objects.filter(User_Owner_id=thismodel10.id)
     print(thismodel12)
+    print(type(thismodel12[0].Project_Approval_Status))
 
     if thismodel12.exists():
         print("not empty")
@@ -150,8 +153,8 @@ def studentdashboard(request):
     #print(thismodel12[0].Project_Description)
     #print(thismodel12[1].Project_Name)
     #print(thismodel12[1].Project_Description)
-    print(thismodel12[0].Project_Approval_Status)
-    print(type(thismodel12[0].Project_Approval_Status))
+    #print(thismodel12[0].Project_Approval_Status)
+    #print(type(thismodel12[0].Project_Approval_Status))
     #Projects.object.get(id = thismodel9.id )
 
     #User_Owner
@@ -284,8 +287,9 @@ def user_login(request):
 
 
 def showvideo(request):
+    #This 2 commands is searching for a file in the database, so if no video = eror
+    #cara ambil hrs beda, hrs pake reference ke user
     lastvideo = Video_Artefact.objects.last()
-
     videofile = lastvideo.videofile
 
     form = VideoForm(request.POST or None, request.FILES or None)
@@ -299,10 +303,12 @@ def showvideo(request):
     return render(request, 'home_page/UploadTest.html', context)
 
 from django.db.models import Q
+
 def searchbar(request):
     if request.method == "GET":
         search = request.GET.get('search')
-        post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
+        #post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
+        post = Video_Artefact.objects.all().filter(Q(name__icontains=search))
         return render(request, 'home_page/searchbar.html', {'post': post})
 
 # Extra codes for future use

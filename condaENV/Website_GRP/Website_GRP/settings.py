@@ -18,7 +18,7 @@ TEMPLATE_DIR = Path(BASE_DIR) / 'templates'
 STATIC_DIR = Path(BASE_DIR) / "static"
 MEDIA_DIR = Path(BASE_DIR) / "media"
 
-#print(BASE_DIR) uncomment this to see the path -Ivan
+# print(BASE_DIR) uncomment this to see the path -Ivan
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -30,6 +30,12 @@ SECRET_KEY = '_-ewjc6*gs8#k7qog02q20d(dn3@&+8r0se3_3v=a%wh$f9qg_'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# if wanted to test the eror pages , uncomment this 2 lines below , and comment the top one
+
+#DEBUG = False
+
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -68,7 +74,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
             ],
         },
     },
@@ -76,15 +81,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Website_GRP.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-#USER AND NAME IS NOT CHANGE FOR NOW, cause too annoying to set individually - Ivan.
-#Django admin login
-    # Username : gen-o-grp-2020
-    # Password : PainAuChocolate
+# USER AND NAME IS NOT CHANGE FOR NOW, cause too annoying to set individually - Ivan.
+# Django admin login
+# Username : gen-o-grp-2020
+# Password : PainAuChocolate
 
-    #database name  = test,  Website_Database
+# database name  = test,  Website_Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -149,4 +153,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 #either use the one above or use os.path.join(BASE_DIR, 'media/') this one need to import os
+
 #LOGIN_URL = '/ login page location
+#redirect files back to login page
+LOGIN_URL = 'loginPage'
+LOGIN_REDIRECT_URL = 'loginPage'

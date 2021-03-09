@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
+from home_page.models import Video_Artefact
+from .forms import UserForm, UserProfileInfoForm, VideoForm
+
 from home_page.models import Artefact_Info
 
 
@@ -128,11 +131,3 @@ def user_login(request):
     else:
         # Nothing has been provided for username or password.
         return render(request, 'home_page/login.html', {})
-
-
-from django.db.models import Q
-def searchbar(request):
-    if request.method == "GET":
-        search = request.GET.get('search')
-        post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
-        return render(request, 'home_page/searchbar.html', {'post': post})

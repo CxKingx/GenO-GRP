@@ -42,7 +42,8 @@ Listed as per the Team List order.
 - NOTE : When installing new packages to the environment UPDATE the environment using "conda env export > environment_vXX.yml
 " XX being the version number (currently v2), then push it to the repository.
 - environment.yml is deprecated.
-
+-Project has been merged
+  
 ## Project Development 
 <table>
   <tr>
@@ -84,3 +85,5 @@ Listed as per the Team List order.
     </td>
   </tr>
 </table>
+
+

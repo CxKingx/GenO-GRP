@@ -54,4 +54,3 @@ handler400 = 'home_page.views.error_404'
 handler403 = 'home_page.views.error_404'
 # handler500 = 'home_page.views.error_404'
 
-

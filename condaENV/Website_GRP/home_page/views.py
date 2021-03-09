@@ -283,6 +283,28 @@ def user_login(request):
         return render(request, 'home_page/login.html', {})
 
 
+def showvideo(request):
+    lastvideo = Video_Artefact.objects.last()
+
+    videofile = lastvideo.videofile
+
+    form = VideoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+
+    context = {'videofile': videofile,
+               'form': form
+               }
+
+    return render(request, 'home_page/UploadTest.html', context)
+
+from django.db.models import Q
+def searchbar(request):
+    if request.method == "GET":
+        search = request.GET.get('search')
+        post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
+        return render(request, 'home_page/searchbar.html', {'post': post})
+
 # Extra codes for future use
 
 # for admin , view all things

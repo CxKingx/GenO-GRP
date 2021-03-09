@@ -33,7 +33,7 @@ from django.contrib.auth.models import User
 
 
 class UserProfileInfo(models.Model):
-    # Add any extra information to connect with user
+    # Create relationship (don't inherit from User!)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentID = models.PositiveIntegerField(unique=True, default=0)
     #Date_Created , Account_Status and Last_Online is built-in Django Attributes in User
@@ -60,7 +60,7 @@ class Project(models.Model):
     #This is to connect , which Owner have dis project
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
 
-    Project_Name = models.CharField(max_length=50)
+    Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
     Upload_Date = models.DateTimeField(default=timezone.now)
     Approval_Date = models.DateTimeField(blank=True, null=True)  # date cannot be null

@@ -1,13 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from home_page.models import Video_Artefact
 from .forms import UserForm, UserProfileInfoForm, VideoForm
-
-from home_page.models import Artefact_Info
-
-
-from .forms import UserForm, UserProfileInfoForm
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -18,8 +12,13 @@ from .models import Project
 #from .models import Project_Artefact_Connector
 #from .models import Account_Project_Connector
 from .models import Artefact_Info
+#from home_page.models import Artefact_Info
+from home_page.models import Video_Artefact
+
 
 from django.contrib.auth import get_user_model
+from datetime import datetime, timedelta , date
+from django.utils import timezone
 
 User = get_user_model()
 
@@ -38,8 +37,10 @@ def index(request):
 # to help redirect back to login page
 
 def loginPage(request):
-    return render(request, 'home_page/login.html')
-
+    #return render(request, 'home_page/login.html')
+    wrongpassword = True
+    context = {'wrongpassword': wrongpassword}
+    return render(request, 'home_page/StudentLogin.html',context)
     # return HttpResponse("hello world")
 
 
@@ -61,64 +62,6 @@ def studentdashboard(request):
 
     thisuser = request.user
     print(thisuser)
-    # print(thisuser.Project_Name)
-    print("List of QUeries")
-    newobject0 = User.objects.select_related().all()
-    newobject1 = UserProfileInfo.objects.select_related().all()
-    newobject2 = Project.objects.select_related().all()
-    #newobject3 = Project_Artefact_Connector.objects.select_related().all()
-    newobject4 = Artefact_Info.objects.select_related().all()
-    #newobject5 = Account_Project_Connector.objects.select_related().all()
-    print(newobject0)
-    print(newobject1)
-    print(newobject2)
-    #print(newobject3)
-    print(newobject4)
-    #print(newobject5)
-    print("allo")
-
-    #print(newobject2[0].Project_Name + " ,"+newobject2[0].Project_Description )
-
-    thismodel = UserProfileInfo.objects.select_related().all()
-    #thismodel2 = UserProfileInfo.objects.get(user='thisuser')
-    print(thismodel)
-
-    anothermodel = User.objects.all()
-    print(anothermodel)
-
-    print("Model3")
-    thismodel3 = User.objects.get(username=thisuser)
-    print(thismodel3)
-    print(thismodel3.email)
-
-    #get all from user ,
-    print("Model4")
-    thismodel4 = User.objects.select_related().get(username=thisuser)
-    print(thismodel4)
-    #print(thismodel4.Project_Name)
-
-    #print("Model5")
-    #thismodel5 = Artefact_Info.objects.select_related('Project_Owner').get(ArtefactName = 'CxKingx no video')
-    #print(thismodel5 )
-    #print(thismodel5)
-    #print(thismodel5.Project_Owner)
-    #print(thismodel5.ArtefactName)
-
-    print("Model6")
-    thismodel6 = UserProfileInfo.objects.select_related('user').all()
-    print(thismodel6)
-
-    print("Model7")
-    thismodel7 = Project.objects.all()
-    print(thismodel7)
-    #print(thismodel7[0].Project_Name)
-    # for i in thismodel7:
-    #     {
-    #         i.
-    #     }
-    #print("Model8")
-    #thismodel8 = Project.objects.select_related('User_Owner').get(User_Owner='20182120')
-    #print(thismodel8)
 
     #most important 9 10 12
 
@@ -144,7 +87,42 @@ def studentdashboard(request):
     thismodel12 = Project.objects.filter(User_Owner_id=thismodel10.id)
     print(thismodel12)
     print(type(thismodel12[0].Project_Approval_Status))
+    print(type(thismodel12[0].Approval_Date))
+    print(thismodel12[0].Approval_Date)
+    print(thismodel12[0].Approval_TestDate)
 
+    print("time here")
+
+    todayDate = (timezone.now())
+    print(todayDate)
+    print(type(todayDate))
+
+    todayDate2 = date.today()
+    print(todayDate2)
+    print(type(todayDate2))
+
+    nextweek = timedelta(days=7)
+    print(nextweek)
+    print(type(nextweek))
+
+    print("new time is")
+    realnextweek = todayDate+nextweek
+    print(realnextweek)
+    print(type(realnextweek))
+
+    print ("week after apfocr")
+    Approv7 = thismodel12[0].Approval_TestDate + nextweek
+    print(Approv7)
+    print(type(Approv7))
+
+    if Approv7>thismodel12[0].Approval_TestDate:
+        print("ws lewat seminggu")
+    else:
+        print("Jek gpp")
+
+
+
+    #Approval_Date
     if thismodel12.exists():
         print("not empty")
     else:
@@ -173,7 +151,8 @@ def studentdashboard(request):
     # thisuser2 = UserProfileInfo.objects.select_related('').all()
     # print(thisuser)
     # test
-    context = {'thismodel12': thismodel12}
+    context = {'thismodel12': thismodel12 ,
+               'todayDate2': todayDate2}
     return render(request, 'home_page/studentDashboard.html', context)
     #return render(request, 'home_page/studentDashboard.html', {})
 
@@ -277,9 +256,11 @@ def user_login(request):
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username, password))
             # I must edit this to redirect back to login
-            return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
-                                "right now only back to login but no text invalid login")
-            # return render(request, 'home_page/login.html', {})
+           # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
+                                #"right now only back to login but no text invalid login")
+            wrongpassword = False
+            context = {'wrongpassword': wrongpassword}
+            return render(request, 'home_page/StudentLogin.html', context)
 
     else:
         # Nothing has been provided for username or password.

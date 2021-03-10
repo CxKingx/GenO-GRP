@@ -83,15 +83,28 @@
                 <p>{{ i.Authors }}</p>
                 <p>{{ i.Upload_Date }}</p>
                 <p>{{ i.Project_Approval_Status }}</p>
+                <p>{{ i.Approval_TestDate }}</p>
+                <p>Expire n today is</p>
+                <p>{{ i.Account_ExpiryDate }}</p>
+                <p>{{ todayDate2 }}</p>
+
+                {% if todayDate2 > i.Account_ExpiryDate %}
+                    <p>expire oi</p>
+                {% else %}
+                    <p>daijobu peko</p>
+                {% endif %}
 
                 {% if i.Project_Approval_Status == "Pndg" %}
                     <p>do this cuz pending</p>
                 {% elif i.Project_Approval_Status == "Apvd" %}
+
                     <p>do this cuz Approved</p>
                 {% elif i.Project_Approval_Status == "Rjct" %}
                     <p>do this cuz Rejected</p>
 
                 {% endif %}
+
+
 
 
 

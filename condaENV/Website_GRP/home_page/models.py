@@ -63,7 +63,12 @@ class Project(models.Model):
     Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
     Upload_Date = models.DateTimeField(default=timezone.now)
-    Approval_Date = models.DateTimeField(blank=True, null=True)  # date cannot be null
+
+    Approval_Date = models.DateTimeField(blank=True, null=True)
+    Approval_TestDate = models.DateField(blank= True, null=True)
+    #Expire Date will connect automaticaly 1week after ApprovalDate
+    Account_ExpiryDate = models.DateField(blank= True, null=True)
+
     Last_Updated = models.DateTimeField(blank=True, null=True)
     Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pndg')  # Approval
     Authors = models.CharField(max_length=100)

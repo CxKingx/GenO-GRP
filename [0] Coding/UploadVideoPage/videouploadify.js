@@ -125,7 +125,7 @@ $('#artefact_desc').keyup(function() {
 				for(let index=0;index<files.length;++index){
 
 					//restricting file size
-          			if(files[index].size > 500000) {
+          			if(files[index].size > 5000) {
             			alert("File is too big!");
             			break;
           			}

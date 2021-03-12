@@ -9,15 +9,14 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import UserProfileInfo
 from .models import Project
-#from .models import Project_Artefact_Connector
-#from .models import Account_Project_Connector
+# from .models import Project_Artefact_Connector
+# from .models import Account_Project_Connector
 from .models import Artefact_Info
-#from home_page.models import Artefact_Info
+# from home_page.models import Artefact_Info
 from home_page.models import Video_Artefact
 
-
 from django.contrib.auth import get_user_model
-from datetime import datetime, timedelta , date
+from datetime import datetime, timedelta, date
 from django.utils import timezone
 
 User = get_user_model()
@@ -37,10 +36,10 @@ def index(request):
 # to help redirect back to login page
 
 def loginPage(request):
-    #return render(request, 'home_page/login.html')
+    # return render(request, 'home_page/login.html')
     wrongpassword = True
     context = {'wrongpassword': wrongpassword}
-    return render(request, 'home_page/StudentLogin.html',context)
+    return render(request, 'home_page/StudentLogin.html', context)
     # return HttpResponse("hello world")
 
 
@@ -56,14 +55,30 @@ def footertest(request):
     return render(request, 'home_page/footer.html', {})
 
 
+def layout(request):
+    return render(request, 'home_page/layout.html', {})
+
+
+
+
 # employees = Employee.objects.all().values('id','name','company__name')
+
+@login_required
+def edit_project(request):
+    if request.method == 'POST':
+        ProjectID = request.POST.get('EditProject')
+        print("this is project ID after button")
+        print(ProjectID)
+        print(request.user)
+        # Process this project ID
+
+
 @login_required
 def studentdashboard(request):
-
     thisuser = request.user
     print(thisuser)
 
-    #most important 9 10 12
+    # most important 9 10 12
 
     print("Model9")
     thismodel9 = User.objects.prefetch_related().get(username=thisuser)
@@ -76,12 +91,12 @@ def studentdashboard(request):
     print(thismodel10.StudentID)
     print(thismodel10.id)
 
-    #if get more than 2 erorr
-    #print("Model11")
-    #thismodel11 = Project.objects.get(User_Owner_id=thismodel10.id).all()
-    #print(thismodel11)
-    #print(newobject2.User_Owner_id)
-    #filter?
+    # if get more than 2 erorr
+    # print("Model11")
+    # thismodel11 = Project.objects.get(User_Owner_id=thismodel10.id).all()
+    # print(thismodel11)
+    # print(newobject2.User_Owner_id)
+    # filter?
 
     print("Model12")
     thismodel12 = Project.objects.filter(User_Owner_id=thismodel10.id)
@@ -89,7 +104,7 @@ def studentdashboard(request):
     print(type(thismodel12[0].Project_Approval_Status))
     print(type(thismodel12[0].Approval_Date))
     print(thismodel12[0].Approval_Date)
-    print(thismodel12[0].Approval_TestDate)
+    # print(thismodel12[0].Approval_Date)
 
     print("time here")
 
@@ -106,55 +121,54 @@ def studentdashboard(request):
     print(type(nextweek))
 
     print("new time is")
-    realnextweek = todayDate+nextweek
+    realnextweek = todayDate + nextweek
     print(realnextweek)
     print(type(realnextweek))
 
-    print ("week after apfocr")
-    Approv7 = thismodel12[0].Approval_TestDate + nextweek
+    print("week after apfocr")
+    Approv7 = thismodel12[0].Approval_Date + nextweek
     print(Approv7)
     print(type(Approv7))
 
-    if Approv7>thismodel12[0].Approval_TestDate:
+    if Approv7 > thismodel12[0].Approval_Date:
         print("ws lewat seminggu")
     else:
         print("Jek gpp")
 
-
-
-    #Approval_Date
+    # Approval_Date
     if thismodel12.exists():
         print("not empty")
     else:
         print("empty")
-    #print(thismodel12[0].Project_Name)
-    #print(thismodel12[0].Project_Description)
-    #print(thismodel12[1].Project_Name)
-    #print(thismodel12[1].Project_Description)
-    #print(thismodel12[0].Project_Approval_Status)
-    #print(type(thismodel12[0].Project_Approval_Status))
-    #Projects.object.get(id = thismodel9.id )
+    # print(thismodel12[0].Project_Name)
+    # print(thismodel12[0].Project_Description)
+    # print(thismodel12[1].Project_Name)
+    # print(thismodel12[1].Project_Description)
+    # print(thismodel12[0].Project_Approval_Status)
+    # print(type(thismodel12[0].Project_Approval_Status))
+    # Projects.object.get(id = thismodel9.id )
 
-    #User_Owner
-    #Project_Name
-    #prefetch_related
-    #cri model user, ke student profile info ,
-    #from user , get all project that is related from user , in a list right? , so now from 0 - project , get the artefacts that is related to it
+    # User_Owner
+    # Project_Name
+    # prefetch_related
+    # cri model user, ke student profile info ,
+    # from user , get all project that is related from user , in a list right? , so now from 0 - project , get the artefacts that is related to it
 
     # select_related = ("user", "group")
-    #print("Model4")
-    #thismodel4 = Project.objects.get(Project_Name='Project1')
-    #print(thismodel4)
-    #print("Model5")
-    #thismodel5 = thismodel4.User_Owner
-    #print(thismodel5)
+    # print("Model4")
+    # thismodel4 = Project.objects.get(Project_Name='Project1')
+    # print(thismodel4)
+    # print("Model5")
+    # thismodel5 = thismodel4.User_Owner
+    # print(thismodel5)
     # thisuser2 = UserProfileInfo.objects.select_related('').all()
     # print(thisuser)
     # test
-    context = {'thismodel12': thismodel12 ,
+    context = {'thismodel12': thismodel12,
                'todayDate2': todayDate2}
     return render(request, 'home_page/studentDashboard.html', context)
-    #return render(request, 'home_page/studentDashboard.html', {})
+    # return render(request, 'home_page/studentDashboard.html', {})
+
 
 # return render(request, 'home_page/login.html')
 
@@ -256,8 +270,8 @@ def user_login(request):
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username, password))
             # I must edit this to redirect back to login
-           # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
-                                #"right now only back to login but no text invalid login")
+            # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
+            # "right now only back to login but no text invalid login")
             wrongpassword = False
             context = {'wrongpassword': wrongpassword}
             return render(request, 'home_page/StudentLogin.html', context)
@@ -268,8 +282,8 @@ def user_login(request):
 
 
 def showvideo(request):
-    #This 2 commands is searching for a file in the database, so if no video = eror
-    #cara ambil hrs beda, hrs pake reference ke user
+    # This 2 commands is searching for a file in the database, so if no video = eror
+    # cara ambil hrs beda, hrs pake reference ke user
     lastvideo = Video_Artefact.objects.last()
     videofile = lastvideo.videofile
 
@@ -283,29 +297,31 @@ def showvideo(request):
 
     return render(request, 'home_page/UploadTest.html', context)
 
+
 from django.db.models import Q
+
 
 def searchbar(request):
     if request.method == "GET":
         search = request.GET.get('search')
-        #post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
+        # post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
         post = Video_Artefact.objects.all().filter(Q(name__icontains=search))
         return render(request, 'home_page/searchbar.html', {'post': post})
 
 # Extra codes for future use
 
 # for admin , view all things
-    #newobject0 = User.objects.select_related().all()
-    #newobject1 = UserProfileInfo.objects.select_related().all()
-    #newobject2 = Project.objects.select_related().all()
-    #newobject3 = Project_Artefact_Connector.objects.select_related().all()
-    #newobject4 = Artefact_Info.objects.select_related().all()
-    #newobject5 = Account_Project_Connector.objects.select_related().all()
-    #print(newobject0)
-    #print(newobject1)
-    #print(newobject2)
-    #print(newobject3)
-    #print(newobject4)
-    #print(newobject5)
+# newobject0 = User.objects.select_related().all()
+# newobject1 = UserProfileInfo.objects.select_related().all()
+# newobject2 = Project.objects.select_related().all()
+# newobject3 = Project_Artefact_Connector.objects.select_related().all()
+# newobject4 = Artefact_Info.objects.select_related().all()
+# newobject5 = Account_Project_Connector.objects.select_related().all()
+# print(newobject0)
+# print(newobject1)
+# print(newobject2)
+# print(newobject3)
+# print(newobject4)
+# print(newobject5)
 
-    #Basics of taking data = models.objects.all()
+# Basics of taking data = models.objects.all()

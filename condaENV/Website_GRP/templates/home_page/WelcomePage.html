@@ -21,7 +21,7 @@
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 -->
         <link rel="stylesheet" href="{% static 'css/WelcomePage.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
+
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
 <!------ end of ADDED --------->
   </head>
@@ -73,7 +73,13 @@
  <form action = "{% url 'searchbar' %}" method ="get">
         <input type="text" name="search"/>
         <button type="submit">Search</button>
-    </form>
+ </form>
+    <div class = "testcss">
+        <br>
+        <h3 id ="ea" >nice one</h3>
+        <p id ="ea2" >hihi</p>
+    </div>
+
 <!---------------------- ADDED ---------------->
   {% block footer_block %}
   {% endblock %}

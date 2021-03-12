@@ -62,11 +62,12 @@ class Project(models.Model):
 
     Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
+    #Project Thumbnail
     Upload_Date = models.DateTimeField(default=timezone.now)
 
-    Approval_Date = models.DateTimeField(blank=True, null=True)
-    Approval_TestDate = models.DateField(blank= True, null=True)
-    #Expire Date will connect automaticaly 1week after ApprovalDate
+    #Approval_Date = models.DateTimeField(blank=True, null=True)
+    Approval_Date = models.DateField(blank= True, null=True)
+    #Expire Date will connect automaticaly 1week after ApprovalDate,set later when admin change to Approve
     Account_ExpiryDate = models.DateField(blank= True, null=True)
 
     Last_Updated = models.DateTimeField(blank=True, null=True)

@@ -21,9 +21,12 @@
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 -->
         <link rel="stylesheet" href="{% static 'css/WelcomePage.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
 
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
+        <!-- Index CSS Block  -->
+        {% block index_css %}
+
+        {% endblock %}
 
 <!------ end of ADDED --------->
   </head>
@@ -130,6 +133,11 @@
         <!-- copypright -->
     </div>
     </footer>
+    <div class = "testcss">
+        <br>
+        <h3 id ="ea" >nice one</h3>
+        <p id ="ea2" >hihi</p>
+    </div>
 
 
 <!---------------------- end of ADDED Footer ---------------->

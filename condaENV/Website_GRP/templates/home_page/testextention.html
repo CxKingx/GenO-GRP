@@ -1,5 +1,9 @@
 {% extends "home_page/indexbase.html" %}
+{% load static %}
+{% block index_css %}
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
+{% endblock %}
 {% block index_base %}
-<p> This is main content</p>
-<h1>wwe will put many things here</h1>
+    <p> This is main content</p>
+    <h1>wwe will put many things here</h1>
 {% endblock %}

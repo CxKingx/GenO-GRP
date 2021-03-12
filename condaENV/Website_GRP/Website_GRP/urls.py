@@ -44,6 +44,9 @@ urlpatterns = [
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
     path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
+
+    path('layout/', views.layout, name='layout'),
+
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 

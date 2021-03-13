@@ -215,21 +215,6 @@ div.count {
 	color: #007ca7;
 }
 
-.border {
-	position: center;
-	width: 80%;
-	height: 30%;
-	margin-left: 10%;
-	margin-right: 10%;
-	/*border: dotted; */
-	border-color: grey;
-	: round;
-	
-}
-.image-preview {
-
-}
-
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -247,7 +232,7 @@ div.count {
       -ms-flex-pack: center;
           justify-content: center;
   position: center;
-  margin-left: 50%
+  margin-left: 0%
 }
 .box {
   display: block;
@@ -255,36 +240,25 @@ div.count {
   height: 300px;
   margin: 10px;
   background-color: white;
+  border-style: dotted;
+  border-color: lightgrey;
   border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+ /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
   -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
 }
-.js--image-preview {
-  height: 225px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  background-image: url("");
-  background-color: white;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+.btn-primary-preview {
+	font-family: 'circular';
+	width: 100%;
+	font-size: 18px;
+	background-color: #005597;
+	color: white;
+	margin-bottom: 50px;
+	border-radius: 10px;
 }
-.js--image-preview::after {
-  content: "photo_size_select_actual";
-  font-family: 'Material Icons';
-  position: relative;
-  font-size: 4.5em;
-  color: #e6e6e6;
-  top: calc(50% - 3rem);
-  left: calc(50% - 2.25rem);
-  z-index: 0;
-}
-.js--image-preview.js--no-default::after {
-  display: none;
-}
+
 
 
 

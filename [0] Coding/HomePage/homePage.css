@@ -311,9 +311,15 @@ table {
 
 /* Flip card */
 img.card-picture {
-	height: 350px;
-    width: 350px;
-    margin: 25px;
+	max-height: 350px;
+    max-width: 350px;
+	/* Position the image in center vertically and horizontally */
+	position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .flip-card {

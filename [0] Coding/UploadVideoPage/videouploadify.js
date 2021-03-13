@@ -352,6 +352,7 @@ $('#artefact_desc').keyup(function() {
 	$.fn.videouploadify.defaults={};
 }(jQuery,window,document));
 //drag and drop end
+// website: https://www.jqueryscript.net/form/Drag-And-Drop-File-Uploader-With-Preview-Imageuploadify.html
 
 
 document.getElementById('title').addEventListener('blur', validateTitle);

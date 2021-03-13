@@ -75,25 +75,16 @@
           		<label for="img">Select thumbnail image:</label>
           	</div>
           	<div class="col-8" id="box"> <!-- id=box needs css format -->
-          		<div class="card" width="50rem;">
+          		<form class="thumbnail">
           			<div class="card-body">
-  						<input type="file" id="img" name="image" accept="image/*" onchange="loadFile(event)"> 
+  						<input class="form-control border-0" type="file" id="img" name="image" accept="image/*" onchange="loadFile(event)"> 
   				<!-- this is accepting only one file. if another pic is selected, image file is replaced
   					but the css does not match -->
-
-  						<img id="output"/> <!-- displays image preview -->
-				<script>
-  					var loadFile = function(event) {
-    					var reader = new FileReader();
-    					reader.onload = function(){
-      						var output = document.getElementById('output');
-      					output.src = reader.result;
-    					};
-    					reader.readAsDataURL(event.target.files[0]);
-  					};
-				</script>
-					</div>
-				</div>
+  						<div class="image-preview">
+  							<img id="output" width="50%" /> <!-- displays image preview -->
+  						</div>
+				
+				</form>
   			</div>
   		  </div>
 
@@ -137,6 +128,17 @@
           })();
 
         </script>
+
+        <script>
+  		  var loadFile = function(event) {
+    	  	var reader = new FileReader();
+    		reader.onload = function(){
+      		  var output = document.getElementById('output');
+      		  output.src = reader.result;
+    		};
+    	    reader.readAsDataURL(event.target.files[0]);
+  		  };
+		</script>
 
     </body>
 </html>

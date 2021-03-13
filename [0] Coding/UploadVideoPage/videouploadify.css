@@ -260,6 +260,20 @@ div.count {
 }
 
 
+.upload-options {
+  position: relative;
+  /*height: 75px; 
+  background-color: cadetblue;
+  cursor: pointer; */
+  overflow: hidden;
+  text-align: center;
+  -webkit-transition: background-color ease-in-out 150ms;
+  transition: background-color ease-in-out 150ms;
+}
+
+
+
+
 
 
 

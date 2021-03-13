@@ -1,0 +1,178 @@
+{% extends "home_page/layout.html" %}
+{% load static %}
+{% block layout_css %}
+    <link rel="stylesheet" href="{% static 'css/studentDashboard.css' %}"/>
+{% endblock %}
+{% block content %}
+        <p> This is main content</p>
+
+    {% if ProjectExists %}
+
+        <div class="notification">
+            <h2> My Dashboard </h2>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Project Name</th>
+                        <th>Authors</th>
+                        <th>Upload Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <!-- Fill the table using sql query -->
+                <tbody>
+                <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
+                    <tr>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 1</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Training Robots</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Name1, Name2, Name3</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 2020-04-12 17:35</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Uploaded</td>
+                        <td><button type="button" class="btn btn-primary btn-sm">Edit</button><button class="btn"><i class="fas fa-edit"></i></td>
+                    </tr>
+
+                    <tr>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 2</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Medical Media</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Name1, Name2, Name3</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 2020-03-12 17:35</td>
+                        <td style="color: red"><!-- FETCH INPUT FROM BACKEND --> Rejected</td>
+                        <td><button type="button" class="btn btn-danger btn-sm">Modify</button></td>
+                    </tr>
+
+                    <tr>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 3</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Hashtags</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Name1 Name2, Name3</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 2020-03-05 12:35</td>
+                        <td style="color: green"><!-- FETCH INPUT FROM BACKEND --> Approved</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 4</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Planet Games</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> Name1, Name2, Name3</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> 2020-04-05 09:15</td>
+                        <td style="color: darkblue"><!-- FETCH INPUT FROM BACKEND --> In Progress</td>
+                        <td><button type="button" class="btn btn-primary btn-sm">Edit</button><button class="btn"><i class="fas fa-edit"></i></button></td>
+                    </tr>
+                    {% for i in getUserProjects %}
+                    <tr>
+
+                        <td><!-- FETCH INPUT FROM BACKEND --> {{ forloop.counter }}</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> {{ i.Project_Name }}</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> {{ i.Authors }}</td>
+                        <td><!-- FETCH INPUT FROM BACKEND --> {{ i.Upload_Date }}</td>
+
+                        {% if i.Project_Approval_Status == "Pndg" %}
+                            <td><!-- FETCH INPUT FROM BACKEND --> Pending</td>
+                        {% elif i.Project_Approval_Status == "Apvd" %}
+                            <td style="color: green"><!-- FETCH INPUT FROM BACKEND --> Approved</td>
+                        {% elif i.Project_Approval_Status == "Rjct" %}
+                            <td style="color: red"><!-- FETCH INPUT FROM BACKEND --> Rejected</td>
+                        {% endif %}
+
+                        {% if i.Project_Approval_Status == "Pndg" %}
+                            <form action="{% url 'home_page:edit_project' %}" method="POST">
+                            {% csrf_token %}
+                                <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+                            </form>
+                        {% elif i.Project_Approval_Status == "Apvd" %}
+                            {% if todayDate > i.Account_ExpiryDate %}
+                                <td><p>No longer editable</p></td>
+                            {% else %}
+                                <form action="{% url 'home_page:edit_project' %}" method="POST">
+                                {% csrf_token %}
+                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+
+                                </form>
+                            {% endif %}
+
+                        {% elif i.Project_Approval_Status == "Rjct" %}
+                            <form action="{% url 'home_page:edit_project' %}" method="POST">
+                                {% csrf_token %}
+                                <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+
+                            </form>
+                        {% endif %}
+
+
+
+                    </tr>
+                   {% endfor %}
+                </tbody>
+
+                <!-- Close table -->
+            </table>
+        </div>
+    {% else %}
+        <div class="container">
+            <h2> My Dashboard </h2>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Project Name</th>
+                        <th>Authors</th>
+                        <th>Upload Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading">You currently do not have any project.</h4>
+                <hr>
+                <p class="mb-0">Please click <a href="#" class="alert-link">here</a> to upload your first project.</p>
+            </div>
+        </div>
+
+    {% endif %}
+
+    {% for i in getUserProjects %}
+        <p>{{ i }}</p>
+        <p>{{ i.Project_Name }}</p>
+
+                <p>{{ i.Authors }}</p>
+                <p>{{ i.Upload_Date }}</p>
+                <p>This is project ID {{ i.id }}</p>
+                <p>{{ i.Project_Approval_Status }}</p>
+                <p>{{ i.Approval_Date }}</p>
+                <p>Expire n today is</p>
+                <p>{{ i.Account_ExpiryDate }}</p>
+                <p>{{ todayDate }}</p>
+
+                {% if todayDate > i.Account_ExpiryDate %}
+                    <p>expire oi</p>
+                {% else %}
+                    <p>daijobu peko</p>
+                {% endif %}
+
+                {% if i.Project_Approval_Status == "Pndg" %}
+                    <p>do this cuz pending</p>
+                {% elif i.Project_Approval_Status == "Apvd" %}
+
+                    <p>do this cuz Approved</p>
+                {% elif i.Project_Approval_Status == "Rjct" %}
+                    <p>do this cuz Rejected</p>
+
+                {% endif %}
+
+                <form action="{% url 'home_page:edit_project' %}" method="POST">
+                     {% csrf_token %}
+
+                    <button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary">Log In</button>
+                </form>
+
+
+
+            <br>
+            {% endfor %}
+
+
+{% endblock %}

@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -10,9 +11,9 @@
 
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-        <!-- Own CSS Link HERE -->
-        <link rel="stylesheet" href="studentDashboard.css">
-        
+        <!-- Own CSS Link HERE
+        <link rel="stylesheet" href="studentDashboard.css">-->
+        <link rel="stylesheet" href="{% static 'css/studentDashboardtest.css' %}"/>
         <title>Admin Dashboard</title>
   </head>
 
@@ -74,7 +75,52 @@
                 </tbody>
 
                 <!-- Close table -->
-            </table> 
+            </table>
+           <!-- Check if Status = pdng , give this button , else if approved , giv this button,not yet finished
+           msi banyak bug asd-->
+            <p>{{ ProjectExists }}</p>
+            {% for i in getUserProjects %}
+                <p>{{ i.Project_Name }}</p>
+                <p>{{ i.Authors }}</p>
+                <p>{{ i.Upload_Date }}</p>
+                <p>This is project ID {{ i.id }}</p>
+                <p>{{ i.Project_Approval_Status }}</p>
+                <p>{{ i.Approval_Date }}</p>
+                <p>Expire n today is</p>
+                <p>{{ i.Account_ExpiryDate }}</p>
+                <p>{{ todayDate }}</p>
+
+                {% if todayDate > i.Account_ExpiryDate %}
+                    <p>expire oi</p>
+                {% else %}
+                    <p>daijobu peko</p>
+                {% endif %}
+
+                {% if i.Project_Approval_Status == "Pndg" %}
+                    <p>do this cuz pending</p>
+                {% elif i.Project_Approval_Status == "Apvd" %}
+
+                    <p>do this cuz Approved</p>
+                {% elif i.Project_Approval_Status == "Rjct" %}
+                    <p>do this cuz Rejected</p>
+
+                {% endif %}
+
+                <form action="{% url 'home_page:edit_project' %}" method="POST">
+                     {% csrf_token %}
+
+                    <button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary">Log In</button>
+                </form>
+
+
+
+            <br>
+            {% endfor %}
+<form action = "{% url 'searchbar' %}" method ="get">
+        <input type="text" name="search"/>
+        <button type="submit">Search</button>
+    </form>
+
         </div>
 
 

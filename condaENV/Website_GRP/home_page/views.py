@@ -58,8 +58,8 @@ def footertest(request):
 def layout(request):
     return render(request, 'home_page/layout.html', {})
 
-
-
+def studentdashboardcontent(request):
+    return render(request, 'home_page/studentdashboardcontent.html', {})
 
 # employees = Employee.objects.all().values('id','name','company__name')
 
@@ -78,95 +78,47 @@ def studentdashboard(request):
     thisuser = request.user
     print(thisuser)
 
-    # most important 9 10 12
+    # Get the current User ID , then get all the projects that belong to this User ID
+    getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
+    getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
+    getUserProjects = Project.objects.filter(User_Owner_id=getCurrentUserID.id)
+    # Cannot use .get() as it will only return 1 object , and if it tries to take more than 1
+    # it will give some error
 
-    print("Model9")
-    thismodel9 = User.objects.prefetch_related().get(username=thisuser)
-    print(thismodel9)
-    print(thismodel9.id)
+    # Get today Date to check if user can still edit or not DateField Object
+    todayDate = date.today()
 
-    print("Model10")
-    thismodel10 = UserProfileInfo.objects.get(user_id=thismodel9.id)
-    print(thismodel10)
-    print(thismodel10.StudentID)
-    print(thismodel10.id)
-
-    # if get more than 2 erorr
-    # print("Model11")
-    # thismodel11 = Project.objects.get(User_Owner_id=thismodel10.id).all()
-    # print(thismodel11)
-    # print(newobject2.User_Owner_id)
-    # filter?
-
-    print("Model12")
-    thismodel12 = Project.objects.filter(User_Owner_id=thismodel10.id)
-    print(thismodel12)
-    print(type(thismodel12[0].Project_Approval_Status))
-    print(type(thismodel12[0].Approval_Date))
-    print(thismodel12[0].Approval_Date)
-    # print(thismodel12[0].Approval_Date)
-
-    print("time here")
-
-    todayDate = (timezone.now())
+    print(getCurrentUser.id)
+    print(getCurrentUserID.id)
+    print(getUserProjects)
     print(todayDate)
-    print(type(todayDate))
+    print("time here")
+    print(getUserProjects.count())
 
-    todayDate2 = date.today()
-    print(todayDate2)
-    print(type(todayDate2))
+    # DateTime Object , Is not needed for this type of website
+    # todayDate = (timezone.now())
+    # Get a dateField Object that is 7days , can be added or substracted to an existing DateField Object
+    # nextweek = timedelta(days=7)
+    # nextweekDate = todayDate + nextweek
 
-    nextweek = timedelta(days=7)
-    print(nextweek)
-    print(type(nextweek))
-
-    print("new time is")
-    realnextweek = todayDate + nextweek
-    print(realnextweek)
-    print(type(realnextweek))
-
-    print("week after apfocr")
-    Approv7 = thismodel12[0].Approval_Date + nextweek
-    print(Approv7)
-    print(type(Approv7))
-
-    if Approv7 > thismodel12[0].Approval_Date:
-        print("ws lewat seminggu")
-    else:
-        print("Jek gpp")
+    ProjectExists = False
 
     # Approval_Date
-    if thismodel12.exists():
+    if getUserProjects.exists():
+        ProjectExists = True
         print("not empty")
     else:
+        ProjectExists = False
         print("empty")
-    # print(thismodel12[0].Project_Name)
-    # print(thismodel12[0].Project_Description)
-    # print(thismodel12[1].Project_Name)
-    # print(thismodel12[1].Project_Description)
-    # print(thismodel12[0].Project_Approval_Status)
-    # print(type(thismodel12[0].Project_Approval_Status))
-    # Projects.object.get(id = thismodel9.id )
 
-    # User_Owner
-    # Project_Name
-    # prefetch_related
-    # cri model user, ke student profile info ,
-    # from user , get all project that is related from user , in a list right? , so now from 0 - project , get the artefacts that is related to it
+    print(ProjectExists)
 
-    # select_related = ("user", "group")
-    # print("Model4")
-    # thismodel4 = Project.objects.get(Project_Name='Project1')
-    # print(thismodel4)
-    # print("Model5")
-    # thismodel5 = thismodel4.User_Owner
-    # print(thismodel5)
-    # thisuser2 = UserProfileInfo.objects.select_related('').all()
-    # print(thisuser)
-    # test
-    context = {'thismodel12': thismodel12,
-               'todayDate2': todayDate2}
-    return render(request, 'home_page/studentDashboard.html', context)
+    context = {'getUserProjects': getUserProjects,
+               'ProjectExists': ProjectExists,
+               'todayDate': todayDate}
+    #return render(request, 'home_page/studentDashboardtest.html', context)
+    return render(request, 'home_page/studentdashboardcontent.html', context)
+
     # return render(request, 'home_page/studentDashboard.html', {})
 
 

@@ -105,6 +105,14 @@ body {
 	transform:translate(-50%,-50%);width:auto
 }
 
+.videouploadify .videouploadify-videos-list .videouploadify-container img {
+	height:100px;
+	left:50%;
+	position:absolute;
+	top:50%;
+	transform:translate(-50%,-50%);width:auto
+}
+
 .videouploadify .videouploadify-videos-list .videouploadify-container .videouploadify-details{
 	position:absolute;
 	top:0;
@@ -207,7 +215,9 @@ div.count {
 	color: #007ca7;
 }
 
-
+#box {
+	
+}
 
 
 

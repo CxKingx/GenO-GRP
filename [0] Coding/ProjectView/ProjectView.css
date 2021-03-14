@@ -12,6 +12,9 @@ body {
 h5 {
 	font-size: 14px;
 }
+html {
+  scroll-behavior: smooth;
+ }
 
 /*-------------------------- Top navigation and Search Bar ------------------------*/
 .navbar {
@@ -296,9 +299,37 @@ button#upload-project {
     right: 0;
 }
 
+h1{
+	color: #1a296b;
+	margin-left: 5%;
+}
+
 h2{
 	color: #1a296b;
+	position: center;
 }
+p{
+	font-size: 14px;
+}
+
+.project-picture {
+	margin-left: 3%;
+	margin-bottom: 5%;
+	width: 30%;
+	float: left;
+}
+.project-details {
+	margin-left: 30%;
+	width: 70%;
+	height: 300px;
+	
+}
+.btn-info{
+	background-color: #1a296b;
+	color: white;
+	margin: 1%;
+}
+
 
 /*-------------------------------------- Footer -------------------------------------*/
 footer{

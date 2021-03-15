@@ -43,6 +43,14 @@ def loginPage(request):
     # return HttpResponse("hello world")
 
 
+def adminLogin(request):
+    # return render(request, 'home_page/login.html')
+    wrongpassword = True
+    context = {'wrongpassword': wrongpassword}
+    return render(request, 'home_page/adminLogin.html', context)
+    # return HttpResponse("hello world")
+
+
 def welcomepage(request):
     return render(request, 'home_page/WelcomePage.html', {})
 
@@ -58,10 +66,16 @@ def footertest(request):
 def layout(request):
     return render(request, 'home_page/layout.html', {})
 
+
 def studentdashboardcontent(request):
     return render(request, 'home_page/studentdashboardcontent.html', {})
 
+
 # employees = Employee.objects.all().values('id','name','company__name')
+@login_required
+def upload_project(request):
+    return render(request, 'home_page/ProjectUploadPage.html', {})
+
 
 @login_required
 def edit_project(request):
@@ -76,7 +90,7 @@ def edit_project(request):
 @login_required
 def studentdashboard(request):
     thisuser = request.user
-    print(thisuser)
+    #print(thisuser)
 
     # Get the current User ID , then get all the projects that belong to this User ID
     getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
@@ -88,12 +102,11 @@ def studentdashboard(request):
     # Get today Date to check if user can still edit or not DateField Object
     todayDate = date.today()
 
-    print(getCurrentUser.id)
-    print(getCurrentUserID.id)
-    print(getUserProjects)
-    print(todayDate)
-    print("time here")
-    print(getUserProjects.count())
+    #print(getCurrentUser.id)
+    #print(getCurrentUserID.id)
+    #print(getUserProjects)
+    #print(todayDate)
+
 
     # DateTime Object , Is not needed for this type of website
     # todayDate = (timezone.now())
@@ -106,23 +119,22 @@ def studentdashboard(request):
     # Approval_Date
     if getUserProjects.exists():
         ProjectExists = True
-        print("not empty")
+        #print("not empty")
     else:
         ProjectExists = False
-        print("empty")
+        #print("empty")
 
-    print(ProjectExists)
+    #print(ProjectExists)
 
     context = {'getUserProjects': getUserProjects,
                'ProjectExists': ProjectExists,
                'todayDate': todayDate}
-    #return render(request, 'home_page/studentDashboardtest.html', context)
+    # return render(request, 'home_page/studentDashboardtest.html', context)
     return render(request, 'home_page/studentdashboardcontent.html', context)
 
     # return render(request, 'home_page/studentDashboard.html', {})
 
 
-# return render(request, 'home_page/login.html')
 
 
 def error_404(request, exception):
@@ -131,6 +143,7 @@ def error_404(request, exception):
 
 # add other errors
 
+#This special for now is uselss
 @login_required
 def special(request):
     # Remember to also set login url in settings.py!
@@ -211,16 +224,16 @@ def user_login(request):
             if user.is_active:
                 # Log the user in.
                 login(request, user)
-                # Send the user back to some page.
-                # In this case their homepage.
+                # Send the user back to homepage.
+
                 return HttpResponseRedirect(reverse('index'))
             #
             else:
                 # If account is not active:
                 return HttpResponse("Your account is not active.")
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username, password))
+            #print("Someone tried to login and failed.")
+            #print("They used username: {} and password: {}".format(username, password))
             # I must edit this to redirect back to login
             # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
             # "right now only back to login but no text invalid login")

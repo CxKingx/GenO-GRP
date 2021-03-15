@@ -30,10 +30,15 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.welcomepage, name='index'),
-    # path('Login/', views.loginPage, name='loginPage'),
-
+    # Final
     path('Login/', views.loginPage, name='loginPage'),
+
+    #Still needs to be edited
+    path('upload_project/', views.upload_project, name='upload_project'),
+
+    path('adminLogin/', views.adminLogin, name='adminLogin'),
     path('register/', views.register, name='register'),
+
     path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
     # to help
     path('admin/', admin.site.urls),

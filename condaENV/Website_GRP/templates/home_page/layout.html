@@ -32,8 +32,10 @@
   <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
   <div>
     <nav class="navbar fixed-top navbar-light bg-light">
+
       <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
-      <div class="header-right">
+
+        <div class="header-right">
         <div class="search-box">
             <input type="text" placeholder="Type to search...">
             <div class="search-btn">
@@ -197,8 +199,18 @@
                       </div>
 
                       <div class = "column">
-                        <h5>Artefact portal</h5>
-                        <button type="button" class="btn btn-outline-light"><a href="loginpage.html">Login</a></button>
+                          <h5>Artefact portal</h5><!--
+                          <button type="button" class="btn btn-outline-light"><a href="loginpage.html">Login</a></button>-->
+                          {% if user.is_superuser %}
+                            <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                            <p><br>Logged in as superuser : {{ user.username }}!</p>
+                          {% elif user.is_authenticated %}
+                            <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                            <p><br>Logged in as : {{ user.username }}!</p>
+
+                          {% else %}
+                            <button type="button" class="btn btn-outline-light"><a href="{% url 'loginPage' %}">Login</a></button>
+                          {% endif %}
                       </div>
                   </div><!--Close row-->
                 </div><!-- Close container -->

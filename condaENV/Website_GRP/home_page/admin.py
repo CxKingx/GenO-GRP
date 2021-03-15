@@ -31,6 +31,6 @@ admin.site.register(models.UserProfileInfo)
 admin.site.register(models.Project, ProjectAdmin)
 #admin.site.register(models.Account_Project_Connector)
 #admin.site.register(models.Project_Artefact_Connector)
-admin.site.register(models.Artefact_Info, ArtefactAdmin)
+admin.site.register(models.Image_Artefact, ArtefactAdmin)
 admin.site.register(models.Video_Artefact)
 

@@ -11,7 +11,7 @@ from .models import UserProfileInfo
 from .models import Project
 # from .models import Project_Artefact_Connector
 # from .models import Account_Project_Connector
-from .models import Artefact_Info
+from .models import Image_Artefact
 # from home_page.models import Artefact_Info
 from home_page.models import Video_Artefact
 
@@ -19,30 +19,28 @@ from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta, date
 from django.utils import timezone
 
-User = get_user_model()
-
-
 # to call user
+User = get_user_model()
 
 
 # Create your views here.
 # views for doing activities behind the scenes
 
+# Return the first page for index
 def index(request):
     my_dict = {'insert_me': "Hello from home_page in template", 'insert_new': 'do something'}
     return render(request, 'home_page/front_page.html', context=my_dict)
 
 
-# to help redirect back to login page
-
+# Takes User to Student Login Page
 def loginPage(request):
-    # return render(request, 'home_page/login.html')
     wrongpassword = True
     context = {'wrongpassword': wrongpassword}
     return render(request, 'home_page/StudentLogin.html', context)
     # return HttpResponse("hello world")
 
 
+# Takes User to Admin Login Page
 def adminLogin(request):
     # return render(request, 'home_page/login.html')
     wrongpassword = True
@@ -50,9 +48,10 @@ def adminLogin(request):
     return render(request, 'home_page/adminLogin.html', context)
     # return HttpResponse("hello world")
 
-
 def welcomepage(request):
     return render(request, 'home_page/WelcomePage.html', {})
+
+# Test Return Pages
 
 
 def indexbase(request):
@@ -70,6 +69,7 @@ def layout(request):
 def studentdashboardcontent(request):
     return render(request, 'home_page/studentdashboardcontent.html', {})
 
+#End of Test Return Pages
 
 # employees = Employee.objects.all().values('id','name','company__name')
 @login_required
@@ -85,6 +85,11 @@ def edit_project(request):
         print(ProjectID)
         print(request.user)
         # Process this project ID
+
+#adminDashboard
+@login_required
+def adminDashboard(request):
+    return render(request, 'home_page/adminDashboard.html', {})
 
 
 @login_required
@@ -226,7 +231,7 @@ def user_login(request):
                 login(request, user)
                 # Send the user back to homepage.
 
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('studentdashboard'))
             #
             else:
                 # If account is not active:
@@ -244,6 +249,50 @@ def user_login(request):
     else:
         # Nothing has been provided for username or password.
         return render(request, 'home_page/login.html', {})
+
+
+def admin_login(request):
+    print("admin login")
+    if request.method == 'POST':
+        # First get the username and password supplied
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Django's built-in authentication function:
+        user = authenticate(username=username, password=password)
+
+        # If we have a user
+        if user:
+
+            # Check it the account is active
+            if user.is_active:
+                # Log the user in.
+                if user.is_superuser:
+                    print("Superuser")
+                    login(request, user)
+                    # Send the user back to homepage.
+
+                    return HttpResponseRedirect(reverse('adminDashboard'))
+                else:
+                    # If account is not active:
+                    return HttpResponse("Your account is not superuser.")
+            #
+            else:
+                # If account is not active:
+                return HttpResponse("Your account is not active.")
+        else:
+            #print("Someone tried to login and failed.")
+            #print("They used username: {} and password: {}".format(username, password))
+            # I must edit this to redirect back to login
+            # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
+            # "right now only back to login but no text invalid login")
+            wrongpassword = False
+            context = {'wrongpassword': wrongpassword}
+            return render(request, 'home_page/admin_login.html', context)
+
+    else:
+        # Nothing has been provided for username or password.
+        return render(request, 'home_page/admin_login.html', {})
 
 
 def showvideo(request):

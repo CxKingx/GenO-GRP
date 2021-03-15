@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Upload Image</title>
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+       <!--<link href="vendor/fontawesome-free/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+        <link href="imageuploadify.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+    <!-- Header -->
+    <div class="header">
+    <a href="updateImage.html" class="logo"><img src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
+
+    <!-- Search Bar -->
+      <!-- removed searchBar -->
+    <!-- End of Search Bar -->
+
+    </div>
+    <!-- End of Header -->
+
+        <div class="container" style="margin-top: 50px;">
+        <form>  
+
+            <input type="file" accept="image/*" multiple>
+
+          <br><br><br>
+                <!--<input type="file" accept=".xlsx,.xls,image/*,.doc,audio/,.docx,video/*,.ppt,.pptx,.txt,.pdf*" multiple>-->
+            <!--</form>
+
+        <br><br><br>
+        <div class="container2">
+        <form autocomplete="off" action="imageuploadify.js">-->
+
+          <div class="row">  
+            <p class = "heading1">Enter Artefact Details:</p>  
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <label for="title"/>Artefact Title:</label>
+            </div> 
+            <div class="col-8" id="field">
+                <input type="text" class="form-control" id="title_field" name="title_field" placeholder="Title.." required>
+            </div>
+          </div>
+
+          <br><br>
+
+          <div class="row">
+            <div class="col-4">
+              <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
+            </div>
+  
+            <!-- WORD COUNT JAVASCRIPT -->
+            <div id="count_desc" class="count">
+              <span id="current_desc">0</span>
+              <span id="max_desc">/ 600</span>
+            </div>
+  
+            <div class="col-8" id="field">
+              <textarea class="form-control" id="artefact_desc" placeholder="Enter description.." style="height:150px" maxlength="600" required></textarea>
+              <small id="artefact_desc" class="form-text text-muted2">
+                *The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
+              </small>
+            </div>
+            
+          </div>
+
+          <br><br>
+
+          <div class="submit-button">
+            <button type="submit" class="btn btn-primary btn-sm" href="ProjectUploadPage.html">Save and back to Project</button>
+            <button type="submit" class="btn btn-primary btn-sm" href="UploadImagePage.html">Save and Add new image</button>
+          </div>
+
+        </form>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="imageuploadify.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('input[type="file"]').imageuploadify();
+            })
+        </script>
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36251023-1']);
+          _gaq.push(['_setDomainName', 'jqueryscript.net']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+
+
+    </body>
+</html>

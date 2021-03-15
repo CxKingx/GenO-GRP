@@ -68,9 +68,9 @@ class Project(models.Model):
     #Need to add to database
     #Date of Completion Model
     #Author Comment TextField
-
-    Upload_Date = models.DateTimeField(default=timezone.now)
-
+    Date_of_Completion = models.DateField(default=timezone.now)
+    Author_Comment = models.TextField(null=True)
+    Upload_Date = models.DateField(default=timezone.now)
     #Approval_Date = models.DateTimeField(blank=True, null=True)
     Approval_Date = models.DateField(blank= True, null=True)
     #Make Expire Date 3 days after Approval Date
@@ -92,21 +92,16 @@ class Project(models.Model):
 #         return self.User_ID.username + ' ' + self.Project_ID.Project_Name
 
 
-class Artefact_Info(models.Model):
+class Image_Artefact(models.Model):
+    #Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
-    ArtefactTypeChoice = [
-        ('Vid', 'Video'),
-        ('Pic', 'Picture'),
-    ]  # these choices are kind of confusing
-    # ArtefactID = models.PositiveIntegerField(unique = True)
-
-    ArtefactType = models.CharField(max_length=50, choices=ArtefactTypeChoice)
-    ArtefactName = models.CharField(max_length=50)
-    ArtefactSize = models.CharField(max_length=50)  # might not be needed
+    Image_Name = models.CharField(max_length=50)
+    Image_Description = models.TextField()
+    #ImageField .....
 
     def __str__(self):
-        return self.ArtefactName
+        return self.Image_Name
 
 
 # class Project_Artefact_Connector(models.Model):
@@ -115,7 +110,11 @@ class Artefact_Info(models.Model):
 
 
 class Video_Artefact(models.Model):
-    name = models.CharField(max_length=500)
+    # Links to the Project for this artefact
+    Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+
+    name = models.CharField(max_length=50)
+    Video_Description = models.TextField(null = True)
     videofile = models.FileField(upload_to='videos/', null=True, verbose_name="") #path to video
 
     def __str__(self):

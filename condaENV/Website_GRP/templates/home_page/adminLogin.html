@@ -13,6 +13,7 @@
         <title>Admin Login page</title>
         <link rel="stylesheet" href="{% static 'css/StudentLogin.css' %}"/>
 </head>
+    <!-- Change Background Image Here -->
   <body style = "background-image:url('{% static 'images/LoginBackground.jpg' %} '); ">
     <div class="background">
 
@@ -21,12 +22,12 @@
       <div class="container">
             {% if user.is_authenticated %}
                 <br><br>
-                <h1>Welcome {{ user.username }}!</h1>
+                <h1>Welcome SuperUser/Admin!</h1>
                 <h1>You are logged in.</h1>
                 <br>
                 <a href="{% url 'logout' %}"><h3>Logout</h3></a>
             {% else %}
-                <h1>Log in</h1>
+                <h1>Admin Log in</h1>
                 {% if wrongpassword %}
 
                 {% else %}
@@ -38,7 +39,7 @@
 
                 <!-- Error message for invalid username and password -->
 
-                <form method="post" action="{% url 'home_page:user_login' %}">
+                <form method="post" action="{% url 'home_page:admin_login' %}">
                     {% csrf_token %}
 
                     <!-- Error message for empty field -->

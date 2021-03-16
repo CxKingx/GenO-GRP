@@ -17,8 +17,8 @@ from . import models
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['User_Owner', 'Project_Name', 'Upload_Date', 'Project_Approval_Status']
-    search_fields = ['Project_Name', 'Project_Approval_Status']
+    list_display = ['User_Owner', 'Project_Name','Project_Tag', 'Upload_Date', 'Project_Approval_Status']
+    search_fields = ['Project_Name', 'Project_Approval_Status','Project_Tag']
     list_editable = ['Project_Approval_Status']
 
 

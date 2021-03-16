@@ -63,7 +63,7 @@ class Project(models.Model):
         ('TFL', 'Technologies for Learning'),
     ]
     # Project_ID = models.PositiveIntegerField(unique = True)
-    #This is to connect , which Owner have dis project
+    #This is to connect , which Owner have dis project a
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
 
     Project_Name = models.CharField(max_length=50) 

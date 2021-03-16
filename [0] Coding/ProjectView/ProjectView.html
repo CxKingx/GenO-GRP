@@ -146,28 +146,28 @@
             <div class="project-details">
               <h4> Project details </h4>
                 <div class="project-item">
-            	  <button type="button" class="btn btn-info btn-block" disabled="true">Date of completion</button>
+            	  <button type="button" class="btn btn-primary btn-block" disabled="true">Date of completion</button>
             	</div></br>
             	<div class="project-info">
             	   <!-- FETCH FROM DATABASE --> essay 
             	</div>
             </br>
             	<div class="project-item">
-            	  <button type="button" class="btn btn-info btn-block" disabled="true">Tags</button>
+            	  <button type="button" class="btn btn-primary btn-block" disabled="true">Tags</button>
             	</div></br>
             	<div class="project-info">
             	   <!-- FETCH FROM DATABASE --> essay
             	</div>
             </br>
               	<div class="project-item">
-            	  <button type="button" class="btn btn-info btn-block" disabled="true">Authors</button>
+            	  <button type="button" class="btn btn-primary btn-block" disabled="true">Authors</button>
             	</div></br>
             	<div class="project-info">
             	   <!-- FETCH FROM DATABASE --> essay
             	</div>
             </br></br></br>
 
-            	<a class="btn btn-info btn-lg" role="button" onClick="document.getElementById('artefacts').scrollIntoView();">View artefacts</a></br>
+            	<a class="btn btn-primary btn-lg" role="button" onClick="document.getElementById('artefacts').scrollIntoView();">View artefacts</a></br>
 
             <p></p>
         	</div> <!-- project details -->
@@ -190,13 +190,165 @@
             
             	<h2>image artefacts</h2>
             	<p>List of flip cards here <!-- FETCH FROM DATABASE --></p>
-            	<div class="flipcards">
-            	  <img height="300px" width="300px" src="img1.JPG"/> 
-            	  <img height="300px" width="300px" src="img2.JPG"/> 
-            	  <img height="300px" width="300px" src="img3.JPG"/> 
-            	</div>
+            	
+            	<div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody id="adminTbody">
+                    <c:forEach items="${user }" var="user">
 
-            	</br></br>
+                    <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
+                    <!--------------------------------- ROW 1 ------------------------------------------->
+                    <tr>
+                        <td>
+                            <!----------------------- FLIP CARD 1 ---------------------------->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" id="right">
+                                        <img class="card-picture" src="img1.jpg">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h3 class="card-title">Unicorn Cat</h3>
+                                        <!-- PROJECT NAME -->
+                                        <h5 class="project-title">Data Scholarship Project 1</h5>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <!----------------------- FLIP CARD 2 ---------------------------->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" id="right">
+                                        <img class="card-picture" src="img2.jpg">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h3 class="card-title">Unicorn Cat</h3>
+                                        <!-- PROJECT NAME -->
+                                        <h5 class="project-title">Data Scholarship Project 1</h5>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <!------------------------- FLIP CARD 3 ---------------------------->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" id="right">
+                                        <img class="card-picture" src="img3.jpg">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h3 class="card-title">Unicorn Cat</h3>
+                                        <!-- PROJECT NAME -->
+                                        <h5 class="project-title">Data Scholarship Project 1</h5>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr> <!-- Close Row 1-->
+                <!------------------------------- ROW 2 --------------------------------------->
+                    <tr>
+                        <!---------------------- FLIP CARD 4 ------------------------------->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" id="right">
+                                        <img class="card-picture" src="img1.jpg">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h3 class="card-title">Unicorn Cat</h3>
+                                        <!-- PROJECT NAME -->
+                                        <h5 class="project-title">Data Scholarship Project 1</h5>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <!------------------------- FLIP CARD 5 ------------------------------->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" id="right">
+                                        <img class="card-picture" src="img2.jpg">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h3 class="card-title">Unicorn Cat</h3>
+                                        <!-- PROJECT NAME -->
+                                        <h5 class="project-title">Data Scholarship Project 1</h5>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!------------------------------- ROW 3 --------------------------------------->
+                    <tr>
+                        <!---------------------- FLIP CARD 6 ------------------------------->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front" id="right">
+                                        <img class="card-picture" src="img3.jpg">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h3 class="card-title">Unicorn Cat</h3>
+                                        <!-- PROJECT NAME -->
+                                        <h5 class="project-title">Data Scholarship Project 1</h5>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>                        
+                    </tr>
+                    <!--Don't put card over </c:forEach>-->
+                </c:forEach>
+                </tbody>
+            </table>
+        </div> 
 
             	<div class="line"></div>
 

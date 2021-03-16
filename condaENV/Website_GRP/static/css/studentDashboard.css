@@ -26,7 +26,8 @@ thead {
 }
 
 .table-hover tbody tr:hover {
-	background-color: rgb(217, 255, 254);
+
+    background-color: rgb(159, 218, 231);
 }
 
 hr {

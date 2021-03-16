@@ -188,9 +188,44 @@ a, a:hover, a:focus {
     background: white;
 }
 
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+
 i {
     color: #009bbd;
     margin-right: 3%;
+}
+
+i.fa-upload {
+    color: white;
+}
+
+i.fa-table {
+    color: #1a296b;
 }
 
 i.fa-bars {
@@ -302,10 +337,6 @@ footer.btn {
 }
 
 .btn-outline-light:hover {
-	color: #18194f;
-}
-
-a#login-button:hover {
 	color: #18194f;
 }
 

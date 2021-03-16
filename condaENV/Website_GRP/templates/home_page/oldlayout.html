@@ -12,16 +12,17 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <!--
-        <link rel="stylesheet" href="layout.css">
-        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        -->
+
+      <!-- Original CSS links without Django
+         <link rel="stylesheet" href="layout.css">
+         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+         -->
+        <!-- Django CSS links-->
         <link rel="stylesheet" href="{% static 'css/layout.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
-
-       <!-- Extra CSS links Imported from extension HTMLS-->
+        <!-- Extra CSS links Imported from extension HTMLS-->
         {% block layout_css %}
 
         {% endblock %}
@@ -32,8 +33,10 @@
   <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
   <div>
     <nav class="navbar fixed-top navbar-light bg-light">
+
       <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
-      <div class="header-right">
+
+        <div class="header-right">
         <div class="search-box">
             <input type="text" placeholder="Type to search...">
             <div class="search-btn">
@@ -148,9 +151,12 @@
                 </div> <!-- CLose container fluid -->
             </nav>
 
+
+
             {% block content %}
 
             {% endblock %}
+
       <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
         
       <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
@@ -175,7 +181,8 @@
                       </div>
 
                       <div class = "column">
-                          <h5>Artefact portal</h5>
+                          <h5>Artefact portal</h5><!--
+                          <button type="button" class="btn btn-outline-light"><a href="loginpage.html">Login</a></button>-->
                           {% if user.is_superuser %}
                             <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
                             <p><br>Logged in as superuser : {{ user.username }}!</p>
@@ -200,7 +207,7 @@
       </div> <!-- Close container -->
     </div> <!-- Close wrapper -->
       <!---------------------------------------------------------------------- END OF FOOTER ------------------------------------------------------------------->
-      
+
       <div class="overlay"></div>
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -211,6 +218,8 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
       <!-- jQuery Custom Scroller CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+      <!-- Own Javascript-->
+      <script src = "WelcomePage.js"></script>
 
       <!-- Script for Toggle menu button -->
       <script type="text/javascript">

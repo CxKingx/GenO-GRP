@@ -56,12 +56,19 @@ class Project(models.Model):
         ('Pndg', 'Pending'),
         ('Rjct', 'Rejected'),
     ]
+    Tags_for_Project = [
+        ('', '-----'),
+        ('DS', 'Data Scholarship'),
+        ('DMS', 'Digital Media Production'),
+        ('TFL', 'Technologies for Learning'),
+    ]
     # Project_ID = models.PositiveIntegerField(unique = True)
     #This is to connect , which Owner have dis project
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
 
     Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
+    Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='DS' , blank=True,null=True)
     #Project Thumbnail
     #Date only
 
@@ -77,7 +84,7 @@ class Project(models.Model):
     Account_ExpiryDate = models.DateField(blank= True, null=True)
 
     Last_Updated = models.DateTimeField(blank=True, null=True)
-    Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pndg')  # Approval
+    Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pending')  # Approval
     Authors = models.CharField(max_length=100)
 
     def __str__(self):
@@ -98,7 +105,7 @@ class Image_Artefact(models.Model):
 
     Image_Name = models.CharField(max_length=50)
     Image_Description = models.TextField()
-    #ImageField .....
+    image = models.ImageField(upload_to='videos/', null=True, verbose_name="")
 
     def __str__(self):
         return self.Image_Name

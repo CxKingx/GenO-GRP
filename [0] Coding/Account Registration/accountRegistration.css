@@ -9,11 +9,7 @@ body {
 	font-size: 12px;
 }
 
-h5 {
-	font-size: 14px;
-}
-
-/*-------------------------- Top navigation and Search Bar ------------------------*/
+/*------------------------------- Top navigation Bar ---------------------------*/
 .navbar {
 	top: 0;
 	padding-top: 0px;
@@ -30,84 +26,6 @@ a.navbar-brand {
 
 .logo {
 	margin-top: 0px;
-}
-
-.search-box {
-	position: relative;
-	height: 40px;
-	width: 50px;
-	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.search-box.active {
-	width: 350px;
-}
-
-.search-box input {
-	height: 100%;
-	width: 100%;
-	border: none;
-	outline: none;
-	background: #f4f4f4;
-	font-size: 16px;
-	border-radius: 50px;
-	padding: 0 60px 0 20px;
-	opacity: 0;
-	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.search-box input.active {
-	background-color: rgb(235, 235, 235);
-	opacity: 1;
-}
-
-.search-box .search-btn {	
-	position: absolute;
-	top: 50%;
-	right: 0px;
-	z-index: 1;
-	transform: translateY(-50%);
-	height: 40px;
-	width: 40px;
-	color: #fff;
-	background: #007ca7;
-	line-height: 40px; 
-	font-size: 18px;
-	text-align: center;
-	border-radius: 40px;
-	cursor: pointer;
-	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.search-box .search-btn.active {
-	right: 4px;
-	height: 30px;
-	width: 30px;
-	color: #D3D3D3;
-	background: #007ca7;
-	line-height: 30px; 
-	font-size: 16px;
-	transform: translateY(-50%) rotate(360deg);
-}
-
-.search-box .cancel-btn {	
-	position: absolute;
-	color: #808080;
-	top:50%;
-	right: 15px;
-	transform: translateY(-50%);
-	font-size: 20px;
-	cursor: pointer;
-	transition: all 0.5s 0.1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.search-box .cancel-btn.active {	
-	right: -30px;
-	transform: translateY(-50%) rotate(360deg);
-}
-
-.fa-search {
-	color: white;
 }
 
 /*---------------------------------- Side Menu Bar --------------------------*/
@@ -259,7 +177,7 @@ button#log-out {
 	border-width: 1px;
 	width: 200px;
 	margin-top: 10%;
-	margin-bottom: 40%;
+	margin-bottom: 35%;
 	margin-left: 15%;
 }
 
@@ -302,89 +220,89 @@ i.fa-bars:before {
 	color: #1a296b;
 }
 
-/*---------------------------------- Admin Dashboard --------------------------------*/
+/*---------------------------- Registration Form -----------------------------------*/
+
 h2 {
     color: #1a296b;
     text-align: center;
 }
 
-.table {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
+ul {
+    font-size: 26px;
+    margin-bottom: 2%;
 }
 
-thead {
-    background: linear-gradient(to right, #18194f, #009bbd);
-	color: white;
+ul.list-unstyled.components {
+    margin-bottom: 0;
 }
 
-.table-hover tbody tr:hover {
-    background-color: rgb(159, 218, 231);
+i.fa-info-circle:before {
+    margin-right: 10px;
+	color: #1a296b;
 }
 
-.table td {
-    padding: 8px;
+i.fa-user-circle:before {
+    margin-right: 10px;
+	color: #1a296b;
 }
 
-div.row {
-    margin-left: auto;
-    margin-right: auto;
-	width: 75%;
+div.details {
+    display: inline-block;
 }
 
-div.card {
-    width: 18rem;
-    height: 10rem;
-    border-radius: 10px;
-	border-width: 2px;
-    background-color: white;
-    font-size: 12px;
-    color: #1a296b;
-    text-align: center;
-}
-
-div#project-card {
-	border-color: #de1b5c;
-	box-shadow: 4px 4px #de1b5c;
-}
-
-div#pending-card {
-	border-color: #f39200;
-	box-shadow: 4px 4px #f39200;
-}
-
-div#accounts-card {
-	border-color: #26a04a;
-	box-shadow: 4px 4px #26a04a;
-}
-
-div.col-md-4 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 2.5%;
-}
-
-hr {
-    border-top: 1px solid;
-    border-color: #949494;
-}
-  
-p {
-    font-size: 18px;
-    color: black;
-}
-
-p.card-title {
-    text-align: left;
-}
-
-div.artefact_number, div.account_number {
-    font-size: 50px;
-}
-
-button.btn.btn-primary {
+.information {
     font-size: 14px;
-    padding: 5%;
+    color: rgb(94, 94, 94);
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 3%;
+    margin-left: 5%;
+}
+
+.form-border {
+    background: linear-gradient(rgb(255,255,255,1), rgba(0,155,189,0.4));
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.form-control {
+    border-radius: 8px;
+    font-size: 12.5px;
+}
+
+.form-row {
+    margin-bottom: 2.5%;
+}
+
+.col {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+label {
+	font-size: 14px;
+    color: #1a296b;
+}
+
+button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-info {
+    background-color: #1a296b;
+    border-width: 0;
+	margin-top: 2%;
+}
+
+.btn-info:hover {
+    background-color: #1a296b;
+    border-width: 0;
 }

@@ -11,7 +11,7 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <link rel="stylesheet" href="adminDashboard.css">
+        <link rel="stylesheet" href="accountRegistration.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         
@@ -19,50 +19,15 @@
   </head>
 
   <body>
-  <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
+  <!--------------------------------------------------------------------- TOP BAR ----------------------------------------------------------------------->
   <div>
     <nav class="navbar fixed-top navbar-light bg-light">
       <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
-      <div class="header-right">
-        <div class="search-box">
-            <input type="text" placeholder="Type to search...">
-            <div class="search-btn">
-              <i class="fas fa-search"></i>
-            </div>
-
-            <div class="cancel-btn">
-              <i class="fas fa-times"></i>
-            </div>
-        </div>
-      </div>
-
-      <!-- Open and close search bar -->
-      <script>
-        const searchBtn = document.querySelector(".search-btn");
-        const cancelBtn = document.querySelector(".cancel-btn");
-        const searchBox = document.querySelector(".search-box");
-        const searchInput = document.querySelector("input");
-      
-        searchBtn.onclick = () =>{
-          searchBox.classList.add("active");
-          searchInput.classList.add("active");
-          searchBtn.classList.add("active");
-          cancelBtn.classList.add("active");
-        }
-
-        cancelBtn.onclick = () =>{
-          searchBox.classList.remove("active");
-          searchInput.classList.remove("active");
-          searchBtn.classList.remove("active");
-          cancelBtn.classList.remove("active");
-          searchInput.value = "";
-        }
-      </script>
     </nav>
   </div>
-  <!------------------------------------------------------------------- END OF SEARCH BAR ----------------------------------------------------------------->
+  <!------------------------------------------------------------------- END OF TOP BAR ------------------------------------------------------------------->
 
-  <!------------------------------------------------------------------- SIDE NAVIGATION BAR ---------------------------------------------------------------->
+  <!------------------------------------------------------------------- SIDE NAVIGATION BAR -------------------------------------------------------------->
   <div class="wrapper">
       <nav id="sidebar">
           <div class="sidebar-header">
@@ -124,80 +89,83 @@
                 </div> <!-- CLose container fluid -->
             </nav>
 
-            <!---------------------------- Three cards ----------------------------->
-            <div class="row justify-content-center">
-              <div class="col-md-4">
-                      <div class="card" id="project-card">
-                          <div class="card-body">
-                              <div>
-                                  <p class="card-title">Projects</p>
-                                  <hr>
-                                  <!-- Fetch number of projects here -->
-                                  <h1>150</h1>
-                              </div>
+            <!-------------------------- Registration Form -------------------->
+            <div class="form-border">
+              <h2>New Account Registration</h1>
+              <br>
+              <form class="needs-validation">
+                  <!-- SECTION 1: STUDENT DETAILS -->
+                  <ul class="registration-form">
+                      <i class="fa fa-info-circle"></i>Student Details
+                  </ul>
+                      <!-- Row 1-->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>Student ID</label>
+                              <input type="text" class="form-control" placeholder="Student ID" required>
                           </div>
-                      </div>
-              </div> <!-- Close col -->
-              <div class="col-md-4">
-                  <div class="card" id="pending-card">
-                      <div class="card-body">
-                          <div>
-                              <p class="card-title">Pending Projects</p>
-                              <hr>
-                              <!-- Fetch number of pending projects here -->
-                              <h1>10</h1>
+                      </div> <!-- Close row 1-->
+                      <!-- Row 2-->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>First name</label>
+                              <input type="text" class="form-control" placeholder="First name" required>
                           </div>
-                      </div>
-                  </div>
-              </div> <!-- Close col -->
-              <div class="col-md-4">
-                  <div class="card" id="accounts-card">
-                      <div class="card-body">
-                          <div>
-                              <p class="card-title">Accounts</p>
-                              <hr>
-                              <!-- Fetch number of accounts here -->
-                              <h1>120</h1>
+                      </div> <!-- Close row 2-->
+                      <!-- Row 3-->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>Last name</label>
+                              <input type="text" class="form-control" placeholder="Last name" required>
                           </div>
-                      </div>                        
-                  </div>
-              </div> <!-- Close col -->
-            </div> <!-- Close row -->
-            <br><br><br>
+                      </div> <!-- Close row 3-->
+                      <!-- Row 4-->
+                      <div class="form-row">
+                          <div class="col">  
+                              <label>Email address</label>
+                              <input type="text" class="form-control" placeholder="Email" required>
+                          </div> 
+                      </div> <!-- Close row 4 -->
 
-            <!----------------------------- Notification Table ----------------------->
-            <div class="notification">
-                <h2> Notification Table </h2>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Project Title</th>
-                                    <th>Author(s)</th>
-                                    <th>Upload Date</th>
-                                    <th>Project Status</th>
-                                    <th>Visit</th>
-                                </tr>
-                            </thead> 
-
-                            <!-- Fill the table using sql query -->
-                            <tbody>
-                            <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
-                                <tr>
-                                    <td><!-- FETCH INPUT FROM BACKEND --> a</td>
-                                    <td><!-- FETCH INPUT FROM BACKEND --> b</td>
-                                    <td><!-- FETCH INPUT FROM BACKEND --> c</td>
-                                    <td><!-- FETCH INPUT FROM BACKEND --> d</td>
-                                    <td><!-- FETCH INPUT FROM BACKEND --> e</td>
-                                    <td><button type="button" class="btn btn-primary">Visit Now</button></td>
-                                </tr>
-                            </tbody>
-                            <!-- Close table -->
-                        </table> 
-                    </div> <!-- Close table responsive-->
-            </div> <!-- Close notification -->
- 
+                  <!-- SECTION 2: CREATE NEW ACCOUNT -->
+                  <ul id="registration-form">
+                      <i class="fa fa-user-circle"></i>Create New Account
+                  </ul>
+                      <div class="information">
+                          The username and password below will be used to log in.
+                      </div>
+                      <!-- Row 5 -->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>Username</label>
+                              <input type="text" class="form-control" placeholder="Username" required>
+                          </div>
+                      </div> <!-- Close row 5 -->
+                      <!-- Row 6 -->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>Password</label>
+                              <input type="text" class="form-control" placeholder="Password" required>
+                          </div>
+                          <div class="invalid-feedback">
+                              Invalid password.
+                          </div>
+                      </div> <!-- Close row 6 -->
+                      <!-- Row 7 -->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>Confirm Password</label>
+                              <input type="text" class="form-control" placeholder="Confirm Password" required>
+                          </div>
+                          <div class="invalid-feedback">
+                              Password and confirm password do not match.
+                          </div>
+                      </div> <!-- Close row 7 -->
+                      <div class="form-row" id="button-row">
+                          <button type="button" class="btn btn-info">Register account</button>
+                      </div>
+              </form>
+            </div> <!-- Close form border -->
       <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
 
         <!-- Close remaining div-->

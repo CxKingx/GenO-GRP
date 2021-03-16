@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from .forms import UserForm, UserProfileInfoForm, VideoForm
-from home_page.models import Video_Artefact
+from home_page.models import VideoArtefact
 from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm
 
 
@@ -14,9 +14,9 @@ from .models import UserProfileInfo
 from .models import Project
 # from .models import Project_Artefact_Connector
 # from .models import Account_Project_Connector
-from .models import Image_Artefact
+from .models import ImageArtefact
 # from home_page.models import Artefact_Info
-from home_page.models import Video_Artefact
+from home_page.models import VideoArtefact
 
 from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta, date
@@ -301,7 +301,7 @@ def admin_login(request):
 def showvideo(request):
     # This 2 commands is searching for a file in the database, so if no video = eror
     # cara ambil hrs beda, hrs pake reference ke user
-    lastvideo = Video_Artefact.objects.last()
+    lastvideo = VideoArtefact.objects.last()
     videofile = lastvideo.videofile
 
     form = VideoForm(request.POST or None, request.FILES or None)
@@ -322,7 +322,7 @@ def searchbar(request):
     if request.method == "GET":
         search = request.GET.get('search')
         # post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
-        post = Video_Artefact.objects.all().filter(Q(name__icontains=search))
+        post = VideoArtefact.objects.all().filter(Q(name__icontains=search))
         return render(request, 'home_page/searchbar.html', {'post': post})
 
 

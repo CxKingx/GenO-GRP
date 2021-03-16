@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserProfileInfo, Video_Artefact, Image
+from .models import UserProfileInfo, VideoArtefact, Image
 
 
 # this is for asking forms from models we have created
@@ -20,7 +20,7 @@ class UserProfileInfoForm(forms.ModelForm):
 
 class VideoForm(forms.ModelForm):
     class Meta:
-        model= Video_Artefact
+        model= VideoArtefact
         fields= ["name", "videofile"]
 
 class ImageForm(forms.ModelForm):

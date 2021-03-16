@@ -52,34 +52,34 @@ class UserProfileInfo(models.Model):
 
 class Project(models.Model):
     ApprovalChoice = [
-        ('Apvd', 'Approved'),
-        ('Pndg', 'Pending'),
-        ('Rjct', 'Rejected'),
+        ('Approved', 'Approved'),
+        ('Pending', 'Pending'),
+        ('Rejected', 'Rejected'),
     ]
     Tags_for_Project = [
         ('', '-----'),
-        ('DS', 'Data Scholarship'),
-        ('DMS', 'Digital Media Production'),
-        ('TFL', 'Technologies for Learning'),
+        ('Data Scholarship', 'Data Scholarship'),
+        ('Digital Media Production', 'Digital Media Production'),
+        ('Technologies for Learning', 'Technologies for Learning'),
     ]
     # Project_ID = models.PositiveIntegerField(unique = True)
-    #This is to connect , which Owner have dis project a
+    #This is to connect , which Owner have dis project
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
 
     Project_Name = models.CharField(max_length=50) 
     Project_Description = models.TextField()
     Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='DS' , blank=True,null=True)
-    #Project Thumbnail
-    #Date only
 
-    #Need to add to database
-    #Date of Completion Model
-    #Author Comment TextField
     Date_of_Completion = models.DateField(default=timezone.now)
     Author_Comment = models.TextField(null=True)
+
+    #Make how many video and picture uploaded for dis project?
+
     Upload_Date = models.DateField(default=timezone.now)
-    #Approval_Date = models.DateTimeField(blank=True, null=True)
+
+
     Approval_Date = models.DateField(blank= True, null=True)
+
     #Make Expire Date 3 days after Approval Date
     Account_ExpiryDate = models.DateField(blank= True, null=True)
 
@@ -99,7 +99,7 @@ class Project(models.Model):
 #         return self.User_ID.username + ' ' + self.Project_ID.Project_Name
 
 
-class Image_Artefact(models.Model):
+class ImageArtefact(models.Model):
     #Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
@@ -116,7 +116,7 @@ class Image_Artefact(models.Model):
 #     Artefact_ID = models.ForeignKey(Artefact_Info, on_delete=models.CASCADE)
 
 
-class Video_Artefact(models.Model):
+class VideoArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 

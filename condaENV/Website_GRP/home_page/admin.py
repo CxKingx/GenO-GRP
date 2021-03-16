@@ -14,6 +14,9 @@ from . import models
 #     list_filter =['User_Username','StudentID']
 #
 #     list_editable =['StudentID']
+class StudentIDAdmin(admin.ModelAdmin):
+    list_display = ['user', 'StudentID']
+    search_fields = ['StudentID']
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -23,13 +26,9 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class ArtefactAdmin(admin.ModelAdmin):
-    list_display = ['Project_Owner','Image_Name' , 'image']
+    list_display = ['Project_Owner','Image_Name', 'image']
     search_fields = ['Image_Name']
 
-
-class StudentIDAdmin(admin.ModelAdmin):
-    list_display = ['user', 'StudentID']
-    search_fields = ['StudentID']
 
 
 class VideoAdmin(admin.ModelAdmin):
@@ -43,5 +42,5 @@ admin.site.register(models.UserProfileInfo, StudentIDAdmin)
 admin.site.register(models.Project, ProjectAdmin)
 # admin.site.register(models.Account_Project_Connector)
 # admin.site.register(models.Project_Artefact_Connector)
-admin.site.register(models.Image_Artefact, ArtefactAdmin)
-admin.site.register(models.Video_Artefact,VideoAdmin)
+admin.site.register(models.ImageArtefact, ArtefactAdmin)
+admin.site.register(models.VideoArtefact, VideoAdmin)

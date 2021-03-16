@@ -126,3 +126,12 @@ class Video_Artefact(models.Model):
 
     def __str__(self):
         return self.name + ": " + str(self.videofile)
+
+
+
+class Image(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='images/', null=True, verbose_name="")
+
+    def __str__(self):
+        return self.title

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from home_page.models import Video_Artefact
-from .forms import UserForm, UserProfileInfoForm, VideoForm
+from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm
 
 from home_page.models import Artefact_Info
 
@@ -310,6 +310,20 @@ def searchbar(request):
         #post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
         post = Video_Artefact.objects.all().filter(Q(name__icontains=search))
         return render(request, 'home_page/searchbar.html', {'post': post})
+
+def image_upload_view(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            img_obj = form.instance
+            return render(request, 'index.html', {'form': form, 'img_obj': img_obj})
+    else:
+        form = ImageForm()
+
+    return render(request, 'home_page/uploadimage.html', {'form': form})
+
+
 
 # Extra codes for future use
 

@@ -40,6 +40,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('welcome/', views.welcomepage, name='welcomepage'),
     path('upload_artefact/', views.showvideo, name = 'showvideo'),
+    path('upload_image/', views.image_upload_view, name = 'uploadimage'),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),

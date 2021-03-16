@@ -307,9 +307,10 @@ h1{
 h2{
 	color: #1a296b;
 	position: center;
+	text-align: center;
 }
 p{
-	font-size: 14px;
+	font-size: 15px;
 }
 
 .project-picture {
@@ -324,11 +325,35 @@ p{
 	height: 300px;
 	
 }
+.btn-block{
+	margin-right: 2%;
+}
+.project-item{
+	float:left;
+	width: 18%;
+	margin-right: 2%
+}
+.project-info{
+	width: 77%;
+	font-size: 15px;
+	padding-left: 3%;
+}
 .btn-info{
 	background-color: #1a296b;
 	color: white;
 	margin: 1%;
+
 }
+/*
+.video{
+	width:40%;
+
+}
+.video-desc{
+	float: right;
+	margin-top: 0%;
+	width: 50%;
+}*/
 
 
 /*-------------------------------------- Footer -------------------------------------*/

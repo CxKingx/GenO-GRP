@@ -37,7 +37,7 @@ Listed as per the Team List order.
 - Below are some packages to install (if needed)
 - pip install bcrypt
 - pip install django[argon2] for password hashing 
-- pip install pillow (for images future use)  
+- pip install pillow (for images future use) I havent use it  
 
 - NOTE : When installing new packages to the environment UPDATE the environment using "conda env export > environment_vXX.yml
 " XX being the version number (currently v2), then push it to the repository.

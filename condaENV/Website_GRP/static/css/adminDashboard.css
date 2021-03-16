@@ -1,0 +1,62 @@
+@font-face{
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+
+body {
+    font-family: 'circular';
+}
+
+h2 {
+    color: #1a296b;
+    text-align: center;
+}
+
+.table {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+thead {
+    background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgb(159, 218, 231);
+}
+
+div.card {
+    width: 12rem;
+    height: 10rem;
+    border-radius: 17px;
+    border-width: 3.5px;
+    border-color: #005597;
+    font-size: 12px;
+    color: #1a296b;
+    text-align: center;
+}
+
+div.col-md-4 {
+    padding-left: 10%;
+}
+
+hr {
+    border-top: 1px solid #1a296b;
+}
+  
+p {
+    font-size: 18px;
+    color: #1a296b;
+}
+
+img {
+    margin-top: 0px;
+    width: 70px;
+    height: 60px;
+}
+
+div.artefact_number, div.account_number {
+    font-size: 50px;
+}

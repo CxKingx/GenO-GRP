@@ -1,21 +1,23 @@
-@font-face{
-    font-family: 'circular';
-    src: url('./circular-bold.ttf');
-}
 
-body {
-    font-family: 'circular';
-}
-
+/*------------------------------- Student Dashboard Table ---------------------*/
 h2 {
     color: #1a296b;
     text-align: center;
 }
 
 .table {
+    font-size: 14px;
     width: 75%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.alert {
+    font-size: 14px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 thead {
@@ -24,42 +26,11 @@ thead {
 }
 
 .table-hover tbody tr:hover {
+
     background-color: rgb(159, 218, 231);
-  }
-
-
-div.card {
-    width: 12rem;
-    height: 10rem;
-    background-color: #007ca7;
-    border-radius: 15px;
-    border-width: 2px;
-    border-color: #18194f;
-    font-size: 12px;
-    color: white;
-    text-align: center;
 }
 
 hr {
     border-top: 1px solid #1a296b;
 }
-  
-p {
-    font-size: 16px;
-}
 
-div.row {
-    width: 750px;
-    margin-left: 400px;
-}
-
-div.col {
-    padding-right: 8px;
-    padding-left: 8px;
-    width: 200px;
-}
-
-img {
-    width: 70px;
-    height: 55px;
-}

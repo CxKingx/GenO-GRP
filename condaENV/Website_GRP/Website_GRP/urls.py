@@ -30,20 +30,32 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.welcomepage, name='index'),
-    # path('Login/', views.loginPage, name='loginPage'),
-
-    path('Login/', views.loginPage, name='loginPage'),
-    path('register/', views.register, name='register'),
-    path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
-    # to help
+    # Final
     path('admin/', admin.site.urls),
+    path('Login/', views.loginPage, name='loginPage'),
     path('logout/', views.user_logout, name='logout'),
+    path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
+
+    #Still needs to be edited
+    path('register/', views.register, name='register'),
+
+    path('upload_project/', views.upload_project, name='upload_project'),
+
+    path('adminLogin/', views.adminLogin, name='adminLogin'),
+    path('adminDashboard/', views.adminDashboard, name='adminDashboard'),
+
+
     path('welcome/', views.welcomepage, name='welcomepage'),
     path('upload_artefact/', views.showvideo, name = 'showvideo'),
+
+    path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
+
+    path('layout/', views.layout, name='layout'),
+    path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
-    path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
+
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 

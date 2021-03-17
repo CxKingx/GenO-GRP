@@ -36,11 +36,7 @@ class UserProfileInfo(models.Model):
     # Create relationship (don't inherit from User!)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentID = models.PositiveIntegerField(unique=True, default=0)
-    #Date_Created , Account_Status and Last_Online is built-in Django Attributes in User
 
-    # Testchar = models.CharField(max_length=50)
-    # Add any additional attributes you want
-    # portfolio_site = models.URLField(blank=True)
     # pip install pillow to use this!
     # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
     # profile_pic = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
@@ -63,29 +59,26 @@ class Project(models.Model):
         ('Technologies for Learning', 'Technologies for Learning'),
     ]
     # Project_ID = models.PositiveIntegerField(unique = True)
-    #This is to connect , which Owner have dis project
-    User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
+    # This is to connect , which Owner have dis project
+    User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True)
 
-    Project_Name = models.CharField(max_length=50) 
+    Project_Name = models.CharField(max_length=50)
     Project_Description = models.TextField()
-    Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='DS' , blank=True,null=True)
+    Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='', blank=True, null=True)
 
     Date_of_Completion = models.DateField(default=timezone.now)
-    Author_Comment = models.TextField(null=True)
-
-    #Make how many video and picture uploaded for dis project?
+    Author_Comment = models.TextField(blank=True, null=True)
 
     Upload_Date = models.DateField(default=timezone.now)
-
-
-    Approval_Date = models.DateField(blank= True, null=True)
-
-    #Make Expire Date 3 days after Approval Date
-    Account_ExpiryDate = models.DateField(blank= True, null=True)
-
+    Approval_Date = models.DateField(blank=True, null=True)
+    # Make Expire Date 2weeks after upload , code in views.py, after approve no change
+    Account_ExpiryDate = models.DateField(blank=True, null=True)
     Last_Updated = models.DateTimeField(blank=True, null=True)
+
     Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pending')  # Approval
-    Authors = models.CharField(max_length=100)
+    Authors = models.CharField(max_length=100, blank=True, null=True)
+
+    Admin_Comment = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.Project_Name
@@ -100,7 +93,7 @@ class Project(models.Model):
 
 
 class ImageArtefact(models.Model):
-    #Links to the Project for this artefact
+    # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     Image_Name = models.CharField(max_length=50)
@@ -121,12 +114,11 @@ class VideoArtefact(models.Model):
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=50)
-    Video_Description = models.TextField(null = True)
-    videofile = models.FileField(upload_to='videos/', null=True, verbose_name="") #path to video
+    Video_Description = models.TextField(null=True)
+    videofile = models.FileField(upload_to='videos/', null=True, verbose_name="")  # path to video
 
     def __str__(self):
         return self.name + ": " + str(self.videofile)
-
 
 
 class Image(models.Model):

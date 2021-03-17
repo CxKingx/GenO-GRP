@@ -1,0 +1,276 @@
+<!doctype html>
+{%load static %}
+<html lang="en">
+
+  <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <!--
+        <link rel="stylesheet" href="accountRegistration.css">
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        -->
+
+        <!-- Django version -->
+        <link rel="stylesheet" href="{% static 'css/accountRegistration.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
+        
+        <title>Register a New Account</title>
+  </head>
+
+  <body>
+  <!--------------------------------------------------------------------- TOP BAR ----------------------------------------------------------------------->
+  <div>
+    <nav class="navbar fixed-top navbar-light bg-light">
+      <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
+    </nav>
+  </div>
+  <!------------------------------------------------------------------- END OF TOP BAR ------------------------------------------------------------------->
+
+  <!------------------------------------------------------------------- SIDE NAVIGATION BAR -------------------------------------------------------------->
+  <div class="wrapper">
+      <nav id="sidebar">
+          <div class="sidebar-header">
+              <div class="cancel-btn" id="cancel-btn">
+                <i class="fas fa-times"></i>
+              </div>
+              <h3>Digital Artefact Showcase</h3>
+          </div>
+
+          <ul class="list-unstyled components">
+              <!-- Menu Bar Items -->
+              <hr class="white">
+              <li>
+                <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>My Dashboard</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-users" aria-hidden="true"></i>Users</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-address-card" aria-hidden="true"></i>Manage Access</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-file" aria-hidden="true"></i>Projects</a>
+              </li>
+              <li class="active">
+                <a href="#module-items" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-book"></i>Modules</a>
+                <ul class="collapse list-unstyled" id="module-items">
+                    <li>
+                        <a href="#">Data Scholarship</a>
+                    </li>
+                    <li>
+                        <a href="#">Digital Media Production</a>
+                    </li>
+                    <li>
+                        <a href="#">Technologies for Learning</a>
+                    </li>
+                </ul>
+            </li>
+          </ul>
+
+          <!-- Logout Button -->
+          <div>
+            <a href="#"><button type="button" id="log-out" class="btn btn-outline-primary">Log out</button></a><br>
+          </div>
+      </nav> <!-- Close nav sidebar -->
+    
+    <!--------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------------->
+
+    <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
+    <div class="container">
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="small-navbar">
+                <div class="container-fluid">
+                    <!-- Small navigation bar for Toggle Menu and Sort Methods -->
+                    <button type="button" id="toggle-menu" class="btn btn-outline-info">
+                        <i class="fa fa-bars"></i>
+                        <span>Toggle Menu</span>
+                    </button>
+                </div> <!-- CLose container fluid -->
+            </nav>
+
+            <!-------------------------- Registration Form -------------------->
+
+            <div class="form-border">
+              <h2>New Account Registration</h2>
+              <br>
+              <form enctype="multipart/form-data" method="POST">
+                  {% csrf_token %}
+                  <!-- SECTION 1: STUDENT DETAILS -->
+                  <ul class="registration-form">
+                      <i class="fa fa-info-circle"></i>Student Details
+                  </ul>
+                      <!-- Row 1-->
+                      <div class="form-row">
+                          <div class="col">
+                              <!--
+                              <label>Student ID</label>
+                              <input type="text" class="form-control" placeholder="Student ID" required>
+                              -->
+
+
+                              {% for error in profile_form.StudentID.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                  {{ error|escape }}
+                                </div>
+                              {% endfor %}
+
+
+                              <label for="id_StudentID">StudentID:</label>
+                              <input type="number" name="StudentID" value="0" min="0" required="" id="id_StudentID" class="form-control">
+
+
+                          </div>
+                      </div> <!-- Close row 1-->
+                      <!-- Row 2-->
+                      <div class="form-row">
+                          <div class="col">
+                               <!--
+                              <label>First name</label>
+                              <input type="text" class="form-control" placeholder="First name" required>
+                              -->
+                              <label for="id_first_name">First name:</label>
+                              <input type="text" name="first_name" maxlength="150" id="id_first_name" class="form-control" placeholder="First name" required>
+                          </div>
+                      </div> <!-- Close row 2-->
+                      <!-- Row 3-->
+                      <div class="form-row">
+                          <div class="col">
+                              <!--
+                              <label>Last name</label>
+                              <input type="text" class="form-control" placeholder="Last name" required>
+                              -->
+                              <label for="id_last_name">Last name:</label>
+                              <input type="text" name="last_name" maxlength="150" id="id_last_name" class="form-control" placeholder="Last name" required>
+                          </div>
+                      </div> <!-- Close row 3-->
+                      <!-- Row 4-->
+                      <div class="form-row">
+                          <div class="col">
+                              <!--
+                              <label>Email address</label>
+                              <input type="text" class="form-control" placeholder="Email" required>
+                              -->
+
+                              <label for="id_email">Email address:</label>
+                              <input type="email" name="email" maxlength="254" id="id_email" class="form-control" placeholder="Email" required>
+
+                          </div> 
+                      </div> <!-- Close row 4 -->
+
+                  <!-- SECTION 2: CREATE NEW ACCOUNT -->
+                  <ul id="registration-form">
+                      <i class="fa fa-user-circle"></i>Create New Account
+                  </ul>
+                      <div class="information">
+                          The username and password below will be used to log in.
+                      </div>
+                      <!-- Row 5 -->
+                      <div class="form-row">
+                          <div class="col">
+                              <!--
+                              <label>Username</label>
+                              <input type="text" class="form-control" placeholder="Username" required>
+                              -->
+                              {% for error in user_form.username.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                  {{ error|escape }}
+                                </div>
+                              {% endfor %}
+
+                              <label for="id_username">Username:</label>
+                              <input type="text" name="username" maxlength="150" required="" id="id_username" class="form-control" placeholder="Username" >
+                          </div>
+                      </div> <!-- Close row 5 -->
+                      <!-- Row 6 -->
+                      <div class="form-row">
+                          <div class="col">
+                              <!--
+                              <label>Password</label>
+                              <input type="text" class="form-control" placeholder="Password" required>
+                              -->
+                              <label for="id_password">Password:</label>
+                              <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
+                          </div>
+                          <div class="invalid-feedback">
+                              Invalid password.
+                          </div>
+                      </div> <!-- Close row 6 -->
+                      <!-- Row 7 -->
+                      <div class="form-row">
+                          <div class="col">
+                              <label>Confirm Password</label>
+                              <input type="password" class="form-control" placeholder="Confirm Password" required>
+                          </div>
+                          <div class="invalid-feedback">
+                              Password and confirm password do not match.
+                          </div>
+                      </div> <!-- Close row 7 -->
+                      <div class="form-row" id="button-row">
+                          <button type="submit" class="btn btn-info" name="" value="Register">Register account</button>
+
+                      </div>
+              </form>
+            </div> <!-- Close form border -->
+
+
+      <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
+
+        <!-- Close remaining div-->
+        </div> <!--Close content -->
+      </div> <!-- Close container -->
+    </div> <!-- Close wrapper -->
+
+      <div class="overlay"></div>
+
+      <!-- jQuery CDN - Slim version (=without AJAX) -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <!-- Popper.JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <!-- jQuery Custom Scroller CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+      <!-- Script for Toggle menu button -->
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $("#sidebar").mCustomScrollbar({
+                  theme: "minimal"
+              });
+
+              $('#toggle-menu').on('click', function () {
+                  $('#sidebar, #content').toggleClass('active');
+                  $('.collapse.in').toggleClass('in');
+                  $('.overlay').addClass('active');
+                  $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+
+              });
+          });
+      </script>
+
+      <!-- Script for cross button in side navigation menu -->
+      <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#cancel-btn').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('.overlay').removeClass('active');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+      </script>
+  </body>
+</html>

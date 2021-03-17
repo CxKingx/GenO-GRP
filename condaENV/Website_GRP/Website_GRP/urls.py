@@ -38,6 +38,7 @@ urlpatterns = [
 
     #Still needs to be edited
     path('register/', views.register, name='register'),
+    path('register/', views.register, name='register'),
 
     path('upload_project/', views.upload_project, name='upload_project'),
 

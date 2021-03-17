@@ -75,22 +75,30 @@
           		<label for="img">Select thumbnail image:</label>
           	</div>
           	<div class="col-8" id="field">
-  			<div class="wrapper">
-  				<div class="box">
-   					<div class="image-preview">
-   						 <!-- displays image preview -->
-					</div>
-    				<div class="upload-options">
-      				<label>
-        				<input class="btn btn-primary-preview" type="file" id="img" name="image" accept="image/*" onchange="loadFile(event)"/>
-        				<img id="output" width="100%" height="100%" position="center"/>
-      				</label>
-    				</div>
-  				</div>
-  			</div>
-  			</div>
+  			      <div class="wrapper">
+  				      <div class="box">
+   					      <div class="image-preview">
+                  
+                  </div> 
+    				      <div class="upload-options">
+      				<!-- <label> -->
+                <div class="row">
+        				    <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*" onchange="loadFile(event)"/> 
+                    <label for="image" id="thumbnail">Choose a thumbnail picture </label>
+        			  </div> 
+      				<!-- </label> -->
+                  
+                <div class="row">
+                  <div class="image-preview">
+                    <img id="output"/>
+                  </div>
+                </div>
+    				      </div>
+  				      </div>
+  			       </div>
+  			   </div>
 
-  		  </div><!-- end of thumbnail part -->
+  		    </div><!-- end of row for thumbnail part -->
 
   		</br></br></br>
 

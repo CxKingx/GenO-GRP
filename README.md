@@ -1,6 +1,6 @@
 ![alt text](images/gen-o_logo.png "Gen-O")
 
-Welcome to the **Gen-O readme**
+Welcome to the **Gen-O Readme**
 
 ## Table of Contents
 | **No.** | **Section**                       | **Quick Navigation**                        |

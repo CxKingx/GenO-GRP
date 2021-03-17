@@ -121,7 +121,7 @@
 
         for(let index = 0; index < files.length; ++index) {
 
-          if(files[index].size > 2097152) {
+          if(files[index].size > 10485760) {
             alert("File is too big!");
             break;
           }

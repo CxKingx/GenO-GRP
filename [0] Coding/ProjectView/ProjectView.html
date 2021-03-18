@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="ProjectView.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/imageModalFlip.css"/>
+        <script type = "text/javascript" src="{% static 'javascript/enlarge.js' %}"></script>
+
         
         <title>Project View page</title>
   </head>
@@ -122,7 +125,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <div class="dropdown">
                               <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -135,43 +138,63 @@
                               </div>
                             </div>  
                         </ul>
-                    </div>
+                    </div> -->
                 </div> <!-- CLose container fluid -->
-            </nav>
+            </nav> 
 
             <h1> Project title </h1>
-
-            <div class="project-picture"><img height="300px" width="300px" src="project-pic.JPG"/> </div>
-
-            <div class="project-details">
+    <div class="table-responsive">
+      <table class="table table-borderless">
+      <tbody id="adminTbody">
+      	<tr>
+      	<td>
+        <!--<div class="row">
+          <div class="col-4"> -->
+            <div class="project-picture"><img class="project-pic" src="project-pic.JPG"/> </div>
+        <!--  </div> -->
+        </td>
+        <td>
+        <!--   <div class="col-6">
+            <div class="project-details"> -->
               <h4> Project details </h4>
-                <div class="project-item">
-            	  <button type="button" class="btn btn-primary btn-block" disabled="true">Date of completion</button>
-            	</div></br>
-            	<div class="project-info">
-            	   <!-- FETCH FROM DATABASE --> essay 
+                <div class="row">
+                  <div class="col-4">
+            	    <button type="button" class="btn btn-primary btn-block" disabled="true">Date of completion</button>
+            	  </div>
+            	  <div class="col-6">
+            	    <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
+            	  </div>
+            	</div> <!-- row-->
+            
+            </br>
+            	<div class="row">
+                  <div class="col-4">
+            	    <button type="button" class="btn btn-primary btn-block" disabled="true">Tags</button>
+            	  </div>
+            	  <div class="col-6">
+            	    <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
+            	  </div>
             	</div>
             </br>
-            	<div class="project-item">
-            	  <button type="button" class="btn btn-primary btn-block" disabled="true">Tags</button>
-            	</div></br>
-            	<div class="project-info">
-            	   <!-- FETCH FROM DATABASE --> essay
+              	<div class="row">
+                  <div class="col-4">
+            	    <button type="button" class="btn btn-primary btn-block" disabled="true">Authors</button>
+            	  </div>
+            	  <div class="col-6">
+            	    <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
+            	  </div>
             	</div>
-            </br>
-              	<div class="project-item">
-            	  <button type="button" class="btn btn-primary btn-block" disabled="true">Authors</button>
-            	</div></br>
-            	<div class="project-info">
-            	   <!-- FETCH FROM DATABASE --> essay
-            	</div>
+
             </br></br></br>
 
             	<a class="btn btn-primary btn-lg" role="button" onClick="document.getElementById('artefacts').scrollIntoView();">View artefacts</a></br>
 
             <p></p>
-        	</div> <!-- project details -->
-
+        <!-- 	</div>  project details 
+          </div>  col-6 end
+        </div>--> <!-- end row -->
+    	</td></tr>
+	  </tbody></table></div> <!-- table responsiveness-->
         </br></br>
 
             <div class="line"></div>
@@ -222,6 +245,18 @@
                                 </div>
                             </div>
                         </td>
+
+                        <!-- The Modal -->
+                <div id="myModal" class="modal">
+                <!-- The Close Button -->
+                <span class="close">&times;</span>
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
+
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
+                </div>
+
                         <!----------------------- FLIP CARD 2 ---------------------------->
                         <td>
                             <div class="flip-card">

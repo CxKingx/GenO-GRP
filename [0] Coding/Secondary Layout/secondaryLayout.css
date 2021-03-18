@@ -9,7 +9,7 @@ body {
 	font-size: 12px;
 }
 
-/*--------------------------------- Top navigation Bar -----------------------------*/
+/*----------------------------------- Top navigation bar ---------------------------*/
 .navbar {
 	top: 0;
 	padding-top: 0px;
@@ -26,6 +26,10 @@ a.navbar-brand {
 
 .logo {
 	margin-top: 0px;
+}
+
+div#logged-in {
+    font-size: 14px;
 }
 
 /*---------------------------------- Side Menu Bar --------------------------*/
@@ -106,44 +110,9 @@ a, a:hover, a:focus {
     background: white;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
-}
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 12px;
-}
-
 i {
     color: #009bbd;
     margin-right: 3%;
-}
-
-i.fa-upload {
-    color: white;
-}
-
-i.fa-table {
-    color: #1a296b;
 }
 
 i.fa-bars {
@@ -258,12 +227,12 @@ footer.btn {
 	color: #18194f;
 }
 
-a.login-button {
-	color: white;
+a#login-button:hover {
+	color: #18194f;
 }
 
-a.login-button:hover {
-	color: #18194f;
+h5 {
+    font-size: 14px;
 }
 
 /*------------------------------- Small navigation bar ---------------------------*/
@@ -282,6 +251,10 @@ button#toggle-menu {
 button#toggle-menu:hover {
     background-color: #009bbd;
     color: white;
+}
+
+a.dropdown-item {
+	font-size: 12px;
 }
 
 i.fa-bars:before {

@@ -242,6 +242,11 @@ textarea.form-control {
 	height: 125px;
 }
 
+button#modal-button.btn.btn-info {
+    font-size: 12px;
+    color: #18194f;
+}
+
 /*-------------------------------------- Footer -------------------------------------*/
 footer{
 	bottom: 0;

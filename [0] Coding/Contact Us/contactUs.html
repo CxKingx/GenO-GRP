@@ -139,7 +139,30 @@
                         </div>
 
                             <br><br>
-                        <input class="btn btn-primary" type="submit" value="Submit" id="submit" onclick="submitForm()">
+                        <input class="btn btn-primary" type="submit" value="Submit" id="submit" data-toggle="modal"
+                               data-target="#notificationModal"
+                               onclick="submitForm()">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog"
+                             aria-labelledby="notificationModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <p class="modal-title" id="modal-title">Notification Message</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body"><h5>Thank you for contacting us.</h5></div>
+                              <div class="modal-footer">
+                                <!-- Hyperlink to Homepage here -->
+                                <a href="#"> <button type="button" class="btn btn-info" id="modal-button"> Go back to Homepage </button></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                     </form>
                   </div> <!-- Close right column -->
                 </div> <!-- Close row -->

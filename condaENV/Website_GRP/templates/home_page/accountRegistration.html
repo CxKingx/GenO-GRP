@@ -99,6 +99,11 @@
 
             <!-------------------------- Registration Form -------------------->
 
+            {% if registered %}
+            <h1>Thank you for registering!</h1>
+             <button type="button" ><a href="{% url 'logout' %}">Logout</a></button>
+            {% else %}
+
             <div class="form-border">
               <h2>New Account Registration</h2>
               <br>
@@ -119,7 +124,7 @@
 
                               {% for error in profile_form.StudentID.errors %}
                                 <div class="alert alert-danger" role="alert">
-                                  {{ error|escape }}
+                                   A user with this Student ID has already exists
                                 </div>
                               {% endfor %}
 
@@ -220,7 +225,7 @@
                       </div>
               </form>
             </div> <!-- Close form border -->
-
+            {% endif %}
 
       <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
 

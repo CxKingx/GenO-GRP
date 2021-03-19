@@ -172,8 +172,8 @@ def user_logout(request):
 
 def register(request):
     registered = False
-    formcorrect = True
-    print(formcorrect)
+    #formcorrect = True
+   # print(formcorrect)
     if request.method == 'POST':
         # Get info from "both" forms
         # It appears as one form to the user on the .html page
@@ -186,7 +186,6 @@ def register(request):
             # Hash the password
             user.set_password(user.password)
 
-            #
 
             # Update with Hashed password
             user.save()
@@ -199,10 +198,10 @@ def register(request):
             # check if ID is empty
 
             profile.save()
-            print(formcorrect)
+            #print(formcorrect)
             registered = True
             print("registered")
-            return render(request, admin)
+            return render(request, 'home_page/accountRegistration.html', {'registered': registered})
 
 
         else:
@@ -210,19 +209,19 @@ def register(request):
             # print(user_form.errors, profile_form.errors)
             print(user_form.errors.as_data(), profile_form.errors.as_data())
             # return render(request, 'home_page/register.html',
-            formcorrect = False
-            print(formcorrect)
+            #formcorrect = False
+            #print(formcorrect)
             return render(request, 'home_page/accountRegistration.html',
                           {'user_form': user_form,
                            'profile_form': profile_form,
-                           'registered': registered,
-                           'formcorrect': formcorrect})
+                           'registered': registered})
+        #'formcorrect': formcorrect})
 
     else:
         # Was not an HTTP post so we just render the forms as blank.
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
-        print(formcorrect)
+       # print(formcorrect)
     # This is the render and context dictionary to feed
     # back to the registration.html file page.
 
@@ -230,8 +229,8 @@ def register(request):
     return render(request, 'home_page/accountRegistration.html',
                   {'user_form': user_form,
                    'profile_form': profile_form,
-                   'registered': registered,
-                   'formcorrect': formcorrect})
+                   'registered': registered})
+                   #'formcorrect': formcorrect})
 
 
 # accountRegistration

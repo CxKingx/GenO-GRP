@@ -200,10 +200,22 @@
             <div class="line"></div>
 
             <h2>Project description</h2>
-            <p> <!-- FETCH FROM DATABASE --> </p>
+            <p> <!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
+
+			Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
+
+			Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
+
+			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4]</p>
 
             <h2>Author comments</h2>
-            <p><!-- FETCH FROM DATABASE --></p>
+            <p><!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
+
+			Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
+
+			Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
+
+			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4] </p>
 
             
             <div id="artefacts">
@@ -244,7 +256,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </td>
+                        <!-- Trigger the Modal -->
+	<img id="myImg" src="img1.jpg" alt="Snow" style="width:100%;max-width:300px">
 
                         <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -256,6 +269,7 @@
                 <!-- Modal Caption (Image Text) -->
                 <div id="caption"></div>
                 </div>
+                </td>
 
                         <!----------------------- FLIP CARD 2 ---------------------------->
                         <td>
@@ -493,6 +507,27 @@
             });
         });
       </script>
+      <script type="text/javascript">
+      	var modal = document.getElementById("myModal");
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById("myImg");
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		img.onclick = function(){
+  			modal.style.display = "block";
+  			modalImg.src = this.src;
+  			captionText.innerHTML = this.alt;
+		}
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+	</script>
 
   </body>
 </html>

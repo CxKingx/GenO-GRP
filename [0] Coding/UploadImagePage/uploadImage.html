@@ -4,6 +4,7 @@
   <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
@@ -11,14 +12,18 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <link rel="stylesheet" href="ProjectUploadPage.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-        <title>Upload project page</title>
+        <!-- Own CSS -->
+        <link rel="stylesheet" href="uploadImage.css">
+
+        <title>Upload Image</title>
   </head>
+
   <body>
-    <!------------------------------------------------------------- TOP NAVIGATION BAR ----------------------------------------------------------------------->
+      <!------------------------------------------------------------- TOP NAVIGATION BAR ----------------------------------------------------------------------->
       <div>
         <nav class="navbar fixed-top navbar-light bg-light">
           <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
@@ -40,6 +45,7 @@
           </div> <!-- Close header right -->
         </nav>
       </div>
+      <!--------------------------------------------------------------- END OF TOP NAVIGATION BAR --------------------------------------------------------------->
 
       <!------------------------------------------------------------------- SIDE NAVIGATION BAR ---------------------------------------------------------------->
       <div class="wrapper">
@@ -48,7 +54,7 @@
                   <div class="cancel-btn" id="cancel-btn">
                     <i class="fas fa-times"></i>
                   </div>
-                  <h3 id="menu-title">Digital Artefact Showcase</h3>
+                  <h3>Digital Artefact Showcase</h3>
               </div>
 
               <ul class="list-unstyled components">
@@ -81,7 +87,6 @@
               </div>
           </nav> <!-- Close nav sidebar -->
 
-      
         <!--------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------------->
 
         <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
@@ -98,163 +103,60 @@
                     </div> <!-- CLose container fluid -->
                 </nav>
 
-      <!--------------- UPLOAD PROJECT PAGE ------------------------->
-      <h2> Project details </h2>
-      <br>
-      <div class="container">
-      <form autocomplete="off" action="ProjectUploadPage.js">
-        <div class="row">
-          <div class="col-4">
-            <label for="title">Project Title:</label>
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title.." required>
-            <div class="invalid-feedback">Title must be between 4 to 200 characters.</div>
-          </div>
-        </div>
-        <br>
-       
-        <div class="row">
-          <div class="col-4">
-            <p>Project Description:</p>
-            <p class="max">(MAX of 3000 characters)</p>
-          </div>
+                <form>
+                  <input type="file" accept="image/*" multiple>
+                  <br><br><br>
 
-          <!-- WORD COUNT JAVASCRIPT -->
-          <div id="count_project" class="count">
-            <span id="current_project">0</span>
-            <span id="max_project">/ 3000</span>
-          </div>
+                  <div class="row" id="details">
+                    <p class = "heading1">Enter Artefact Details:</p>
+                  </div>
 
-          <div class="col-8" id="field">
-            <textarea class="form-control" id="text_project" name="description" placeholder="Enter description.." style="height:400px" maxlength="3000" required></textarea>
-          </div>
-        </div>
-        <br>
+                  <div class="row" id ="title">
+                    <div class="col-4">
+                      <label>Artefact Title:</label>
+                    </div>
+                    <div class="col-8" id="field">
+                        <input type="text" class="form-control" id="title_field" name="title_field" placeholder="Title.." required>
+                    </div>
+                  </div>
+                  <br><br>
 
-        <div class="upload">
-          <div class="upload-artefact" id="upload-artefact">
-            <h2><label for="upload-artefact">Upload Artefact(s):</label> </h2><br>
-          </div>
-          <div class="buttons">
-            <a class="btn btn-primary" href="UploadImagePage.html" role="button">Image</a>
-            <a class="btn btn-primary" href="UploadVideoPage.html" role="button">Video</a>
-            <br>
-            <!-- https://www.w3schools.com/jsref/dom_obj_fileupload.asp -- for individual image and video upload page -->
-            <!-- will the table displaying the files be generated from python?? -->
-          </div>
-        </div>
+                  <div class="row" id="description">
+                    <div class="col-4">
+                      <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
+                    </div>
 
-        <div class = "table-responsive">
-          <table class="table table-hover table-bordered">
-            <thead>
-              <tr>
-                <th>File name</th>
-                <th>Artefact title</th>
-                <th>File type</th>
-                <th>File size</th>
-              </tr>
-            </thead> 
+                    <!-- WORD COUNT -->
+                    <div id="count_desc" class="count">
+                      <span id="current_desc">0</span>
+                      <span id="max_desc">/ 600</span>
+                    </div>
 
-            <!-- Fill the table using sql query -->
-            <tbody>
-              <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
-              <tr>
-                <td><!-- FETCH INPUT FROM BACKEND --> a</td>
-                <td><!-- FETCH INPUT FROM BACKEND --> b</td>
-                <td><!-- FETCH INPUT FROM BACKEND --> c</td>
-                <td><!-- FETCH INPUT FROM BACKEND --> d</td>
-              </tr>
-            </tbody>
+                    <div class="col-8" id="artefact_col">
+                      <textarea class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
+                      <small class="form-text text-muted2">
+                        *The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
+                      </small>
+                    </div> <!-- Close col -->
+                  </div> <!-- Close row -->
+                  <br><br>
 
-          <!-- Close table -->
-          </table> 
-        </div>
-        
-        </br></br>
+                  <div class="submit-button">
+                    <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and back to project</a></button>
+                    <!-- Reload the page and empty the form -->
+                    <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and add new image</a></button>
+                  </div>
+                </form>
+          <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
 
-        <div class="row">
-          <div class="col-4">
-            <label for="module">Module Name:</label>
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control" id="module" name="module" placeholder="Module name.." required>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-4">
-            <label for="completionDate">Date of Completion:</label>
-          </div>
-          <div class="col-8">
-            <input type="date" class="form-control" id="completionDate" name="completionDate" placeholder="Date of completion.." required>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-4">
-            <label for="author">Author(s):</label>
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control" id="author" name="author" placeholder="Name(s)..." required>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-4">
-            <p>Author Comments:</p>
-            <p class="max">(MAX of 2000 characters)</p>
-          </div>
-
-          <!-- WORD COUNT JAVASCRIPT -->
-          <div id="count_author" class="count">
-            <span id="current_author">0</span>
-            <span id="max_author">/ 2000</span>
-          </div>
-
-          <div class="col-8" id="field">
-            <textarea class="form-control" id="text_author" name="description" placeholder="Write something.." style="height:250px" maxlength="2000"></textarea>
-          </div> 
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-4">
-            <label for="tags">Tag(s):</label>
-          </div>
-          <div class="col-8">
-            <!-- <input type="text" class="form-control" id="myTag" name="tag" placeholder="Name of tag(s)..." required> -->
-           
-      		<select id="tags" class="form-control" required>
-        		<option selected>No tags..</option>
-        		<option>Data Scholarship</option>
-        		<option>Digital Media Production</option>
-        		<option>Technologies for Learning</option>
-      		</select>
-          </div>
-        </div>
-        <br>
-
-        <div class="submit-button">
-          <button type="submit" id="submit" class="btn btn-primary">Submit project</button>
-        </div>
-
-      </form>
-      </div>
-
-      <!--------------- UPLOAD PROJECT PAGE ------------------------->
-
-      <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
+          <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
                 <footer>
                   <div class = "footer">
                     <div class="container p-4">
                       <div class="row">
-                          <div class="column" >
+                          <div class="column">
                             <h5>Address</h5>
-                            <p id="footer-desc">University of Nottingham Ningbo China<br>
+                            <p>University of Nottingham Ningbo China<br>
                               199, Taikang East Road Ningbo,<br>
                               315100, China
                             </p>
@@ -287,10 +189,7 @@
           <!---------------------------------------------------------------------- END OF FOOTER ------------------------------------------------------------------->
 
       <div class="overlay"></div>
-      
-    
-      <!-- Bootstrap Javascript -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <!-- Popper.JS -->
@@ -300,7 +199,26 @@
       <!-- jQuery Custom Scroller CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript -->
-      <script src="ProjectUploadPage.js"></script>
-      
-    </body>
+      <script src="secondaryLayout.js"></script>
+      <script type="text/javascript" src="imageuploadify.js"></script>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+        $('input[type="file"]').imageuploadify();
+      })
+      </script>
+
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+  </body>
 </html>

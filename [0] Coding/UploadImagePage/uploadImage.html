@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+        <!-- Own CSS -->
+        <link rel="stylesheet" href="uploadImage.css">
+
+        <title>Upload Image</title>
+  </head>
+
+  <body>
+      <!------------------------------------------------------------- TOP NAVIGATION BAR ----------------------------------------------------------------------->
+      <div>
+        <nav class="navbar fixed-top navbar-light bg-light">
+          <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
+          <div class="header-right">
+
+            <div class="d-flex flex-row-reverse bd-highlight align-items-center">
+                <!-- Logged in username appears here -->
+                <div class="p-2 bd-highlight" id="logged-in">Username123</div>
+
+                <div class="p-2 bd-highlight">
+                  <div class="user-btn">
+                      <i class="fas fa-user"></i>
+                  </div>
+                </div>
+
+                <div class="p-2 bd-highlight"></div>
+                <div class="p-2 bd-highlight"></div>
+            </div>  <!-- Close flex -->
+          </div> <!-- Close header right -->
+        </nav>
+      </div>
+      <!--------------------------------------------------------------- END OF TOP NAVIGATION BAR --------------------------------------------------------------->
+
+      <!------------------------------------------------------------------- SIDE NAVIGATION BAR ---------------------------------------------------------------->
+      <div class="wrapper">
+          <nav id="sidebar">
+              <div class="sidebar-header">
+                  <div class="cancel-btn" id="cancel-btn">
+                    <i class="fas fa-times"></i>
+                  </div>
+                  <h3>Digital Artefact Showcase</h3>
+              </div>
+
+              <ul class="list-unstyled components">
+                  <!-- Menu Bar Items -->
+                  <hr class="white">
+                  <li>
+                      <a href="#"><i class="fa fa-home fa-lg"></i>Home</a>
+                  </li>
+                  <li>
+                      <a href="https://www.nottingham.edu.cn/en/index.aspx"><i class="fa fa-university"></i>University of Nottingham</a>
+                  </li>
+                  <li>
+                      <a href="https://www.nottingham.edu.cn/en/careers/naa/nottingham-advantage-award.aspx"><i class="fa fa-trophy fa-lg"></i>Nottingham Advantage Award</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-line-chart"></i>Data Scholarship</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-picture-o"></i>Digital Media Production</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-laptop"></i>Technologies for Learning</a>
+                  </li>
+              </ul>
+
+              <!-- Dashboard and Upload Project buttons -->
+              <div>
+                <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
+                <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
+              </div>
+          </nav> <!-- Close nav sidebar -->
+
+        <!--------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------------->
+
+        <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
+        <div class="container">
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" id="small-navbar">
+                    <div class="container-fluid">
+
+                        <!-- Small navigation bar for Toggle Menu and Sort Methods -->
+                        <button type="button" id="toggle-menu" class="btn btn-outline-info">
+                            <i class="fa fa-bars"></i>
+                            <span>Toggle Menu</span>
+                        </button>
+                    </div> <!-- CLose container fluid -->
+                </nav>
+
+                <form>
+                  <input type="file" accept="image/*" multiple>
+                  <br><br><br>
+
+                  <div class="row" id="details">
+                    <p class = "heading1">Enter Artefact Details:</p>
+                  </div>
+
+                  <div class="row" id ="title">
+                    <div class="col-4">
+                      <label>Artefact Title:</label>
+                    </div>
+                    <div class="col-8" id="field">
+                        <input type="text" class="form-control" id="title_field" name="title_field" placeholder="Title.." required>
+                    </div>
+                  </div>
+                  <br><br>
+
+                  <div class="row" id="description">
+                    <div class="col-4">
+                      <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
+                    </div>
+
+                    <!-- WORD COUNT -->
+                    <div id="count_desc" class="count">
+                      <span id="current_desc">0</span>
+                      <span id="max_desc">/ 600</span>
+                    </div>
+
+                    <div class="col-8" id="artefact_col">
+                      <textarea class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
+                      <small class="form-text text-muted2">
+                        *The description will be added to all of the uploaded files. For artefacts with different descriptions, please save and add a new artefact.
+                      </small>
+                    </div> <!-- Close col -->
+                  </div> <!-- Close row -->
+                  <br><br>
+
+                  <div class="submit-button">
+                    <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and back to project</a></button>
+                    <!-- Reload the page and empty the form -->
+                    <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and add new image</a></button>
+                  </div>
+                </form>
+          <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
+
+          <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
+                <footer>
+                  <div class = "footer">
+                    <div class="container p-4">
+                      <div class="row">
+                          <div class="column">
+                            <h5>Address</h5>
+                            <p>University of Nottingham Ningbo China<br>
+                              199, Taikang East Road Ningbo,<br>
+                              315100, China
+                            </p>
+                          </div>
+
+                          <div class = "column">
+                            <h5>Essentials</h5>
+                            <ul class="list-unstyled">
+                              <li><a href = "https://www.nottingham.edu.cn/en/careers/naa/nottingham-advantage-award.aspx">Nottingham Advantage Award</a></li>
+                              <li><a href = "#!">Contact Us</a></li>
+                            </ul>
+                          </div>
+
+                          <div class = "column">
+                            <h5>Artefact portal</h5>
+                            <button type="button" class="btn btn-outline-light"><a href="loginpage.html" id="login-button">Login</a></button>
+                          </div>
+                      </div><!--Close row-->
+                    </div><!-- Close container -->
+
+                    <!-- Copyright -->
+                    <div class = "copyright">
+                      © All rights reserved
+                    </div>
+                  </div> <!-- Close footer-->
+                </footer>
+            </div> <!--Close content -->
+          </div> <!-- Close container -->
+        </div> <!-- Close wrapper -->
+          <!---------------------------------------------------------------------- END OF FOOTER ------------------------------------------------------------------->
+
+      <div class="overlay"></div>
+
+      <!-- jQuery CDN - Slim version (=without AJAX) -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <!-- Popper.JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <!-- jQuery Custom Scroller CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+      <!-- Own Javascript -->
+      <script src="secondaryLayout.js"></script>
+      <script type="text/javascript" src="imageuploadify.js"></script>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+        $('input[type="file"]').imageuploadify();
+      })
+      </script>
+
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
+  </body>
+</html>

@@ -24,45 +24,40 @@
   <body>
   <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
   <div>
-    <nav class="navbar fixed-top navbar-light bg-light">
-      <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
-      <div class="header-right">
-        <div class="search-box">
-            <input type="text" placeholder="Type to search...">
-            <div class="search-btn">
-              <i class="fas fa-search"></i>
-            </div>
+        <nav class="navbar fixed-top navbar-light bg-light">
+          <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
+          <div class="header-right">
 
-            <div class="cancel-btn">
-              <i class="fas fa-times"></i>
-            </div>
-        </div>
+            <div class="d-flex flex-row-reverse bd-highlight align-items-center">
+                <!-- Logged in username appears here -->
+                <div class="p-2 bd-highlight" id="logged-in">Username123</div>
+
+                <div class="p-2 bd-highlight">
+                  <div class="user-btn">
+                      <i class="fas fa-user"></i>
+                  </div>
+                </div>
+
+                <div class="p-2 bd-highlight"></div>
+                <div class="p-2 bd-highlight"></div>
+
+                <div class="p-2 bd-highlight">
+                  <div class="search-box">
+                    <input type="text" placeholder="Type to search...">
+                      <div class="search-btn">
+                        <i class="fas fa-search"></i>
+                      </div>
+
+                      <div class="cancel-btn">
+                        <i class="fas fa-times"></i>
+                      </div>
+                  </div>
+                </div> <!-- Close search box -->
+            </div>  <!-- Close flex -->
+          </div> <!-- Close header right -->
+        </nav>
       </div>
 
-      <!-- Open and close search bar -->
-      <script>
-        const searchBtn = document.querySelector(".search-btn");
-        const cancelBtn = document.querySelector(".cancel-btn");
-        const searchBox = document.querySelector(".search-box");
-        const searchInput = document.querySelector("input");
-      
-        searchBtn.onclick = () =>{
-          searchBox.classList.add("active");
-          searchInput.classList.add("active");
-          searchBtn.classList.add("active");
-          cancelBtn.classList.add("active");
-        }
-
-        cancelBtn.onclick = () =>{
-          searchBox.classList.remove("active");
-          searchInput.classList.remove("active");
-          searchBtn.classList.remove("active");
-          cancelBtn.classList.remove("active");
-          searchInput.value = "";
-        }
-      </script>
-    </nav>
-  </div>
   <!------------------------------------- END OF SEARCH BAR ----------------------------------------->
 
   <!----------------------------------------- SIDE NAVIGATION BAR ------------------------------------>
@@ -162,7 +157,7 @@
             	    <button type="button" class="btn btn-primary btn-block" disabled="true">Date of completion</button>
             	  </div>
             	  <div class="col-6">
-            	    <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
+            	    <p> essay there will be items fetched from database and will be shown here. </p>
             	  </div>
             	</div> <!-- row-->
             
@@ -200,22 +195,25 @@
             <div class="line"></div>
 
             <h2>Project description</h2>
+            <div class="description">
             <p> <!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
 
 			Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
 
 			Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
 
-			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4]</p>
+			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4]</p> </div>
+			</br></br>
 
             <h2>Author comments</h2>
+            <div class="description">
             <p><!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
 
 			Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
 
 			Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
 
-			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4] </p>
+			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4] </p> </div>
 
             
             <div id="artefacts">
@@ -238,10 +236,11 @@
                             <!----------------------- FLIP CARD 1 ---------------------------->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
+                                	<!--<div id="myModal" class="modal"> --> <!-- added : makes card invisible-->
                                     <div class="flip-card-front" id="right">
                                         <img class="card-picture" src="img1.jpg">
                                     </div>
-                                    <div class="flip-card-back">
+                                    <div class="flip-card-back" id="myImg">
                                         <!-- ARTEFACT TITLE -->
                                         <h3 class="card-title">Unicorn Cat</h3>
                                         <!-- PROJECT NAME -->
@@ -254,6 +253,7 @@
                                         </p>
                                         <button type="button" class="btn btn-info">Learn more > </button>
                                     </div>
+                                    <!--</div> -->
                                 </div>
                             </div>
                         <!-- Trigger the Modal -->
@@ -476,7 +476,7 @@
       <script src = "ProjectView.js"></script>
 
       <!-- Script for Toggle menu button -->
-      <script type="text/javascript">
+     <!-- <script type="text/javascript">
           $(document).ready(function () {
               $("#sidebar").mCustomScrollbar({
                   theme: "minimal"
@@ -490,10 +490,10 @@
 
               });
           });
-      </script>
+      </script> -->
 
       <!-- Script for cross button in side navigation menu -->
-      <script type="text/javascript">
+     <!-- <script type="text/javascript">
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
@@ -506,7 +506,7 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
-      </script>
+      </script> -->
       <script type="text/javascript">
       	var modal = document.getElementById("myModal");
 
@@ -527,7 +527,7 @@
 		span.onclick = function() {
 		  modal.style.display = "none";
 		}
-	</script>
+	</script> 
 
   </body>
 </html>

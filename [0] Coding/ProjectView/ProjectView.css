@@ -364,6 +364,14 @@ img.project-pic{
 
 }
 
+/*descriptions- both project and author comments */
+.description{
+	text-align: center;
+	justify-content: space-around;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 /* Table of flip card */
 table {
 	text-align: center;
@@ -468,7 +476,7 @@ hr.card-line {
     border-width: 0;
 }
 
-/* Style the Image Used to Trigger the Modal */
+/* Style the Image Used to Trigger the Modal  -- from IVAN */
 #myImg {
   border-radius: 5px;
   cursor: pointer;

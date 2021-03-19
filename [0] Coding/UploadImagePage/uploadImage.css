@@ -351,6 +351,11 @@ i.fa-bars:before {
 	padding:2px 0;
 	text-align:center;z-index:3
 }
+
+.glyphicon-remove:before {
+	content: "x";
+}
+
 .imageuploadify .imageuploadify-images-list .imageuploadify-container img{
 	height:100px;
 	left:50%;

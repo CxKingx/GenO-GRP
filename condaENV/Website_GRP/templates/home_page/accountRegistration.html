@@ -100,7 +100,17 @@
             <!-------------------------- Registration Form -------------------->
 
             {% if registered %}
-            <h1>Thank you for registering!</h1>
+            <div class="container">
+            <div id="content">
+                <div class="container">
+                  <div class="jumbotron">
+                      <img id="checked" src="{% static 'images/checked.png' %}" /><br>
+                      <p class="h3">Account has been successfully registered.</p><br>
+                      <a class="btn btn-primary btn-lg" href="#" role="button">Go back to the Admin page</a>
+                  </div>
+                </div>
+            </div> <!--Close content -->
+          </div> <!-- Close container -->
              <button type="button" ><a href="{% url 'logout' %}">Logout</a></button>
             {% else %}
 

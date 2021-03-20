@@ -46,10 +46,15 @@
                         {% endif %}
 
                         {% if i.Project_Approval_Status == "Pending" %}
-                            <form action="{% url 'home_page:edit_project' %}" method="POST">
-                            {% csrf_token %}
-                                <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
-                            </form>
+                            {% if todayDate > i.Account_ExpiryDate %}
+                                <td><p style="color: red">No longer editable</p></td>
+                            {% else %}
+                                <form action="{% url 'home_page:edit_project' %}" method="POST">
+                                {% csrf_token %}
+                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+
+                                </form>
+                            {% endif %}
 
                         {% elif i.Project_Approval_Status == "Approved" %}
                             {% if todayDate > i.Account_ExpiryDate %}
@@ -64,10 +69,15 @@
 
                         {% elif i.Project_Approval_Status == "Rejected" %}
 
-                            <form action="{% url 'home_page:edit_project' %}" method="POST">
+                            {% if todayDate > i.Account_ExpiryDate %}
+                                <td><p style="color: red">No longer editable</p></td>
+                            {% else %}
+                                <form action="{% url 'home_page:edit_project' %}" method="POST">
                                 {% csrf_token %}
-                                <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
-                            </form>
+                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+
+                                </form>
+                            {% endif %}
 
                         {% endif %}
 

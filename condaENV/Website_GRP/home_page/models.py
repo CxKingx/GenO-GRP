@@ -37,9 +37,6 @@ class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentID = models.PositiveIntegerField(unique=True, default=0)
 
-    # pip install pillow to use this!
-    # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
-    # profile_pic = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
 
     def __str__(self):
         # Built-in attribute of django.contrib.auth.models.User !
@@ -58,8 +55,8 @@ class Project(models.Model):
         ('Digital Media Production', 'Digital Media Production'),
         ('Technologies for Learning', 'Technologies for Learning'),
     ]
-    # Project_ID = models.PositiveIntegerField(unique = True)
-    # This is to connect , which Owner have dis project
+
+    # This is to connect , which Owner have this project
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True)
 
     Project_Name = models.CharField(max_length=50)
@@ -73,7 +70,7 @@ class Project(models.Model):
     Approval_Date = models.DateField(blank=True, null=True)
     # Make Expire Date 2weeks after upload , code in views.py, after approve no change
     Account_ExpiryDate = models.DateField(blank=True, null=True)
-    Last_Updated = models.DateTimeField(blank=True, null=True)
+    Last_Updated = models.DateField(blank=True, null=True)
 
     Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pending')  # Approval
     Authors = models.CharField(max_length=100, blank=True, null=True)
@@ -82,14 +79,6 @@ class Project(models.Model):
 
     def __str__(self):
         return self.Project_Name
-
-
-# class Account_Project_Connector(models.Model):
-#     User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
-#     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.User_ID.username + ' ' + self.Project_ID.Project_Name
 
 
 class ImageArtefact(models.Model):
@@ -103,10 +92,6 @@ class ImageArtefact(models.Model):
     def __str__(self):
         return self.Image_Name
 
-
-# class Project_Artefact_Connector(models.Model):
-#     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
-#     Artefact_ID = models.ForeignKey(Artefact_Info, on_delete=models.CASCADE)
 
 
 class VideoArtefact(models.Model):
@@ -127,3 +112,7 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+
+# pip install pillow to use this!
+    # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
+    # image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)

@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import UserForm, UserProfileInfoForm, VideoForm
 from home_page.models import VideoArtefact
-from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm
+from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm, ProjectForm
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -11,8 +10,6 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import UserProfileInfo
 from .models import Project
-# from .models import Project_Artefact_Connector
-# from .models import Account_Project_Connector
 from .models import ImageArtefact
 # from home_page.models import Artefact_Info
 from home_page.models import VideoArtefact
@@ -22,7 +19,7 @@ from datetime import datetime, timedelta, date
 from django.utils import timezone
 
 # to call user
-User = get_user_model()
+# User = get_user_model()
 
 
 # Create your views here.
@@ -94,12 +91,6 @@ def edit_project(request):
         print(ProjectID)
         print(request.user)
         # Process this project ID
-
-
-# adminDashboard
-@login_required
-def adminDashboard(request):
-    return render(request, 'home_page/adminDashboard.html', {})
 
 
 @login_required
@@ -175,6 +166,11 @@ def user_logout(request):
 
 
 def register(request):
+    if request.user.is_staff:
+        print("Staff has logined")
+    else:
+        return render(request, 'home_page/adminLogin.html')
+
     registered = False
     # formcorrect = True
     # print(formcorrect)
@@ -196,6 +192,7 @@ def register(request):
             profile_form = UserProfileInfoForm(data=request.POST)
 
             profile = profile_form.save(commit=False)
+
             profile.user = user
 
             # check if ID is empty
@@ -296,7 +293,7 @@ def admin_login(request):
                     login(request, user)
                     # Send the user back to homepage.
 
-                    return HttpResponseRedirect(reverse('adminDashboard'))
+                    return HttpResponseRedirect(reverse('register'))
                 else:
                     # If account is not active:
                     return HttpResponse("Your account is not superuser.")
@@ -312,7 +309,7 @@ def admin_login(request):
             # "right now only back to login but no text invalid login")
             wrongpassword = False
             context = {'wrongpassword': wrongpassword}
-            return render(request, 'home_page/admin_login.html', context)
+            return render(request, 'home_page/accountRegistration.html', context)
 
     else:
         # Nothing has been provided for username or password.
@@ -347,6 +344,7 @@ def searchbar(request):
         return render(request, 'home_page/searchbar.html', {'post': post})
 
 
+# The test version
 def image_upload_view(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -358,6 +356,26 @@ def image_upload_view(request):
         form = ImageForm()
 
     return render(request, 'home_page/uploadimage.html', {'form': form})
+
+
+def testuploadproject(request):
+    Projectformhtml = ProjectForm()
+    return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml})
+
+# Project form save first
+# Then save picture form and video form , connect them to project
+
+
+#     if request.method == 'POST':
+#         form = ImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             img_obj = form.instance
+#             return render(request, 'home_page/testuploadproject.html', {'form': form, 'img_obj': img_obj})
+#     else:
+#         form = ImageForm()
+#
+#     return render(request, 'home_page/uploadimage.html', {'form': form})
 
 # Extra codes for future use
 

@@ -20,9 +20,11 @@ class StudentIDAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['User_Owner', 'Project_Name', 'Project_Tag', 'Upload_Date', 'Project_Approval_Status','Admin_Comment']
+    #list_display = ['User_Owner', 'Project_Name', 'Project_Tag', 'Upload_Date', 'Project_Approval_Status','Admin_Comment']
+    list_display = ['User_Owner', 'Project_Name', 'Project_Tag', 'Upload_Date', 'Project_Approval_Status']
     search_fields = ['Project_Name', 'Project_Approval_Status', 'Project_Tag']
-    list_editable = ['Project_Approval_Status','Admin_Comment']
+    #list_editable = ['Project_Approval_Status','Admin_Comment']
+    list_editable = ['Project_Approval_Status']
     list_filter = ['Project_Approval_Status','Project_Tag']
 
 
@@ -44,7 +46,7 @@ admin.site.register(models.Project, ProjectAdmin)
 # admin.site.register(models.Project_Artefact_Connector)
 admin.site.register(models.ImageArtefact, ArtefactAdmin)
 admin.site.register(models.VideoArtefact, VideoAdmin)
-
+admin.site.register(models.Image)
 
 #https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
 

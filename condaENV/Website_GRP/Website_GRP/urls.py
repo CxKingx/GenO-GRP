@@ -35,16 +35,14 @@ urlpatterns = [
     path('Login/', views.loginPage, name='loginPage'),
     path('logout/', views.user_logout, name='logout'),
     path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
+    path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
 
     #Still needs to be edited
-    path('register/', views.register, name='register'),
     path('register/', views.register, name='register'),
 
     path('upload_project/', views.upload_project, name='upload_project'),
 
     path('adminLogin/', views.adminLogin, name='adminLogin'),
-    path('adminDashboard/', views.adminDashboard, name='adminDashboard'),
-
 
     path('welcome/', views.welcomepage, name='welcomepage'),
     path('upload_artefact/', views.showvideo, name = 'showvideo'),
@@ -54,12 +52,12 @@ urlpatterns = [
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
-    path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
 
     path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
+    path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

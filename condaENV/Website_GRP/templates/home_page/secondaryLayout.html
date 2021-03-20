@@ -13,22 +13,22 @@
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
         <!--
-        <link rel="stylesheet" href="layout.css">
+        <link rel="stylesheet" href="secondaryLayout.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         -->
-
-        <link rel="stylesheet" href="{% static 'css/layout.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/secondaryLayout.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
         {% block layout_css %}
 
         {% endblock %}
+        
 
   </head>
 
   <body>
-      <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
+      <!------------------------------------------------------------- TOP NAVIGATION BAR ----------------------------------------------------------------------->
       <div>
         <nav class="navbar fixed-top navbar-light bg-light">
           <a class="navbar-brand" href="{% url 'indexbase' %}"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
@@ -50,19 +50,6 @@
                 <div class="p-2 bd-highlight"></div>
                 {% else %}
                 {% endif %}
-
-                <div class="p-2 bd-highlight">
-                  <div class="search-box">
-                    <input type="text" placeholder="Type to search...">
-                      <div class="search-btn">
-                        <i class="fas fa-search"></i>
-                      </div>
-
-                      <div class="cancel-btn">
-                        <i class="fas fa-times"></i>
-                      </div>
-                  </div>
-                </div> <!-- Close search box -->
             </div>  <!-- Close flex -->
           </div> <!-- Close header right -->
         </nav>
@@ -101,26 +88,23 @@
                       <a href="#"><i class="fa fa-laptop"></i>Technologies for Learning</a>
                   </li>
               </ul>
-
-              <!-- Dashboard and Upload Project buttons -->
-              <div>
-              {% if user.is_superuser %}
-                <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                <p><br>Logged in as superuser : {{ user.username }}!</p>
-              {% elif user.is_authenticated %}
                 <div>
-                    <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
-                    <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
+                    {% if user.is_superuser %}
+                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                        <p><br>Logged in as superuser : {{ user.username }}!</p>
+                    {% elif user.is_authenticated %}
+                    <div>
+                        <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
+                        <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
+                    </div>
+                    {% else %}
+                    {% endif %}
                 </div>
-                  {% else %}
-                   {% endif %}
-              </div>
-              <!--
+              <!-- Dashboard and Upload Project buttons
               <div>
                 <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
                 <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
-              </div>
-              -->
+              </div>-->
           </nav> <!-- Close nav sidebar -->
 
         <!--------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------------->
@@ -136,28 +120,10 @@
                             <i class="fa fa-bars"></i>
                             <span>Toggle Menu</span>
                         </button>
-
-                        <button class="btn btn-outline-info d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fa fa-bars"></i>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav ml-auto">
-                                <div class="dropdown">
-                                  <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sort by..
-                                  </button>
-                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Project name</a>
-                                    <a class="dropdown-item" href="#">Latest upload</a>
-                                  </div>
-                                </div>
-                            </ul>
-                        </div>
                     </div> <!-- CLose container fluid -->
                 </nav>
 
-               {% block content %}
+                 {% block content %}
 
                 {% endblock %}
           <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
@@ -184,15 +150,15 @@
                           </div>
 
                           <div class = "column">
-                            <h5>Artefact portal</h5>
-                            {% if user.is_superuser %}
-                            <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                            <p><br>Logged in as superuser : {{ user.username }}!</p>
-                            {% elif user.is_authenticated %}
-                            <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                          {% else %}
-                            <button type="button" class="btn btn-outline-light"><a href="{% url 'loginPage' %}">Login</a></button>
-                          {% endif %}
+                                <h5>Artefact portal</h5>
+                                {% if user.is_superuser %}
+                                    <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                                    <p><br>Logged in as superuser : {{ user.username }}!</p>
+                                {% elif user.is_authenticated %}
+                                    <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                                {% else %}
+                                    <button type="button" class="btn btn-outline-light"><a href="{% url 'loginPage' %}">Login</a></button>
+                                {% endif %}
                           </div>
                       </div><!--Close row-->
                     </div><!-- Close container -->
@@ -219,7 +185,8 @@
       <!-- jQuery Custom Scroller CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript -->
-      <script src="{% static 'javascript/layout.js' %}"></script>
+
+  <script src="{% static 'javascript/secondaryLayout.js' %}"></script>
 
   </body>
 </html>

@@ -52,6 +52,8 @@ urlpatterns = [
     path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
 
     path('layout/', views.layout, name='layout'),
+    path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
+
     path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
 
     path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),

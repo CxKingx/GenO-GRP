@@ -1,5 +1,4 @@
 /* Add event listener to all fields in the form */
-//document.getElementById('submit').addEventListener('keyup',submitForm);
 document.getElementById('studentID').addEventListener('keyup', validateStudentId);
 document.getElementById('firstName').addEventListener('keyup', validateFirstName);
 document.getElementById('lastName').addEventListener('keyup', validateLastName);
@@ -60,7 +59,7 @@ function validateFirstName() {
     const firstName = document.getElementById('firstName');
     const re = /^[a-zA-Z ]{2,100}$/;
 
-    if(!re.test(firstName.value)){
+    if ((!re.test(firstName.value)) || (firstName.value.trim() == "")) {
         firstName.classList.add('is-invalid');
         document.getElementById('submit').disabled = true;
     }
@@ -79,7 +78,7 @@ function validateLastName() {
     const lastName = document.getElementById('lastName');
     const re = /^[a-zA-Z ]{2,100}$/;
 
-    if(!re.test(lastName.value)){
+    if ((!re.test(lastName.value)) || (lastName.value.trim() == "")) {
         lastName.classList.add('is-invalid');
         document.getElementById('submit').disabled = true;
     }
@@ -111,11 +110,11 @@ function validateEmail() {
 }
 
 /* This function checks the username entered by user.
- * Username must be between 5 and 15 characters of letters or digits, without space.
+ * Username must be between 6 and 15 characters of letters or digits, without space.
  */
 function validateUsername() {
     const username = document.getElementById('username');
-    const re = /^[a-zA-Z0-9]{5,15}$/;
+    const re = /^[a-zA-Z0-9]{6,15}$/;
 
     if(!re.test(username.value)){
         username.classList.add('is-invalid')

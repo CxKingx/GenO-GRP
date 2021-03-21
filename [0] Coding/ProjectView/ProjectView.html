@@ -11,12 +11,9 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <link rel="stylesheet" href="ProjectView.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/imageModalFlip.css"/>
-        <script type = "text/javascript" src="{% static 'javascript/enlarge.js' %}"></script>
-
+        <link rel="stylesheet" href="ProjectView.css">
         
         <title>Project View page</title>
   </head>
@@ -219,164 +216,217 @@
                     <!--------------------------------- ROW 1 ------------------------------------------->
                     <tr>
                         <td>
-                            <!----------------------- FLIP CARD 1 ---------------------------->
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                	<!--<div id="myModal" class="modal"> --> <!-- added : makes card invisible-->
-                                    <div class="flip-card-front" id="right">
-                                        <img class="card-picture" src="img1.jpg">
-                                    </div>
-                                    <div class="flip-card-back" id="myImg"> <!-- trigger modal with id="myImg"-->
-                                        <!-- ARTEFACT TITLE -->
-                                        <h3 class="card-title">Unicorn Cat</h3>
-                                        <!-- PROJECT NAME -->
-                                        <h5 class="project-title">Data Scholarship Project 1</h5>
-                                        <!-- <br> -->
-                                        <hr class="card-line">
-                                        <!-- ARTEFACT DESCRIPTION -->
-                                        <p class="card-description">
-                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
-                                        </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
-                                    </div>
-                                    <!--</div> -->
+                          <!----------------------- FLIP CARD 1 ---------------------------->
+                          <div class="flip-box">
+                              <div class="flip-box-inner">
+                                <div class="flip-box-front" id="right">
+                                  <img class="card-picture" src="img1.jpg">
                                 </div>
-                            </div>
-                        <!-- Trigger the Modal -->
-	<!-- <img id="myImg" src="img1.jpg" alt="Snow" style="width:100%;max-width:300px"> -->
-
-                        <!-- The Modal -->
-                <div id="myModal" class="modal">
-                <!-- The Close Button -->
-                <span class="close">&times;</span>
-                <!-- Modal Content (The Image) -->
-                <img class="modal-content" id="img01">
-
-                <!-- Modal Caption (Image Text) -->
-                <div id="caption"></div>
-                </div>
-                </td>
+                                <div class="flip-box-back" id="flipcardID">
+                                  <img class="myImg" id="myImg" src="img1.jpg" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                  <!-- ARTEFACT TITLE -->
+                                  <h3 class="card-title">Unicorn Cat</h3>
+                                  <!-- PROJECT NAME -->
+                                  <h5 class="project-title">Data Scholarship Project 1</h5>
+                                  <!-- <br> -->
+                                  <hr class="card-line">
+                                  <!-- ARTEFACT DESCRIPTION -->
+                                  <p class="card-description">
+                                    Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                  </p>
+                                  <button type="button" class="btn btn-info">Learn more > </button>
+                                </div>
+                                <!--</div> -->
+                              </div>
+                          </div>
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		  <div id="myModal" class="modal">
+                		    <!-- The Close Button -->
+                		  	<span class="close">&times;</span>
+                			<!-- Modal Content (The Image) -->
+                			<img class="modal-content" id="img01">
+                			<!-- Modal Caption (Image Text) -->
+                			<div id="caption"></div>
+                		  </div>
+                		</td>
 
                         <!----------------------- FLIP CARD 2 ---------------------------->
                         <td>
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front" id="right">
-                                        <img class="card-picture" src="img2.jpg">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <!-- ARTEFACT TITLE -->
-                                        <h3 class="card-title">Unicorn Cat</h3>
-                                        <!-- PROJECT NAME -->
-                                        <h5 class="project-title">Data Scholarship Project 1</h5>
-                                        <!-- <br> -->
-                                        <hr class="card-line">
-                                        <!-- ARTEFACT DESCRIPTION -->
-                                        <p class="card-description">
-                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
-                                        </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
-                                    </div>
-                                </div>
+                          <div class="flip-box">
+                            <div class="flip-box-inner">
+                              <div class="flip-box-front" id="right">
+                                <img class="card-picture" src="img2.jpg">
+                              </div>
+                              <div class="flip-box-back" id="flipcardID">
+                              	<img class="myImg" id="myImg" src="img2.jpg" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                <!-- ARTEFACT TITLE -->
+                                <h3 class="card-title">Unicorn Cat</h3>
+                                <!-- PROJECT NAME -->
+                                <h5 class="project-title">Data Scholarship Project 1</h5>
+                                <!-- <br> -->
+                                <hr class="card-line">
+                                <!-- ARTEFACT DESCRIPTION -->
+                                <p class="card-description">
+                                  Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                </p>
+                                <button type="button" class="btn btn-info">Learn more > </button>
+                              </div>
                             </div>
+                          </div>
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		  <div id="myModal" class="modal">
+                		    <!-- The Close Button -->
+                		  	<span class="close">&times;</span>
+                			<!-- Modal Content (The Image) -->
+                			<img class="modal-content" id="img01">
+                			<!-- Modal Caption (Image Text) -->
+                			<div id="caption"></div>
+                		  </div>
+                            
                         </td>
                         <!------------------------- FLIP CARD 3 ---------------------------->
                         <td>
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front" id="right">
-                                        <img class="card-picture" src="img3.jpg">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <!-- ARTEFACT TITLE -->
-                                        <h3 class="card-title">Unicorn Cat</h3>
-                                        <!-- PROJECT NAME -->
-                                        <h5 class="project-title">Data Scholarship Project 1</h5>
-                                        <!-- <br> -->
-                                        <hr class="card-line">
-                                        <!-- ARTEFACT DESCRIPTION -->
-                                        <p class="card-description">
-                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
-                                        </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
-                                    </div>
-                                </div>
+                          <div class="flip-box">
+                            <div class="flip-box-inner">
+                              <div class="flip-box-front" id="right">
+                                <img class="card-picture" src="img3.jpg">
+                              </div>
+                              <div class="flip-box-back" id="flipcardID">
+                              	<img class="myImg" id="myImg" src="img3.jpg" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                <!-- ARTEFACT TITLE -->
+                                <h3 class="card-title">Unicorn Cat</h3>
+                                <!-- PROJECT NAME -->
+                                <h5 class="project-title">Data Scholarship Project 1</h5>
+                                <!-- <br> -->
+                                <hr class="card-line">
+                                <!-- ARTEFACT DESCRIPTION -->
+                                <p class="card-description">
+                                  Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                </p>
+                                <button type="button" class="btn btn-info">Learn more > </button>
+                              </div>
                             </div>
+                          </div>
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		  <div id="myModal" class="modal">
+                		    <!-- The Close Button -->
+                		  	<span class="close">&times;</span>
+                			<!-- Modal Content (The Image) -->
+                			<img class="modal-content" id="img01">
+                			<!-- Modal Caption (Image Text) -->
+                			<div id="caption"></div>
+                		  </div> 
                         </td>
                     </tr> <!-- Close Row 1-->
                 <!------------------------------- ROW 2 --------------------------------------->
                     <tr>
                         <!---------------------- FLIP CARD 4 ------------------------------->
                         <td>
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front" id="right">
-                                        <img class="card-picture" src="img1.jpg">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <!-- ARTEFACT TITLE -->
-                                        <h3 class="card-title">Unicorn Cat</h3>
-                                        <!-- PROJECT NAME -->
-                                        <h5 class="project-title">Data Scholarship Project 1</h5>
-                                        <!-- <br> -->
-                                        <hr class="card-line">
-                                        <!-- ARTEFACT DESCRIPTION -->
-                                        <p class="card-description">
-                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
-                                        </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
-                                    </div>
-                                </div>
+                          <div class="flip-box">
+                            <div class="flip-box-inner">
+                              <div class="flip-box-front" id="right">
+                                <img class="card-picture" src="img1.jpg">
+                              </div>
+                              <div class="flip-box-back" id="flipcardID">
+                              	<img class="myImg" id="myImg" src="img1.jpg" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                <!-- ARTEFACT TITLE -->
+                                <h3 class="card-title">Unicorn Cat</h3>
+                                <!-- PROJECT NAME -->
+                                <h5 class="project-title">Data Scholarship Project 1</h5>
+                                <!-- <br> -->
+                                <hr class="card-line">
+                                <!-- ARTEFACT DESCRIPTION -->
+                                <p class="card-description">
+                                  Apart from counting words and characters, our online editor can help you to improve rd choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                </p>
+                                <button type="button" class="btn btn-info">Learn more > </button>
+                              </div>
                             </div>
+                          </div>
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		  <div id="myModal" class="modal">
+                		    <!-- The Close Button -->
+                		  	<span class="close">&times;</span>
+                			<!-- Modal Content (The Image) -->
+                			<img class="modal-content" id="img01">
+                			<!-- Modal Caption (Image Text) -->
+                			<div id="caption"></div>
+                		  </div>  
                         </td>
                         <!------------------------- FLIP CARD 5 ------------------------------->
                         <td>
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front" id="right">
-                                        <img class="card-picture" src="img2.jpg">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <!-- ARTEFACT TITLE -->
-                                        <h3 class="card-title">Unicorn Cat</h3>
-                                        <!-- PROJECT NAME -->
-                                        <h5 class="project-title">Data Scholarship Project 1</h5>
-                                        <!-- <br> -->
-                                        <hr class="card-line">
-                                        <!-- ARTEFACT DESCRIPTION -->
-                                        <p class="card-description">
-                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
-                                        </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
-                                    </div>
-                                </div>
+                          <div class="flip-box">
+                            <div class="flip-box-inner">
+                              <div class="flip-box-front" id="right">
+                                <img class="card-picture" src="img2.jpg">
+                              </div>
+                              <div class="flip-box-back" id="flipcardID">
+                              	<img class="myImg" id="myImg" src="img2.jpg" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                <!-- ARTEFACT TITLE -->
+                                <h3 class="card-title">Unicorn Cat</h3>
+                                <!-- PROJECT NAME -->
+                                <h5 class="project-title">Data Scholarship Project 1</h5>
+                                <!-- <br> -->
+                                <hr class="card-line">
+                                <!-- ARTEFACT DESCRIPTION -->
+                                <p class="card-description">
+                                  Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                </p>
+                                <button type="button" class="btn btn-info">Learn more > </button>
+                              </div>
                             </div>
+                          </div>
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		  <div id="myModal" class="modal">
+                		    <!-- The Close Button -->
+                		  	<span class="close">&times;</span>
+                			<!-- Modal Content (The Image) -->
+                			<img class="modal-content" id="img01">
+                			<!-- Modal Caption (Image Text) -->
+                			<div id="caption"></div>
+                		  </div>  
                         </td>
                     </tr>
                     <!------------------------------- ROW 3 --------------------------------------->
                     <tr>
                         <!---------------------- FLIP CARD 6 ------------------------------->
                         <td>
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front" id="right">
-                                        <img class="card-picture" src="img3.jpg">
-                                    </div>
-                                    <div class="flip-card-back">
-                                        <!-- ARTEFACT TITLE -->
-                                        <h3 class="card-title">Unicorn Cat</h3>
-                                        <!-- PROJECT NAME -->
-                                        <h5 class="project-title">Data Scholarship Project 1</h5>
-                                        <!-- <br> -->
-                                        <hr class="card-line">
-                                        <!-- ARTEFACT DESCRIPTION -->
-                                        <p class="card-description">
-                                            Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
-                                        </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
-                                    </div>
-                                </div>
+                          <div class="flip-box">
+                            <div class="flip-box-inner">
+                              <div class="flip-box-front" id="right">
+                                <img class="card-picture" src="img3.jpg">
+                              </div>
+                              <div class="flip-box-back" id="flipcardID">
+                              	<img class="myImg" id="myImg" src="img3.jpg" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                <!-- ARTEFACT TITLE -->
+                                <h3 class="card-title">Unicorn Cat</h3>
+                                <!-- PROJECT NAME -->
+                                <h5 class="project-title">Data Scholarship Project 1</h5>
+                                <!-- <br> -->
+                                <hr class="card-line">
+                                <!-- ARTEFACT DESCRIPTION -->
+                                <p class="card-description">
+                                  Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                                </p>
+                                <button type="button" class="btn btn-info">Learn more > </button>
+                              </div>
                             </div>
+                          </div>
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		  <div id="myModal" class="modal">
+                		    <!-- The Close Button -->
+                		  	<span class="close">&times;</span>
+                			<!-- Modal Content (The Image) -->
+                			<img class="modal-content" id="img01">
+                			<!-- Modal Caption (Image Text) -->
+                			<div id="caption"></div>
+                		  </div>  
                         </td>                        
                     </tr>
                     <!--Don't put card over </c:forEach>-->
@@ -386,26 +436,36 @@
         </div> 
 
 <!----------------------------------------- Videos ------------------------------------------------------>
-            	<div class="line"></div>
+        <div class="line"></div>
 
-            	<h3>Videos</h3>
-            	<p>all videos will be here</p>
-            	<!-- <div class="video"> -->
-            	<div class="form-row">
-            	  <div class="form-group col-md-6">
-            		<video controls><source src="vid1.mp4" type="video/mp4">Video title</video>
-            	  </div>
 
-            	<!-- <div class="video-desc"> -->
-            	  <div class="form-group col-md-4">
-            	 	<p>all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. <!-- FETCH FROM DATABASE --></p>
-            	  </div>
-            	</div>
-            	</br></br>
+        <h3>Videos</h3>
+          <p>all videos will be here</p>
+            <!-- 1st video -->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+            	<video controls><source src="vid1.mp4" type="video/mp4">Video title 1</video>
+              </div>
 
-            </div> <!--id="artefacts"-->
-         
- 
+            <!-- <div class="video-desc"> -->
+              <div class="form-group col-md-4">
+             	<p>all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. <!-- FETCH FROM DATABASE --></p>
+              </div>
+            </div>
+            </br></br>
+
+            <!-- 2nd video -->
+            <div class="form-row">
+              <div class="form-group col-md-6">
+            	<video controls><source src="vid1.mp4" type="video/mp4">Video title 2</video>
+              </div>
+
+            <!-- <div class="video-desc"> -->
+              <div class="form-group col-md-4">
+             	<p>all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. <!-- FETCH FROM DATABASE --></p>
+              </div>
+            </div>     
+ 			</br></br>
  			
       <!----------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------->
         
@@ -453,6 +513,7 @@
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
       <!-- Popper.JS -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
       <!-- Bootstrap JS -->
@@ -460,61 +521,7 @@
       <!-- jQuery Custom Scroller CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript-->
-      <script src = "ProjectView.js"></script>
-
-      <!-- Script for Toggle menu button -->
-     <!-- <script type="text/javascript">
-          $(document).ready(function () {
-              $("#sidebar").mCustomScrollbar({
-                  theme: "minimal"
-              });
-
-              $('#toggle-menu').on('click', function () {
-                  $('#sidebar, #content').toggleClass('active');
-                  $('.collapse.in').toggleClass('in');
-                  $('.overlay').addClass('active');
-                  $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-
-              });
-          });
-      </script> -->
-
-      <!-- Script for cross button in side navigation menu -->
-     <!-- <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#cancel-btn').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('.overlay').removeClass('active');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-      </script> -->
-      <script type="text/javascript">
-      	var modal = document.getElementById("myModal");
-
-		// Get the image and insert it inside the modal - use its "alt" text as a caption
-		var img = document.getElementById("myImg");
-		var modalImg = document.getElementById("img01");
-		var captionText = document.getElementById("caption");
-		img.onclick = function(){
-  			modal.style.display = "block";
-  			modalImg.src = this.src;
-  			captionText.innerHTML = this.alt;
-		}
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-	</script> 
+      <script type="text/javascript" src="ProjectView.js"></script> 
 
   </body>
 </html>

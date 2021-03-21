@@ -57,19 +57,24 @@ if(document.readyState === 'loading') {
 
 function afterLoaded(){
     // Get the modal
-    var modal = document.getElementById('myModal');
+    var modal = document.getElementById("myModal");
 
     // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var imgem = document.getElementById("myImg");
-    var imgem2 = document.getElementById("flipcardID");
+    var imgem2 = document.querySelectorAll(".flip-box-back");
+    console.log(imgem2);
     var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
+    var captionText = document.querySelectorAll(".caption");
 
-    imgem2.onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = imgem.src;
-        captionText.innerHTML = imgem.alt;
-    }
+    imgem2.forEach(function(item) {
+        item.addEventListener('click', function(e){
+            var imgem = item.querySelector(".myImg");
+
+            modal.style.display = "block";
+            modalImg.src = imgem.src;
+            captionText.innerHTML = imgem.alt;
+        });
+        
+    });
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];

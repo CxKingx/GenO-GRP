@@ -131,3 +131,27 @@ button {
     background-color: #1a296b;
     border-width: 0;
 }
+
+p.modal-title {
+    font-size: 12px;
+}
+
+div.modal-body {
+    font-size: 16px;
+    text-align: center;
+}
+
+img#checked {
+    width: 10%;
+    height: 10%;
+    margin-bottom: 5%;
+}
+
+div.modal-footer {
+     text-align: center;
+}
+
+button.btn.btn-primary {
+    background-color: #005597;
+	color: white;
+}

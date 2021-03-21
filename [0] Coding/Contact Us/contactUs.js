@@ -1,7 +1,7 @@
 /* Add event listener to the fields of the form: name, email, and message */
-document.getElementById('name').addEventListener('keypress', validateName);
-document.getElementById('email').addEventListener('keypress', validateEmail);
-document.getElementById('message').addEventListener('keypress', validateMessage);
+document.getElementById('name').addEventListener('keyup', validateName);
+document.getElementById('email').addEventListener('keyup', validateEmail);
+document.getElementById('message').addEventListener('keyup', validateMessage);
 
 /* Validate name, email, and message before enabling users to submit form */
 function submitForm() {
@@ -19,13 +19,13 @@ function submitForm() {
 }
 
 /* This function checks the name entered by user.
- * Name should only contain letters, and between 3 - 50 characters long. 
+ * Name should only contain letters, and between 3 - 100 characters long.
  */
 function validateName() {
     const name = document.getElementById('name');
-    const re = /^[a-zA-Z ]{2,50}$/;
+    const re = /^[a-zA-Z ]{3,100}$/;
  
-    if(!re.test(name.value)){
+    if ((!re.test(name.value)) || (name.value.trim() == "")) {
         name.classList.add('is-invalid');
         document.getElementById('submit').disabled = true;
     }
@@ -61,10 +61,10 @@ function validateEmail() {
  */
 function validateMessage() {
     const message = document.getElementById('message');
-    var min_length = 2;
+    var min_length = 3;
     var max_length = 1000;
  
-    if((message.value.length < min_length) || (message.value.length > max_length)){
+    if ((message.value.trim() == "") || (message.value.length < min_length) || (message.value.length > max_length)){
         message.classList.add('is-invalid');
         document.getElementById('submit').disabled = true;
     }

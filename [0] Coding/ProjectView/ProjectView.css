@@ -511,6 +511,7 @@ hr.card-line {
 
 /* Modal Content (Image) */
 .modal-content {
+  top:100px;  /* because of top navigation bar */
   margin: auto;
   display: block;
   width: 80%;
@@ -543,7 +544,7 @@ hr.card-line {
 /* The Close Button */
 .close {
   position: absolute;
-  top: 15px;
+  top: 105px;  /* because of top navigation bar */
   right: 35px;
   color: #f1f1f1;
   font-size: 40px;

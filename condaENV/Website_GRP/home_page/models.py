@@ -37,7 +37,6 @@ class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentID = models.PositiveIntegerField(unique=True, default=0)
 
-
     def __str__(self):
         # Built-in attribute of django.contrib.auth.models.User !
         return self.user.username
@@ -93,7 +92,6 @@ class ImageArtefact(models.Model):
         return self.Image_Name
 
 
-
 class VideoArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
@@ -114,5 +112,5 @@ class Image(models.Model):
         return self.title
 
 # pip install pillow to use this!
-    # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
-    # image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
+# Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
+# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)

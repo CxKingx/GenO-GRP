@@ -18,8 +18,10 @@ from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta, date
 from django.utils import timezone
 
+from django.db.models import Q
+
 # to call user
-# User = get_user_model()
+User = get_user_model()
 
 
 # Create your views here.
@@ -50,6 +52,20 @@ def adminLogin(request):
 
 def welcomepage(request):
     return render(request, 'home_page/WelcomePage.html', {})
+
+def oldregister(request):
+    user_form = UserForm()
+    profile_form = UserProfileInfoForm()
+    # print(formcorrect)
+    # This is the render and context dictionary to feed
+    # back to the registration.html file page.
+
+    # return render(request, 'home_page/register.html',
+
+
+    return render(request, 'home_page/accountRegistrationold.html',
+              {'user_form': user_form,
+               'profile_form': profile_form,})
 
 
 # Test Return Pages
@@ -201,8 +217,9 @@ def register(request):
             # print(formcorrect)
             registered = True
             print("registered")
-            return render(request, 'home_page/accountRegistration.html', {'registered': registered})
 
+            #return render(request, 'home_page/accountRegistration.html', {'registered': registered})
+            return render(request, 'home_page/registerSuccess.html', {'registered': registered})
 
         else:
             # One of the forms was invalid if this else gets called.

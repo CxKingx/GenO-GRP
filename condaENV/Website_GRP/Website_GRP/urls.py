@@ -39,7 +39,7 @@ urlpatterns = [
 
     #Still needs to be edited
     path('register/', views.register, name='register'),
-
+    path('oldregister/', views.oldregister, name='oldregister'),
     path('upload_project/', views.upload_project, name='upload_project'),
 
     path('adminLogin/', views.adminLogin, name='adminLogin'),

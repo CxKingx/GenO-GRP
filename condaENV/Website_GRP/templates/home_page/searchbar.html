@@ -14,15 +14,21 @@
         <h1> item found</h1>
         <br>
     {% for i in post %}
-        {{ i.name }}, {{ i.videofile }}
-    <source src='{{ MEDIA_URL }}{{ i.videofile  }}' type='video/mp4'>
-    <video width='400' controls>
-        <source src="{{ MEDIA_URL }}{{ i.videofile  }}" type='video/mp4'>
-        Your browser does not support the video tag.
-    </video>
+     <div>{{ i.User_Owner }}, {{ i.Project_Name }}, {{i.Project_Description}}, {{i.Project_Tag}}, {{i.Authors}}</div>
     <br>
     {% endfor %}
-    {% endif %}
+  {% endif %}
 
+     {% if ProjectFile %}
+        {% for j in post %}
+        <source src='{{ MEDIA_URL }}{{ j.videofile  }}' type='video/mp4'>
+        <video width='400' controls>
+            <source src="{{ MEDIA_URL }}{{ j.videofile  }}" type='video/mp4'>
+            Your browser does not support the video tag.
+        </video>
+     {% endfor %}
+  {% endif %}
+
+<label for="asdasddasd">asdasdad</label>
 </body>
 </html>

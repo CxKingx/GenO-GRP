@@ -317,14 +317,23 @@ def showvideo(request):
 
 from django.db.models import Q
 
-
 def searchbar(request):
     if request.method == "GET":
         search = request.GET.get('search')
-        # post = Artefact_Info.objects.all().filter(Q(ArtefactName__icontains=search))
-        post = Video_Artefact.objects.all().filter(Q(name__icontains=search))
-        return render(request, 'home_page/searchbar.html', {'post': post})
+        getCurrentUser = User.objects.prefetch_related().filter(Q(username__icontains=search))
+        if(getCurrentUser.exists()):
+            getCurrentUser = User.objects.prefetch_related().get(username=search)
+            getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
+            post= Project.objects.filter(User_Owner_id=getCurrentUserID.id)
 
+        else:
+            ProjectFile = Video_Artefact.objects.all().filter(Project_Owner__iexact=1)
+            print(ProjectFile)
+            post = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search))
+        return render(request, 'home_page/searchbar.html', {'post': post}, {'ProjectFile': ProjectFile})
+
+            #Project query works, now just need to query video/image artefact to show with the rest.
+            #maybe use context = { asdasdadasda } to send all data at once.
 
 def image_upload_view(request):
     if request.method == 'POST':

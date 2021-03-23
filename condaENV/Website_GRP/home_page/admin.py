@@ -35,11 +35,11 @@ class ProjectAdmin(admin.ModelAdmin):
         # query for email here
         projectOwner = Project.objects.get(Project_Name=obj)
         userData = User.objects.get(username=projectOwner.User_Owner)
-        if(projectOwner.Project_Approval_Status == "Rjct"):
+        if(projectOwner.Project_Approval_Status == "Rejected"):
             #due to localhost emails are not actually sent. For now we will substitute with an alert
 
             from django.contrib import messages
-            messages.add_message(request, messages.INFO, 'Project Rejection email has been sent to ' + userData.email)
+            messages.add_message(request, messages.INFO, 'Project rejection email has been sent to ' + userData.email)
             # uncomment the part below if this website was to be deployed.
             # from django.core.mail import send_mail
             # send_mail(

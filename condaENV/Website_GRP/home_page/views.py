@@ -363,7 +363,7 @@ def searchbar(request):
             post= Project.objects.filter(User_Owner_id=getCurrentUserID.id)
 
         else:
-            ProjectFile = Video_Artefact.objects.all().filter(Project_Owner__iexact=1)
+            ProjectFile = VideoArtefact.objects.all().filter(Project_Owner__iexact=1)
             print(ProjectFile)
             post = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search))
         return render(request, 'home_page/searchbar.html', {'post': post}, {'ProjectFile': ProjectFile})

@@ -90,6 +90,9 @@ def secondaryLayout(request):
 def studentdashboardcontent(request):
     return render(request, 'home_page/studentdashboardcontent.html', {})
 
+def contactUs(request):
+    return render(request, 'home_page/contactUs.html', {})
+
 
 # End of Test Return Pages
 
@@ -182,14 +185,13 @@ def user_logout(request):
 
 
 def register(request):
-    if request.user.is_staff:
+    if request.user.is_staff and request.user.is_superuser:
         print("Staff has logined")
     else:
         return render(request, 'home_page/adminLogin.html')
 
     registered = False
-    # formcorrect = True
-    # print(formcorrect)
+
     if request.method == 'POST':
         # Get info from "both" forms
         # It appears as one form to the user on the .html page
@@ -214,7 +216,7 @@ def register(request):
             # check if ID is empty
 
             profile.save()
-            # print(formcorrect)
+
             registered = True
             print("registered")
 
@@ -226,19 +228,18 @@ def register(request):
             # print(user_form.errors, profile_form.errors)
             print(user_form.errors.as_data(), profile_form.errors.as_data())
             # return render(request, 'home_page/register.html',
-            # formcorrect = False
-            # print(formcorrect)
+
             return render(request, 'home_page/accountRegistration.html',
                           {'user_form': user_form,
                            'profile_form': profile_form,
                            'registered': registered})
-        # 'formcorrect': formcorrect})
+
 
     else:
         # Was not an HTTP post so we just render the forms as blank.
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
-    # print(formcorrect)
+
     # This is the render and context dictionary to feed
     # back to the registration.html file page.
 

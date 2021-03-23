@@ -1,5 +1,4 @@
 <!doctype html>
-{%load static %}
 <html lang="en">
 
   <head>
@@ -12,32 +11,23 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <!--
-        <link rel="stylesheet" href="secondaryLayout.css">
+        <link rel="stylesheet" href="contactUs.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        -->
-        <link rel="stylesheet" href="{% static 'css/secondaryLayout.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
-        <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
-        {% block layout_css %}
 
-        {% endblock %}
-        
-
+        <title></title>
   </head>
 
   <body>
       <!------------------------------------------------------------- TOP NAVIGATION BAR ----------------------------------------------------------------------->
       <div>
         <nav class="navbar fixed-top navbar-light bg-light">
-          <a class="navbar-brand" href="{% url 'indexbase' %}"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
+          <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
           <div class="header-right">
 
             <div class="d-flex flex-row-reverse bd-highlight align-items-center">
-                {% if user.is_authenticated %}
                 <!-- Logged in username appears here -->
-                <div class="p-2 bd-highlight" id="logged-in">{{ user.username }}</div>
+                <div class="p-2 bd-highlight" id="logged-in">Username123</div>
 
                 <div class="p-2 bd-highlight">
                   <div class="user-btn">
@@ -45,16 +35,13 @@
                   </div>
                 </div>
 
-
                 <div class="p-2 bd-highlight"></div>
                 <div class="p-2 bd-highlight"></div>
-                {% else %}
-                {% endif %}
             </div>  <!-- Close flex -->
           </div> <!-- Close header right -->
         </nav>
       </div>
-      <!------------------------------------------------------------------- END OF SEARCH BAR ----------------------------------------------------------------->
+      <!------------------------------------------------------------ END OF TOP NAVIGATION BAR ----------------------------------------------------------------->
 
       <!------------------------------------------------------------------- SIDE NAVIGATION BAR ---------------------------------------------------------------->
       <div class="wrapper">
@@ -70,7 +57,7 @@
                   <!-- Menu Bar Items -->
                   <hr class="white">
                   <li>
-                      <a href="{% url 'indexbase' %}"><i class="fa fa-home fa-lg"></i>Home</a>
+                      <a href="#"><i class="fa fa-home fa-lg"></i>Home</a>
                   </li>
                   <li>
                       <a href="https://www.nottingham.edu.cn/en/index.aspx"><i class="fa fa-university"></i>University of Nottingham</a>
@@ -88,23 +75,12 @@
                       <a href="#"><i class="fa fa-laptop"></i>Technologies for Learning</a>
                   </li>
               </ul>
-                <div>
-                    {% if user.is_superuser %}
-                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                        <p><br>Logged in as superuser : {{ user.username }}!</p>
-                    {% elif user.is_authenticated %}
-                    <div>
-                        <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
-                        <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
-                    </div>
-                    {% else %}
-                    {% endif %}
-                </div>
-              <!-- Dashboard and Upload Project buttons
+
+              <!-- Dashboard and Upload Project buttons -->
               <div>
                 <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
                 <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
-              </div>-->
+              </div>
           </nav> <!-- Close nav sidebar -->
 
         <!--------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------------->
@@ -112,20 +88,87 @@
         <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
         <div class="container">
             <div id="content">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" id="small-navbar">
-                    <div class="container-fluid">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light" id="small-navbar">
+                <div class="container-fluid">
 
-                        <!-- Small navigation bar for Toggle Menu and Sort Methods -->
-                        <button type="button" id="toggle-menu" class="btn btn-outline-info">
-                            <i class="fa fa-bars"></i>
-                            <span>Toggle Menu</span>
-                        </button>
-                    </div> <!-- CLose container fluid -->
-                </nav>
+                  <!-- Small navigation bar for Toggle Menu and Sort Methods -->
+                    <button type="button" id="toggle-menu" class="btn btn-outline-info">
+                      <i class="fa fa-bars"></i>
+                      <span>Toggle Menu</span>
+                    </button>
+                </div> <!-- CLose container fluid -->
+              </nav>
 
-                 {% block content %}
+              <div class="contact-us">
+                <div class="row">
+                  <h2 id="contact-us">CONTACT US</h2>
+                </div>
+                <div class="row">
+                  <h4 id="drop-message">Drop your messages here.</h4>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img id="email-image" src="email.png" />
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- Message form -->
+                    <!-- Change receiver email in the mailto:... -->
+                    <form action="mailto:scygh2@nottingham.edu.cn" method="post" enctype="text/plain" name="contact-form" id="contact-form" novalidate="" autocomplete="off">
+                        <div class="form-group">
+                        <!-- Name -->
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="Name " >
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Name should be 3 to 100 characters long.</div>
+                        </div>
 
-                {% endblock %}
+                        <div class="form-group">
+                        <!-- Email -->
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" id="email" name="Email " >
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Invalid email.</div>
+                        </div>
+
+                        <div class="form-group">
+                        <!-- Message -->
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" id="message" name="Message " maxlength="1000"></textarea>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Message should be 3 to 1000 characters long.</div>
+                        </div>
+
+                            <br><br>
+                        <input class="btn btn-primary" type="submit" value="Submit" id="submit" data-toggle="modal"
+                               data-target="#notificationModal"
+                               onclick="submitForm()">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog"
+                             aria-labelledby="notificationModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <p class="modal-title" id="modal-title">Notification</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body"><p>Thank you for contacting us.</p></div>
+                              <div class="modal-footer">
+                                <!-- Hyperlink to Homepage here -->
+                                <a href="https://www.youtube.com/watch?v=RQ76vkzmolQ&ab_channel=Mostima.mp4"> <button type="button" class="btn btn-primary" id="modal-button"> Go back
+                                  to Homepage </button></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                    </form>
+                  </div> <!-- Close right column -->
+                </div> <!-- Close row -->
+              </div> <!-- Close contact us-->
+
           <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
 
           <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
@@ -150,15 +193,8 @@
                           </div>
 
                           <div class = "column">
-                                <h5>Artefact portal</h5>
-                                {% if user.is_superuser %}
-                                    <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                                    <p><br>Logged in as superuser : {{ user.username }}!</p>
-                                {% elif user.is_authenticated %}
-                                    <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                                {% else %}
-                                    <button type="button" class="btn btn-outline-light"><a href="{% url 'loginPage' %}">Login</a></button>
-                                {% endif %}
+                            <h5>Artefact portal</h5>
+                            <button type="button" class="btn btn-outline-light"><a href="loginpage.html" id="login-button">Login</a></button>
                           </div>
                       </div><!--Close row-->
                     </div><!-- Close container -->
@@ -185,11 +221,8 @@
       <!-- jQuery Custom Scroller CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript -->
-
-  <script src="{% static 'javascript/secondaryLayout.js' %}"></script>
-      {% block layout_js %}
-
-      {% endblock %}
+      <script src="secondaryLayout.js"></script>
+      <script src="contactUs.js"></script>
 
   </body>
 </html>

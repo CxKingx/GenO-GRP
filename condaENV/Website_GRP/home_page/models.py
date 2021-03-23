@@ -113,4 +113,4 @@ class Image(models.Model):
 
 # pip install pillow to use this!
 # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
-# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
+# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True) z

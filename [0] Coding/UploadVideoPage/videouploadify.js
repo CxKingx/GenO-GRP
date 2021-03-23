@@ -104,7 +104,7 @@ $('#artefact_desc').keyup(function() {
 					<i class="fa fa-picture-o"></i></div>
 					<div class="videouploadify-videos-list text-center">
 						<i class="fa fa-cloud-upload"></i>
-						<span class='videouploadify-message'>drag & drop video file(s) here to upload</span>
+						<span class='videouploadify-message'>Drag & drop video file(s) here to upload</span>
 						<button type="button"class="btn btn-default">or select file to upload</button>
 					</div>
 				</div>`);

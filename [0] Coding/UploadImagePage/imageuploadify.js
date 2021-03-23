@@ -99,7 +99,7 @@
         </div>
         <div class="imageuploadify-images-list text-center">
           <i class="fa fa-cloud-upload"></i>
-          <span class='imageuploadify-message'>Drag & Drop Your File(s) Here To Upload</span>
+          <span class='imageuploadify-message'>Drag & drop your image file(s) here to upload</span>
           <button type="button" class="btn btn-default">or select file to upload</button>
         </div>
       </div>

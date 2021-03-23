@@ -36,14 +36,6 @@ class UserProfileInfo(models.Model):
     # Create relationship (don't inherit from User!)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentID = models.PositiveIntegerField(unique=True, default=0)
-    #Date_Created , Account_Status and Last_Online is built-in Django Attributes in User
-
-    # Testchar = models.CharField(max_length=50)
-    # Add any additional attributes you want
-    # portfolio_site = models.URLField(blank=True)
-    # pip install pillow to use this!
-    # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
-    # profile_pic = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
 
     def __str__(self):
         # Built-in attribute of django.contrib.auth.models.User !
@@ -52,55 +44,44 @@ class UserProfileInfo(models.Model):
 
 class Project(models.Model):
     ApprovalChoice = [
-        ('Apvd', 'Approved'),
-        ('Pndg', 'Pending'),
-        ('Rjct', 'Rejected'),
+        ('Approved', 'Approved'),
+        ('Pending', 'Pending'),
+        ('Rejected', 'Rejected'),
     ]
     Tags_for_Project = [
         ('', '-----'),
-        ('DS', 'Data Scholarship'),
-        ('DMS', 'Digital Media Production'),
-        ('TFL', 'Technologies for Learning'),
+        ('Data Scholarship', 'Data Scholarship'),
+        ('Digital Media Production', 'Digital Media Production'),
+        ('Technologies for Learning', 'Technologies for Learning'),
     ]
-    # Project_ID = models.PositiveIntegerField(unique = True)
-    #This is to connect , which Owner have dis project
-    User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True )
 
-    Project_Name = models.CharField(max_length=50) 
+    # This is to connect , which Owner have this project
+    User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True)
+
+    Project_Name = models.CharField(max_length=50)
     Project_Description = models.TextField()
-    Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='DS' , blank=True,null=True)
-    #Project Thumbnail
-    #Date only
+    Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='', blank=True, null=True)
 
-    #Need to add to database
-    #Date of Completion Model
-    #Author Comment TextField
     Date_of_Completion = models.DateField(default=timezone.now)
-    Author_Comment = models.TextField(null=True)
-    Upload_Date = models.DateField(default=timezone.now)
-    #Approval_Date = models.DateTimeField(blank=True, null=True)
-    Approval_Date = models.DateField(blank= True, null=True)
-    #Make Expire Date 3 days after Approval Date
-    Account_ExpiryDate = models.DateField(blank= True, null=True)
+    Author_Comment = models.TextField(blank=True, null=True)
 
-    Last_Updated = models.DateTimeField(blank=True, null=True)
+    Upload_Date = models.DateField(default=timezone.now)
+    Approval_Date = models.DateField(blank=True, null=True)
+    # Make Expire Date 2weeks after upload , code in views.py, after approve no change
+    Account_ExpiryDate = models.DateField(blank=True, null=True)
+    Last_Updated = models.DateField(blank=True, null=True)
+
     Project_Approval_Status = models.CharField(max_length=32, choices=ApprovalChoice, default='Pending')  # Approval
-    Authors = models.CharField(max_length=100)
+    Authors = models.CharField(max_length=100, blank=True, null=True)
+
+    Admin_Comment = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.Project_Name
 
 
-# class Account_Project_Connector(models.Model):
-#     User_ID = models.ForeignKey(User, on_delete=models.CASCADE)
-#     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.User_ID.username + ' ' + self.Project_ID.Project_Name
-
-
-class Image_Artefact(models.Model):
-    #Links to the Project for this artefact
+class ImageArtefact(models.Model):
+    # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     Image_Name = models.CharField(max_length=50)
@@ -111,22 +92,16 @@ class Image_Artefact(models.Model):
         return self.Image_Name
 
 
-# class Project_Artefact_Connector(models.Model):
-#     Project_ID = models.ForeignKey(Project, on_delete=models.CASCADE)
-#     Artefact_ID = models.ForeignKey(Artefact_Info, on_delete=models.CASCADE)
-
-
-class Video_Artefact(models.Model):
+class VideoArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=50)
-    Video_Description = models.TextField(null = True)
-    videofile = models.FileField(upload_to='videos/', null=True, verbose_name="") #path to video
+    Video_Description = models.TextField(null=True)
+    videofile = models.FileField(upload_to='videos/', null=True, verbose_name="")  # path to video
 
     def __str__(self):
         return self.name + ": " + str(self.videofile)
-
 
 
 class Image(models.Model):
@@ -135,3 +110,7 @@ class Image(models.Model):
 
     def __str__(self):
         return self.title
+
+# pip install pillow to use this!
+# Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
+# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)

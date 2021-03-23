@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import UserForm, UserProfileInfoForm, VideoForm
-from home_page.models import Video_Artefact
-from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm
-
+from home_page.models import VideoArtefact
+from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm, ProjectForm
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -12,15 +10,15 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import UserProfileInfo
 from .models import Project
-# from .models import Project_Artefact_Connector
-# from .models import Account_Project_Connector
-from .models import Image_Artefact
+from .models import ImageArtefact
 # from home_page.models import Artefact_Info
-from home_page.models import Video_Artefact
+from home_page.models import VideoArtefact
 
 from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta, date
 from django.utils import timezone
+
+from django.db.models import Q
 
 # to call user
 User = get_user_model()
@@ -51,8 +49,24 @@ def adminLogin(request):
     return render(request, 'home_page/adminLogin.html', context)
     # return HttpResponse("hello world")
 
+
 def welcomepage(request):
     return render(request, 'home_page/WelcomePage.html', {})
+
+def oldregister(request):
+    user_form = UserForm()
+    profile_form = UserProfileInfoForm()
+    # print(formcorrect)
+    # This is the render and context dictionary to feed
+    # back to the registration.html file page.
+
+    # return render(request, 'home_page/register.html',
+
+
+    return render(request, 'home_page/accountRegistrationold.html',
+              {'user_form': user_form,
+               'profile_form': profile_form,})
+
 
 # Test Return Pages
 
@@ -69,10 +83,18 @@ def layout(request):
     return render(request, 'home_page/layout.html', {})
 
 
+def secondaryLayout(request):
+    return render(request, 'home_page/secondaryLayout.html', {})
+
+
 def studentdashboardcontent(request):
     return render(request, 'home_page/studentdashboardcontent.html', {})
 
-#End of Test Return Pages
+def contactUs(request):
+    return render(request, 'home_page/contactUs.html', {})
+
+
+# End of Test Return Pages
 
 # employees = Employee.objects.all().values('id','name','company__name')
 @login_required
@@ -89,16 +111,11 @@ def edit_project(request):
         print(request.user)
         # Process this project ID
 
-#adminDashboard
-@login_required
-def adminDashboard(request):
-    return render(request, 'home_page/adminDashboard.html', {})
-
 
 @login_required
 def studentdashboard(request):
     thisuser = request.user
-    #print(thisuser)
+    # print(thisuser)
 
     # Get the current User ID , then get all the projects that belong to this User ID
     getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
@@ -110,11 +127,10 @@ def studentdashboard(request):
     # Get today Date to check if user can still edit or not DateField Object
     todayDate = date.today()
 
-    #print(getCurrentUser.id)
-    #print(getCurrentUserID.id)
-    #print(getUserProjects)
-    #print(todayDate)
-
+    # print(getCurrentUser.id)
+    # print(getCurrentUserID.id)
+    # print(getUserProjects)
+    # print(todayDate)
 
     # DateTime Object , Is not needed for this type of website
     # todayDate = (timezone.now())
@@ -127,12 +143,12 @@ def studentdashboard(request):
     # Approval_Date
     if getUserProjects.exists():
         ProjectExists = True
-        #print("not empty")
+        # print("not empty")
     else:
         ProjectExists = False
-        #print("empty")
+        # print("empty")
 
-    #print(ProjectExists)
+    # print(ProjectExists)
 
     context = {'getUserProjects': getUserProjects,
                'ProjectExists': ProjectExists,
@@ -143,15 +159,13 @@ def studentdashboard(request):
     # return render(request, 'home_page/studentDashboard.html', {})
 
 
-
-
 def error_404(request, exception):
     return render(request, 'home_page/ivanoldlogin.html')
 
 
 # add other errors
 
-#This special for now is uselss
+# This special for now is uselss
 @login_required
 def special(request):
     # Remember to also set login url in settings.py!
@@ -171,6 +185,11 @@ def user_logout(request):
 
 
 def register(request):
+    if request.user.is_staff and request.user.is_superuser:
+        print("Staff has logined")
+    else:
+        return render(request, 'home_page/adminLogin.html')
+
     registered = False
 
     if request.method == 'POST':
@@ -185,14 +204,13 @@ def register(request):
             # Hash the password
             user.set_password(user.password)
 
-            #
-
             # Update with Hashed password
             user.save()
 
             profile_form = UserProfileInfoForm(data=request.POST)
 
             profile = profile_form.save(commit=False)
+
             profile.user = user
 
             # check if ID is empty
@@ -200,22 +218,40 @@ def register(request):
             profile.save()
 
             registered = True
+            print("registered")
+
+            #return render(request, 'home_page/accountRegistration.html', {'registered': registered})
+            return render(request, 'home_page/registerSuccess.html', {'registered': registered})
 
         else:
             # One of the forms was invalid if this else gets called.
-            print(user_form.errors, profile_form.errors)
+            # print(user_form.errors, profile_form.errors)
+            print(user_form.errors.as_data(), profile_form.errors.as_data())
+            # return render(request, 'home_page/register.html',
+
+            return render(request, 'home_page/accountRegistration.html',
+                          {'user_form': user_form,
+                           'profile_form': profile_form,
+                           'registered': registered})
+
 
     else:
         # Was not an HTTP post so we just render the forms as blank.
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
+
     # This is the render and context dictionary to feed
     # back to the registration.html file page.
-    return render(request, 'home_page/register.html',
+
+    # return render(request, 'home_page/register.html',
+    return render(request, 'home_page/accountRegistration.html',
                   {'user_form': user_form,
                    'profile_form': profile_form,
                    'registered': registered})
+    # 'formcorrect': formcorrect})
 
+
+# accountRegistration
 
 def user_login(request):
     if request.method == 'POST':
@@ -240,8 +276,8 @@ def user_login(request):
                 # If account is not active:
                 return HttpResponse("Your account is not active.")
         else:
-            #print("Someone tried to login and failed.")
-            #print("They used username: {} and password: {}".format(username, password))
+            # print("Someone tried to login and failed.")
+            # print("They used username: {} and password: {}".format(username, password))
             # I must edit this to redirect back to login
             # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
             # "right now only back to login but no text invalid login")
@@ -275,7 +311,7 @@ def admin_login(request):
                     login(request, user)
                     # Send the user back to homepage.
 
-                    return HttpResponseRedirect(reverse('adminDashboard'))
+                    return HttpResponseRedirect(reverse('register'))
                 else:
                     # If account is not active:
                     return HttpResponse("Your account is not superuser.")
@@ -284,14 +320,14 @@ def admin_login(request):
                 # If account is not active:
                 return HttpResponse("Your account is not active.")
         else:
-            #print("Someone tried to login and failed.")
-            #print("They used username: {} and password: {}".format(username, password))
+            # print("Someone tried to login and failed.")
+            # print("They used username: {} and password: {}".format(username, password))
             # I must edit this to redirect back to login
             # return HttpResponse("Invalid login, this needs to redirect back and add a text ,"
             # "right now only back to login but no text invalid login")
             wrongpassword = False
             context = {'wrongpassword': wrongpassword}
-            return render(request, 'home_page/admin_login.html', context)
+            return render(request, 'home_page/accountRegistration.html', context)
 
     else:
         # Nothing has been provided for username or password.
@@ -301,7 +337,7 @@ def admin_login(request):
 def showvideo(request):
     # This 2 commands is searching for a file in the database, so if no video = eror
     # cara ambil hrs beda, hrs pake reference ke user
-    lastvideo = Video_Artefact.objects.last()
+    lastvideo = VideoArtefact.objects.last()
     videofile = lastvideo.videofile
 
     form = VideoForm(request.POST or None, request.FILES or None)
@@ -335,6 +371,7 @@ def searchbar(request):
             #Project query works, now just need to query video/image artefact to show with the rest.
             #maybe use context = { asdasdadasda } to send all data at once.
 
+# The test version
 def image_upload_view(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -348,6 +385,24 @@ def image_upload_view(request):
     return render(request, 'home_page/uploadimage.html', {'form': form})
 
 
+def testuploadproject(request):
+    Projectformhtml = ProjectForm()
+    return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml})
+
+# Project form save first
+# Then save picture form and video form , connect them to project
+
+
+#     if request.method == 'POST':
+#         form = ImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             img_obj = form.instance
+#             return render(request, 'home_page/testuploadproject.html', {'form': form, 'img_obj': img_obj})
+#     else:
+#         form = ImageForm()
+#
+#     return render(request, 'home_page/uploadimage.html', {'form': form})
 
 # Extra codes for future use
 

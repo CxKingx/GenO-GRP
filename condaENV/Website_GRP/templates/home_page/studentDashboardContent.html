@@ -1,7 +1,8 @@
-{% extends "home_page/layout.html" %}
+{% extends "home_page/secondaryLayout.html" %}
 {% load static %}
 {% block layout_css %}
 <link rel="stylesheet" href="{% static 'css/studentDashboard.css' %}"/>
+<title>Student Dashboard</title>
 {% endblock %}
 {% block content %}
 
@@ -36,21 +37,15 @@
                         <td>{{ i.Upload_Date }}</td>
                         <td> {{i.Account_ExpiryDate}}</td>
 
-                        {% if i.Project_Approval_Status == "Pndg" %}
+                        {% if i.Project_Approval_Status == "Pending" %}
                             <td><!-- FETCH INPUT FROM BACKEND --> Pending</td>
-                        {% elif i.Project_Approval_Status == "Apvd" %}
+                        {% elif i.Project_Approval_Status == "Approved" %}
                             <td style="color: green"><!-- FETCH INPUT FROM BACKEND --> Approved</td>
-                        {% elif i.Project_Approval_Status == "Rjct" %}
+                        {% elif i.Project_Approval_Status == "Rejected" %}
                             <td style="color: red"><!-- FETCH INPUT FROM BACKEND --> Rejected</td>
                         {% endif %}
 
-                        {% if i.Project_Approval_Status == "Pndg" %}
-                            <form action="{% url 'home_page:edit_project' %}" method="POST">
-                            {% csrf_token %}
-                                <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
-                            </form>
-
-                        {% elif i.Project_Approval_Status == "Apvd" %}
+                        {% if i.Project_Approval_Status == "Pending" %}
                             {% if todayDate > i.Account_ExpiryDate %}
                                 <td><p style="color: red">No longer editable</p></td>
                             {% else %}
@@ -61,12 +56,22 @@
                                 </form>
                             {% endif %}
 
-                        {% elif i.Project_Approval_Status == "Rjct" %}
+                        {% elif i.Project_Approval_Status == "Approved" %}
 
-                            <form action="{% url 'home_page:edit_project' %}" method="POST">
+                                <td><p style="color: red">No longer editable</p></td>
+
+
+                        {% elif i.Project_Approval_Status == "Rejected" %}
+
+                            {% if todayDate > i.Account_ExpiryDate %}
+                                <td><p style="color: red">No longer editable</p></td>
+                            {% else %}
+                                <form action="{% url 'home_page:edit_project' %}" method="POST">
                                 {% csrf_token %}
-                                <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
-                            </form>
+                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+
+                                </form>
+                            {% endif %}
 
                         {% endif %}
 

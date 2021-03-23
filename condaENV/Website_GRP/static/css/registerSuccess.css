@@ -1,0 +1,75 @@
+/*------------------------------------- Whole Page ---------------------------------*/
+@font-face{
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+
+body {
+	font-family: 'circular';
+	font-size: 12px;
+}
+
+/*----------------------------------- Top navigation bar ---------------------------*/
+.navbar {
+	top: 0;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 5%;
+}
+
+a.navbar-brand {
+	padding-top: 0px;
+	margin-top: 0px;
+	top: 0;
+}
+
+.logo {
+	margin-top: 0px;
+}
+
+div#logged-in {
+    font-size: 14px;
+}
+
+/*----------------------------------------- Content --------------------------------*/
+#content {
+    width: 100%;
+	padding-top: 40px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 0;
+    transition: all 0.3s;
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+/*-------------------------------- Notification Modal ---------------------------------*/
+.btn-primary {
+	font-size: 16px;
+	background-color: #005597;
+	color: white;
+	margin-bottom: 50px;
+	border-radius: 10px;
+}
+
+.jumbotron {
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+    width: 60%;
+    background-color: rgba(0, 155, 189, 0.1);
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+img#checked {
+    width: 10%;
+    height: 10%;
+    margin-bottom: 5%;
+}
+
+i.fas.fa-user {
+    color: #009bbd;
+}

@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import User
+# from .models import User, login_credential, Project, Account_Project_Connector, Project_Artefact_Connector, Artefact_Info
 # Register your models here.
 from . import models
-from .models import Project
-from django.shortcuts import get_object_or_404
+from .models import Project, User
+
 
 
 # admin.site.register()
@@ -16,13 +16,17 @@ from django.shortcuts import get_object_or_404
 #     list_filter =['User_Username','StudentID']
 #
 #     list_editable =['StudentID']
+class StudentIDAdmin(admin.ModelAdmin):
+    list_display = ['user', 'StudentID']
+    search_fields = ['StudentID']
 
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['User_Owner', 'Project_Name','Project_Tag', 'Upload_Date', 'Project_Approval_Status']
-    search_fields = ['Project_Name', 'Project_Approval_Status','Project_Tag']
+    list_display = ['User_Owner', 'Project_Name', 'Project_Tag', 'Upload_Date', 'Project_Approval_Status']
+    search_fields = ['Project_Name', 'Project_Approval_Status', 'Project_Tag']
     list_editable = ['Project_Approval_Status']
+    list_filter = ['Project_Approval_Status','Project_Tag']
     def save_model(self, request, obj, form, change):
         obj.user = request.user
         #print(obj)
@@ -48,25 +52,25 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class ArtefactAdmin(admin.ModelAdmin):
-    list_display = ['Project_Owner','Image_Name' , 'image']
+    list_display = ['Project_Owner', 'Image_Name', 'image']
     search_fields = ['Image_Name']
 
 
-class StudentIDAdmin(admin.ModelAdmin):
-    list_display = ['user', 'StudentID']
-    search_fields = ['StudentID']
-
-
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ['Project_Owner','name' , 'videofile']
+    list_display = ['Project_Owner', 'name', 'videofile']
     search_fields = ['name']
 
 
-# admin.site.register(models.Student_User, UserAdmin)
+
 admin.site.register(models.UserProfileInfo, StudentIDAdmin)
-# admin.site.register(models.login_credential)
 admin.site.register(models.Project, ProjectAdmin)
 # admin.site.register(models.Account_Project_Connector)
 # admin.site.register(models.Project_Artefact_Connector)
-admin.site.register(models.Image_Artefact, ArtefactAdmin)
-admin.site.register(models.Video_Artefact,VideoAdmin)
+admin.site.register(models.ImageArtefact, ArtefactAdmin)
+admin.site.register(models.VideoArtefact, VideoAdmin)
+admin.site.register(models.Image)
+
+#https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
+
+# like make all project into approve / rejected / pending
+# or u want to disable with disable_action

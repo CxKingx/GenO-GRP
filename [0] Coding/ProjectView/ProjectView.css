@@ -313,18 +313,25 @@ h2{
 p{
 	font-size: 15px;
 }
-.col6{
-	margin: auto;
-	min-width: 400px;
+.col-md-3{
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  float:none;
+} 
+.col-md-9{
+  text-align: left;
+  display: inline-block;
+  float:none;
+}
+.col-md-6{
+  max-width: 100%;
+  height: auto;
 }
 .project-picture {
 	margin-left: 3%;
 	margin-bottom: 5%;
 	margin-right: 2%;
-	/*min-width: 200px;
-	min-height: 200px;
-	max-width: 300px;
-	max-height: 300px; */
 }
 img.project-pic{
 	width: 400px;
@@ -333,9 +340,6 @@ img.project-pic{
 
 } 
 .project-details {
-	/*margin-left: 30%; */
-	/*width: 70%;*/
-	/*height: 300px;*/
 	text-align: left;
 }
 .btn-primary {
@@ -344,19 +348,11 @@ img.project-pic{
 }
 .btn-block{
 	margin-right: 2%;
-	width:150px;
+	width:100%;
+  max-width: 150px;
+  min-width: 70px;
 }
-/*
-.project-item{
-	float:left; 
-	width: 18%;
-	margin-right: 2%
-}
-.project-info{
-	width: 77%;
-	font-size: 15px;
-	padding-left: 3%;
-} */
+
 .btn-info{
 	background-color: #1a296b;
 	color: white;
@@ -389,9 +385,6 @@ img.card-picture {
     right: 0;
     bottom: 0;
 }
-/* ivan */
-
-/*    */
 
 .flip-box {
 	margin-top: 7.5%;

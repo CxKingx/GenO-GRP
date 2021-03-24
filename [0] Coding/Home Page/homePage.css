@@ -345,6 +345,11 @@ i.fa-bars:before {
 table {
 	text-align: center;
 	width: 100%;
+	margin-left: auto;
+}
+
+.table-responsive {
+    padding-left: 2%;
 }
 
 /* Flip card */
@@ -445,4 +450,27 @@ hr.card-line {
 .btn-info:hover {
     background-color: #1a296b;
     border-width: 0;
+}
+
+div#pages-button {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
+p#previous, p#next, p#bar {
+    display: inline-block;
+    font-size: 14px;
+}
+
+p#previous, p#bar {
+    margin-right: 1%;
+}
+
+p#previous, p#next {
+    cursor: pointer;
+}
+
+p#previous:hover, p#next:hover {
+    color: #007ca7;
 }

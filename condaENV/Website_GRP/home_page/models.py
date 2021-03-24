@@ -82,7 +82,7 @@ class Project(models.Model):
 
 class ImageArtefact(models.Model):
     # Links to the Project for this artefact
-    Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    Project_Name = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     Image_Name = models.CharField(max_length=50)
     Image_Description = models.TextField()
@@ -94,7 +94,7 @@ class ImageArtefact(models.Model):
 
 class VideoArtefact(models.Model):
     # Links to the Project for this artefact
-    Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    Project_Name = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=50)
     Video_Description = models.TextField(null=True)

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from home_page.models import VideoArtefact
-from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm, ProjectForm
+from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm, ProjectForm , UploadImageForm
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -386,8 +386,55 @@ def image_upload_view(request):
 
 
 def testuploadproject(request):
-    Projectformhtml = ProjectForm()
-    return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml})
+    #Projectformhtml = ProjectForm()
+    if request.method == 'POST':
+        Projectformhtml = ProjectForm(request.POST, request.FILES)
+        form = VideoForm(request.POST or None, request.FILES or None)
+
+        imageform = UploadImageForm(request.POST or None, request.FILES or None)
+        if Projectformhtml.is_valid() and form.is_valid() and imageform.is_valid:
+            thisuser = request.user
+            getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
+
+            getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
+            print(getCurrentUser.email)
+            print(type(getCurrentUserID))
+
+
+
+            uploadedProject = Projectformhtml.save(commit=False)
+            uploadedProject.Upload_Date =date.today()
+            uploadedProject.Last_Updated = date.today()
+            todayDate = date.today()
+            nextweek = timedelta(days=7)
+            nextweekDate = todayDate + nextweek
+            uploadedProject.Account_ExpiryDate =nextweekDate
+            print(request.user)
+            print(getCurrentUserID.user)
+            uploadedProject.User_Owner = getCurrentUserID
+            uploadedProject.save()
+            print(uploadedProject)
+            print(type(uploadedProject))
+
+            print("Handle videos")
+            thisvideo = form.save(commit=False)
+            thisvideo.Project_Name = uploadedProject
+            thisvideo.save()
+            print("Saved")
+
+            imageattribute = imageform.save(commit=False)
+            imageattribute.Project_Name = uploadedProject
+            imageattribute.save()
+
+            return render(request, 'home_page/testuploadproject.html')
+
+
+    else:
+        Projectformhtml = ProjectForm()
+        form = VideoForm()
+        imageform = UploadImageForm()
+    return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml, 'form' : form,
+                                                                'imageform':imageform})
 
 # Project form save first
 # Then save picture form and video form , connect them to project

@@ -9,10 +9,6 @@ body {
 	font-size: 12px;
 }
 
-h5 {
-	font-size: 14px;
-}
-
 /*-------------------------- Top navigation and Search Bar ------------------------*/
 .navbar {
 	top: 0;
@@ -93,7 +89,7 @@ a.navbar-brand {
 .search-box .cancel-btn {	
 	position: absolute;
 	color: #808080;
-	top: 50%;
+	top:50%;
 	right: 15px;
 	transform: translateY(-50%);
 	font-size: 20px;
@@ -110,10 +106,9 @@ a.navbar-brand {
 	color: white;
 }
 
-div.header-right {
-	display: inline-block;
+div#logged-in {
+    font-size: 14px;
 }
-
 
 /*---------------------------------- Side Menu Bar --------------------------*/
 a, a:hover, a:focus {
@@ -158,8 +153,7 @@ a, a:hover, a:focus {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    /* background: rgba(87, 87, 87, 0.8);  */
-	background: rgba(76, 79, 84, 0.8);
+    background: rgba(87, 87, 87, 0.8); 
     z-index: 998;
     opacity: 0;
     transition: all 0.5s ease-in-out;
@@ -194,44 +188,9 @@ a, a:hover, a:focus {
     background: white;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
-}
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 12px;
-}
-
 i {
     color: #009bbd;
     margin-right: 3%;
-}
-
-i.fa-upload {
-    color: white;
-}
-
-i.fa-table {
-    color: #1a296b;
 }
 
 i.fa-bars {
@@ -293,7 +252,7 @@ button#upload-project {
 #content {
     width: 100%;
 	padding-top: 40px;
-	padding-left: 40px; 
+	padding-left: 40px;
 	padding-right: 40px;
 	padding-bottom: 0;
     transition: all 0.3s;
@@ -301,6 +260,85 @@ button#upload-project {
     top: 100px;
     right: 0;
 }
+
+/*-------------------------------------- Footer -------------------------------------*/
+footer{
+	bottom: 0;
+	background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+	width: 100%;
+	font-family: 'circular';
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: #d3d3d3;
+}
+
+.copyright{
+	text-align: center;
+}
+
+.container .p-4{
+	width: 100%;
+	margin: 2%;
+}
+
+.column{
+	width: 30%;
+	margin: 0%;
+}
+
+footer.btn {
+	border-radius: 5px; 
+	border: white 2px;
+	color: white;
+	background-color: transparent; 
+}
+
+.btn-outline-light:hover {
+	color: #18194f;
+}
+
+a#login-button:hover {
+	color: #18194f;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+/*------------------------------- Small navigation bar ---------------------------*/
+#small-navbar {
+	padding: 5px;
+	margin-bottom: 5%;
+}
+
+button#toggle-menu {
+	padding: 5px;
+	width: 150px;
+	margin: 5px;
+	border-color: #009bbd;
+}
+
+button#toggle-menu:hover {
+    background-color: #009bbd;
+    color: white;
+}
+
+a.dropdown-item {
+	font-size: 12px;
+}
+
+i.fa-bars:before {
+	color: #1a296b;
+}
+
 
 /*-------------------------------------- Flip card ----------------------------------*/
 /* Table of flip card */
@@ -328,9 +366,9 @@ img.card-picture {
     background-color: transparent;
     width: 400px;
     height: 400px;
-    perspective: 1000px; 
+    perspective: 1000px;
 }
-  
+
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -358,7 +396,7 @@ img.card-picture {
     background-color:black;
     color: white;
 }
-  
+
 .flip-card-back {
     padding-top: 12px;
     background-color: #e4e6eb;
@@ -401,89 +439,10 @@ hr.card-line {
     left: 153px;
     bottom: 30px;
     position: fixed;
+    border-radius: 10px;
 }
 
 .btn-info:hover {
     background-color: #1a296b;
     border-width: 0;
 }
-
-
-/*-------------------------------------- Footer -------------------------------------*/
-footer {
-	bottom: 0;
-	background: linear-gradient(to right, #18194f, #009bbd);
-	color: white;
-	width: 100%;
-	font-family: 'circular';
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-
-a {
-	color: white;
-}
-
-a:hover {
-	color: #d3d3d3;
-}
-
-.copyright{
-	text-align: center;
-}
-
-.container .p-4{
-	width: 100%;
-	margin: 2%;
-}
-
-.column{
-	width: 30%;
-	margin: 0%;
-}
-
-footer.btn {
-	border-radius: 5px; 
-	border: white 2px;
-	color: white;
-	background-color: transparent; 
-}
-
-a.login-button {
-	color: white;
-}
-
-a.login-button:hover {
-	color: #18194f;
-}
-
-.btn-outline-:hover {
-	color: #18194f;
-}
-
-/*------------------------------- Small navigation bar ---------------------------*/
-#small-navbar {
-	padding: 5px;
-	margin-bottom: 5%;
-}
-
-button#toggle-menu {
-	padding: 5px;
-	width: 150px;
-	margin: 5px;
-	border-color: #009bbd;
-}
-
-button#toggle-menu:hover {
-    background-color: #009bbd;
-    color: white;
-}
-
-a.dropdown-item {
-	font-size: 12px;
-}
-
-i.fa-bars:before {
-	color: #1a296b;
-}
-

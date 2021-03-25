@@ -433,15 +433,17 @@ img.card-picture {
 h3.card-title {
 	text-align: left;
 	margin-left: 25px;
+  margin-right: 25px;
 	color: #18194f;
 }
 
 h5.project-title {
 	font-size: 13px;
-    text-align: left;
-    margin-left: 25px;
-    font-style: italic;
-    color: rgb(97, 97, 97);
+  text-align: left;
+  margin-left: 25px;
+  margin-right: 25px;
+  font-style: italic;
+  color: rgb(97, 97, 97);
 }
 
 p.card-description {

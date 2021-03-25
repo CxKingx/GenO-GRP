@@ -327,15 +327,20 @@ p{
 .col-md-6{
   max-width: 100%;
   height: auto;
+  align-items: center;
+  text-align: justify;
 }
 .project-picture {
 	margin-left: 3%;
 	margin-bottom: 5%;
 	margin-right: 2%;
+  min-width: 250px;
 }
 img.project-pic{
-	width: 400px;
-	height: 400px;
+  width: 100%;
+  height: auto;
+	max-width: 400px;
+	max-height: 400px;
 	align-items: center;
 
 } 
@@ -362,7 +367,7 @@ img.project-pic{
 
 /*descriptions- both project and author comments */
 .description{
-	text-align: center;
+	text-align: justify;
 	justify-content: space-around;
 	margin-left: 10%;
 	margin-right: 10%;

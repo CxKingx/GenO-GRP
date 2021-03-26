@@ -27,6 +27,7 @@ from django.contrib.auth import views as auth_views
 # naming convention , all is small letters , spaces use _ , so ex like hello_world
 # this is the base redirection
 
+
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.welcomepage, name='index'),
@@ -43,7 +44,7 @@ urlpatterns = [
 
     #testing urls
     path('oldregister/', views.oldregister, name='oldregister'),
-    path('upload_project/', views.upload_project, name='upload_project'),
+    path('ProjectUploadPage/', views.ProjectUploadPage, name='ProjectUploadPage'),
 
     path('welcome/', views.welcomepage, name='welcomepage'),
 
@@ -57,7 +58,14 @@ urlpatterns = [
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
+
+
     path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
+    path('testProjectVideo/', views.testProjectVideo, name='testProjectVideo'),
+    path('testProjectImage/', views.testProjectImage, name='testProjectImage'),
+    path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
+
+    path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

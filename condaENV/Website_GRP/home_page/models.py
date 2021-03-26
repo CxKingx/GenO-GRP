@@ -61,7 +61,7 @@ class Project(models.Model):
     Project_Name = models.CharField(max_length=50)
     Project_Description = models.TextField()
     Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='', blank=True, null=True)
-
+    Module_Name = models.CharField(max_length=50, blank=True, null=True)
     Date_of_Completion = models.DateField(default=timezone.now)
     Author_Comment = models.TextField(blank=True, null=True)
 

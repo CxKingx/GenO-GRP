@@ -156,3 +156,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 #redirect files back to login page
 LOGIN_URL = 'loginPage'
 LOGIN_REDIRECT_URL = 'loginPage'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

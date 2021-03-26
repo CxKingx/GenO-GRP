@@ -1,13 +1,16 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Upload Porkect</title>
+    <title>Video Upload</title>
 </head>
 <body>
- <form method="post" enctype="multipart/form-data">
+<h1>Project Video Up</h1>
+<form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ Projectformhtml.as_p }}
+
+        {{ form }}
 
      <br>
         <button type="submit">Upload</button>

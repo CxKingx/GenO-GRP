@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Detail Edit</title>
+</head>
+<body>
+<h1>Some of Current Data</h1>
+<p>Project ID is {{ CurrentProject.id }} , name is {{ CurrentProject.Project_Name }}</p>
+<p>{{CurrentProject.Project_Description}}</p>
+<p>{{CurrentProject.Project_Tag}}</p>
+<p>{{CurrentProject.Module_Name}}</p>
+<p>{{CurrentProject.Author_Comment}}</p>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ Projectformhtml.as_p }}
+
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

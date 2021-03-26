@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+</head>
+<body>
+<h1>Project Summary</h1>
+<p>Project ID is {{ CurrentProject.id }} , name is {{ CurrentProject.Project_Name }}</p>
+<p>{{CurrentProject.Project_Description}}</p>
+<p>{{CurrentProject.Project_Tag}}</p>
+<p>{{CurrentProject.Module_Name}}</p>
+<p>{{CurrentProject.Author_Comment}}</p>
+
+<br>
+<p>Images in this project</p>
+<br>
+{% for j in ProjectImages %}
+<p>{{ forloop.counter }} id is {{j.id}} Name: {{ j.Image_Name  }}</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button name = "Delete" value = {{k.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
+    </form>
+{% endfor %}
+<br>
+<p>Videos in this project</p>
+<br>
+{% for k in ProjectVideos %}
+<p>{{ forloop.counter }} id is {{k.id}} Name: {{ k.name }}</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button name = "Delete" value = {{k.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
+    </form>
+
+{% endfor %}
+
+<p class="mb-0">Please click <a href="{% url 'testProjectImage' %}" class="alert-link">here</a> to upload your Picture  project.</p>
+<p class="mb-0">Please click <a href="{% url 'testProjectVideo' %}" class="alert-link">here</a> to upload your Video project.</p>
+<p class="mb-0">Please click <a href="{% url 'testProjectDetailEdit' %}" class="alert-link">here</a> to edit project.</p>
+
+<p> Save all n finish</p>
+
+</body>
+</html>

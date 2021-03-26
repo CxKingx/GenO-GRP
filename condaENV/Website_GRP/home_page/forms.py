@@ -22,14 +22,14 @@ class UserProfileInfoForm(forms.ModelForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model = VideoArtefact
-        fields = ["name", "videofile"]
+        fields = ["name",'Video_Description', "videofile"]
 
 
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ('Project_Name', 'Project_Description', 'Project_Tag', 'Date_of_Completion', 'Author_Comment',
-                  'Authors', 'Admin_Comment')
+                  'Authors' , 'Module_Name')
         # Upload_Date Approval_Date Account_ExpiryDate Last_Updated Project_Approval_Status
 
 

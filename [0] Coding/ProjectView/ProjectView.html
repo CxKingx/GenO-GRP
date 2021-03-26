@@ -19,47 +19,32 @@
   </head>
 
   <body>
-  <!--------------------------------------------------------------------- SEARCH BAR ----------------------------------------------------------------------->
-  <div>
-        <nav class="navbar fixed-top navbar-light bg-light">
-          <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
-          <div class="header-right">
+  <!--------------------------------------------------------------------- TOP BAR
+----------------------------------------------------------------------->
+   <div>
+     <nav class="navbar fixed-top navbar-light bg-light">
+       <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="../images/UoN_logo.jpg" width=243px height=90px alt=""></a>
+        <div class="header-right">
 
-            <div class="d-flex flex-row-reverse bd-highlight align-items-center">
-                <!-- Logged in username appears here -->
-                <div class="p-2 bd-highlight" id="logged-in">Username123</div>
-
-                <div class="p-2 bd-highlight">
-                  <div class="user-btn">
-                      <i class="fas fa-user"></i>
-                  </div>
+          <div class="d-flex flex-row-reverse bd-highlight align-items-center">
+            <!-- Logged in username appears here -->
+            <div class="p-2 bd-highlight" id="logged-in">Username123</div>
+              <div class="p-2 bd-highlight">
+                <div class="user-btn">
+                  <i class="fas fa-user"></i>
                 </div>
+              </div>
 
-                <div class="p-2 bd-highlight"></div>
-                <div class="p-2 bd-highlight"></div>
-
-                <div class="p-2 bd-highlight">
-                  <div class="search-box">
-                    <input type="text" placeholder="Type to search...">
-                      <div class="search-btn">
-                        <i class="fas fa-search"></i>
-                      </div>
-
-                      <div class="cancel-btn">
-                        <i class="fas fa-times"></i>
-                      </div>
-                  </div>
-                </div> <!-- Close search box -->
-            </div>  <!-- Close flex -->
-          </div> <!-- Close header right -->
-        </nav>
-      </div>
-
-  <!------------------------------------- END OF SEARCH BAR ----------------------------------------->
+            <div class="p-2 bd-highlight"></div>
+            <div class="p-2 bd-highlight"></div>
+          </div>  <!-- Close flex -->
+        </div> <!-- Close header right -->
+     </nav>
+   </div>
+  <!------------------------------------- END OF TOP BAR ----------------------------------------->
 
   <!----------------------------------------- SIDE NAVIGATION BAR ------------------------------------>
   <div class="wrapper">
-    <!-- <div> -->
       <nav id="sidebar">
           <div class="sidebar-header">
               <div class="cancel-btn" id="cancel-btn">
@@ -98,15 +83,15 @@
             <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
           </div>
       </nav> <!-- Close nav sidebar -->
-    <!-- </div> -->
 
-    <!-- Page Content  -->
+     <!----------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------->
+
+    <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
 
     <div class="container">
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light bg-light" id="small-navbar">
                 <div class="container-fluid">
-
                     <!-- Small navigation bar for Toggle Menu and Sort Methods -->
                     <button type="button" id="toggle-menu" class="btn btn-outline-info">
                         <i class="fa fa-bars"></i>
@@ -116,17 +101,16 @@
                     <button class="btn btn-outline-info d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-
                 </div> <!-- CLose container fluid -->
             </nav> 
 
             <h1> Project title </h1>
-        <div class="row">
-          <div class="col-4 project-picture"> 
-            <img class="project-pic" src="project-pic.JPG"/>
-          </div> 
-          <div class="col-6">
-            <!--<div class="project-details"> -->
+            <div class="row">
+              <div class="col-4 project-picture">
+                <img class="project-pic" src="project-pic.JPG"/>
+              </div>
+
+            <div class="col-6">
               <h4 style="text-align: center;"> Project details </h4>
                 <div class="row">
                   <div class="col-12 col-md-3">
@@ -136,76 +120,71 @@
             	    <p> essay there will be items fetched from database and will be shown here. </p>
             	  </div>
             	</div> <!-- row-->
-            
-            </br>
+              <br>
+
             	<div class="row">
-                  <div class="col-12 col-md-3">
-            	    <button type="button" class="btn btn-primary btn-block" disabled="true">Tags</button>
-            	  </div>
-            	  <div class="col-12 col-md-9">
-            	    <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
-            	  </div>
+                <div class="col-12 col-md-3">
+                  <button type="button" class="btn btn-primary btn-block" disabled="true">Tags</button>
+                </div>
+                <div class="col-12 col-md-9">
+                  <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
+                </div>
             	</div>
-            </br>
-              	<div class="row">
-                  <div class="col-12 col-md-3">
+              <br>
+
+              <div class="row">
+                <div class="col-12 col-md-3">
             	    <button type="button" class="btn btn-primary btn-block" disabled="true">Authors</button>
             	  </div>
             	  <div class="col-12 col-md-9">
             	    <p> <!-- FETCH FROM DATABASE --> essay there will be items fetched from database and will be shown here. </p>
             	  </div>
             	</div>
-
-            </br></br></br>
+              <br><br><br>
 
             	<a class="btn btn-primary btn-lg" role="button" onClick="document.getElementById('artefacts').scrollIntoView();">View artefacts</a></br>
+            </div> <!-- col-6 end -->
+          </div> <!-- end row -->
+        <br>
 
-          </div> <!-- col-6 end -->
-        </div> <!-- end row -->
-        </br>
-
-            <div class="line"></div>
-
+          <div class="line"></div>
             <h2>Project description</h2>
             <div class="description">
-            <p> <!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
+              <!-- FETCH FROM DATABASE -->
+              <p>The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
 
-			Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
+              Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
 
-			Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
+              Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
 
-			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4]</p> </div>
-			</br></br>
+              Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4]</p> </div>
 
-            <h2>Author comments</h2>
-            <div class="description">
-            <p><!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
+              <br><br>
+              <h2>Author comments</h2>
+              <div class="description">
+              <p><!-- FETCH FROM DATABASE --> The philosophy of Confucius—Confucianism—emphasized personal and governmental morality, correctness of social relationships, justice, kindness, and sincerity. Confucianism was part of the Chinese social fabric and way of life; to Confucians, everyday life was the arena of religion.[2] His followers competed successfully with many other schools during the Hundred Schools of Thought era only to be suppressed in favor of the Legalists during the Qin dynasty. Following the victory of Han over Chu after the collapse of Qin, Confucius's thoughts received official sanction in the new government. During the Tang and Song dynasties, Confucianism developed into a system known in the West as Neo-Confucianism, and later New Confucianism.
 
-			Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
+              Confucius is traditionally credited with having authored or edited many of the Chinese classic texts including all of the Five Classics, but modern scholars are cautious of attributing specific assertions to Confucius himself. Aphorisms concerning his teachings were compiled in the Analects, but only many years after his death.
 
-			Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
+              Confucius's principles have commonality with Chinese tradition and belief. With filial piety, he championed strong family loyalty, ancestor veneration, and respect of elders by their children and of husbands by their wives, recommending family as a basis for ideal government. He espoused the well-known principle "Do not do unto others what you do not want done to yourself", the Golden Rule. He is also a traditional deity in Daoism.
 
-			Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4] </p> </div>
+              Confucius is widely considered as one of the most important and influential individuals in human history. His teaching and philosophy greatly affected people around the world and remain influential today.[3][4] </p> </div>
 
-            
             <div id="artefacts">
-            	</br></br>
+            	<br><br>
             	<div class="line"></div>
-
-            
             	<h2>Images</h2>
             	<!--List of flip cards here -->
             	<!-- FETCH FROM DATABASE --> 
             	
             	<div class="table-responsive">
-            <table class="table table-borderless">
-                <tbody id="adminTbody">
-                    <c:forEach items="${user }" var="user">
+                <table class="table table-borderless">
+                    <tbody id="adminTbody">
 
                     <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
                     <!--------------------------------- ROW 1 ------------------------------------------->
-                    <tr>
-                        <td>
+                      <tr>
+                        <td>
                           <!----------------------- FLIP CARD 1 ---------------------------->
                           <div class="flip-box">
                               <div class="flip-box-inner">
@@ -226,20 +205,20 @@
                                   </p>
                                   <button type="button" class="btn btn-info">Learn more > </button>
                                 </div>
-                                <!--</div> -->
                               </div>
                           </div>
+
                           <!-- Trigger the Modal -->
                           <!-- The Modal -->
-                		  <div id="myModal" class="modal">
-                		    <!-- The Close Button -->
-                		  	<span class="close">&times;</span>
-                			<!-- Modal Content (The Image) -->
-                			<img class="modal-content" id="img01">
-                			<!-- Modal Caption (Image Text) -->
-                			<div id="caption"></div>
-                		  </div>
-                		</td>
+                		        <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01">
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                		        </div>
+                		    </td>
 
                         <!----------------------- FLIP CARD 2 ---------------------------->
                         <td>
@@ -264,20 +243,20 @@
                               </div>
                             </div>
                           </div>
+
                           <!-- Trigger the Modal -->
                           <!-- The Modal -->
-                		  <div id="myModal" class="modal">
-                		    <!-- The Close Button -->
-                		  	<span class="close">&times;</span>
-                			<!-- Modal Content (The Image) -->
-                			<img class="modal-content" id="img01">
-                			<!-- Modal Caption (Image Text) -->
-                			<div id="caption"></div>
-                		  </div>
-                            
+                		        <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01">
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                		        </div>
                         </td>
                         <!------------------------- FLIP CARD 3 ---------------------------->
-                        <td>
+                        <td>
                           <div class="flip-box">
                             <div class="flip-box-inner">
                               <div class="flip-box-front" id="right">
@@ -299,22 +278,23 @@
                               </div>
                             </div>
                           </div>
+
                           <!-- Trigger the Modal -->
                           <!-- The Modal -->
-                		  <div id="myModal" class="modal">
-                		    <!-- The Close Button -->
-                		  	<span class="close">&times;</span>
-                			<!-- Modal Content (The Image) -->
-                			<img class="modal-content" id="img01">
-                			<!-- Modal Caption (Image Text) -->
-                			<div id="caption"></div>
-                		  </div> 
-                        </td>
-                    </tr> <!-- Close Row 1-->
+                		        <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01">
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                		        </div>
+                          </td>
+                      </tr> <!-- Close Row 1-->
                 <!------------------------------- ROW 2 --------------------------------------->
-                    <tr>
+                    <tr>
                         <!---------------------- FLIP CARD 4 ------------------------------->
-                        <td>
+                         <td>
                           <div class="flip-box">
                             <div class="flip-box-inner">
                               <div class="flip-box-front" id="right">
@@ -336,19 +316,20 @@
                               </div>
                             </div>
                           </div>
-                          <!-- Trigger the Modal -->
-                          <!-- The Modal -->
-                		  <div id="myModal" class="modal">
-                		    <!-- The Close Button -->
-                		  	<span class="close">&times;</span>
-                			<!-- Modal Content (The Image) -->
-                			<img class="modal-content" id="img01">
-                			<!-- Modal Caption (Image Text) -->
-                			<div id="caption"></div>
-                		  </div>  
+
+                           <!-- Trigger the Modal -->
+                           <!-- The Modal -->
+                           <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01">
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                           </div>
                         </td>
                         <!------------------------- FLIP CARD 5 ------------------------------->
-                        <td>
+                        <td>
                           <div class="flip-box">
                             <div class="flip-box-inner">
                               <div class="flip-box-front" id="right">
@@ -370,18 +351,20 @@
                               </div>
                             </div>
                           </div>
+
                           <!-- Trigger the Modal -->
-                          <!-- The Modal -->
-                		  <div id="myModal" class="modal">
-                		    <!-- The Close Button -->
-                		  	<span class="close">&times;</span>
-                			<!-- Modal Content (The Image) -->
-                			<img class="modal-content" id="img01">
-                			<!-- Modal Caption (Image Text) -->
-                			<div id="caption"></div>
-                		  </div>  
+                           <!-- The Modal -->
+                           <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01">
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                           </div>
                         </td>
                     </tr>
+
                     <!------------------------------- ROW 3 --------------------------------------->
                     <tr>
                         <!---------------------- FLIP CARD 6 ------------------------------->
@@ -407,20 +390,19 @@
                               </div>
                             </div>
                           </div>
+
                           <!-- Trigger the Modal -->
                           <!-- The Modal -->
-                		  <div id="myModal" class="modal">
-                		    <!-- The Close Button -->
-                		  	<span class="close">&times;</span>
-                			<!-- Modal Content (The Image) -->
-                			<img class="modal-content" id="img01">
-                			<!-- Modal Caption (Image Text) -->
-                			<div id="caption"></div>
-                		  </div>  
+                          <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01">
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                           /div>
                         </td>                        
                     </tr>
-                    <!--Don't put card over </c:forEach>-->
-                </c:forEach>
                 </tbody>
             </table>
         </div> 
@@ -428,10 +410,9 @@
 <!----------------------------------------- Videos ------------------------------------------------------>
         <div class="line"></div>
 
-
         <h2>Videos</h2>
-        </br></br>
-          <!--all videos will be here -->
+        <br><br>
+          <!--All videos will be here -->
             <!------------------- 1st video --------------------->
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -442,7 +423,7 @@
              	<p>all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. <!-- FETCH FROM DATABASE --></p>
               </div>
             </div>
-            </br></br>
+            <br><br>
 
             <!--------------------- 2nd video --------------------->
             <div class="form-row">
@@ -454,48 +435,48 @@
              	<p>all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. all videos descriptions will be here. <!-- FETCH FROM DATABASE --></p>
               </div>
             </div>     
- 			</br></br>
- 			
-      <!----------------------------------------------------------------- END OF SIDE NAVIGATION BAR ---------------------------------------------------------->
+
+              <br><br>
+      <!----------------------------------------------------------------- END OF CONTENT
+      ---------------------------------------------------------->
         
       <!--------------------------------------- FOOTER-------------------------------------------------->
-            <footer>
-              <div class = "footer">
-                <div class="container p-4">
-                  <div class="row">
-                      <div class="column">
-                        <h5>Address</h5>
+              <footer>
+                  <div class = "footer">
+                    <div class="container p-4">
+                      <div class="row">
+                          <div class="column">
+                            <h5>Address</h5>
+                            <p>University of Nottingham Ningbo China<br>
+                              199, Taikang East Road Ningbo,<br>
+                              315100, China
+                            </p>
+                          </div>
 
-                        <p>University of Nottingham Ningbo China<br>
-                          199, Taikang East Road Ningbo,<br>
-                          315100, China</p>
-                      </div>
+                          <div class = "column">
+                            <h5>Essentials</h5>
+                            <ul class="list-unstyled">
+                              <li><a href = "https://www.nottingham.edu.cn/en/careers/naa/nottingham-advantage-award.aspx">Nottingham Advantage Award</a></li>
+                              <li><a href = "#!">Contact Us</a></li>
+                            </ul>
+                          </div>
 
-                      <div class = "column">
-                        <h5>Essentials</h5>
+                          <div class = "column">
+                            <h5>Artefact portal</h5>
+                            <button type="button" class="btn btn-outline-light"><a href="loginpage.html" id="login-button">Login</a></button>
+                          </div>
+                      </div><!--Close row-->
+                    </div><!-- Close container -->
 
-                        <ul class="list-unstyled">
-                          <li><a href = "#!">Nottingham Advantage Award</a></li>
-                          <li><a href = "#!">Contact Us</a></li>
-                        </ul>
-                      </div>
-
-                      <div class = "column">
-                        <h5>Artefact portal</h5>
-                        <button type="button" class="btn btn-outline-light"><a href="loginpage.html">Login</a></button>
-                      </div>
-
-                    </div><!--Close row-->
-                </div><!-- Close container -->
-
-                  <!-- Copyright -->
-                  <div class = "copyright">
-                    © All rights reserved
-                  </div>
-              </div> <!-- Close footer-->
-            </footer> 
-        </div> <!--Close content -->
-      </div>
+                    <!-- Copyright -->
+                    <div class = "copyright">
+                      © All rights reserved
+                    </div>
+                  </div> <!-- Close footer-->
+                </footer>
+            </div> <!--Close content -->
+          </div> <!-- Close container -->
+        </div> <!-- Close wrapper -->
       <!---------------------------------------------------------------------- END OF FOOTER ------------------------------------------------------------------->
 
       <div class="overlay"></div>
@@ -511,6 +492,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript-->
       <script type="text/javascript" src="ProjectView.js"></script> 
-
+      <script type="text/javascript" src="secondaryLayout.js"></script>
   </body>
 </html>

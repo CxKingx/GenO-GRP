@@ -51,7 +51,7 @@
                             {% else %}
                                 <form action="{% url 'home_page:edit_project' %}" method="POST">
                                 {% csrf_token %}
-                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button></td>
 
                                 </form>
                             {% endif %}
@@ -68,7 +68,7 @@
                             {% else %}
                                 <form action="{% url 'home_page:edit_project' %}" method="POST">
                                 {% csrf_token %}
-                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button><button class="btn"></td>
+                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button></td>
 
                                 </form>
                             {% endif %}

@@ -266,6 +266,10 @@ footer.btn {
 	color: #18194f;
 }
 
+a#login-button:hover {
+  color: #18194f;
+}
+
 /*------------------------------- Small navigation bar ---------------------------*/
 #small-navbar {
 	padding: 5px;

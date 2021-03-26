@@ -27,11 +27,6 @@ h3 {
 
 }
 
-
-/* ----------------------- Search Bar ----------------------- */
-
-/* ----------------------- Search Bar (end) ----------------------- */
-
 /*----------------------------------- Top navigation bar ---------------------------*/
 .navbar {
 	top: 0;
@@ -258,8 +253,21 @@ a#login-button:hover {
 h5 {
     font-size: 14px;
 }
+
 #footer-desc{
-	font-size:16px;
+	font-size:12px;
+}
+
+div.footer {
+	font-size: 12px;
+}
+
+button#submit.btn.btn-primary {
+	font-size: 16px;
+}
+
+a.btn.btn-primary {
+	font-size: 16px;
 }
 
 /*------------------------------- Small navigation bar ---------------------------*/
@@ -358,25 +366,10 @@ div.count {
 	margin-right: 2%;
 }
 
-#field {
+#text-project-field {
 	margin-left: 33.3%;
 }
 
-/******** table start **********/
-.table {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
+#text-author-field {
+	margin-left: 33.3%;
 }
-
-thead {
-    background: linear-gradient(to right, #18194f, #009bbd);
-	color: white;
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgb(159, 218, 231);
-}
-/********* table end ***********/
-
-/* ----------------------- upload project (end) ----------------------- */

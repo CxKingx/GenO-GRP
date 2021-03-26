@@ -11,7 +11,7 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <link rel="stylesheet" href="ProjectUploadPage.css">
+        <link rel="stylesheet" href="projectUploadPage.css">
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
@@ -99,156 +99,129 @@
                 </nav>
 
       <!--------------- UPLOAD PROJECT PAGE ------------------------->
-      <h2> Project details </h2>
-      <br>
-      <div class="container">
-      <form autocomplete="off" action="ProjectUploadPage.js">
-        <div class="row">
-          <div class="col-4">
-            <label for="title">Project Title:</label>
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control" id="title" name="title" placeholder="Title.." required>
-            <div class="invalid-feedback">Title must be between 4 to 200 characters.</div>
-          </div>
-        </div>
-        <br>
+            <h2> Project details </h2>
+              <br>
+              <div class="container">
+                <form autocomplete="off" action="ProjectUploadPage.js">
+                <div class="row">
+                  <div class="col-4">
+                    <label for="title">Project Title:</label>
+                  </div>
+
+                  <div class="col-8">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title.."
+                           maxlength="100" required>
+                    <div class="invalid-feedback">Title must be between 4 to 100 characters.</div>
+                  </div>
+                </div>
+                <br>
        
-        <div class="row">
-          <div class="col-4">
-            <p>Project Description:</p>
-            <p class="max">(MAX of 3000 characters)</p>
-          </div>
+                <div class="row">
+                  <div class="col-4">
+                    <p>Project Description:</p>
+                    <p class="max">(MAX of 3000 characters)</p>
+                  </div>
 
-          <!-- WORD COUNT JAVASCRIPT -->
-          <div id="count_project" class="count">
-            <span id="current_project">0</span>
-            <span id="max_project">/ 3000</span>
-          </div>
+                  <!-- WORD COUNT JAVASCRIPT -->
+                  <div id="count_project" class="count">
+                    <span id="current_project">0</span>
+                    <span id="max_project">/ 3000</span>
+                  </div>
 
-          <div class="col-8" id="field">
-            <textarea class="form-control" id="text_project" name="description" placeholder="Enter description.." style="height:400px" maxlength="3000" required></textarea>
-          </div>
-        </div>
-        <br>
+                  <div class="col-8" id="text-project-field">
+                    <textarea class="form-control" id="text_project" name="description" placeholder="Enter description.." style="height:400px" maxlength="3000" required></textarea>
+                  </div>
+                </div>
+                <br>
 
-        <div class="upload">
-          <div class="upload-artefact" id="upload-artefact">
-            <h2><label for="upload-artefact">Upload Artefact(s):</label> </h2><br>
-          </div>
-          <div class="buttons">
-            <a class="btn btn-primary" href="UploadImagePage.html" role="button">Image</a>
-            <a class="btn btn-primary" href="UploadVideoPage.html" role="button">Video</a>
-            <br>
-            <!-- https://www.w3schools.com/jsref/dom_obj_fileupload.asp -- for individual image and video upload page -->
-            <!-- will the table displaying the files be generated from python?? -->
-          </div>
-        </div>
+                <div class="upload">
+                  <div class="upload-artefact" id="upload-artefact">
+                    <h2><label for="upload-artefact">Upload Artefact(s):</label> </h2><br>
+                  </div>
 
-        <div class = "table-responsive">
-          <table class="table table-hover table-bordered">
-            <thead>
-              <tr>
-                <th>File name</th>
-                <th>Artefact title</th>
-                <th>File type</th>
-                <th>File size</th>
-              </tr>
-            </thead> 
+                  <div class="buttons">
+                    <a class="btn btn-primary" href="UploadImagePage.html" role="button">Image</a>
+                    <a class="btn btn-primary" href="UploadVideoPage.html" role="button">Video</a>
+                    <br>
+                  </div>
+                </div>
+                <br><br>
 
-            <!-- Fill the table using sql query -->
-            <tbody>
-              <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
-              <tr>
-                <td><!-- FETCH INPUT FROM BACKEND --> a</td>
-                <td><!-- FETCH INPUT FROM BACKEND --> b</td>
-                <td><!-- FETCH INPUT FROM BACKEND --> c</td>
-                <td><!-- FETCH INPUT FROM BACKEND --> d</td>
-              </tr>
-            </tbody>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="module">Module Name:</label>
+                  </div>
+                  <div class="col-8">
+                    <input type="text" class="form-control" id="module" name="module" placeholder="Module name.." required>
+                  </div>
+                </div>
+                <br>
 
-          <!-- Close table -->
-          </table> 
-        </div>
-        
-        </br></br>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="completionDate">Date of Completion:</label>
+                  </div>
+                  <div class="col-8">
+                    <input type="date" class="form-control" id="completionDate" name="completionDate" placeholder="Date of completion.." required>
+                  </div>
+                </div>
+                <br>
 
-        <div class="row">
-          <div class="col-4">
-            <label for="module">Module Name:</label>
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control" id="module" name="module" placeholder="Module name.." required>
-          </div>
-        </div>
-        <br>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="author">Author(s):</label>
+                  </div>
+                  <div class="col-8">
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Name(s)..." required>
+                  </div>
+                </div>
+                <br>
 
-        <div class="row">
-          <div class="col-4">
-            <label for="completionDate">Date of Completion:</label>
-          </div>
-          <div class="col-8">
-            <input type="date" class="form-control" id="completionDate" name="completionDate" placeholder="Date of completion.." required>
-          </div>
-        </div>
-        <br>
+                <div class="row">
+                  <div class="col-4">
+                    <p>Author Comments:</p>
+                    <p class="max">(MAX of 2000 characters)</p>
+                  </div>
 
-        <div class="row">
-          <div class="col-4">
-            <label for="author">Author(s):</label>
-          </div>
-          <div class="col-8">
-            <input type="text" class="form-control" id="author" name="author" placeholder="Name(s)..." required>
-          </div>
-        </div>
-        <br>
+                  <!-- WORD COUNT JAVASCRIPT -->
+                  <div id="count_author" class="count">
+                    <span id="current_author">0</span>
+                    <span id="max_author">/ 2000</span>
+                  </div>
 
-        <div class="row">
-          <div class="col-4">
-            <p>Author Comments:</p>
-            <p class="max">(MAX of 2000 characters)</p>
-          </div>
+                  <div class="col-8" id="text-author-field">
+                    <textarea class="form-control" id="text_author" name="description" placeholder="Write something.." style="height:250px" maxlength="2000"></textarea>
+                  </div>
+                </div>
+                <br>
 
-          <!-- WORD COUNT JAVASCRIPT -->
-          <div id="count_author" class="count">
-            <span id="current_author">0</span>
-            <span id="max_author">/ 2000</span>
-          </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="tags">Tag(s):</label>
+                  </div>
+                  <div class="col-8">
 
-          <div class="col-8" id="field">
-            <textarea class="form-control" id="text_author" name="description" placeholder="Write something.." style="height:250px" maxlength="2000"></textarea>
-          </div> 
-        </div>
-        <br>
+                  <select id="tags" class="form-control" required>
+                    <option selected>No tags..</option>
+                    <option>Data Scholarship</option>
+                    <option>Digital Media Production</option>
+                    <option>Technologies for Learning</option>
+                  </select>
+                  </div>
+                </div>
+                <br>
 
-        <div class="row">
-          <div class="col-4">
-            <label for="tags">Tag(s):</label>
-          </div>
-          <div class="col-8">
-            <!-- <input type="text" class="form-control" id="myTag" name="tag" placeholder="Name of tag(s)..." required> -->
-           
-      		<select id="tags" class="form-control" required>
-        		<option selected>No tags..</option>
-        		<option>Data Scholarship</option>
-        		<option>Digital Media Production</option>
-        		<option>Technologies for Learning</option>
-      		</select>
-          </div>
-        </div>
-        <br>
+                <div class="submit-button">
+                  <button type="submit" id="submit" class="btn btn-primary">Submit project</button>
+                </div>
 
-        <div class="submit-button">
-          <button type="submit" id="submit" class="btn btn-primary">Submit project</button>
-        </div>
-
-      </form>
-      </div>
+              </form>
+            </div>
 
       <!--------------- UPLOAD PROJECT PAGE ------------------------->
 
       <!------------------------------------------------------------------- FOOTER ---------------------------------------------------------------------------->
-                <footer>
+            <footer>
                   <div class = "footer">
                     <div class="container p-4">
                       <div class="row">
@@ -287,7 +260,6 @@
           <!---------------------------------------------------------------------- END OF FOOTER ------------------------------------------------------------------->
 
       <div class="overlay"></div>
-      
     
       <!-- Bootstrap Javascript -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -300,7 +272,8 @@
       <!-- jQuery Custom Scroller CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript -->
-      <script src="ProjectUploadPage.js"></script>
+      <script src="projectUploadPage.js"></script>
+      <script src="secondaryLayout.js"></script>
       
     </body>
 </html>

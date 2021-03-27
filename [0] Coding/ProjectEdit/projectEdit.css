@@ -296,7 +296,37 @@ i.fa-bars:before {
 	color: #1a296b;
 }
 
-/* ----------------------- upload project (start) ----------------------- */
+/* ---------------------------- Edit Project ----------------------------- */
+
+div.alert.alert-info {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+h4.alert-heading {
+    text-align: center;
+    color: #18194f;
+}
+
+p.feedback {
+    font-size: 16px;
+    text-align: justify;
+}
+
+p.feedback-end {
+    font-size: 18px;
+}
+
+img#feedback-img {
+    width: 10%;
+    height: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 .form-control{
 	border-color: #18194f;
 	font-family: 'circular';

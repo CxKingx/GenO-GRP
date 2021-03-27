@@ -7,13 +7,19 @@
 </head>
 <body>
 <h1>Project Video Up</h1>
+
 <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        {{ form }}
+        <label for="id_name">Name:</label>
+        <input type="text" name="name" maxlength="50" required="" id="id_name">
+        <label for="id_Video_Description">Video Description:</label>
+        <textarea name="Video_Description" cols="40" rows="10" required="" id="id_Video_Description"></textarea>
+        <input type="file" name="videofile" required="" id="id_videofile" multiple >
 
      <br>
         <button type="submit">Upload</button>
     </form>
+
 </body>
 </html>

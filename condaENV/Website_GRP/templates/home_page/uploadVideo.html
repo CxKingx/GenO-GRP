@@ -17,9 +17,9 @@
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
         <!-- Own CSS -->
-        <link rel="stylesheet" href="uploadImage.css">
+        <link rel="stylesheet" href="uploadVideo.css">
 
-        <title>Upload Image</title>
+        <title>Upload Video</title>
   </head>
 
   <body>
@@ -104,7 +104,7 @@
                 </nav>
 
                 <form>
-                  <input type="file" accept="image/*" multiple>
+                  <input type="file" accept="video/*" multiple>
                   <br><br><br>
 
                   <div class="row" id="details">
@@ -141,10 +141,39 @@
                   </div> <!-- Close row -->
                   <br><br>
 
+                  <!-- Select thumbnail image -->
+                  <div class="row" id="thumbnail-box">
+                    <div class="col-4">
+                      <label>Select thumbnail image:</label>
+                    </div>
+
+                    <div class="col-8">
+  			              <div class="wrapper">
+  				              <div class="box">
+   					              <div class="image-preview">
+
+                          </div>
+    				              <div class="upload-options">
+                            <div class="row">
+                              <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*" onchange="loadFile(event)"/>
+                              <label for="image" id="thumbnail">Click here to choose a thumbnail image</label>
+        			              </div>
+
+                            <div class="row">
+                              <div class="image-preview">
+                                <img id="output"/>
+                              </div>
+                            </div>
+    				              </div> <!-- Close upload options -->
+  				              </div> <!-- Close box -->
+  			              </div> <!-- Close wrapper -->
+  			            </div> <!-- Close col-8 -->
+                  </div> <!-- Close row -->
+
                   <div class="submit-button">
                     <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and back to project</a></button>
                     <!-- Reload the page and empty the form -->
-                    <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and add new image</a></button>
+                    <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and add new video</a></button>
                   </div>
                 </form>
           <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
@@ -200,12 +229,12 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
       <!-- Own Javascript -->
       <script src="secondaryLayout.js"></script>
-      <script type="text/javascript" src="imageuploadify.js"></script>
+      <script type="text/javascript" src="videouploadify.js"></script>
 
       <script type="text/javascript">
         $(document).ready(function() {
-        $('input[type="file"]').imageuploadify();
-      })
+          $('input[type="file"]').videouploadify();
+        })
       </script>
 
       <script type="text/javascript">
@@ -220,5 +249,16 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
       </script>
+
+      <script>
+  		  var loadFile = function(event) {
+    	  	var reader = new FileReader();
+    		  reader.onload = function(){
+      		var output = document.getElementById('output');
+      		output.src = reader.result;
+    		  };
+    	    reader.readAsDataURL(event.target.files[0]);
+  		  };
+		</script>
   </body>
 </html>

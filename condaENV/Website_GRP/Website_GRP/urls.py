@@ -39,20 +39,26 @@ urlpatterns = [
     path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
     path('adminLogin/', views.adminLogin, name='adminLogin'),
     path('register/', views.register, name='register'),
-    #Still needs to be edited
     path('contactUs/', views.contactUs, name='contactUs'),
+    # Still needs to be edited
 
-    #testing urls
     path('oldregister/', views.oldregister, name='oldregister'),
-    path('ProjectUploadPage/', views.ProjectUploadPage, name='ProjectUploadPage'),
+    # Upload Summary Edit and upload pic and vid
+    path('ProjectUpload/', views.ProjectUpload, name='ProjectUpload'),
+    path('projectSummary/', views.projectSummary, name='projectSummary'),
+    path('editProjectDetail/', views.editProjectDetail, name='editProjectDetail'),
+    path('ProjectUploadImage/', views.ProjectUploadImage, name='ProjectUploadImage'),
+    path('ProjectUploadVideo/', views.ProjectUploadVideo, name='ProjectUploadVideo'),
+
 
     path('welcome/', views.welcomepage, name='welcomepage'),
-
+    #not used
     path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
 
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
+    # the test urls
     path('upload_artefact/', views.showvideo, name='showvideo'),
     path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
@@ -66,6 +72,15 @@ urlpatterns = [
     path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
 
     path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
+
+    path('showUploadProject/', views.showUploadProject, name='showUploadProject'),
+    path('showProjectSummary/', views.showProjectSummary, name='showProjectSummary'),
+    path('showProjectEdit/', views.showProjectEdit, name='showProjectEdit'),
+    path('showProjectUploadImage/', views.showProjectUploadImage, name='showProjectUploadImage'),
+    path('showProjectUploadVideo/', views.showProjectUploadVideo, name='showProjectUploadVideo'),
+
+
+
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

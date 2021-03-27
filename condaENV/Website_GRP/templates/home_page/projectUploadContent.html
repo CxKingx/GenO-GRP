@@ -1,0 +1,132 @@
+{% extends "home_page/secondaryLayout.html" %}
+{% load static %}
+{% block layout_css %}
+
+<link rel="stylesheet" href="{% static 'css/projectUpload.css' %}">
+<title>Project Upload</title>
+{% endblock %}
+
+{% block content %}
+
+<h2> Project details </h2>
+<h4>{{errormessage}}</h4>
+              <br>
+              <div class="container">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="title">Project Title:</label>
+                            </div>
+
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="title" name="Project_Name" placeholder="Title.."
+                            maxlength="50" required>
+
+                            </div>
+                        </div>
+                    <br>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label>Project Description:</label>
+                    <p class="max">(MAX of 3000 characters)</p>
+                  </div>
+
+                  <!-- WORD COUNT JAVASCRIPT -->
+                  <div id="count_project" class="count">
+                    <span id="current_project">0</span>
+                    <span id="max_project">/ 3000</span>
+                  </div>
+
+                  <div class="col-8" id="text-project-field">
+                    <textarea class="form-control" id="text_project" name="Project_Description" placeholder="Enter description.." style="height:400px" maxlength="3000" required></textarea>
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="module">Module Name:</label>
+                  </div>
+                  <div class="col-8">
+                      <select name="Module_Name"  id = "module" class="form-control" required>
+                          <option value="Data Scholarship" selected="">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                      </select>
+
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="completionDate">Date of Completion:</label>
+                  </div>
+                  <div class="col-8">
+                    <input type="date" class="form-control" id="completionDate" name="Date_of_Completion" placeholder="Date of completion.." required>
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="author">Author(s):</label>
+                  </div>
+                  <div class="col-8">
+                    <input type="text" class="form-control" id="author" name="Authors" placeholder="Name(s)..." required>
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label>Author Comments:</label>
+                    <p class="max">(MAX of 2000 characters)</p>
+                  </div>
+
+                  <!-- WORD COUNT JAVASCRIPT -->
+                  <div id="count_author" class="count">
+                    <span id="current_author">0</span>
+                    <span id="max_author">/ 2000</span>
+                  </div>
+
+                  <div class="col-8" id="text-author-field">
+                    <textarea class="form-control" id="text_author" name="Author_Comment" placeholder="Write something.." style="height:250px" maxlength="2000"></textarea>
+                  </div>
+                </div>
+                <br>
+
+                <div class="row">
+                  <div class="col-4">
+                    <label for="tags">Tag(s):</label>
+                  </div>
+                  <div class="col-8">
+
+                    <select name="Project_Tag" id="tags" class="form-control" required>
+                        <option value="" selected="">No tags..</option>
+                        <option value="Data Scholarship">Data Scholarship</option>
+                        <option value="Digital Media Production">Digital Media Production</option>
+                        <option value="Technologies for Learning">Technologies for Learning</option>
+                    </select>
+
+
+
+                  </div>
+                </div>
+                <br><br>
+
+                <div class="submit-button">
+                  <button type="submit" id="submit" class="btn btn-primary">Continue to upload artefact</button>
+                </div>
+
+              </form>
+              </div>
+
+{% endblock %}
+
+{% block layout_js %}
+<script src="{% static 'javascript/projectUpload.js' %}"></script>
+
+{% endblock %}

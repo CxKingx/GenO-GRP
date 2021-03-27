@@ -95,61 +95,116 @@ def contactUs(request):
     return render(request, 'home_page/contactUs.html', {})
 
 
+def showUploadProject(request):
+    return render(request, 'home_page/projectUpload.html', {})
+
+
+def showProjectSummary(request):
+    return render(request, 'home_page/projectSummary.html', {})
+
+
+def showProjectEdit(request):
+    return render(request, 'home_page/projectEdit.html', {})
+
+
+def showProjectUploadImage(request):
+    return render(request, 'home_page/uploadImage.html', {})
+
+
+def showProjectUploadVideo(request):
+    return render(request, 'home_page/uploadVideo.html', {})
+
+
 # End of Test Return Pages
 
 # employees = Employee.objects.all().values('id','name','company__name')
 # Project Upload Page does not use Secondary Layout because it crashes
 @login_required
-def ProjectUploadPage(request):
+def ProjectUpload(request):
     if request.method == 'POST':
+        # Get Data from User to be inserted to the object
         Projectformhtml = ProjectForm(request.POST, request.FILES)
         # form = VideoForm(request.POST or None, request.FILES or None)
-
         # imageform = UploadImageForm(request.POST or None, request.FILES or None)
+
         if Projectformhtml.is_valid():
             thisuser = request.user
             getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
-
             getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
-            print(getCurrentUser.email)
-            print(type(getCurrentUserID))
 
+            # Save the instance first , but not save to the database
             uploadedProject = Projectformhtml.save(commit=False)
+            # Add some extra information that is automated by the system
             uploadedProject.Upload_Date = date.today()
             uploadedProject.Last_Updated = date.today()
             todayDate = date.today()
             nextweek = timedelta(days=7)
             nextweekDate = todayDate + nextweek
             uploadedProject.Account_ExpiryDate = nextweekDate
-            print(request.user)
-            print(getCurrentUserID.user)
+
+            # print(request.user)
+            # print(getCurrentUserID.user)
+            # Reference the project to the user uploading it now and Save it
             uploadedProject.User_Owner = getCurrentUserID
             uploadedProject.save()
+            print("This Current Project ID is")
+            request.session['thisdata'] = uploadedProject.id
+            print(request.session['thisdata'])
+            # return render(request, 'home_page/projectSummary.html')
+            return HttpResponseRedirect(reverse('testProjectSummary'))
 
-            print(uploadedProject)
-            print(type(uploadedProject))
-
-            # print("Handle videos")
-            # thisvideo = form.save(commit=False)
-            # thisvideo.Project_Name = uploadedProject
-            # thisvideo.save()
-            # print("Saved")
-            #
-            # imageattribute = imageform.save(commit=False)
-            # imageattribute.Project_Name = uploadedProject
-            # imageattribute.save()
-
-            return render(request, 'home_page/ProjectUploadPage.html')
         else:
+            errormessage = "Something Went Wrong when Uploading"
             print(Projectformhtml.errors.as_data())
-            return render(request, 'home_page/ProjectUploadPage.html')
+            return render(request, 'home_page/projectUploadContent.html', {'errormessage': errormessage})
 
     else:
+        # Pass on the empty form as a normal request
         Projectformhtml = ProjectForm()
-        # form = VideoForm()
-        # imageform = UploadImageForm()
-    return render(request, 'home_page/ProjectUploadPage.html', {'Projectformhtml': Projectformhtml})
+    return render(request, 'home_page/projectUploadContent.html', {'Projectformhtml': Projectformhtml})
     # return render(request, 'home_page/ProjectUploadPage.html', {})
+
+
+@login_required
+def projectSummary(request):
+    print("Showing summary")
+    print(request.session['thisdata'])
+    CurrentProject = Project.objects.get(id=request.session['thisdata'])
+    ProjectImages = ImageArtefact.objects.filter(Project_Name=CurrentProject)
+    ProjectVideos = VideoArtefact.objects.filter(Project_Name=CurrentProject)
+
+    return render(request, 'home_page/projectSummaryContent.html',
+                  {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
+
+@login_required
+def editProjectDetail(request):
+    print("Edit detail")
+    print(request.session['thisdata'])
+    # Get current project being edited
+    CurrentProject = Project.objects.get(id=request.session['thisdata'])
+    print(CurrentProject)
+
+    if request.method == 'POST':
+        Projectformhtml = ProjectForm(request.POST)
+        if Projectformhtml.is_valid():
+            EditedProject = Projectformhtml.save(commit=False)
+            CurrentProject.Project_Name = EditedProject.Project_Name
+            CurrentProject.Project_Description = EditedProject.Project_Description
+            CurrentProject.Project_Tag = EditedProject.Project_Tag
+            CurrentProject.Module_Name = EditedProject.Module_Name
+            CurrentProject.Date_of_Completion = EditedProject.Date_of_Completion
+            CurrentProject.Author_Comment = EditedProject.Author_Comment
+            CurrentProject.Authors = EditedProject.Authors
+            CurrentProject.Module_Name = EditedProject.Module_Name
+            CurrentProject.save()
+            print("Changed")
+            # print(EditedProject)
+        return HttpResponseRedirect(reverse('testProjectSummary'))
+    else:
+        Projectformhtml = ProjectForm()
+        print("No Changed")
+    return render(request, 'home_page/projectEditContent.html',
+                  {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
 
 @login_required
@@ -162,6 +217,41 @@ def edit_project(request):
         print(type(ProjectID))
         # Process this project ID
 
+@login_required
+def ProjectUploadImage(request):
+    print("Uploading image")
+    bruh = request.session['thisdata']
+    CurrentProject = Project.objects.get(id=request.session['thisdata'])
+    print(bruh)
+    if request.method == "POST":
+        print("reached here first")
+        images = request.FILES.getlist('picturefiles')
+        imageName = request.POST.get('Image_Name')
+        imageDesc = request.POST.get('Image_Description')
+        print(images)
+        print(imageName)
+        print(imageDesc)
+        for imgs in images:
+            imageArtefact = ImageArtefact.objects.create(Project_Name=CurrentProject, Image_Name=imageName, image=imgs, Image_Description=imageDesc)
+
+            imageArtefact.save()
+
+            print("Saved")
+        return HttpResponseRedirect(reverse('testProjectSummary'))
+
+    else:
+        Projectformhtml = ProjectForm()
+        form = VideoForm()
+        imageform = UploadImageForm()
+        #return render(request, 'home_page/testProjectVideo.html')
+        print("Load dis as normal")
+        return render(request, 'home_page/uploadImageContent.html')
+
+
+@login_required
+def ProjectUploadVideo(request):
+
+    return render(request, 'home_page/uploadVideoContent.html')
 
 @login_required
 def studentdashboard(request):
@@ -178,12 +268,7 @@ def studentdashboard(request):
     # Get today Date to check if user can still edit or not DateField Object
     todayDate = date.today()
 
-    # print(getCurrentUser.id)
-    # print(getCurrentUserID.id)
-    # print(getUserProjects)
-    # print(todayDate)
-
-    # DateTime Object , Is not needed for this type of website
+    # DateTime Object Is not needed for this type of website
     # todayDate = (timezone.now())
     # Get a dateField Object that is 7days , can be added or substracted to an existing DateField Object
     # nextweek = timedelta(days=7)
@@ -424,18 +509,18 @@ def searchbar(request):
         # maybe use context = { asdasdadasda } to send all data at once.
 
 
-# The test version
+# The test version Joseph
 def image_upload_view(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             img_obj = form.instance
-            return render(request, 'home_page/uploadimage.html', {'form': form, 'img_obj': img_obj})
+            return render(request, 'home_page/uploadimagetest.html', {'form': form, 'img_obj': img_obj})
     else:
         form = ImageForm()
 
-    return render(request, 'home_page/uploadimage.html', {'form': form})
+    return render(request, 'home_page/uploadimagetest.html', {'form': form})
 
 
 def testuploadproject(request):
@@ -482,9 +567,12 @@ def testuploadproject(request):
             print("Pass dis")
             print(uploadedProject.id)
             print(uploadedProject)
+
             request.session['thisdata'] = uploadedProject.id
             bruh = request.session['thisdata']
+
             print(bruh)
+
             print("Project Uploaded, now go to summary")
             return HttpResponseRedirect(reverse('testProjectSummary'))
         # return render(request, 'home_page/testProjectSummary.html')
@@ -501,33 +589,57 @@ def testuploadproject(request):
 # Project form save first
 # Then save picture form and video form , connect them to project
 
+# def testProjectVideo(request):
+#     bruh = request.session['thisdata']
+#     print(bruh)
+#     if request.method == 'POST':
+#         form = VideoForm(request.POST, request.FILES)
+#         if form.is_valid():
+#
+#             uploadedVideo = form.save(commit=False)
+#             CurrentProject = Project.objects.get(id=request.session['thisdata'])
+#             uploadedVideo.Project_Name = CurrentProject
+#             uploadedVideo = form.save()
+#             print("hai")
+#             return HttpResponseRedirect(reverse('testProjectSummary'))
+#         else:
+#             print("Not valid")
+#             print(form.errors.as_data())
+#             # return render(request, 'home_page/register.html',
+#
+#             return render(request, 'home_page/testProjectVideo.html', {'Projectformhtml': Projectformhtml, 'form': form,
+#                                                                        'imageform': imageform})
+#
+#     else:
+#         Projectformhtml = ProjectForm()
+#         form = VideoForm()
+#         imageform = UploadImageForm()
+#         return render(request, 'home_page/testProjectVideo.html', {'Projectformhtml': Projectformhtml, 'form': form,
+#                                                                    'imageform': imageform})
+
+
 def testProjectVideo(request):
     bruh = request.session['thisdata']
     print(bruh)
-    if request.method == 'POST':
-        form = VideoForm(request.POST, request.FILES)
-        if form.is_valid():
+    if request.method == "POST":
+        videos = request.FILES.getlist('videofile')
+        vidname = request.POST.get('name')
+        description = request.POST.get('Video_Description')
+        CurrentProject = Project.objects.get(id=request.session['thisdata'])
+        for vids in videos:
+            videoArtefact = VideoArtefact.objects.create(Project_Name=CurrentProject, name=vidname, videofile=vids,
+                                                         Video_Description=description)
 
-            uploadedVideo = form.save(commit=False)
-            CurrentProject = Project.objects.get(id=request.session['thisdata'])
-            uploadedVideo.Project_Name = CurrentProject
-            uploadedVideo = form.save()
-            print("hai")
-            return HttpResponseRedirect(reverse('testProjectSummary'))
-        else:
-            print("Not valid")
-            print(form.errors.as_data())
-            # return render(request, 'home_page/register.html',
+            videoArtefact.save()
 
-            return render(request, 'home_page/testProjectVideo.html', {'Projectformhtml': Projectformhtml, 'form': form,
-                                                                       'imageform': imageform})
+            print("Saved")
+        return HttpResponseRedirect(reverse('testProjectSummary'))
 
     else:
         Projectformhtml = ProjectForm()
         form = VideoForm()
         imageform = UploadImageForm()
-        return render(request, 'home_page/testProjectVideo.html', {'Projectformhtml': Projectformhtml, 'form': form,
-                                                                   'imageform': imageform})
+        return render(request, 'home_page/testProjectVideo.html')
 
 
 def testProjectImage(request):
@@ -574,12 +686,14 @@ def testProjectSummary(request):
         newint = int(ProjectID)
         print(type(newint))
         ImageWillDelete = VideoArtefact.objects.get(id=newint)
+        # VideoWillDelete = ImageArtefact.objects.get(id=newint)
+        # VideoWillDelete.delete()
         print(ImageWillDelete.name)
         ImageWillDelete.delete()
     return render(request, 'home_page/testProjectSummary.html', {'Projectformhtml': Projectformhtml, 'form': form,
                                                                  'imageform': imageform,
                                                                  'CurrentProject': CurrentProject
-                                        ,'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
+        , 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
 
 
 def testProjectDetailEdit(request):
@@ -602,12 +716,13 @@ def testProjectDetailEdit(request):
             CurrentProject.Module_Name = EditedProject.Module_Name
             CurrentProject.save()
             print("Changed")
-            #print(EditedProject)
+            # print(EditedProject)
         return HttpResponseRedirect(reverse('testProjectSummary'))
     else:
         Projectformhtml = ProjectForm()
         print("No Changed")
-    return render(request, 'home_page/testProjectDetailEdit.html', {'Projectformhtml': Projectformhtml,'CurrentProject': CurrentProject})
+    return render(request, 'home_page/testProjectDetailEdit.html',
+                  {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 #     if request.method == 'POST':
 #         form = ImageForm(request.POST, request.FILES)
 #         if form.is_valid():

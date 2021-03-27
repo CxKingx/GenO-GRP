@@ -54,6 +54,11 @@ class Project(models.Model):
         ('Digital Media Production', 'Digital Media Production'),
         ('Technologies for Learning', 'Technologies for Learning'),
     ]
+    ModuleNames = [
+        ('Data Scholarship', 'Data Scholarship'),
+        ('Digital Media Production', 'Digital Media Production'),
+        ('Technologies for Learning', 'Technologies for Learning'),
+    ]
 
     # This is to connect , which Owner have this project
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True)
@@ -61,7 +66,7 @@ class Project(models.Model):
     Project_Name = models.CharField(max_length=50)
     Project_Description = models.TextField()
     Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='', blank=True, null=True)
-    Module_Name = models.CharField(max_length=50, blank=True, null=True)
+    Module_Name = models.CharField(max_length=32, choices=ModuleNames,default='Data Scholarship', blank=True, null=True)
     Date_of_Completion = models.DateField(default=timezone.now)
     Author_Comment = models.TextField(blank=True, null=True)
 
@@ -99,7 +104,7 @@ class VideoArtefact(models.Model):
     name = models.CharField(max_length=50)
     Video_Description = models.TextField(null=True)
     videofile = models.FileField(upload_to='videos/', null=True, verbose_name="")  # path to video
-
+    # thumbnail
     def __str__(self):
         return self.name + ": " + str(self.videofile)
 

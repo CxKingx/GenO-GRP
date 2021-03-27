@@ -383,6 +383,10 @@ thead {
     background-color: rgb(159, 218, 231);
 }
 
+.table td {
+	padding: 8px;
+}
+
 h4 {
     text-align: center;
 }

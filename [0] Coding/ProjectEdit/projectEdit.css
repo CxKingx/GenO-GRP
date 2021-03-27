@@ -1,10 +1,12 @@
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 @font-face{
     font-family: 'circular';
     src: url('./circular-bold.ttf');
 }
 
 body {
-	font-size: 12px;
+	/*font-size: 12px;*/
 	font-family: 'circular';
 }
 

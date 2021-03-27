@@ -372,3 +372,16 @@ function validateTitle() {
       document.getElementById('submit').disabled = false;
   }
 }
+/************ thumbnail upload ***************/
+var loadFile = function(event) {
+    	  	var reader = new FileReader();
+    		  reader.onload = function(){
+      		var output = document.getElementById('output');
+      		output.src = reader.result;
+    		  };
+    	    reader.readAsDataURL(event.target.files[0]);
+  		  };
+/************ alert-cancel upload ***************/
+function cancelUpload() {
+	window.confirm("The content on this page will not be uploaded and you will be directed to the project summary page. Are you sure you want to cancel this upload?");
+}

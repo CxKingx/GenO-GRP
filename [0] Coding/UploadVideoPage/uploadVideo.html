@@ -171,7 +171,7 @@
                   </div> <!-- Close row -->
 
                   <div class="submit-button">
-                    <button type="button" class="btn btn-danger btn-sm"><a href="#">Cancel</a></button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="cancelUpload();"><a href="#">Cancel</a></button>
                     <button type="submit" class="btn btn-primary btn-sm"><a href="#">Save and back to project</a></button>
                   </div>
                 </form>
@@ -247,17 +247,8 @@
           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-      </script>
-
-      <script> /* thumbnail */
-  		  var loadFile = function(event) {
-    	  	var reader = new FileReader();
-    		  reader.onload = function(){
-      		var output = document.getElementById('output');
-      		output.src = reader.result;
-    		  };
-    	    reader.readAsDataURL(event.target.files[0]);
-  		  };
+    
+  		  
 		</script>
   </body>
 </html>

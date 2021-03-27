@@ -409,24 +409,26 @@ img.card-picture {
     transform: rotateY(180deg);
 }
 
-h3.card-title {
+h5.card-title {
+	font-size: 16px;
 	text-align: left;
 	margin-left: 25px;
 	margin-right: 25px;
 	color: #18194f;
 }
 
-h5.project-title {
-	font-size: 13px;
+p.project-title {
+	font-size: 12px;
     text-align: left;
     margin-left: 25px;
     margin-right: 25px;
+    margin-bottom: 2px;
     font-style: italic;
     color: rgb(97, 97, 97);
 }
 
 p.card-description {
-	font-size: 13px;
+	font-size: 12px;
     margin-left: 25px;
     margin-right: 25px;
     text-align: justify;
@@ -437,6 +439,8 @@ hr.card-line {
 	width: 87.5%;
     background-color: #009bbd;
     height: 1px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .btn-info {

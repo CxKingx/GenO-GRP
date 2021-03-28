@@ -334,21 +334,31 @@ def admin_login(request):
         return render(request, 'home_page/admin_login.html', {})
 
 
-def showvideo(request):
+def UploadVideos(request):
     # This 2 commands is searching for a file in the database, so if no video = eror
     # cara ambil hrs beda, hrs pake reference ke user
-    lastvideo = VideoArtefact.objects.last()
-    videofile = lastvideo.videofile
+    # lastvideo = VideoArtefact.objects.last()
+    # videofile = lastvideo.videofile
 
-    form = VideoForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
+    # form = VideoForm(request.POST or None, request.FILES.getlist('video') or None)
+    # if form.is_valid():
+    #     form.save()
+    if request.method == "POST":
+        videos = request.FILES.getlist('video')
+        for vids in videos:
+            videoArtefact = VideoArtefact.objects.create(name = "asdsa",videofile=vids, )
+            videoArtefact.save()
+    print(videos)
+        # for vids in videos:
+        #     vidArtefact = VideoArtefact.objects.create(video=vids )
+        #     vidArtefact.save()
 
-    context = {'videofile': videofile,
-               'form': form
-               }
 
-    return render(request, 'home_page/UploadTest.html', context)
+    # context = {'videofile': videofile,
+    #            'form': form
+    #            }
+
+    return render(request, 'home_page/UploadTest.html', {})
 
 
 from django.db.models import Q
@@ -356,20 +366,22 @@ from django.db.models import Q
 def searchbar(request):
     if request.method == "GET":
         search = request.GET.get('search')
+        # This isn't particularly efficient... Too Bad!
         getCurrentUser = User.objects.prefetch_related().filter(Q(username__icontains=search))
-        if(getCurrentUser.exists()):
+        if getCurrentUser.exists():
             getCurrentUser = User.objects.prefetch_related().get(username=search)
             getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
-            post= Project.objects.filter(User_Owner_id=getCurrentUserID.id)
-
+            context = VideoArtefact.objects.all().filter(Project_Owner_id=getCurrentUserID.id).values('videofile','Project_Owner__User_Owner','Project_Owner__Project_Name')
+            if not context:
+                context = ImageArtefact.objects.all().filter(Project_Owner_id=getCurrentUserID.id).values('image','Project_Owner__User_Owner','Project_Owner__Project_Name')
         else:
-            ProjectFile = VideoArtefact.objects.all().filter(Project_Owner__iexact=1)
-            print(ProjectFile)
-            post = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search))
-        return render(request, 'home_page/searchbar.html', {'post': post}, {'ProjectFile': ProjectFile})
+            #try using select related to get the videofile/image
+            context = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile','imageartefact__image')
+        print(context)
+        return render(request, 'home_page/searchbar.html', {'context':context})
+#everything works, just need to clean it up.
+#search by user, tag, project name. badabing badaboom this works FINALLY.
 
-            #Project query works, now just need to query video/image artefact to show with the rest.
-            #maybe use context = { asdasdadasda } to send all data at once.
 
 # The test version
 def image_upload_view(request):
@@ -385,10 +397,27 @@ def image_upload_view(request):
     return render(request, 'home_page/uploadimage.html', {'form': form})
 
 
+
+
 def testuploadproject(request):
     Projectformhtml = ProjectForm()
     return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml})
 
+from itertools import chain
+def testModulePage(request):
+
+    name = request.GET.get('name')
+    ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=name))
+    imageList = []
+    for i in ProjectWithTag:
+        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner")[:2]
+        if len(tempFile) == 2:
+            imageList.append(tempFile)
+        else:
+            imageList.append(tempFile)
+    print(imageList)
+    return render(request, 'home_page/modulePage.html', {"imageList":imageList})
+# i can limit the search to 2, now just need to find how to make it into one var then find out how to set it.
 # Project form save first
 # Then save picture form and video form , connect them to project
 

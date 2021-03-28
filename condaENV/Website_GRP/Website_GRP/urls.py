@@ -52,12 +52,14 @@ urlpatterns = [
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
-    path('upload_artefact/', views.showvideo, name='showvideo'),
+    path('UploadVideos/', views.UploadVideos, name='UploadVideos'),
     path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
     path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
+
+    path('testModulePage/', views.testModulePage, name='testModulePage')
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

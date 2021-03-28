@@ -113,10 +113,10 @@ $('#artefact_desc').keyup(function() {
 			let overlay=dragbox.find(".videouploadify-overlay");
 			let uploadIcon=dragbox.find(".videouploadify-overlay i");
 			
-			let videosList=dragbox.find(".videouploadify-videos-list");
-			let addIcon=dragbox.find(".videouploadify-videos-list i");
-			let addMsg=dragbox.find(".videouploadify-videos-list span");
-			let button=dragbox.find(".videouploadify-videos-list button");
+			let videosList=dragbox.find(".videouploadify-artefacts-list");
+			let addIcon=dragbox.find(".videouploadify-artefacts-list i");
+			let addMsg=dragbox.find(".videouploadify-artefacts-list span");
+			let button=dragbox.find(".videouploadify-artefacts-list button");
 			
 
 			/** FUNCTIONS  **/

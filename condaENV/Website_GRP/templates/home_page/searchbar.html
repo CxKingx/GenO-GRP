@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,29 +7,76 @@
 </head>
 <body>
     <form action = "{% url 'searchbar' %}" method ="get">
-        <input type="text" name="search"/>
+        {% csrf_token %}
+        <input type="text" name="search" required/>
         <button type="submit">Search</button>
     </form>
 
-    {% if post %}
-        <h1> item found</h1>
-        <br>
-    {% for i in post %}
-     <div>{{ i.User_Owner }}, {{ i.Project_Name }}, {{i.Project_Description}}, {{i.Project_Tag}}, {{i.Authors}}</div>
-    <br>
+<!--    {% if post %}-->
+<!--        <h1> item found </h1>-->
+<!--        <br>-->
+<!--        {% for i in post %}-->
+<!--            <div>{{ i.User_Owner }}, {{ i.Project_Name }}, {{i.Project_Description}}, {{i.Project_Tag}}, {{i.Authors}}</div>-->
+<!--        <br>-->
+<!--        {% endfor %}-->
+<!--    {% endif %}-->
+
+<!--    {% if thisImageArtefact %}-->
+<!--        {% for j in thisImageArtefact %}-->
+<!--             <img src='{{ MEDIA_URL }}{{ j.image }}' alt='{{ j.Image_Description }}' style="width:100%;max-width:300px">-->
+<!--        {% endfor %}-->
+<!--    {% endif %}-->
+
+<!--    {% if not thisVideoArtefact %}-->
+<!--        <h2>asdsadsad</h2>-->
+<!--    {% endif %}-->
+
+
+
+
+    {% for i in context %}
+        {{ i.Project_Owner__User_Owner }}
+        {{ i.Project_Owner__Project_Name }}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button name = "Delete" value = {{k.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
+
+        {% if videofile %}}
+            <video width='400' controls>
+                <source src="{{ MEDIA_URL }}{{ i.videofile  }}" type='video/mp4'>
+                Your browser does not support the video tag.
+            </video>
+        {% else %}
+            <img src='{{ MEDIA_URL }}{{ i.image }}' alt='asd' style="width:100%;max-width:300px">
+        {% endif %}
     {% endfor %}
-  {% endif %}
 
-     {% if ProjectFile %}
-        {% for j in post %}
-        <source src='{{ MEDIA_URL }}{{ j.videofile  }}' type='video/mp4'>
+    {% for j in context %}
+        {% if j.videoartefact__videofile  %}}
         <video width='400' controls>
-            <source src="{{ MEDIA_URL }}{{ j.videofile  }}" type='video/mp4'>
-            Your browser does not support the video tag.
-        </video>
-     {% endfor %}
-  {% endif %}
+                <source src="{{ MEDIA_URL }}{{ j.videoartefact__videofile  }}" type='video/mp4'>
+                Your browser does not support the video tag.
+            </video>
+        {% else %}
+            <img src='{{ MEDIA_URL }}{{ j.imageartefact__image }}' alt='asd' style="width:100%;max-width:300px">
+        {% endif %}
+    {% endfor %}
 
-<label for="asdasddasd">asdasdad</label>
+<!--
+<source src='{{ MEDIA_URL }}{{ j.videofile  }}' type='video/mp4'>
+    <video width='400' controls>
+        <source src="{{ MEDIA_URL }}{{ j.videofile  }}" type='video/mp4'>
+        Your browser does not support the video tag.
+    </video>
+    <div>{{ post.forloop.counter0.User_Owner}}, {{ post.forloop.counter0.Project_Name }}</div>
+
+    <video width='400' controls>
+                                <source src="{{ MEDIA_URL }}{{ j.videofile }}" type='video/mp4'>
+                                Your browser does not support the video tag.
+                            </video>
+
+    <div>{{ i.User_Owner }}, {{ i.Project_Name }}, {{i.Project_Description}}, {{i.Project_Tag}}, {{i.Authors}}</div>
+-->
 </body>
 </html>

@@ -1,0 +1,45 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+  <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+        <link rel="stylesheet" href="{% static 'css/imageModalFlip.css' %}"/>
+        <script type = "text/javascript" src="{% static 'javascript/enlargePic.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/WelcomePage.css' %}"/>
+        <title>Module Page</title>
+  </head>
+
+  <body>
+
+        {% for i in imageList %}
+            {{ i.0.Project_Owner }}
+            <!-- use this project owner ID to make a button to go to the projectr page -->
+        <!-- image flipcard -->
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src='{{ MEDIA_URL }}{{ i.0.image }}' alt='asd' style="width:100%;max-width:300px">
+                </div>
+                <div id="flipcardID" class="flip-box-back">
+                    {% if i.count == 2 %}
+                        <img src='{{ MEDIA_URL }}{{ i.1.image }}' alt='asd' style="width:100%;max-width:300px">
+                    {% else %}
+                         <img src='{{ MEDIA_URL }}{{ i.0.image }}' alt='asd' style="width:100%;max-width:300px">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+
+  </body>
+</html>
+
+

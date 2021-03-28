@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 # One User can have more than 1project
 # ex I have Arduino Project to make the robot count binary up to 1000
-# in that project I have multiple "Artefacts" or pictures/videos to show to the public
+# in that project I have multiple "artefactsArtefacts" or pictures/artefactsArtefacts to show to the public
 # Django supposed to create their own ID for us , so we do not need to put the IDs ,however we can override it
 # Which one should we use ?
 
@@ -86,7 +86,7 @@ class ImageArtefact(models.Model):
 
     Image_Name = models.CharField(max_length=50)
     Image_Description = models.TextField()
-    image = models.ImageField(upload_to='videos/', null=True, verbose_name="")
+    image = models.ImageField(upload_to='artefacts/', null=True, verbose_name="")
 
     def __str__(self):
         return self.Image_Name
@@ -98,7 +98,7 @@ class VideoArtefact(models.Model):
 
     name = models.CharField(max_length=50)
     Video_Description = models.TextField(null=True)
-    videofile = models.FileField(upload_to='videos/', null=True, verbose_name="")  # path to video
+    videofile = models.FileField(upload_to='artefacts/', null=True, verbose_name="")  # path to video
 
     def __str__(self):
         return self.name + ": " + str(self.videofile)

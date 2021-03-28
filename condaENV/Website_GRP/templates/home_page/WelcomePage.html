@@ -107,9 +107,9 @@
                 <div id="caption"></div>
                 </div>
 
-    <button onclick="location.href='{% url 'testModulePage' %}?name=Data Scholarship'" type="button">Assign Task</button>
-
-
+    <button onclick="location.href='{% url 'testModulePage' %}?moduleTag=Data Scholarship'" type="button">DS</button>
+    <button onclick="location.href='{% url 'testModulePage' %}?moduleTag=Digital Media Production'" type="button">DMP</button>
+    <a href="?order_by=company_name&direction=asc">company name ascending</a>
 <!---------------------- ADDED ---------------->
   {% block footer_block %}
   {% endblock %}

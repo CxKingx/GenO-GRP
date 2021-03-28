@@ -51,13 +51,13 @@
 
         <div id="pages-button">
             {% if page.has_previous %}
-                <p id="previous"> <a style="color: black" href="{% url 'testModulePage' %}?page={{ page.previous_page_number }}&name={{i.0.Project_Owner__Project_Tag}}">< Previous Page</a></p>
+                <a style="color: black" href="?page={{ page.previous_page_number }}&moduleTag={{tagName}}"><p id="previous">< Previous</p></a>
             {% endif %}
             {% if page.has_previous and page.has_next %}
               <p id="bar">|</p>
             {% endif %}
             {% if page.has_next %}
-               <p id="next"> <a style="color: black" href="{% url 'testModulePage' %}?page={{ page.next_page_number }}&name={{i.0.Project_Owner__Project_Tag}}">Next  ></a></p>
+               <a style="color: black" href="?page={{ page.next_page_number }}&moduleTag={{tagName}}"><p id="next"> Next  ></p></a>
             {% endif %}
         </div>
 

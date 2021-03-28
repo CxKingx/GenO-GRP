@@ -398,23 +398,34 @@ def testuploadproject(request):
 
 from django.core.paginator import Paginator
 def testModulePage(request):
-    name = request.GET.get('name')
-    ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=name))
+    moduleTag = request.GET.get('moduleTag')
+    sortSetting = request.GET.get('sort')
+    ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=moduleTag))
     imageList = []
     for i in ProjectWithTag:
-        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag")[:2]
+        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag",'Project_Owner__Upload_Date')[:2]
         if len(tempFile) == 2:
             imageList.append(tempFile)
         else:
             imageList.append(tempFile)
 
-    module_paginator = Paginator(imageList, 9)
+    if sortSetting == "latestUploaded":
+        for i in range(0,len(imageList)-1):
+            for j in range(0,len(imageList)-i-1):
+                if imageList[j][0]['Project_Owner__Upload_Date'] < imageList[j + 1][0]['Project_Owner__Upload_Date']:
+                    imageList[j], imageList[j+1] = imageList[j+1], imageList[j]
+    # This is some magical python coding.
+    elif sortSetting == "projectName":
+        for i in range(0, len(imageList) - 1):
+            for j in range(0, len(imageList) - i - 1):
+                if imageList[j][0]['Project_Owner__Project_Name'] > imageList[j + 1][0]['Project_Owner__Project_Name']:
+                    imageList[j], imageList[j + 1] = imageList[j + 1], imageList[j]
+
+    module_paginator = Paginator(imageList, 15)
     page_num = request.GET.get('page')
     page = module_paginator.get_page(page_num)
 
-    print(imageList)
-    return render(request, 'home_page/modulePage.html', {"page": page})
-    #return render(request, 'home_page/modulePage.html', {"imageList":imageList})
+    return render(request, 'home_page/modulePage.html', {"page": page, "tagName":moduleTag})
 
 
 def testID(request):

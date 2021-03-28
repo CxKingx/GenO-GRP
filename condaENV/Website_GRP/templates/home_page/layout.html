@@ -148,8 +148,8 @@
                                     Sort by..
                                   </button>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Project name</a>
-                                    <a class="dropdown-item" href="#">Latest upload</a>
+                                    <a class="dropdown-item" href="{{ request.get_full_path }}&sort=projectName">Project name</a>
+                                    <a class="dropdown-item" href="{{ request.get_full_path }}&sort=latestUploaded">Latest upload</a>
                                   </div>
                                 </div>
                             </ul>

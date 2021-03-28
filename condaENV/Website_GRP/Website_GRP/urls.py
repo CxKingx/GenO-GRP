@@ -49,6 +49,10 @@ urlpatterns = [
     path('editProjectDetail/', views.editProjectDetail, name='editProjectDetail'),
     path('ProjectUploadImage/', views.ProjectUploadImage, name='ProjectUploadImage'),
     path('ProjectUploadVideo/', views.ProjectUploadVideo, name='ProjectUploadVideo'),
+    path('deleteImage/', views.deleteImage, name='deleteImage'),
+    path('deleteVideo/', views.deleteVideo, name='deleteVideo'),
+    path('EditImage/', views.EditImage, name='EditImage'),
+    path('EditVideo/', views.EditVideo, name='EditVideo'),
 
 
     path('welcome/', views.welcomepage, name='welcomepage'),

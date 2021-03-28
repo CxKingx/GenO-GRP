@@ -20,7 +20,10 @@
 <p>{{ forloop.counter }} id is {{j.id}} Name: {{ j.Image_Name  }}</p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <button name = "Delete" value = {{j.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
+        <button name = "DeleteImg" value = {{j.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
+        <p>real button</p>
+        <button type="button" class="btn btn-info" onclick="location.href='{% url 'testProjectSummary' %}?ImageTAG={{j.id}}'">Learn more > </button>
+
     </form>
 {% endfor %}
 <br>
@@ -30,8 +33,10 @@
 <p>{{ forloop.counter }} id is {{k.id}} Name: {{ k.name }}</p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <button name = "Delete" value = {{k.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
+        <button name = "DeleteVid" value = {{k.id}} type="submit" class="btn btn-primary btn-sm">Delete</button>
     </form>
+<p>real button</p>
+ <button type="button" class="btn btn-info" onclick="location.href='{% url 'testProjectSummary' %}?VideoTAG={{k.id}}'">Learn more > </button>
 
 {% endfor %}
 

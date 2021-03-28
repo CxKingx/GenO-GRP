@@ -27,7 +27,7 @@
                       <label for="video" id="upload-button">Click here to upload your video</label>
                     </div>
                     <div class="upload-preview">
-                      <video id="output"/>
+                      <video id="output" src="{{ MEDIA_URL }}{{ VideoWillEdit.videofile }}"/>
                     </div>
 
                   </div>
@@ -42,7 +42,7 @@
                       <label>Artefact Title:</label>
                     </div>
                     <div class="col-8" id="field">
-                        <input type="text" class="form-control" id="title_field" name="name" placeholder="Title.." required maxlength="100">
+                        <input value="{{ VideoWillEdit.name }}" type="text" class="form-control" id="title_field" name="name" placeholder="Title.." required maxlength="100">
                     </div>
                   </div>
                   <br><br>
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="col-8" id="artefact_col">
-                      <textarea name="Video_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
+                      <textarea name="Video_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required>{{ VideoWillEdit.Video_Description }}</textarea>
 
                     </div> <!-- Close col -->
                   </div> <!-- Close row -->
@@ -79,13 +79,13 @@
                           </div>
     				              <div class="upload-options">
                           <!--  <div class="row"> -->
-                              <input class="btn btn-primary-preview" type="file" id="image" name="thumbnail" accept="image/*" onchange="loadThumbnail(event)" required/>
+                              <input class="btn btn-primary-preview" type="file" id="image" name="thumbnail" accept="image/*" onchange="loadThumbnail(event)" />
                               <label for="image" id="thumbnail">Click here to choose a thumbnail image</label>
         			            <!--  </div> -->
 
                           <!--  <div class="row"> -->
                               <div class="image-preview">
-                                <img id="outputThumbnail"/>
+                                <img id="outputThumbnail" src="{{ MEDIA_URL }}{{ VideoWillEdit.thumbnail }}"/>
                               </div>
                           <!--  </div> -->
     				              </div> <!-- Close upload options -->

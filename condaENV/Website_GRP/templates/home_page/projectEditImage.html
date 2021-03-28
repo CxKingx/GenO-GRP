@@ -27,7 +27,7 @@
                       <label for="image" id="upload-button">Click here to upload your image</label>
                     </div>
                     <div class="upload-preview">
-                      <img id="output" />
+                      <img id="output" src="{{ MEDIA_URL }}{{ ImageWillEdit.image }}" />
 
                     </div>
 
@@ -43,7 +43,7 @@
                       <label>Artefact Title:</label>
                     </div>
                     <div class="col-8" id="field">
-                        <input type="text" class="form-control" id="title_field" name="Image_Name" placeholder="Title.." required maxlength="100">
+                        <input value="{{ ImageWillEdit.Image_Name }}" type="text" class="form-control" id="title_field" name="Image_Name" placeholder="Title.." required maxlength="100">
                     </div>
                   </div>
                   <br><br>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-8" id="artefact_col">
-                      <textarea name="Image_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
+                      <textarea name="Image_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required>{{ ImageWillEdit.Image_Description }}</textarea>
 
                     </div> <!-- Close col -->
                   </div> <!-- Close row -->

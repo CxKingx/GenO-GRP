@@ -236,6 +236,14 @@ h5 {
 }
 
 /*------------------------------- Small navigation bar ---------------------------*/
+div.alert.alert-danger.alert-dismissible.fade.show {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 14px;
+}
+
 #small-navbar {
 	padding: 5px;
 	margin-bottom: 5%;
@@ -262,138 +270,6 @@ i.fa-bars:before {
 }
 
 /*--------------------------------- Upload Video -------------------------------*/
-.videouploadify {
-	border:2px dashed #d2d2d2;
-	position:relative;
-	min-height:350px;
-	min-width: 250px;
-	max-width: 750px;
-	margin: auto;
-	display: flex;
-	padding:0;
-	flex-direction:column;
-	text-align:center;
-	background-color:#fff;
-	color: #1a296b;
-}
-
-.videouploadify .videouploadify-overlay {
-	z-index:10;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	flex-direction: column;
-	top: 0;
-	left: 0;
-	display: none;
-	font-size: 7em;
-	background-color:rgba(242,242,242,.7);
-	text-align: center;
-	pointer-events: none
-}
-
-.videouploadify .videouploadify-overlay i{
-	z-index:10;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	pointer-events:none;
-}
-
-.videouploadify .videouploadify-videos-list{
-	display:inline-block;
-}
-
-.videouploadify .videouploadify-videos-list i{
-	display: block;
-	font-size: 7em;
-	text-align: center;
-	margin-top: .5em;
-	padding-bottom: 12px
-}
-
-.videouploadify .videouploadify-videos-list span.videouploadify-message{
-	font-size:24px;
-	border-top:1px solid #3AA0FF;
-	border-bottom:1px solid #3AA0FF;
-	padding:10px;
-	display:inline-block;
-}
-.videouploadify .videouploadify-videos-list button.btn-default{
-	display: block;
-	color: #3AA0FF;
-	border-color: #3AA0FF;
-	border-radius: 1em;
-	margin: 25px auto;
-	width: 100%;
-	max-width: 500px
-}
-
-.videouploadify .videouploadify-videos-list .videouploadify-container{
-	width:100px;
-	height:100px;
-	position:relative;
-	overflow:hidden;
-	margin-bottom:1em;
-	float:left;
-	border-radius:12px;
-	box-shadow:0 0 4px 0 #888
-}
-
-.videouploadify .videouploadify-videos-list .videouploadify-container button.btn-danger{
-	position:absolute;
-	top:3px;
-	right:3px;
-	width:20px;
-	height:20px;
-	border-radius:15px;
-	font-size:10px;
-	line-height:1.42;
-	padding:2px 0;
-	text-align:center;z-index:3
-}
-
-.glyphicon-remove:before {
-	content: "x";
-}
-
-.videouploadify .videouploadify-videos-list .videouploadify-container video{
-	height: 100px;
-	left: 50%;
-	position: absolute;
-	top: 50%;
-	transform: translate(-50%,-50%);
-	width: auto;
-}
-
-.videouploadify .videouploadify-videos-list .videouploadify-container img {
-	height:100px;
-	left:50%;
-	position:absolute;
-	top:50%;
-	transform:translate(-50%,-50%);
-	width:auto;
-}
-
-.videouploadify .videouploadify-videos-list .videouploadify-container .videouploadify-details{
-	position:absolute;
-	top:0;
-	padding-top:20px;
-	width:100%;
-	height:100%;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	white-space:nowrap;
-	background:rgba(255,255,255,.5);
-	z-index:2;
-	opacity:0
-}
-
-.videouploadify .videouploadify-videos-list .videouploadify-container .videouploadify-details span{
-	display:block;
-}
-
 .heading1 {
 	font-family: 'circular';
 	font-size: 28px;
@@ -440,6 +316,16 @@ label {
 	margin-left: 10%;
 	margin-bottom: 50px;
 	border-radius: 10px;
+}
+
+.btn-danger{
+	border-radius: 10px;
+	font-family: 'circular';
+	font-size: 16px;
+	margin-bottom: 50px;
+	width: 130px;
+	margin-right: 10%;
+	margin-left: 10%;
 }
 
 .submit-button{
@@ -559,18 +445,93 @@ input[type="file"] {
 	cursor: pointer;
 }
 
-#output{
+#outputThumbnail{
 	max-height: 300px;
     max-width: 350px;
-	position: center;
-	align-items: center;
-	justify-content: center;
     margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    
 } 
+
+.upload-box{
+	border:2px dashed #d2d2d2;
+	position: relative;
+	min-height:400px;
+	min-width: 500px;
+	max-width: 750px;
+	margin: auto;
+	display: flex;
+	padding:0;
+	flex-direction:column;
+	text-align:center;
+	background-color:#fff;
+	color: #1a296b;
+	padding: 10px;
+}
+.upload-icon{
+	width:50px;
+	height:50px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin: auto;
+	align-items: center;
+}
+.upload-icon-img{
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+input[type="file"] {
+	display: none;
+}
+.upload-button{
+	margin-left: 20%;
+	margin-right: 20%; 
+	margin-bottom: 10px;
+	margin-top: 10px;
+	align-items: center;
+}
+#upload-button{
+	font-size: 15px;
+	background-color: #005597;
+	color: white;
+	height: 20px;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5%;
+	cursor: pointer;
+	border-radius: 20px;
+}
+.upload-preview{
+	border:2px dashed #d2d2d2;
+	position: relative;
+	min-height:200px;
+	max-height: 400px;
+	min-width: 300px;
+	max-width: 300px;
+	margin: auto;
+	display: flex;
+	padding:0;
+	flex-direction:column;
+	text-align:center;
+	background-color:#fff;
+	color: #1a296b;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin: auto;
+
+}
+#output{
+	max-width: 300px;
+	max-height: 400px;
+	margin: auto;
+}
 
 
 

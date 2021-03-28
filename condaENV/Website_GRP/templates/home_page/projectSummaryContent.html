@@ -135,8 +135,8 @@
                             <td>{{ j.Image_Name  }}</td>
                             <td>{{ j.Image_Description  }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm" id="image-edit">Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm" id="image-delete">Delete</button>
+                                <button type="button" class="btn btn-primary btn-sm" id="image-edit" onclick="location.href='{% url 'EditImage' %}?ImageTAG={{j.id}}'">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" id="image-delete" onclick="location.href='{% url 'deleteImage' %}?ImageTAG={{j.id}}'">Delete</button>
                             </td>
                         </tr>
                       {% endfor %}
@@ -173,8 +173,11 @@
                             <td>{{ k.name  }}</td>
                             <td>{{ k.Video_Description  }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm" id="video-edit">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm" id="video-delete">Delete</button>
+
+                              <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'EditVideo' %}?VideoTAG={{k.id}}'" id="video-edit">Edit</button>
+                              <button type="button" class="btn btn-danger btn-sm" onclick="location.href='{% url 'deleteVideo' %}?VideoTAG={{k.id}}'"  id="video-delete">Delete</button>
+
+
                             </td>
                         </tr>
                       {% endfor %}
@@ -183,11 +186,11 @@
                   </table>
                 </div>
                 <div class="alert alert-info" role="alert">
-                  <p class="mb-0"><a href="#" class="alert-link">Please click here to upload more video(s).</a></p>
+                  <p class="mb-0"><a href="{% url 'ProjectUploadVideo' %}" class="alert-link">Please click here to upload more video(s).</a></p>
                 </div>
 
                 <div class="submit-button">
-                  <button type="submit" id="submit" class="btn btn-primary">Save all and finish</button>
+                  <button type="submit" id="submit" class="btn btn-primary"><a href="{% url 'studentdashboard' %}">Save all and finish</a></button>
                 </div>
               </div>
 {% endblock %}

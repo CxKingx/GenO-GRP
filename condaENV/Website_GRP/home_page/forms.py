@@ -22,7 +22,7 @@ class UserProfileInfoForm(forms.ModelForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model = VideoArtefact
-        fields = ["name",'Video_Description', "videofile"]
+        fields = ["name",'Video_Description', "videofile" , "thumbnail"]
 
 
 class ProjectForm(forms.ModelForm):

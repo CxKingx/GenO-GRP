@@ -104,7 +104,7 @@ class VideoArtefact(models.Model):
     name = models.CharField(max_length=50)
     Video_Description = models.TextField(null=True)
     videofile = models.FileField(upload_to='videos/', null=True, verbose_name="")  # path to video
-    # thumbnail
+    thumbnail = models.ImageField(upload_to='videos/', null=True, verbose_name="")
     def __str__(self):
         return self.name + ": " + str(self.videofile)
 

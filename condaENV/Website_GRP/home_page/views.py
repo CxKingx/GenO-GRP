@@ -151,12 +151,13 @@ def ProjectUpload(request):
             request.session['thisdata'] = uploadedProject.id
             print(request.session['thisdata'])
             # return render(request, 'home_page/projectSummary.html')
-            return HttpResponseRedirect(reverse('testProjectSummary'))
+            return HttpResponseRedirect(reverse('projectSummary'))
 
         else:
-            errormessage = "Something Went Wrong when Uploading"
+            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            errorMessage = True
             print(Projectformhtml.errors.as_data())
-            return render(request, 'home_page/projectUploadContent.html', {'errormessage': errormessage})
+            return render(request, 'home_page/projectUploadContent.html', {'errorMessage': errorMessage})
 
     else:
         # Pass on the empty form as a normal request
@@ -176,6 +177,7 @@ def projectSummary(request):
     return render(request, 'home_page/projectSummaryContent.html',
                   {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
 
+# Edit the Details of the Project 'Name , Description , Authors, Date .....
 @login_required
 def editProjectDetail(request):
     print("Edit detail")
@@ -187,6 +189,7 @@ def editProjectDetail(request):
     if request.method == 'POST':
         Projectformhtml = ProjectForm(request.POST)
         if Projectformhtml.is_valid():
+            # Change every attribute of the current project detail into the new one
             EditedProject = Projectformhtml.save(commit=False)
             CurrentProject.Project_Name = EditedProject.Project_Name
             CurrentProject.Project_Description = EditedProject.Project_Description
@@ -198,15 +201,20 @@ def editProjectDetail(request):
             CurrentProject.Module_Name = EditedProject.Module_Name
             CurrentProject.save()
             print("Changed")
-            # print(EditedProject)
-        return HttpResponseRedirect(reverse('testProjectSummary'))
+            # Return it back to Summary
+            return HttpResponseRedirect(reverse('projectSummary'))
+        else:
+            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            errorMessage = True
+            return render(request, 'home_page/projectEditContent.html',
+                          {'errorMessage': errorMessage})
     else:
         Projectformhtml = ProjectForm()
         print("No Changed")
     return render(request, 'home_page/projectEditContent.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
-
+# Edit project from dashboard
 @login_required
 def edit_project(request):
     if request.method == 'POST':
@@ -220,38 +228,158 @@ def edit_project(request):
 @login_required
 def ProjectUploadImage(request):
     print("Uploading image")
-    bruh = request.session['thisdata']
+    #bruh = request.session['thisdata']
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
-    print(bruh)
+
     if request.method == "POST":
-        print("reached here first")
-        images = request.FILES.getlist('picturefiles')
-        imageName = request.POST.get('Image_Name')
-        imageDesc = request.POST.get('Image_Description')
-        print(images)
-        print(imageName)
-        print(imageDesc)
-        for imgs in images:
-            imageArtefact = ImageArtefact.objects.create(Project_Name=CurrentProject, Image_Name=imageName, image=imgs, Image_Description=imageDesc)
-
-            imageArtefact.save()
-
-            print("Saved")
-        return HttpResponseRedirect(reverse('testProjectSummary'))
+        imageform = UploadImageForm(request.POST, request.FILES)
+        if imageform.is_valid():
+            uploadedImage = imageform.save(commit=False)
+            uploadedImage.Project_Name = CurrentProject
+            uploadedImage = imageform.save()
+            print("saved")
+            # Return it back to Summary
+            return HttpResponseRedirect(reverse('projectSummary'))
+        else:
+            print("Failed")
+            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            errorMessage = True
+            return render(request, 'home_page/uploadImageContent.html',{'errorMessage': errorMessage})
 
     else:
-        Projectformhtml = ProjectForm()
-        form = VideoForm()
         imageform = UploadImageForm()
-        #return render(request, 'home_page/testProjectVideo.html')
-        print("Load dis as normal")
+        print("Load this as normal")
         return render(request, 'home_page/uploadImageContent.html')
-
 
 @login_required
 def ProjectUploadVideo(request):
+    print("Uploading Video")
+   # bruh = request.session['thisdata']
+    CurrentProject = Project.objects.get(id=request.session['thisdata'])
+    if request.method == "POST":
+        form = VideoForm(request.POST, request.FILES)
+        print("reached here first")
+        if form.is_valid():
+            uploadedVideo = form.save(commit=False)
+            uploadedVideo.Project_Name = CurrentProject
+            uploadedVideo = form.save()
+            print("Saved")
+            # Return it back to Summary
+            return HttpResponseRedirect(reverse('projectSummary'))
+        else:
+            print("Not valid")
+            print(form.errors.as_data())
+            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            errorMessage = True
+            #return render(request, 'home_page/uploadVideoContent.html')
+            return render(request, 'home_page/uploadVideoContent.html',{'errorMessage': errorMessage})
+    else:
+        print("Normal view")
+        form = VideoForm()
+    return render(request, 'home_page/uploadVideoContent.html',{'form': form})
+    #return render(request, 'home_page/uploadVideoContent.html',{'form': form})
 
-    return render(request, 'home_page/uploadVideoContent.html')
+
+@login_required
+def deleteImage(request):
+    print("Deleting Image")
+    print(request.session['thisdata'])
+    ImageID = request.GET.get('ImageTAG')
+    print(ImageID)
+    print(type(ImageID))
+    print(type(int(ImageID)))
+    # Get the Image that will be deleted and delete it
+    ImageWillDelete = ImageArtefact.objects.get(id=int(ImageID))
+    print(ImageWillDelete.Image_Name)
+    ImageWillDelete.delete()
+
+    return HttpResponseRedirect(reverse('projectSummary'))
+
+
+@login_required
+def deleteVideo(request):
+    print("Deleting Video")
+    print(request.session['thisdata'])
+    VideoID = request.GET.get('VideoTAG')
+
+    print(VideoID)
+    print(type(VideoID))
+    print(type(int(VideoID)))
+    VideoWillDelete = VideoArtefact.objects.get(id=int(VideoID))
+    print(VideoWillDelete.name)
+    VideoWillDelete.delete()
+    return HttpResponseRedirect(reverse('projectSummary'))
+
+
+@login_required
+def EditImage(request):
+    print("Edit Image")
+    print(request.session['thisdata'])
+    ImageID = request.GET.get('ImageTAG')
+    ImageWillEdit = ImageArtefact.objects.get(id=int(ImageID))
+    if request.method == "POST":
+        imageform = UploadImageForm(request.POST, request.FILES)
+        TheImage = request.FILES.get('image')
+        ImageName = request.POST.get('Image_Name')
+        ImageDesc = request.POST.get('Image_Description')
+        # Check if the image is changed or not
+        if TheImage:
+            print("Change the Image because it received a new image")
+
+            ImageWillEdit.image = TheImage
+        else:
+            print("The Image doesnt change")
+
+        ImageWillEdit.Image_Name = ImageName
+        ImageWillEdit.Image_Description = ImageDesc
+        ImageWillEdit.save()
+        print("Changed")
+
+        return HttpResponseRedirect(reverse('projectSummary'))
+
+    else:
+        imageform = UploadImageForm()
+        print("Load this as normal")
+    return render(request, 'home_page/projectEditImage.html',{'ImageWillEdit': ImageWillEdit})
+
+
+@login_required
+def EditVideo(request):
+    print("EditVideo")
+    print(request.session['thisdata'])
+    VideoID = request.GET.get('VideoTAG')
+    VideoWillEdit = VideoArtefact.objects.get(id=int(VideoID))
+    if request.method == "POST":
+        imageform = UploadImageForm(request.POST, request.FILES)
+        VideoFile = request.FILES.get('videofile')
+        VideoName = request.POST.get('name')
+        VideoDesc = request.POST.get('Video_Description')
+        VideoThumbnail = request.FILES.get('thumbnail')
+        # Check if the image is changed or not
+
+        if VideoFile:
+            print("Change the Video because it received a new Video")
+            VideoWillEdit.videofile = VideoFile
+        else:
+            print("The Video doesnt change")
+
+        if VideoThumbnail:
+            print("Change the Image because it received a new Image Thumbnail")
+            VideoWillEdit.thumbnail = VideoThumbnail
+        else:
+            print("The Image doesnt change")
+
+        VideoWillEdit.name = VideoName
+        VideoWillEdit.Video_Description = VideoDesc
+        VideoWillEdit.save()
+        print("Changed")
+
+        return HttpResponseRedirect(reverse('projectSummary'))
+    else:
+        imageform = UploadImageForm()
+        print("Load this as normal")
+    return render(request, 'home_page/projectEditVideo.html',{'VideoWillEdit': VideoWillEdit})
+
 
 @login_required
 def studentdashboard(request):
@@ -639,7 +767,7 @@ def testProjectVideo(request):
         Projectformhtml = ProjectForm()
         form = VideoForm()
         imageform = UploadImageForm()
-        return render(request, 'home_page/testProjectVideo.html')
+        return render(request, 'home_page/testProjectVideo.html',{ 'form': form})
 
 
 def testProjectImage(request):
@@ -653,7 +781,7 @@ def testProjectImage(request):
             CurrentProject = Project.objects.get(id=request.session['thisdata'])
             uploadedImage.Project_Name = CurrentProject
             uploadedImage = imageform.save()
-            print("zzz")
+            print("saved")
             return HttpResponseRedirect(reverse('testProjectSummary'))
         else:
 
@@ -668,28 +796,50 @@ def testProjectImage(request):
 
 
 def testProjectSummary(request):
-    print("Showing summary")
+    print("Showing summary and project ID")
     print(request.session['thisdata'])
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
     ProjectImages = ImageArtefact.objects.filter(Project_Name=CurrentProject)
     ProjectVideos = VideoArtefact.objects.filter(Project_Name=CurrentProject)
     print(CurrentProject)
-    print(CurrentProject.Project_Name)
+    #print(CurrentProject.Project_Name)
     Projectformhtml = ProjectForm()
     form = VideoForm()
     imageform = UploadImageForm()
     print("Deleted BBUTTON")
+    ImageID = request.GET.get('ImageTAG')
+    VideoID = request.GET.get('VideoTAG')
+
+    print(ImageID)
+    print(type(ImageID))
+
+    print(VideoID)
+    print(type(VideoID))
+    if ImageID:
+        print("waw image exist")
+    if VideoID:
+        print("waw video exist")
+
     if request.method == 'POST':
-        ProjectID = request.POST.get('Delete')
-        print(ProjectID)
-        print(type(ProjectID))
-        newint = int(ProjectID)
-        print(type(newint))
-        ImageWillDelete = VideoArtefact.objects.get(id=newint)
+        VidID = request.POST.get('DeleteVid')
+        ImgID = request.POST.get('DeleteImg')
+        print("Video ID and type")
+        print(VidID)
+        print(type(VidID))
+        #newint = int(VidID)
+        #print(type(newint))
+        print("Image ID and type")
+        print(ImgID)
+        print(type(ImgID))
+        #newint2 = int(ImgID)
+        print("Get the things responding to id")
+        #ImageWillDelete = ImageArtefact.objects.get(id=newint2)
+        #VideoWillDelete = VideoArtefact.objects.get(id=newint)
         # VideoWillDelete = ImageArtefact.objects.get(id=newint)
         # VideoWillDelete.delete()
-        print(ImageWillDelete.name)
-        ImageWillDelete.delete()
+        #print(ImageWillDelete.Image_Name)
+       # print(VideoWillDelete.name)
+        #ImageWillDelete.delete()
     return render(request, 'home_page/testProjectSummary.html', {'Projectformhtml': Projectformhtml, 'form': form,
                                                                  'imageform': imageform,
                                                                  'CurrentProject': CurrentProject

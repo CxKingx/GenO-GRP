@@ -581,6 +581,86 @@ input[type="file"] {
     right: 0;
     bottom: 0;
 } 
+/************** upload box (trial) ****************/
+.upload-box{
+	border:2px dashed #d2d2d2;
+	position: relative;
+	min-height:400px;
+	min-width: 500px;
+	max-width: 750px;
+	margin: auto;
+	display: flex;
+	padding:0;
+	flex-direction:column;
+	text-align:center;
+	background-color:#fff;
+	color: #1a296b;
+	padding: 10px;
+}
+.upload-icon{
+	width:50px;
+	height:50px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin: auto;
+	align-items: center;
+}
+.upload-icon-img{
+	width: 50px;
+	height: 50px;
+	margin: auto;
+}
+input[type="file"] {
+	display: none;
+}
+.upload-button{
+	margin-left: 20%;
+	margin-right: 20%; 
+	margin-bottom: 10px;
+	margin-top: 10px;
+	align-items: center;
+}
+#upload-button{
+	font-size: 15px;
+	background-color: #005597;
+	color: white;
+	height: 20px;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5%;
+	cursor: pointer;
+	border-radius: 20px;
+}
+.upload-preview{
+	border:2px dashed #d2d2d2;
+	position: relative;
+	min-height:200px;
+	max-height: 400px;
+	min-width: 300px;
+	max-width: 300px;
+	margin: auto;
+	display: flex;
+	padding:0;
+	flex-direction:column;
+	text-align:center;
+	background-color:#fff;
+	color: #1a296b;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin: auto;
+
+}
+#output{
+	max-width: 300px;
+	max-height: 400px;
+}
 
 
 

@@ -104,7 +104,17 @@
                 </nav>
 
                 <form>
-                  <input type="file" accept="image/*" multiple>
+                  <div class="upload-box">
+                    <div class="upload-icon"> <img class="upload-icon-img" src="upload-icon.png"></div>
+                    <div class="upload-button">
+                      <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*" onchange="loadFile(event)"/>
+                      <label for="image" id="upload-button">Click here to upload your image</label>
+                    </div>
+                    <div class="upload-preview">
+                      <img id="output"/>
+                    </div>
+                    
+                  </div>
                   <br><br><br>
 
                   <div class="row" id="details">

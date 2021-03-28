@@ -107,11 +107,11 @@
                   <div class="upload-box">
                     <div class="upload-icon"> <img class="upload-icon-img" src="upload-icon.png"></div>
                     <div class="upload-button">
-                      <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*" onchange="loadFile(event)"/>
-                      <label for="image" id="upload-button">Click here to upload your image</label>
+                      <input class="btn btn-primary-preview" type="file" id="video" name="video" accept="video/*" onchange="loadFile(event)"/>
+                      <label for="video" id="upload-button">Click here to upload your image</label>
                     </div>
                     <div class="upload-preview">
-                      <img id="output"/>
+                      <video id="output"/>
                     </div>
                     
                   </div>
@@ -164,16 +164,16 @@
 
                           </div>
     				              <div class="upload-options">
-                            <div class="row">
-                              <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*" onchange="loadFile(event)"/>
+                          <!--  <div class="row"> -->
+                              <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*" onchange="loadThumbnail(event)"/>
                               <label for="image" id="thumbnail">Click here to choose a thumbnail image</label>
-        			              </div>
+        			            <!--  </div> -->
 
-                            <div class="row">
+                          <!--  <div class="row"> -->
                               <div class="image-preview">
-                                <img id="output"/>
+                                <img id="outputThumbnail"/>
                               </div>
-                            </div>
+                          <!--  </div> -->
     				              </div> <!-- Close upload options -->
   				              </div> <!-- Close box -->
   			              </div> <!-- Close wrapper -->
@@ -240,25 +240,5 @@
       <script src="secondaryLayout.js"></script>
       <script type="text/javascript" src="videouploadify.js"></script>
 
-      <script type="text/javascript">
-        $(document).ready(function() {
-          $('input[type="file"]').videouploadify();
-        })
-      </script>
-
-      <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-36251023-1']);
-        _gaq.push(['_setDomainName', 'jqueryscript.net']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    
-  		  
-		</script>
   </body>
 </html>

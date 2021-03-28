@@ -569,19 +569,13 @@ input[type="file"] {
 	cursor: pointer;
 }
 
-#output{
+#outputThumbnail{
 	max-height: 300px;
     max-width: 350px;
-	position: center;
-	align-items: center;
-	justify-content: center;
     margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    
 } 
-/************** upload box (trial) ****************/
+/************** upload box  ****************/
 .upload-box{
 	border:2px dashed #d2d2d2;
 	position: relative;
@@ -660,6 +654,7 @@ input[type="file"] {
 #output{
 	max-width: 300px;
 	max-height: 400px;
+	margin: auto;
 }
 
 

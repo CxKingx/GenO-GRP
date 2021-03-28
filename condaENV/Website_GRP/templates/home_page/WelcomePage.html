@@ -72,9 +72,10 @@
   </div>
 
  <form action = "{% url 'searchbar' %}" method ="get">
-        <input type="text" name="search"/>
+        <input type="text" name="search" required/>
         <button type="submit">Search</button>
  </form>
+
     <div class = "testcss">
         <br>
         <h3 id ="ea" >nice one</h3>
@@ -106,13 +107,18 @@
                 <div id="caption"></div>
                 </div>
 
+    <button onclick="location.href='{% url 'testModulePage' %}?name=Data Scholarship'" type="button">Assign Task</button>
+
 
 <!---------------------- ADDED ---------------->
   {% block footer_block %}
   {% endblock %}
 
 
-<!---------------------- end of ADDED ---------------->
+<!---------------------- end of ADDED \
+
+
+---------------->
 
         <!-- Bootstrap Javascript -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

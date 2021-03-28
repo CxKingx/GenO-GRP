@@ -1,45 +1,67 @@
-<!doctype html>
+{% extends "home_page/Layout.html" %}
 {% load static %}
-<html lang="en">
+{% block layout_css %}
+    <link rel="stylesheet" href="{% static 'css/modulePage.css' %}">
+    <title>Module Page</title>
+{% endblock %}
 
-  <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block content %}
+        <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
+            <!-- Project flipping cards -->
+            <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody id="adminTbody">
 
+                    <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
+                    <!--------------------------------- ROW 1 ------------------------------------------->
+                    <tr>
+                        {% for i in page.object_list %}
+                            {% if forloop.counter0|divisibleby:3 %}
+                                <tr>
+                            {% endif %}
+                        <!----------------------- FLIP CARD 1 ---------------------------->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}' alt='Image Not Found'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        {% if i.count == 2 %}
+                                            <img class="card-picture" src='{{ MEDIA_URL }}{{ i.1.image }}' alt='Image Not Found'>
+                                        {% else %}
+                                            <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}' alt='Image Not Found'>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title">
+                              <p class="project-title">{{ i.0.Project_Owner__Project_Name}}</p>
+                            </div>
+                            <div class="learn-more">
+                              <button type="button" class="btn btn-info" onclick="location.href='{% url 'testID' %}?IDTAG={{i.0.Project_Owner__Project_Name}}'">Learn more > </button>
+                              <hr>
+                            </div>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- Close table responsive-->
 
-        <link rel="stylesheet" href="{% static 'css/imageModalFlip.css' %}"/>
-        <script type = "text/javascript" src="{% static 'javascript/enlargePic.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'css/WelcomePage.css' %}"/>
-        <title>Module Page</title>
-  </head>
-
-  <body>
-
-        {% for i in imageList %}
-            {{ i.0.Project_Owner }}
-            <!-- use this project owner ID to make a button to go to the projectr page -->
-        <!-- image flipcard -->
-        <div class="flip-box">
-            <div class="flip-box-inner">
-                <div class="flip-box-front">
-                    <img src='{{ MEDIA_URL }}{{ i.0.image }}' alt='asd' style="width:100%;max-width:300px">
-                </div>
-                <div id="flipcardID" class="flip-box-back">
-                    {% if i.count == 2 %}
-                        <img src='{{ MEDIA_URL }}{{ i.1.image }}' alt='asd' style="width:100%;max-width:300px">
-                    {% else %}
-                         <img src='{{ MEDIA_URL }}{{ i.0.image }}' alt='asd' style="width:100%;max-width:300px">
-                    {% endif %}
-                </div>
-            </div>
+        <div id="pages-button">
+            {% if page.has_previous %}
+                <p id="previous"> <a style="color: black" href="{% url 'testModulePage' %}?page={{ page.previous_page_number }}&name={{i.0.Project_Owner__Project_Tag}}">< Previous Page</a></p>
+            {% endif %}
+            {% if page.has_previous and page.has_next %}
+              <p id="bar">|</p>
+            {% endif %}
+            {% if page.has_next %}
+               <p id="next"> <a style="color: black" href="{% url 'testModulePage' %}?page={{ page.next_page_number }}&name={{i.0.Project_Owner__Project_Tag}}">Next  ></a></p>
+            {% endif %}
         </div>
 
-        {% endfor %}
 
 
-
-  </body>
-</html>
-
-
+        <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
+{% endblock %}

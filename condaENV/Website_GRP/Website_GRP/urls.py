@@ -59,7 +59,8 @@ urlpatterns = [
     path('indexbase/', views.indexbase, name='indexbase'),
     path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
 
-    path('testModulePage/', views.testModulePage, name='testModulePage')
+    path('testModulePage/', views.testModulePage, name='testModulePage'),
+    path('testID', views.testID, name='testID'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

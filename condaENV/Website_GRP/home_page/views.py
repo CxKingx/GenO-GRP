@@ -371,17 +371,10 @@ def searchbar(request):
         if getCurrentUser.exists():
             getCurrentUser = User.objects.prefetch_related().get(username=search)
             getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
-            context = VideoArtefact.objects.all().filter(Project_Owner_id=getCurrentUserID.id).values('videofile','Project_Owner__User_Owner','Project_Owner__Project_Name')
-            if not context:
-                context = ImageArtefact.objects.all().filter(Project_Owner_id=getCurrentUserID.id).values('image','Project_Owner__User_Owner','Project_Owner__Project_Name')
+            context = Project.objects.all().filter(Q(User_Owner=getCurrentUserID)).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
         else:
-            #try using select related to get the videofile/image
-            context = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile','imageartefact__image')
-        print(context)
-        return render(request, 'home_page/searchbar.html', {'context':context})
-#everything works, just need to clean it up.
-#search by user, tag, project name. badabing badaboom this works FINALLY.
-
+            context = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
+        return render(request, 'home_page/searchbar.html', {"context":context})
 
 # The test version
 def image_upload_view(request):
@@ -403,23 +396,35 @@ def testuploadproject(request):
     Projectformhtml = ProjectForm()
     return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml})
 
-from itertools import chain
+from django.core.paginator import Paginator
 def testModulePage(request):
-
     name = request.GET.get('name')
     ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=name))
     imageList = []
     for i in ProjectWithTag:
-        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner")[:2]
+        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag")[:2]
         if len(tempFile) == 2:
             imageList.append(tempFile)
         else:
             imageList.append(tempFile)
+
+    module_paginator = Paginator(imageList, 9)
+    page_num = request.GET.get('page')
+    page = module_paginator.get_page(page_num)
+
     print(imageList)
-    return render(request, 'home_page/modulePage.html', {"imageList":imageList})
-# i can limit the search to 2, now just need to find how to make it into one var then find out how to set it.
-# Project form save first
-# Then save picture form and video form , connect them to project
+    return render(request, 'home_page/modulePage.html', {"page": page})
+    #return render(request, 'home_page/modulePage.html', {"imageList":imageList})
+
+
+def testID(request):
+    IDproject = request.GET.get('IDTAG')
+    print(IDproject)
+    return render(request, 'home_page/modulePage.html', {})
+
+
+
+#remember to return title not a number.
 
 
 #     if request.method == 'POST':

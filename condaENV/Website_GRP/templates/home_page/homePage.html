@@ -1,0 +1,65 @@
+{% extends "home_page/layout.html" %}
+{% load static %}
+{% block layout_css %}
+    <link rel="stylesheet" href="{% static 'css/homePage.css' %}"/>
+    <title>Home Page</title>
+{% endblock %}
+
+{% block content %}
+        <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
+            <!-- Project flipping cards -->
+            <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody id="adminTbody">
+                    <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
+                    <!--------------------------------- ROW 1 ------------------------------------------->
+                    <tr>
+                        {% for i in page.object_list %}
+                            {% if forloop.counter0|divisibleby:3 %}
+                                <tr>
+                            {% endif %}
+                        <td>
+                            <!----------------------- FLIP CARD 1 ---------------------------->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src="{{ MEDIA_URL}}{{i.image}}">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <!-- ARTEFACT TITLE -->
+                                        <h5 class="card-title">{{ i.Image_Name}}</h5>
+                                        <!-- PROJECT NAME -->
+                                        <p class="project-title">{{ i.Project_Name }}</p>
+                                        <!-- <br> -->
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">
+                                             {{ i.Image_Description }}
+                                        </p>
+                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- Close table responsive-->
+
+        <div id="pages-button">
+            {% if page.has_previous %}
+                <a style="color: black" href="?page={{ page.previous_page_number }}"><p id="previous">< Previous</p></a>
+            {% endif %}
+            {% if page.has_previous and page.has_next %}
+              <p id="bar">|</p>
+            {% endif %}
+            {% if page.has_next %}
+               <a style="color: black" href="?page={{ page.next_page_number }}"><p id="next"> Next  ></p></a>
+            {% endif %}
+        </div>
+
+          <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
+{% endblock %}
+
+

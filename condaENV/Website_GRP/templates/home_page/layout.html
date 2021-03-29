@@ -52,16 +52,18 @@
                 {% endif %}
 
                 <div class="p-2 bd-highlight">
-                  <div class="search-box">
-                    <input type="text" placeholder="Type to search...">
-                      <div class="search-btn">
-                        <i class="fas fa-search"></i>
-                      </div>
+                    <form action = "{% url 'searchbar' %}" method ="get">
+                        <div class="search-box">
+                            <input type="text" name="search" placeholder="Type to search..." required/>
+                        <div class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </div>
 
-                      <div class="cancel-btn">
-                        <i class="fas fa-times"></i>
-                      </div>
-                  </div>
+                        <div class="cancel-btn">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        </div>
+                    </form>
                 </div> <!-- Close search box -->
             </div>  <!-- Close flex -->
           </div> <!-- Close header right -->

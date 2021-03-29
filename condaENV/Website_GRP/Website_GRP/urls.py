@@ -54,6 +54,7 @@ urlpatterns = [
     path('EditVideo/', views.EditVideo, name='EditVideo'),
     path('EditProject/', views.EditProject, name='EditProject'),
     path('ProjectView/', views.ProjectView, name='ProjectView'),
+    path('homePage/', views.homePage, name='homePage'),
     # Still needs to be edited
 
 

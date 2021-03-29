@@ -903,6 +903,20 @@ def testProjectDetailEdit(request):
     return render(request, 'home_page/testProjectDetailEdit.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
+def homePage(request):
+    sortSetting_homePage = request.GET.get('sort')
+    if sortSetting_homePage == "latestUploaded":
+        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name").order_by("-Project_Owner__Upload_Date")
+    elif sortSetting_homePage == "projectName":
+        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name").order_by("Image_Name")
+    else:
+        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name")
+
+    homepage_paginator = Paginator(homePageArtefacts, 9)
+    page_num = request.GET.get('page')
+    page = homepage_paginator.get_page(page_num)
+
+    return render(request, 'home_page/homePage.html',{"page": page})
 
 
 

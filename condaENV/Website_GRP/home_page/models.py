@@ -63,7 +63,7 @@ class Project(models.Model):
     # This is to connect , which Owner have this project
     User_Owner = models.ForeignKey(UserProfileInfo, on_delete=models.CASCADE, blank=True, null=True)
 
-    Project_Name = models.CharField(max_length=50)
+    Project_Name = models.CharField(max_length=100)
     Project_Description = models.TextField()
     Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='', blank=True, null=True)
     Module_Name = models.CharField(max_length=32, choices=ModuleNames,default='Data Scholarship', blank=True, null=True)
@@ -89,7 +89,7 @@ class ImageArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Name = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
-    Image_Name = models.CharField(max_length=50)
+    Image_Name = models.CharField(max_length=100)
     Image_Description = models.TextField()
     image = models.ImageField(upload_to='videos/', null=True, verbose_name="")
 
@@ -101,7 +101,7 @@ class VideoArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Name = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     Video_Description = models.TextField(null=True)
     videofile = models.FileField(upload_to='videos/', null=True, verbose_name="")  # path to video
     thumbnail = models.ImageField(upload_to='videos/', null=True, verbose_name="")

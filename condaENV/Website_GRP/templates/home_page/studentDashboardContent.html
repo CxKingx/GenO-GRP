@@ -35,7 +35,7 @@
                         <td>{{ i.Project_Name }}</td>
                         <td> {{ i.Authors }}</td>
                         <td>{{ i.Upload_Date }}</td>
-                        <td> {{i.Account_ExpiryDate}}</td>
+                        <td> {{i.Account_ExpiryDate}} </td>
 
                         {% if i.Project_Approval_Status == "Pending" %}
                             <td><!-- FETCH INPUT FROM BACKEND --> Pending</td>
@@ -49,11 +49,9 @@
                             {% if todayDate > i.Account_ExpiryDate %}
                                 <td><p style="color: red">No longer editable</p></td>
                             {% else %}
-                                <form action="{% url 'home_page:edit_project' %}" method="POST">
-                                {% csrf_token %}
-                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button></td>
-
-                                </form>
+                        <td>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'EditProject' %}?ProjectTag={{i.id}}'"  id="video-delete">Edit</button>
+                        </td>
                             {% endif %}
 
                         {% elif i.Project_Approval_Status == "Approved" %}
@@ -66,11 +64,10 @@
                             {% if todayDate > i.Account_ExpiryDate %}
                                 <td><p style="color: red">No longer editable</p></td>
                             {% else %}
-                                <form action="{% url 'home_page:edit_project' %}" method="POST">
-                                {% csrf_token %}
-                                    <td><button name = "EditProject" value = "{{ i.id }}" type="submit" class="btn btn-primary btn-sm">Edit</button></td>
 
-                                </form>
+
+                        <td><button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'EditProject' %}?ProjectTag={{i.id}}'"  id="video-delete">Edit</button>
+                        </td>
                             {% endif %}
 
                         {% endif %}

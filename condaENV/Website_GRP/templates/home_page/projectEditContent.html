@@ -9,12 +9,13 @@
 {% block content %}
 <h2> Project details </h2>
               <br>
-            {% if admincomment %}
+            {% if CurrentProject.Project_Approval_Status == "Rejected" %}
               <div class="alert alert-info" role="alert">
-                <img id="feedback-img" src="feedback.png"/><br>
+                <img id="feedback-img" src="{% static 'images/feedback.png' %}"/><br>
                 <h4 class="alert-heading">Feedback:</h4>
                 <!-- INSERT ADMIN FEEDBACK HERE -->
-                <p class="feedback">Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                  <!-- You Can take CurrentProject.Admin_Comment to be displayed here as the feedback -->
+                <p class="feedback">Hello , We have reviewed your Project content but sadly , your artefacts are not clear , some description needs fixing , and many other else.</p>
                 <hr>
                 <p class="feedback-end">Please do some modifications on your project and re-upload.</p>
               </div>

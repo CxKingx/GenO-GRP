@@ -31,7 +31,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.welcomepage, name='index'),
-    # Final
+    # Base views , login,logout,register
     path('admin/', admin.site.urls),
     path('Login/', views.loginPage, name='loginPage'),
     path('logout/', views.user_logout, name='logout'),
@@ -40,10 +40,7 @@ urlpatterns = [
     path('adminLogin/', views.adminLogin, name='adminLogin'),
     path('register/', views.register, name='register'),
     path('contactUs/', views.contactUs, name='contactUs'),
-    # Still needs to be edited
-
-    path('oldregister/', views.oldregister, name='oldregister'),
-    # Upload Summary Edit and upload pic and vid
+    # Project Upload Views
     path('ProjectUpload/', views.ProjectUpload, name='ProjectUpload'),
     path('projectSummary/', views.projectSummary, name='projectSummary'),
     path('editProjectDetail/', views.editProjectDetail, name='editProjectDetail'),
@@ -53,16 +50,20 @@ urlpatterns = [
     path('deleteVideo/', views.deleteVideo, name='deleteVideo'),
     path('EditImage/', views.EditImage, name='EditImage'),
     path('EditVideo/', views.EditVideo, name='EditVideo'),
+    path('EditProject/', views.EditProject, name='EditProject'),
+    path('ProjectView/', views.ProjectView, name='ProjectView'),
+    # Still needs to be edited
 
+
+    path('oldregister/', views.oldregister, name='oldregister'),
 
     path('welcome/', views.welcomepage, name='welcomepage'),
     #not used
     path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
-
+    # the test urls
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
-    # the test urls
     path('upload_artefact/', views.showvideo, name='showvideo'),
     path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
@@ -74,7 +75,6 @@ urlpatterns = [
     path('testProjectVideo/', views.testProjectVideo, name='testProjectVideo'),
     path('testProjectImage/', views.testProjectImage, name='testProjectImage'),
     path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
-
     path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
 
     path('showUploadProject/', views.showUploadProject, name='showUploadProject'),

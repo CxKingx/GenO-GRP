@@ -64,7 +64,7 @@ urlpatterns = [
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
-    path('UploadVideos/', views.UploadVideos, name='UploadVideos'),
+    #path('UploadVideos/', views.UploadVideos, name='UploadVideos'),
     path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
@@ -86,7 +86,7 @@ urlpatterns = [
 
 
 
-    path('ModulePage/', views.modulePage, name='modulePage'),
+    path('modulePage/', views.modulePage, name='modulePage'),
     path('testID', views.testID, name='testID'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),

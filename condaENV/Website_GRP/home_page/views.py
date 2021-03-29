@@ -170,8 +170,8 @@ def projectSummary(request):
     print("Showing summary")
     print(request.session['thisdata'])
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
-    ProjectImages = ImageArtefact.objects.filter(Project_Name=CurrentProject)
-    ProjectVideos = VideoArtefact.objects.filter(Project_Name=CurrentProject)
+    ProjectImages = ImageArtefact.objects.filter(Project_Owner=CurrentProject)
+    ProjectVideos = VideoArtefact.objects.filter(Project_Owner=CurrentProject)
 
     return render(request, 'home_page/projectSummaryContent.html',
                   {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
@@ -237,7 +237,7 @@ def ProjectUploadImage(request):
         imageform = UploadImageForm(request.POST, request.FILES)
         if imageform.is_valid():
             uploadedImage = imageform.save(commit=False)
-            uploadedImage.Project_Name = CurrentProject
+            uploadedImage.Project_Owner = CurrentProject
             # uploadedImage = imageform.save()
             uploadedImage.save()
             print("saved")
@@ -265,7 +265,7 @@ def ProjectUploadVideo(request):
         print("reached here first")
         if form.is_valid():
             uploadedVideo = form.save(commit=False)
-            uploadedVideo.Project_Name = CurrentProject
+            uploadedVideo.Project_Owner = CurrentProject
             # uploadedVideo = form.save()
             uploadedVideo.save()
             print("Saved")
@@ -426,8 +426,8 @@ def ProjectView(request):
     print(request.session['thisdata'])
     # Get the Project that will be viewed, and all pictures and videos related to it
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
-    ProjectImages = ImageArtefact.objects.all().filter(Project_Name=CurrentProject)
-    ProjectVideos = VideoArtefact.objects.all().filter(Project_Name=CurrentProject)
+    ProjectImages = ImageArtefact.objects.all().filter(Project_Owner=CurrentProject)
+    ProjectVideos = VideoArtefact.objects.all().filter(Project_Owner=CurrentProject)
     # Return all Objects found to the page to be displayed
     return render(request, 'home_page/ProjectView.html',
                   {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages,
@@ -440,7 +440,7 @@ def error_404(request, exception):
 
 # add other errors
 
-# This special for now is uselss
+# This special for now is useless
 @login_required
 def special(request):
     # Remember to also set login url in settings.py!
@@ -608,9 +608,6 @@ def admin_login(request):
     else:
         # Nothing has been provided for username or password.
         return render(request, 'home_page/admin_login.html', {})
-
-
-from django.db.models import Q
 
 
 def searchbar(request):
@@ -786,7 +783,7 @@ def testProjectVideo(request):
         description = request.POST.get('Video_Description')
         CurrentProject = Project.objects.get(id=request.session['thisdata'])
         for vids in videos:
-            videoArtefact = VideoArtefact.objects.create(Project_Name=CurrentProject, name=vidname, videofile=vids,
+            videoArtefact = VideoArtefact.objects.create(Project_Owner=CurrentProject, name=vidname, videofile=vids,
                                                          Video_Description=description)
 
             videoArtefact.save()
@@ -810,7 +807,7 @@ def testProjectImage(request):
 
             uploadedImage = imageform.save(commit=False)
             CurrentProject = Project.objects.get(id=request.session['thisdata'])
-            uploadedImage.Project_Name = CurrentProject
+            uploadedImage.Project_Owner = CurrentProject
             uploadedImage = imageform.save()
             print("saved")
             return HttpResponseRedirect(reverse('testProjectSummary'))
@@ -830,8 +827,8 @@ def testProjectSummary(request):
     print("Showing summary and project ID")
     print(request.session['thisdata'])
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
-    ProjectImages = ImageArtefact.objects.filter(Project_Name=CurrentProject)
-    ProjectVideos = VideoArtefact.objects.filter(Project_Name=CurrentProject)
+    ProjectImages = ImageArtefact.objects.filter(Project_Owner=CurrentProject)
+    ProjectVideos = VideoArtefact.objects.filter(Project_Owner=CurrentProject)
     print(CurrentProject)
     # print(CurrentProject.Project_Name)
     Projectformhtml = ProjectForm()

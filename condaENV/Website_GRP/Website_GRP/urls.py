@@ -55,11 +55,13 @@ urlpatterns = [
     path('EditProject/', views.EditProject, name='EditProject'),
     path('ProjectView/', views.ProjectView, name='ProjectView'),
     path('homePage/', views.homePage, name='homePage'),
+    path('passToThisProject/', views.passToThisProject, name='passToThisProject'),
+    path('modulePage/', views.modulePage, name='modulePage'),
     # Still needs to be edited
 
 
     path('oldregister/', views.oldregister, name='oldregister'),
-    path('passToThisProject/', views.passToThisProject, name='passToThisProject'),
+
 
     #not used
      # the test urls
@@ -84,12 +86,6 @@ urlpatterns = [
     path('showProjectEdit/', views.showProjectEdit, name='showProjectEdit'),
     path('showProjectUploadImage/', views.showProjectUploadImage, name='showProjectUploadImage'),
     path('showProjectUploadVideo/', views.showProjectUploadVideo, name='showProjectUploadVideo'),
-
-
-
-
-    path('modulePage/', views.modulePage, name='modulePage'),
-    path('testID/', views.testID, name='testID'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

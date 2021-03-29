@@ -623,7 +623,7 @@ def searchbar(request):
         if getCurrentUser.exists():
             getCurrentUser = User.objects.prefetch_related().get(username=search)
             getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
-            context = Project.objects.all().filter(Q(User_Owner=getCurrentUserID)).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
+            context = Project.objects.all().filter(Q(User_Owner=getCurrentUserID)&Q(Project_Approval_Status = "Approved")).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
         else:
             context = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
         return render(request, 'home_page/searchbar.html', {"context":context})
@@ -710,7 +710,7 @@ def testuploadproject(request):
 def modulePage(request):
     moduleTag = request.GET.get('moduleTag')
     sortSetting = request.GET.get('sort')
-    ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=moduleTag))
+    ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=moduleTag)&Q(Project_Approval_Status = "Approved"))
     imageList = []
     for i in ProjectWithTag:
         tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag",'Project_Owner__Upload_Date','Project_Owner__id')[:2]
@@ -738,13 +738,13 @@ def modulePage(request):
     return render(request, 'home_page/modulePage.html', {"page": page, "tagName":moduleTag})
 
 
-def testID(request):
-    IDproject = request.GET.get('IDTAG')
-    print(IDproject)
-    context = Project.objects.all().filter(Q(id=IDproject)).values('videoartefact__videofile', 'videoartefact__Video_Description', 'videoartefact__name',  'imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner', 'Project_Name')
-    print(context)
-    #return all artefacts, and data of project
-    return render(request, 'home_page/modulePage.html', {})
+# def testID(request):
+#     IDproject = request.GET.get('IDTAG')
+#     print(IDproject)
+#     context = Project.objects.all().filter(Q(id=IDproject)).values('videoartefact__videofile', 'videoartefact__Video_Description', 'videoartefact__name',  'imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner', 'Project_Name')
+#     print(context)
+#     #return all artefacts, and data of project
+#     return render(request, 'home_page/modulePage.html', {})
 
 
 
@@ -915,8 +915,6 @@ def homePage(request):
         homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id").order_by("Image_Name")
     else:
         homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id")
-
-    print('ASDSDA')
 
     homepage_paginator = Paginator(homePageArtefacts, 9)
     page_num = request.GET.get('page')

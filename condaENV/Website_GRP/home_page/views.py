@@ -901,6 +901,14 @@ def testProjectDetailEdit(request):
         print("No Changed")
     return render(request, 'home_page/testProjectDetailEdit.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
+
+def landingPage(request):
+    context = ImageArtefact.objects.all()
+    #12 cards
+    return render(request, 'home_page/landingPage.html',{})
+
+
+
 #     if request.method == 'POST':
 #         form = ImageForm(request.POST, request.FILES)
 #         if form.is_valid():

@@ -30,7 +30,9 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # Add paths here to add new pages -Ivan
-    path('', views.welcomepage, name='index'),
+    #path('', views.welcomepage, name='index'),
+    path('', views.landingPage, name='index'),
+
     # Base views , login,logout,register
     path('admin/', admin.site.urls),
     path('Login/', views.loginPage, name='loginPage'),

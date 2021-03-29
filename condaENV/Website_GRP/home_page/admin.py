@@ -68,7 +68,7 @@ admin.site.register(models.Project, ProjectAdmin)
 # admin.site.register(models.Project_Artefact_Connector)
 admin.site.register(models.ImageArtefact, ArtefactAdmin)
 admin.site.register(models.VideoArtefact, VideoAdmin)
-admin.site.register(models.Image)
+#admin.site.register(models.Image)
 
 #https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
 

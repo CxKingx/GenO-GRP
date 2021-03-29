@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Detail Edit</title>
+</head>
+<body>
+<h1>Some of Current Data</h1>
+<p>Project ID is {{ CurrentProject.id }} , name is {{ CurrentProject.Project_Name }}</p>
+<p>{{CurrentProject.Project_Description}}</p>
+<p>{{CurrentProject.Project_Tag}}</p>
+<p>{{CurrentProject.Module_Name}}</p>
+<p>{{CurrentProject.Date_of_Completion}}</p>
+<p>{{CurrentProject.Authors}}</p>
+<p>{{CurrentProject.Author_Comment}}</p>
+
+<h1>Now Editing</h1>
+
+<form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+    <p><label for="id_Project_Name">Project Name:</label> <input type="text" name="Project_Name" maxlength="50" required="" id="id_Project_Name" value="{{ CurrentProject.Project_Name }}"></p>
+    <p><label for="id_Project_Description">Project Description:</label> <textarea name="Project_Description" cols="40" rows="10" required="" id="id_Project_Description" value="projectdesc">{{CurrentProject.Project_Description}}</textarea></p>
+    <p><label for="id_Project_Tag">Project Tag:</label> <select name="Project_Tag" id="id_Project_Tag" value="{{CurrentProject.Project_Tag}}">
+    <option value="" selected="">-----</option>
+
+    <option value="Data Scholarship">Data Scholarship</option>
+
+    <option value="Digital Media Production">Digital Media Production</option>
+
+    <option value="Technologies for Learning">Technologies for Learning</option>
+
+    </select></p>
+    <p><label for="id_Date_of_Completion">Date of Completion:</label> <input type="text" name="Date_of_Completion" value="2021-03-27" required="" id="id_Date_of_Completion"><input type="hidden" name="initial-Date_of_Completion" value="2021-03-27 06:55:36+00:00" id="initial-id_Date_of_Completion"></p>
+    <p><label for="id_Author_Comment">Author Comment:</label> <textarea name="Author_Comment" cols="40" rows="10" id="id_Author_Comment" value="comment">{{CurrentProject.Author_Comment}}</textarea></p>
+    <p><label for="id_Authors">Authors:</label> <input type="text" name="Authors" maxlength="100" id="id_Authors" value="{{CurrentProject.Authors}}"></p>
+    <p><label for="id_Module_Name">Module Name:</label> <input type="text" name="Module_Name" maxlength="50" id="id_Module_Name" value="{{CurrentProject.Module_Name}} " ></p>
+
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

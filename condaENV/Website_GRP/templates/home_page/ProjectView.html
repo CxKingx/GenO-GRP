@@ -1,0 +1,187 @@
+{% extends "home_page/secondaryLayout.html" %}
+{% load static %}
+{% block layout_css %}
+<link rel="stylesheet" href="{% static 'css/ProjectView.css' %}"/>
+<title>Project View page</title>
+{% endblock %}
+{% block content %}
+
+            <div class="row" id="title">
+                <h2>{{CurrentProject.Project_Name}}</h2>
+
+            </div>
+
+            <div class="row">
+              <div class="col-4 project-picture">
+                {% if ProjectImages %}
+                    <!-- If The Project contains images , give the first image as the thumbnail here -->
+                    <img class="project-pic" alt="Thumbnail" src="{{MEDIA_URL}}{{ProjectImages.0.image}}"/>
+
+                  {%else %}
+                    <!-- The Project only contain videos, so show the video thumbnail -->
+                   <img class="project-pic" alt="Thumbnail" src="{{MEDIA_URL}}{{ProjectVideos.0.thumbnail}}"/>
+                  {% endif %}
+
+
+              </div>
+
+            <div class="col-6">
+              <h4 style="text-align: center;"> Project details </h4>
+                <div class="row">
+                  <div class="col-12 col-md-3">
+            	    <button type="button" class="btn btn-primary btn-block" disabled="true">Date of completion</button>
+            	  </div>
+            	  <div class="col-12 col-md-9">
+            	    <p> {{CurrentProject.Date_of_Completion}} </p>
+            	  </div>
+            	</div> <!-- row-->
+              <br>
+
+            	<div class="row">
+                <div class="col-12 col-md-3">
+                  <button type="button" class="btn btn-primary btn-block" disabled="true">Tags</button>
+                </div>
+                <div class="col-12 col-md-9">
+                  <p> {{CurrentProject.Project_Tag}} </p>
+                </div>
+            	</div>
+              <br>
+
+              <div class="row">
+                <div class="col-12 col-md-3">
+            	    <button type="button" class="btn btn-primary btn-block" disabled="true">Authors</button>
+            	  </div>
+            	  <div class="col-12 col-md-9">
+            	    <p> {{CurrentProject.Authors}} </p>
+            	  </div>
+            	</div>
+              <br><br><br>
+
+            	<a class="btn btn-primary btn-lg" role="button" onClick="document.getElementById('artefacts').scrollIntoView();">View artefacts</a></br>
+            </div> <!-- col-6 end -->
+          </div> <!-- end row -->
+        <br>
+
+          <div class="line"></div>
+            <h2>Project description</h2>
+            <div class="description">
+              <!-- FETCH FROM DATABASE -->
+                <p>{{CurrentProject.Project_Description}}</p>
+               </div>
+
+              <br><br>
+              <h2>Author comments</h2>
+              <div class="description">
+              <p>{{CurrentProject.Author_Comment}}</p>
+              </div>
+
+            <div id="artefacts">
+            	<br><br>
+            	<div class="line"></div>
+
+            	{% if ProjectImages %}
+
+
+                <h2>Images</h2>
+            	<!--List of flip cards here -->
+            	<!-- FETCH FROM DATABASE -->
+
+            	<div class="table-responsive">
+                <table class="table table-borderless">
+                    <tbody id="adminTbody">
+                      <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
+            <!-- Project flipping cards -->
+            <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody id="adminTbody">
+                    <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
+                    <!--------------------------------- ROW 1 ------------------------------------------->
+                    <tr>
+                        {% for i in ProjectImages %}
+
+                            {% if forloop.counter0|divisibleby:3 %}
+                                <tr>
+
+                            {% endif %}
+                        <!----------------------- FLIP CARD 1 ---------------------------->
+                        <td>
+                        <div class="flip-box">
+                              <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                  <img class="card-picture" src="{{MEDIA_URL}}{{i.image}}">
+                                </div>
+                                <div class="flip-box-back">
+                                  <img class="myImg" id="myImg" src="{{MEDIA_URL}}{{i.image}}" alt=".." style="width:100%;max-width:300px" hidden="true">
+                                  <!-- ARTEFACT TITLE -->
+                                  <h5 class="card-title">{{i.Image_Name}}</h5>
+                                  <!-- PROJECT NAME -->
+
+                                  <hr class="card-line">
+                                  <!-- ARTEFACT DESCRIPTION -->
+                                  <p class="card-description">
+                                      {{i.Image_Description}}
+                                    </p>
+                                  <button type="button" class="btn btn-info">Take a closer look > </button>
+                                </div>
+                              </div>
+                          </div>
+
+                          <!-- Trigger the Modal -->
+                          <!-- The Modal -->
+                		        <div id="myModal" class="modal">
+                		          <!-- The Close Button -->
+                		  	      <span class="close">&times;</span>
+                			        <!-- Modal Content (The Image) -->
+                			        <img class="modal-content" id="img01"   >
+                			        <!-- Modal Caption (Image Text) -->
+                			        <div id="caption"></div>
+                		        </div>
+                		    </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- Close table responsive-->
+                    </tbody>
+                    <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
+
+                </table>
+        </div>
+
+<!----------------------------------------- Videos ------------------------------------------------------>
+        <div class="line">
+        {% endif %}
+        </div>
+                {% if ProjectVideos %}
+                    <h2>Videos</h2>
+                    <br><br>
+                    {% for videos in ProjectVideos %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6" id="video-col">
+                                <!-- FETCH VIDEO HERE -->
+            	                <video controls><source src="{{MEDIA_URL}}{{videos.videofile}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <!-- FETCH VIDEO DETAILS HERE -->
+                                <h3 class="card-title"> {{videos.name}} </h3>
+                                <p class="video-desc">{{videos.Video_Description}}</p>
+                            </div>
+                        </div>
+                        <br><br>
+                    {% endfor %}
+                {% endif %}
+
+
+
+
+      <!----------------------------------------------------------------- END OF CONTENT---------------------------------------------------------->
+
+
+
+{% endblock %}
+{% block layout_js %}
+<script type="text/javascript" src="{% static 'javascript/ProjectView.js' %}"></script>
+{% endblock %}

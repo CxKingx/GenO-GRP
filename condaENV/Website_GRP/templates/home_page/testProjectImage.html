@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Image upload</title>
+</head>
+<body>
+<h1>Project Image upload</h1>
+
+<form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+     <label for="id_Image_Name">Image Name:</label><input type="text" name="Image_Name" maxlength="50" required="" id="id_Image_Name">
+<label for="id_Image_Description">Image Description:</label><textarea name="Image_Description" cols="40" rows="10" required="" id="id_Image_Description"></textarea>
+<input type="file" name="image" accept="image/*" required="" id="id_image" multiple>
+     <br>
+        <button type="submit">Upload</button>
+    </form>
+
+
+</body>
+</html>

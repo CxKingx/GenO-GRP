@@ -52,12 +52,12 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class ArtefactAdmin(admin.ModelAdmin):
-    list_display = ['Project_Owner', 'Image_Name', 'image']
+    list_display = ['Project_Name', 'Image_Name', 'image']
     search_fields = ['Image_Name']
 
 
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ['Project_Owner', 'name', 'videofile']
+    list_display = ['Project_Name', 'name', 'videofile']
     search_fields = ['name']
 
 

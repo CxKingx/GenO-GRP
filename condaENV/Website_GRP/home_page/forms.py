@@ -22,21 +22,27 @@ class UserProfileInfoForm(forms.ModelForm):
 class VideoForm(forms.ModelForm):
     class Meta:
         model = VideoArtefact
-        fields = ["name", "videofile"]
+        fields = ["name",'Video_Description', "videofile" , "thumbnail"]
 
 
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('Project_Name', 'Project_Description', 'Project_Tag', 'Date_of_Completion', 'Author_Comment',
+                  'Authors' , 'Module_Name')
+        # Upload_Date Approval_Date Account_ExpiryDate Last_Updated Project_Approval_Status
+
+
+class UploadImageForm(forms.ModelForm):
+    class Meta:
+        model = ImageArtefact
+        fields = ('Image_Name', 'Image_Description', 'image')
+
+
+# Joseph's Image Artefact , should not be used as the models is not complete
 class ImageForm(forms.ModelForm):
     """Form for image folder"""
 
     class Meta:
         model = Image
         fields = ('title', 'image')
-
-
-class ProjectForm(forms.ModelForm):
-
-    class Meta:
-        model = Project
-        fields = ('Project_Name', 'Project_Description', 'Project_Tag', 'Date_of_Completion', 'Author_Comment',
-                  'Authors', 'Admin_Comment')
-        # Upload_Date Approval_Date Account_ExpiryDate Last_Updated Project_Approval_Status

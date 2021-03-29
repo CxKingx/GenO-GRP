@@ -27,10 +27,11 @@ from django.contrib.auth import views as auth_views
 # naming convention , all is small letters , spaces use _ , so ex like hello_world
 # this is the base redirection
 
+
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.welcomepage, name='index'),
-    # Final
+    # Base views , login,logout,register
     path('admin/', admin.site.urls),
     path('Login/', views.loginPage, name='loginPage'),
     path('logout/', views.user_logout, name='logout'),
@@ -38,17 +39,28 @@ urlpatterns = [
     path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
     path('adminLogin/', views.adminLogin, name='adminLogin'),
     path('register/', views.register, name='register'),
-    #Still needs to be edited
     path('contactUs/', views.contactUs, name='contactUs'),
+    # Project Upload Views
+    path('ProjectUpload/', views.ProjectUpload, name='ProjectUpload'),
+    path('projectSummary/', views.projectSummary, name='projectSummary'),
+    path('editProjectDetail/', views.editProjectDetail, name='editProjectDetail'),
+    path('ProjectUploadImage/', views.ProjectUploadImage, name='ProjectUploadImage'),
+    path('ProjectUploadVideo/', views.ProjectUploadVideo, name='ProjectUploadVideo'),
+    path('deleteImage/', views.deleteImage, name='deleteImage'),
+    path('deleteVideo/', views.deleteVideo, name='deleteVideo'),
+    path('EditImage/', views.EditImage, name='EditImage'),
+    path('EditVideo/', views.EditVideo, name='EditVideo'),
+    path('EditProject/', views.EditProject, name='EditProject'),
+    path('ProjectView/', views.ProjectView, name='ProjectView'),
+    # Still needs to be edited
 
-    #testing urls
+
     path('oldregister/', views.oldregister, name='oldregister'),
-    path('upload_project/', views.upload_project, name='upload_project'),
 
     path('welcome/', views.welcomepage, name='welcomepage'),
-
+    #not used
     path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
-
+    # the test urls
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
@@ -57,7 +69,22 @@ urlpatterns = [
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
+
+
     path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
+    path('testProjectVideo/', views.testProjectVideo, name='testProjectVideo'),
+    path('testProjectImage/', views.testProjectImage, name='testProjectImage'),
+    path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
+    path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
+
+    path('showUploadProject/', views.showUploadProject, name='showUploadProject'),
+    path('showProjectSummary/', views.showProjectSummary, name='showProjectSummary'),
+    path('showProjectEdit/', views.showProjectEdit, name='showProjectEdit'),
+    path('showProjectUploadImage/', views.showProjectUploadImage, name='showProjectUploadImage'),
+    path('showProjectUploadVideo/', views.showProjectUploadVideo, name='showProjectUploadVideo'),
+
+
+
 
     path('ModulePage/', views.modulePage, name='modulePage'),
     path('testID', views.testID, name='testID'),

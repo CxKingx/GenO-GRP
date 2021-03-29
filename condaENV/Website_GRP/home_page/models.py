@@ -30,6 +30,7 @@ from django.contrib.auth.models import User
 #
 #     def __str__(self):
 #         return self.User_Username
+from validators import validate_image_size
 
 
 class UserProfileInfo(models.Model):
@@ -112,8 +113,8 @@ class Video_Artefact(models.Model):
 
 
 class Image(models.Model):
-    title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images/', null=True, verbose_name="")
+    title = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='images/', null=True, verbose_name="", validators=[validate_image_size])
 
     def __str__(self):
         return self.title

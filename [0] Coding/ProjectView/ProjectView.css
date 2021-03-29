@@ -9,13 +9,6 @@ body {
 	font-size: 12px;
 }
 
-h5 {
-	font-size: 14px;
-}
-html {
-  scroll-behavior: smooth;
- }
-
 /*--------------------------- Top navigation  Bar -----------------------------*/
 .navbar {
 	top: 0;
@@ -309,8 +302,20 @@ h2{
   text-align: center;
 }
 
-p{
-  font-size: 15px;
+h5 {
+	font-size: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+ }
+
+
+div#title.row {
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+    margin-bottom: 3%;
+    color: #1a296b;
 }
 
 .col-md-3{
@@ -371,12 +376,21 @@ img.project-pic{
 
 }
 
-/*descriptions- both project and author comments */
+/*Descriptions- both project and author comments */
 .description{
+  font-size: 15px;
   text-align: justify;
   justify-content: space-around;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+p.video-desc {
+    font-size: 15px;
+}
+
+div.col-12.col-md-9 {
+    font-size: 15px;
 }
 
 /* Table of flip card */
@@ -441,7 +455,6 @@ img.card-picture {
     color:  #1a296b;
     transform: rotateY(180deg);
 }
-
 
 h5.card-title {
 	font-size: 16px;

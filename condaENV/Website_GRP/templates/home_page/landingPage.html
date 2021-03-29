@@ -20,7 +20,7 @@
 
   <body>
     <div id="UNNClogo">
-      <a href="landingPage.html"><img src="UNNClogo.jpg" width="100px" height="100px" alt="UNNClogo"></a>
+      <a href="landingPage.html"><img src="{% static 'images/UNNClogo.jpg' %}" width="100px" height="100px" alt="UNNClogo"></a>
     </div>
     <table class="table table-borderless">
 
@@ -31,13 +31,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="1049099.jpg">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.0.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.0.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -52,13 +52,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="stars.gif">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.1.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.1.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -73,13 +73,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="img1.jpg">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.2.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.2.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -94,13 +94,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="galaxy.gif">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.3.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                      {{ context.3.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -118,13 +118,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="img3.jpg">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.4.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.4.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -143,7 +143,7 @@
                     <br>Digital Artefact
                     <br>Showcase</nobr>
               </div>
-              <img id="earth" src="earth.jpg" alt="">
+              <img id="earth" src="{% static 'images/earth.jpg' %}" alt="">
               <button class="button button5">Start Exploring    <i class="fa fa-caret-right fa-lg" style="font-size: 21px;"></i>
               </button>
             </td>
@@ -155,13 +155,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="egg.gif">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.5.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.5.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -179,13 +179,13 @@
                 <div class="flip-card">
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
-                      <img class="card-picture" src="1049099.jpg">
+                      <img class="card-picture" src='{{ MEDIA_URL}}{{ context.6.image }}'>
                     </div>
                     <div class="flip-card-back">
                       <hr class="card-line">
                       <!-- ARTEFACT DESCRIPTION -->
                       <p class="card-description">
-                        Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.6.Image_Description }}
                       </p>
                       <hr class="card-line">
                     </div>
@@ -200,13 +200,13 @@
                 <div class="flip-card">
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
-                      <img class="card-picture" src="neon.gif">
+                      <img class="card-picture" src='{{ MEDIA_URL}}{{ context.7.image }}'>
                     </div>
                     <div class="flip-card-back">
                       <hr class="card-line">
                       <!-- ARTEFACT DESCRIPTION -->
                       <p class="card-description">
-                        Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.7.Image_Description }}
                       </p>
                       <hr class="card-line">
                     </div>
@@ -221,13 +221,13 @@
                 <div class="flip-card">
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
-                      <img class="card-picture" src="unicorn_cat.jpg">
+                      <img class="card-picture" src='{{ MEDIA_URL}}{{ context.8.image }}'>
                     </div>
                     <div class="flip-card-back">
                       <hr class="card-line">
                       <!-- ARTEFACT DESCRIPTION -->
                       <p class="card-description">
-                        Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.8.Image_Description }}
                       </p>
                       <hr class="card-line">
                     </div>
@@ -242,13 +242,13 @@
                 <div class="flip-card">
                   <div class="flip-card-inner">
                     <div class="flip-card-front">
-                      <img class="card-picture" src="bridge.jpg">
+                      <img class="card-picture" src='{{ MEDIA_URL}}{{ context.9.image }}'>
                     </div>
                     <div class="flip-card-back">
                       <hr class="card-line">
                       <!-- ARTEFACT DESCRIPTION -->
                       <p class="card-description">
-                        Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.9.Image_Description }}
                       </p>
                       <hr class="card-line">
                     </div>
@@ -266,13 +266,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="sun.gif">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.10.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.10.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -287,13 +287,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="astronaut.jpg">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.11.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.11.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>
@@ -308,13 +308,13 @@
               <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img class="card-picture" src="galaxy.jpg">
+                    <img class="card-picture" src='{{ MEDIA_URL}}{{ context.12.image }}'>
                   </div>
                   <div class="flip-card-back">
                     <hr class="card-line">
                     <!-- ARTEFACT DESCRIPTION -->
                     <p class="card-description">
-                      Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You'll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won't lose any changes while editing, even if you leave the site and come number of characters.
+                        {{ context.12.Image_Description }}
                     </p>
                     <hr class="card-line">
                   </div>

@@ -28,6 +28,12 @@ User = get_user_model()
 # views for doing activities behind the scenes
 
 # Return the first page for index
+
+def landingPage(request):
+    context = ImageArtefact.objects.all().order_by('Project_Owner__Upload_Date')[:13]
+    #13 cards
+    return render(request, 'home_page/landingPage.html',{"context":context})
+
 def index(request):
     my_dict = {'insert_me': "Hello from home_page in template", 'insert_new': 'do something'}
     return render(request, 'home_page/front_page.html', context=my_dict)
@@ -902,10 +908,7 @@ def testProjectDetailEdit(request):
     return render(request, 'home_page/testProjectDetailEdit.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
-def landingPage(request):
-    context = ImageArtefact.objects.all()
-    #12 cards
-    return render(request, 'home_page/landingPage.html',{})
+
 
 
 

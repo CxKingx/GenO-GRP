@@ -1,28 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>searchBar test</title>
-</head>
-<body>
-    <form action = "{% url 'searchbar' %}" method ="get">
-        <input type="text" name="search"/>
-        <button type="submit">Search</button>
-    </form>
+{% extends "home_page/Layout.html" %}
+{% load static %}
+{% block layout_css %}
+    <link rel="stylesheet" href="{% static 'css/SearchResults.css' %}">
+    <title>Project View page</title>
+{% endblock %}
+{% block content %}
 
-    {% if post %}
-        <h1> item found</h1>
-        <br>
-    {% for i in post %}
-        {{ i.name }}, {{ i.videofile }}
-    <source src='{{ MEDIA_URL }}{{ i.videofile  }}' type='video/mp4'>
-    <video width='400' controls>
-        <source src="{{ MEDIA_URL }}{{ i.videofile  }}" type='video/mp4'>
-        Your browser does not support the video tag.
-    </video>
-    <br>
-    {% endfor %}
-    {% endif %}
+<!----------------------------------------- Search Results (Table) ------------------------------------------------------>
 
-</body>
-</html>
+        <h2>Results</h2>
+        <br><br>
+          <!--All search results will be here -->
+            <div class = "table">
+              <table class="table">
+                  {% for i in context %}
+                <tr><!--ROW-->
+                  <div class="form-row">
+                    <div class="form-group col-md-6" id="artefact">
+                      <!-- FETCH ARTEFACT HERE -->
+                        {% if i.videoartefact__videofile %}
+                            <video controls>
+                                <source src="{{ MEDIA_URL }}{{ i.videoartefact__videofile }}" type='video/mp4'>
+                                Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            <img class="project-pic" src='{{ MEDIA_URL }}{{ i.imageartefact__image }}' alt='Image Not Found'/>
+                        {% endif %}
+                    </div>
+                    <div class="form-group col-md-6" id="text">
+                      <!-- FETCH ARTEFACT DETAILS HERE -->
+                    	<h4 class="card-header"> {{ i.Project_Name }}<!-- FETCH FROM DATABASE --></h4>
+                      <br>
+                        {% if i.videofile %}
+                            <h4 class="card-title"> {{ i.videoartefact__name }}<!-- FETCH FROM DATABASE --></h4>
+                            <p class="card-description"> {{ i.videoartefact__Video_Description}}<!-- FETCH FROM DATABASE --></p>
+
+                        {% else %}
+                            <h4 class="card-title"> {{ i.imageartefact__Image_Name }}<!-- FETCH FROM DATABASE --></h4>
+                            <p class="card-description"> {{ i.imageartefact__Image_Description}}<!-- FETCH FROM DATABASE --></p>
+                        {% endif %}
+
+                    </div>
+                  </div>
+              </tr>
+              <tr><div class="line"></div></tr>
+                {% endfor %}
+
+             </table>
+            </div>
+            <br><br>
+            <br><br>
+
+{% endblock %}
+
+{% block layout_js %}
+    <script type="text/javascript" src="{% static 'javascript/SearchResults.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/secondaryLayout.js' %}"></script>
+{% endblock %}

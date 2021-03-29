@@ -1,0 +1,79 @@
+{% extends "home_page/secondaryLayout.html" %}
+{% load static %}
+{% block layout_css %}
+<link rel="stylesheet" href="{% static 'css/contactUs.css' %}">
+
+<title>Contact Us</title>
+{% endblock %}
+
+{% block content %}
+<div class="contact-us">
+    <div class="row">
+        <h2 id="contact-us">CONTACT US</h2>
+    </div>
+    <div class="row">
+        <h4 id="drop-message">Drop your messages here.</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <img id="email-image" src="{% static 'images/email.png' %}" />
+        </div>
+        <div class="col-sm-6">
+            <!-- Message form -->
+            <!-- Change receiver email in the mailto:... -->
+            <form action="mailto:scygh2@nottingham.edu.cn" method="post" enctype="text/plain" name="contact-form" id="contact-form" novalidate="" autocomplete="off">
+                <div class="form-group">
+                    <!-- Name -->
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="Name " >
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Name should be 3 to 100 characters long.</div>
+                </div>
+                <div class="form-group">
+                    <!-- Email -->
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" name="Email " >
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Invalid email.</div>
+                </div>
+                <div class="form-group">
+                    <!-- Message -->
+                    <label for="message">Message:</label>
+                    <textarea class="form-control" id="message" name="Message " maxlength="1000"></textarea>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">Message should be 3 to 1000 characters long.</div>
+                </div>
+                <br><br>
+                <input class="btn btn-primary" type="submit" value="Submit" id="submit" data-toggle="modal"
+                       data-target="#notificationModal"
+                       onclick="submitForm()">
+                        <!-- Modal -->
+                <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog"
+                     aria-labelledby="notificationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <p class="modal-title" id="modal-title">Notification</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body"><p>Thank you for contacting us.</p></div>
+                                <div class="modal-footer">
+                                <!-- Hyperlink to Homepage here -->
+                                    <a href="https://www.youtube.com/watch?v=RQ76vkzmolQ&ab_channel=Mostima.mp4"> <button type="button" class="btn btn-primary" id="modal-button"> Go back
+                                  to Homepage </button></a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+            </form>
+        </div> <!-- Close right column -->
+    </div> <!-- Close row -->
+</div> <!-- Close contact us-->
+{% endblock %}
+
+{% block layout_js %}
+<script src="{% static 'javascript/contactUs.js' %}"></script>
+{% endblock %}

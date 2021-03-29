@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# if wanted to test the eror pages , uncomment this 2 lines below , and comment the top one
+# if wanted to test the error pages , uncomment this 2 lines below , and comment the top one
 
 #DEBUG = False
 
@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home_page',
-
 ]
 
 MIDDLEWARE = [
@@ -157,3 +156,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 #redirect files back to login page
 LOGIN_URL = 'loginPage'
 LOGIN_REDIRECT_URL = 'loginPage'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

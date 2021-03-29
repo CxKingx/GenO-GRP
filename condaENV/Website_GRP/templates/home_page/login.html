@@ -19,11 +19,21 @@
       <!-- <img src="logo.jpg" width=243px height=90px>-->
 
       <img src="{% static 'images/logo.jpg' %}" alt="something went wrong" width=243px height=90px>
+      <!-- the code for wrong password -->
+
+      {% if wrongpassword %}
+                    <p>do this cuz not wrong password</p>
+      {% else %}
+                    <p>do this cuz wrong password</p>
+      {% endif %}
+
+
       {% if user.is_authenticated %}
             <h1>Welcome {{ user.username }}!</h1>
             <h1>You are logged in.</h1>
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       {% else %}
+
       <!-- <div id="container">
             <h1>Please Login</h1> -->
       <h1>Login Page</h1>

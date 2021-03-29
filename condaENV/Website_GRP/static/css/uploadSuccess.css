@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+
+body {
+    font-family: 'circular';
+}
+
+.btn-primary {
+	font-size: 18px;
+	background-color: #005597;
+	color: white;
+	margin-bottom: 50px;
+	border-radius: 10px;
+    width: 150px;
+}
+
+.jumbotron {
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+    width: 60%;
+    background-color: rgba(0, 155, 189, 0.1);
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+img {
+    width: 10%;
+    height: 10%;
+    margin-bottom: 5%;
+}

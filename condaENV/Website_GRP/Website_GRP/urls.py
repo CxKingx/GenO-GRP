@@ -27,23 +27,68 @@ from django.contrib.auth import views as auth_views
 # naming convention , all is small letters , spaces use _ , so ex like hello_world
 # this is the base redirection
 
+
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     path('', views.welcomepage, name='index'),
-    # path('Login/', views.loginPage, name='loginPage'),
-
-    path('Login/', views.loginPage, name='loginPage'),
-    path('register/', views.register, name='register'),
-    path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
-    # to help
+    # Base views , login,logout,register
     path('admin/', admin.site.urls),
+    path('Login/', views.loginPage, name='loginPage'),
     path('logout/', views.user_logout, name='logout'),
+    path('website_base/', include('home_page.urls')),  # website_base/ is the name of the extension can be anything.
+    path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
+    path('adminLogin/', views.adminLogin, name='adminLogin'),
+    path('register/', views.register, name='register'),
+    path('contactUs/', views.contactUs, name='contactUs'),
+    # Project Upload Views
+    path('ProjectUpload/', views.ProjectUpload, name='ProjectUpload'),
+    path('projectSummary/', views.projectSummary, name='projectSummary'),
+    path('editProjectDetail/', views.editProjectDetail, name='editProjectDetail'),
+    path('ProjectUploadImage/', views.ProjectUploadImage, name='ProjectUploadImage'),
+    path('ProjectUploadVideo/', views.ProjectUploadVideo, name='ProjectUploadVideo'),
+    path('deleteImage/', views.deleteImage, name='deleteImage'),
+    path('deleteVideo/', views.deleteVideo, name='deleteVideo'),
+    path('EditImage/', views.EditImage, name='EditImage'),
+    path('EditVideo/', views.EditVideo, name='EditVideo'),
+    path('EditProject/', views.EditProject, name='EditProject'),
+    path('ProjectView/', views.ProjectView, name='ProjectView'),
+    # Still needs to be edited
+
+
+    path('oldregister/', views.oldregister, name='oldregister'),
+
     path('welcome/', views.welcomepage, name='welcomepage'),
-    path('upload_artefact/', views.showvideo, name = 'showvideo'),
+    #not used
+    path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
+    # the test urls
+    path('layout/', views.layout, name='layout'),
+    path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
+
+    path('UploadVideos/', views.UploadVideos, name='UploadVideos'),
+    path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('footertest/', views.footertest, name='footertest'),
     path('indexbase/', views.indexbase, name='indexbase'),
-    path('studentdashboard/', views.studentdashboard, name='studentdashboard'),
+
+
+    path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
+    path('testProjectVideo/', views.testProjectVideo, name='testProjectVideo'),
+    path('testProjectImage/', views.testProjectImage, name='testProjectImage'),
+    path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
+    path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
+
+    path('showUploadProject/', views.showUploadProject, name='showUploadProject'),
+    path('showProjectSummary/', views.showProjectSummary, name='showProjectSummary'),
+    path('showProjectEdit/', views.showProjectEdit, name='showProjectEdit'),
+    path('showProjectUploadImage/', views.showProjectUploadImage, name='showProjectUploadImage'),
+    path('showProjectUploadVideo/', views.showProjectUploadVideo, name='showProjectUploadVideo'),
+
+
+
+
+    path('ModulePage/', views.modulePage, name='modulePage'),
+    path('testID', views.testID, name='testID'),
+
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 

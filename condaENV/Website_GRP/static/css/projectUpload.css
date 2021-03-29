@@ -1,0 +1,379 @@
+@font-face{
+    font-family: 'circular';
+    src: url('./circular-bold.ttf');
+}
+
+body {
+	font-size: 12px;
+	font-family: 'circular';
+}
+
+h5 {
+	font-size: 14px;
+	font-family: 'circular';
+}
+h4 {
+	color: red;
+	text-align: center;
+	font-family: 'circular';
+	margin-top: 10px;
+}
+h2 {
+	color: #18194f;
+	text-align: center;
+	font-family: 'circular';
+	margin-top: 10px;
+}
+h3 {
+	text-align : center;
+	font-family: 'circular';
+	font-size: 28px;
+
+}
+
+/*----------------------------------- Top navigation bar ---------------------------*/
+.navbar {
+	top: 0;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	padding-right: 5%;
+}
+
+a.navbar-brand {
+	padding-top: 0px;
+	margin-top: 0px;
+	top: 0;
+}
+
+.logo {
+	margin-top: 0px;
+}
+
+div#logged-in {
+    font-size: 14px;
+}
+
+/*---------------------------------- Side Menu Bar --------------------------*/
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+#sidebar {
+    width: 310px;
+	height: 100vh;
+    position: fixed;
+	top: 90px;
+    left: -310px;
+    z-index: 999;
+    background-color: #18194f;
+    color: #fff;
+    transition: all 0.5s;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	overflow-y: scroll;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(87, 87, 87, 0.8); 
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0;
+    background-color: #18194f;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul li a {
+    padding: 12px;
+    font-size: 15px;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #1a296b;
+    background: white;
+}
+
+i {
+    color: #009bbd;
+    margin-right: 3%;
+}
+
+i.fa-bars {
+    color: #007ca7;
+}
+
+i.fa-times {
+	cursor: pointer;
+	font-size: 16px;
+	color: #009bbd;
+}
+
+div.cancel-btn {
+	text-align: right;
+}
+
+h3#menu-title {
+    margin-bottom: 10px;
+    color: #009bbd;
+    text-align: left;
+}
+
+hr.white {
+    border-width: 0;
+    height: 0.5px;
+    color: #47748b;
+    background-color: #47748b;
+}
+
+a.close {
+    width: 25px;
+    height: 25px;
+    color: white;
+}
+
+a#sidebarCollapse:hover {
+    color: white;
+}
+
+button#dashboard {
+	background-color: white;
+	color: #18194f;
+	border-color: #009bbd;
+	border-width: 1px;
+	width: 200px;
+	margin-bottom: 3%;
+	margin-left: 15%;
+}
+
+button#upload-project {
+	background-color: #007ca7;
+	border-color: transparent;
+	color: white;
+	width: 200px;
+	margin-left: 15%;
+	margin-bottom: 35%;
+}
+
+/*----------------------------------------- Content --------------------------------*/
+#content {
+    width: 100%;
+	padding-top: 40px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 0;
+    transition: all 0.3s;
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+/*-------------------------------------- Footer -------------------------------------*/
+footer{
+	bottom: 0;
+	background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+	width: 100%;
+	font-family: 'circular';
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+a {
+	color: white;
+}
+
+a:hover {
+	color: #d3d3d3;
+}
+
+.copyright{
+	text-align: center;
+}
+
+.container .p-4{
+	width: 100%;
+	margin: 2%;
+}
+
+.column{
+	width: 30%;
+	margin: 0%;
+}
+
+footer.btn {
+	border-radius: 5px; 
+	border: white 2px;
+	color: white;
+	background-color: transparent; 
+}
+
+.btn-outline-light:hover {
+	color: #18194f;
+}
+
+a#login-button:hover {
+	color: #18194f;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+#footer-desc{
+	font-size:12px;
+}
+
+div.footer {
+	font-size: 12px;
+}
+
+button#submit.btn.btn-primary {
+	font-size: 16px;
+}
+
+a.btn.btn-primary {
+	font-size: 16px;
+}
+
+/*------------------------------- Small navigation bar ---------------------------*/
+#small-navbar {
+	padding: 5px;
+	margin-bottom: 5%;
+}
+
+button#toggle-menu {
+	padding: 5px;
+	width: 150px;
+	margin: 5px;
+	border-color: #009bbd;
+}
+
+button#toggle-menu:hover {
+    background-color: #009bbd;
+    color: white;
+}
+
+a.dropdown-item {
+	font-size: 12px;
+}
+
+i.fa-bars:before {
+	color: #1a296b;
+}
+
+/* ----------------------- upload project (start) ----------------------- */
+.form-control{
+	border-color: #18194f;
+	font-family: 'circular';
+}
+
+label {
+	font-size: 20px;	
+	margin-right: 5%;
+}
+
+.upload{
+	text-align: center;
+}
+
+.upload-artefact{
+	font-family: 'circular';
+	font-size: 30px;
+	color: #18194f;
+	text-align: center;
+}
+.max-word{
+	color: grey;
+	font-size: 10px;
+	margin-left: 5%;
+}
+.count{
+	color: grey;
+	font-size: 10px;
+	margin-right: 20%;
+}
+
+.btn-primary{
+	font-family: 'circular';
+	font-size: 20px;
+	background-color: #005597;
+	color: white;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 50px;
+	border-radius: 10px;
+}
+
+.submit-button{
+	font-family: 'circular';
+	font-size: 16px;
+	color: white;
+	text-align: center
+}
+
+.max {
+	font-size: 12px;
+	color: gray;
+}
+/*
+p {
+	font-size: 20px;	
+	display: inline-block;
+}
+*/
+p.word_count {
+	font-size: 15px;
+}
+
+div.count {
+	width: 100%;
+	text-align: right;
+	margin-right: 2%;
+}
+
+#text-project-field {
+	margin-left: 33.3%;
+}
+
+#text-author-field {
+	margin-left: 33.3%;
+}

@@ -186,6 +186,7 @@ button#upload-project {
 /*-------------------------------------- Footer -------------------------------------*/
 footer{
 	bottom: 0;
+	margin-top: 120px;
 	background: linear-gradient(to right, #18194f, #009bbd);
 	color: white;
 	width: 100%;

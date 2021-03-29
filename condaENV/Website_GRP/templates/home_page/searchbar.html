@@ -1,13 +1,15 @@
-{% extends "home_page/Layout.html" %}
+{% extends "home_page/layout.html" %}
 {% load static %}
 {% block layout_css %}
     <link rel="stylesheet" href="{% static 'css/SearchResults.css' %}">
-    <title>Project View page</title>
+    <title>Search Results</title>
 {% endblock %}
 {% block content %}
 
 <!----------------------------------------- Search Results (Table) ------------------------------------------------------>
-
+        {% if not context %}
+            <h2>No Results Found!</h2>
+        {% else %}
         <h2>Results</h2>
         <br><br>
           <!--All search results will be here -->
@@ -44,16 +46,15 @@
                   </div>
               </tr>
               <tr><div class="line"></div></tr>
-                {% endfor %}
+                    {% endfor %}
 
              </table>
             </div>
             <br><br>
             <br><br>
-
+        {% endif %}
 {% endblock %}
 
 {% block layout_js %}
     <script type="text/javascript" src="{% static 'javascript/SearchResults.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascript/secondaryLayout.js' %}"></script>
 {% endblock %}

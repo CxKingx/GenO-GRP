@@ -39,7 +39,7 @@
                               <p class="project-title">{{ i.0.Project_Owner__Project_Name}}</p>
                             </div>
                             <div class="learn-more">
-                              <button type="button" class="btn btn-info" onclick="location.href='{% url 'testID' %}?IDTAG={{i.0.Project_Owner__id}}'">Learn more > </button>
+                              <button type="button" class="btn btn-info" onclick="location.href='{% url 'passToThisProject' %}?goToThisProject={{i.0.Project_Owner__id}}'">Learn more > </button>
                               <hr>
                             </div>
                         </td>

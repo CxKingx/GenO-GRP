@@ -436,6 +436,10 @@ def ProjectView(request):
                   {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages,
                    'ProjectVideos': ProjectVideos, })
 
+def passToThisProject(request):
+    imageID = request.GET.get("goToThisProject")
+    request.session['thisdata'] = int(imageID)
+    return HttpResponseRedirect(reverse('ProjectView'))
 
 def error_404(request, exception):
     #return render(request, 'home_page/ivanoldlogin.html')
@@ -906,11 +910,13 @@ def testProjectDetailEdit(request):
 def homePage(request):
     sortSetting_homePage = request.GET.get('sort')
     if sortSetting_homePage == "latestUploaded":
-        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name").order_by("-Project_Owner__Upload_Date")
+        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id").order_by("-Project_Owner__Upload_Date")
     elif sortSetting_homePage == "projectName":
-        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name").order_by("Image_Name")
+        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id").order_by("Image_Name")
     else:
-        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name")
+        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id")
+
+    print('ASDSDA')
 
     homepage_paginator = Paginator(homePageArtefacts, 9)
     page_num = request.GET.get('page')

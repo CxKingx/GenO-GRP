@@ -31,7 +31,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     # Add paths here to add new pages -Ivan
     #path('', views.welcomepage, name='index'),
-    path('', views.landingPage, name='index'),
+    path('', views.landingPage, name='landingPage'),
 
     # Base views , login,logout,register
     path('admin/', admin.site.urls),
@@ -59,7 +59,7 @@ urlpatterns = [
 
 
     path('oldregister/', views.oldregister, name='oldregister'),
-
+    path('passToThisProject/', views.passToThisProject, name='passToThisProject'),
 
     #not used
      # the test urls
@@ -89,7 +89,7 @@ urlpatterns = [
 
 
     path('modulePage/', views.modulePage, name='modulePage'),
-    path('testID', views.testID, name='testID'),
+    path('testID/', views.testID, name='testID'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

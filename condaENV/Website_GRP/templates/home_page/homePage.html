@@ -29,14 +29,15 @@
                                         <!-- ARTEFACT TITLE -->
                                         <h5 class="card-title">{{ i.Image_Name}}</h5>
                                         <!-- PROJECT NAME -->
-                                        <p class="project-title">{{ i.Project_Name }}</p>
+                                        <p class="project-title">{{ i.Project_Owner__Project_Name }}</p>
                                         <!-- <br> -->
                                         <hr class="card-line">
                                         <!-- ARTEFACT DESCRIPTION -->
                                         <p class="card-description">
                                              {{ i.Image_Description }}
                                         </p>
-                                        <button type="button" class="btn btn-info">Learn more > </button>
+                                        <button onclick="location.href='{% url 'passToThisProject' %}?goToThisProject={{i.Project_Owner__id}}'" type="button" class="btn btn-info">Learn more > </button>
+
                                     </div>
                                 </div>
                             </div>

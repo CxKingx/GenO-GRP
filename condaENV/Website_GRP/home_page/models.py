@@ -1,37 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from validators import validate_image_size
 
 
 # Create your models here.
-# Admin Database is not needed cause we have superuser that can be created from here
-
-# One User can have more than 1project
-# ex I have Arduino Project to make the robot count binary up to 1000
-# in that project I have multiple "artefactsArtefacts" or pictures/artefactsArtefacts to show to the public
-# Django supposed to create their own ID for us , so we do not need to put the IDs ,however we can override it
-# Which one should we use ?
-
-# class Student_User(models.Model):
-# #No Longer used because Django have all of this pre built in
-#     Account_Status_Choice = (
-#         ('Act', 'Active'),
-#         ('P', 'Pending'),
-#         ('T', 'Terminated'),
-#     )
-#     # User_ID = models.PositiveIntegerField(unique = True)
-#     User_Username = models.CharField(max_length=50, unique=True)
-#     First_name = models.CharField(max_length=50)
-#     Last_name = models.CharField(max_length=50)
-#     StudentID = models.PositiveIntegerField(unique=True)
-#     Date_Created = models.DateTimeField(default=timezone.now)
-#     Account_Status = models.CharField(max_length=50, choices=Account_Status_Choice, default='Act')
-#     Last_Online = models.DateTimeField(default=timezone.now)
-#
-#     def __str__(self):
-#         return self.User_Username
-from validators import validate_image_size
-
+# These are the building blocks for the database
 
 class UserProfileInfo(models.Model):
     # Create relationship (don't inherit from User!)

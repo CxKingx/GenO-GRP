@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import UserProfileInfo
 from .models import Project
 from .models import ImageArtefact
-# from home_page.models import Artefact_Info
+
 from home_page.models import VideoArtefact
 
 from django.contrib.auth import get_user_model
@@ -20,7 +20,8 @@ from django.utils import timezone
 
 from django.db.models import Q
 from django.core.paginator import Paginator
-# to call user
+
+# to call user model to be used later
 User = get_user_model()
 
 
@@ -56,9 +57,6 @@ def adminLogin(request):
     # return HttpResponse("hello world")
 
 
-def welcomepage(request):
-    return render(request, 'home_page/WelcomePage.html', {})
-
 def oldregister(request):
     user_form = UserForm()
     profile_form = UserProfileInfoForm()
@@ -90,10 +88,6 @@ def layout(request):
 
 def secondaryLayout(request):
     return render(request, 'home_page/secondaryLayout.html', {})
-
-
-def studentdashboardcontent(request):
-    return render(request, 'home_page/studentdashboardcontent.html', {})
 
 
 def contactUs(request):
@@ -152,9 +146,9 @@ def ProjectUpload(request):
             # Reference the project to the user uploading it now and Save it
             uploadedProject.User_Owner = getCurrentUserID
             uploadedProject.save()
-            print("This Current Project ID is")
+            # print("This Current Project ID is")
             request.session['thisdata'] = uploadedProject.id
-            print(request.session['thisdata'])
+            # print(request.session['thisdata'])
             # return render(request, 'home_page/projectSummary.html')
             return HttpResponseRedirect(reverse('projectSummary'))
 
@@ -186,8 +180,8 @@ def projectSummary(request):
 # Edit the Details of the Project 'Name , Description , Authors, Date .....
 @login_required
 def editProjectDetail(request):
-    print("Edit detail")
-    print(request.session['thisdata'])
+    print("Edit Project detail")
+    # print(request.session['thisdata'])
     # Get current project being edited
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
     print(CurrentProject)
@@ -206,7 +200,7 @@ def editProjectDetail(request):
             CurrentProject.Authors = EditedProject.Authors
             CurrentProject.Module_Name = EditedProject.Module_Name
             CurrentProject.save()
-            print("Changed")
+            print("Project Detail Changed , now redirect back to summary")
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
@@ -216,12 +210,14 @@ def editProjectDetail(request):
                           {'errorMessage': errorMessage})
     else:
         Projectformhtml = ProjectForm()
-        print("Load as normal")
+        print("Load the Form with inputs already inserted")
     return render(request, 'home_page/projectEditContent.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
 
-# Edit project from dashboard
+
+# User wants to edit the project, so it will take the Project ID , and display it in the ProjectSummary Page
+# Edit from studentdashboard
 @login_required
 def EditProject(request):
     print("Editing Project")
@@ -246,35 +242,36 @@ def ProjectUploadImage(request):
             uploadedImage.Project_Owner = CurrentProject
             # uploadedImage = imageform.save()
             uploadedImage.save()
-            print("saved")
+            print("Image Saved")
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
-            print("Failed")
+            print("Failed to Upload")
             errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
             return render(request, 'home_page/uploadImageContent.html', {'errorMessage': errorMessage})
 
     else:
         imageform = UploadImageForm()
-        print("Load this as normal")
+        print("Load this as a form for uploading image")
         return render(request, 'home_page/uploadImageContent.html')
 
 
 @login_required
 def ProjectUploadVideo(request):
+    # Get the project being edited from The Session Data
     print("Uploading Video")
-    # bruh = request.session['thisdata']
+    # request.session['thisdata']
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
     if request.method == "POST":
         form = VideoForm(request.POST, request.FILES)
-        print("reached here first")
+
         if form.is_valid():
             uploadedVideo = form.save(commit=False)
             uploadedVideo.Project_Owner = CurrentProject
             # uploadedVideo = form.save()
             uploadedVideo.save()
-            print("Saved")
+            print("Video is Saved")
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
@@ -285,7 +282,7 @@ def ProjectUploadVideo(request):
             # return render(request, 'home_page/uploadVideoContent.html')
             return render(request, 'home_page/uploadVideoContent.html', {'errorMessage': errorMessage})
     else:
-        print("Normal view")
+        print("Failed to Upload")
         form = VideoForm()
     return render(request, 'home_page/uploadVideoContent.html', {'form': form})
     # return render(request, 'home_page/uploadVideoContent.html',{'form': form})
@@ -298,7 +295,7 @@ def deleteImage(request):
     print(request.session['thisdata'])
     ImageID = request.GET.get('ImageTAG')
 
-    # Get the Image that will be deleted and delete it
+    # Get the Image that will be deleted and delete it , return to the project summary
     ImageWillDelete = ImageArtefact.objects.get(id=int(ImageID))
     print(ImageWillDelete.Image_Name)
     ImageWillDelete.delete()
@@ -313,6 +310,7 @@ def deleteVideo(request):
     # Get the Current Video ID and Delete the Video
     VideoID = request.GET.get('VideoTAG')
 
+    # Get the Video that will be deleted and delete it, then return to the project summary
     VideoWillDelete = VideoArtefact.objects.get(id=int(VideoID))
     print(VideoWillDelete.name)
     VideoWillDelete.delete()
@@ -331,13 +329,12 @@ def EditImage(request):
         TheImage = request.FILES.get('image')
         ImageName = request.POST.get('Image_Name')
         ImageDesc = request.POST.get('Image_Description')
+
         # Check if the image is changed or not
+        # If the user does not upload a new image, it will stays the same
         if TheImage:
             print("Change the Image because it received a new image")
-
             ImageWillEdit.image = TheImage
-        else:
-            print("The Image doesnt change")
 
         ImageWillEdit.Image_Name = ImageName
         ImageWillEdit.Image_Description = ImageDesc
@@ -393,7 +390,7 @@ def EditVideo(request):
 @login_required
 def studentdashboard(request):
     thisuser = request.user
-    # print(thisuser)
+
 
     # Get the current User ID , then get all the projects that belong to this User ID
     getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
@@ -416,10 +413,10 @@ def studentdashboard(request):
     # Approval_Date
     if getUserProjects.exists():
         ProjectExists = True
-        # print("not empty")
+
     else:
         ProjectExists = False
-        # print("empty")
+
 
     context = {'getUserProjects': getUserProjects,
                'ProjectExists': ProjectExists,
@@ -441,10 +438,9 @@ def ProjectView(request):
 
 
 def error_404(request, exception):
-    return render(request, 'home_page/ivanoldlogin.html')
-
-
-# add other errors
+    #return render(request, 'home_page/ivanoldlogin.html')
+    # This will only be used if deployed on a server
+    return HttpResponse("Page not Found")
 
 # This special for now is useless
 @login_required
@@ -460,9 +456,8 @@ def user_logout(request):
     logout(request)
     # Return to homepage.
     return HttpResponseRedirect(reverse('index'))  # There is a problem here to return logout page
-
-
 # After logout , redirect using here
+
 
 @login_required
 def register(request):
@@ -488,6 +483,7 @@ def register(request):
             # Update with Hashed password
             user.save()
 
+            # Connect the StudentID to the user table
             profile_form = UserProfileInfoForm(data=request.POST)
 
             profile = profile_form.save(commit=False)
@@ -529,10 +525,9 @@ def register(request):
                   {'user_form': user_form,
                    'profile_form': profile_form,
                    'registered': registered})
-    # 'formcorrect': formcorrect})
 
 
-# accountRegistration
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -552,7 +547,7 @@ def user_login(request):
                 # Send the user back to homepage.
 
                 return HttpResponseRedirect(reverse('studentdashboard'))
-            #
+
             else:
                 # If account is not active:
                 return HttpResponse("Your account is not active.")
@@ -840,7 +835,7 @@ def testProjectSummary(request):
     Projectformhtml = ProjectForm()
     form = VideoForm()
     imageform = UploadImageForm()
-    print("Deleted BBUTTON")
+    print("Deleted BUTTON")
     ImageID = request.GET.get('ImageTAG')
     VideoID = request.GET.get('VideoTAG')
 

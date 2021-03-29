@@ -59,10 +59,9 @@ urlpatterns = [
 
     path('oldregister/', views.oldregister, name='oldregister'),
 
-    path('welcome/', views.welcomepage, name='welcomepage'),
+
     #not used
-    path('studentdashboardcontent/', views.studentdashboardcontent, name='studentdashboardcontent'),
-    # the test urls
+     # the test urls
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 

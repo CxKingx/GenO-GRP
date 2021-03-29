@@ -45,10 +45,9 @@
                   </div>
                 </div>
 
+                <div class="p-2 bd-highlight"></div>
+                <div class="p-2 bd-highlight"></div>
 
-                <div class="p-2 bd-highlight"></div>
-                <div class="p-2 bd-highlight"></div>
-                {% else %}
                 {% endif %}
             </div>  <!-- Close flex -->
           </div> <!-- Close header right -->
@@ -79,23 +78,26 @@
                       <a href="https://www.nottingham.edu.cn/en/careers/naa/nottingham-advantage-award.aspx"><i class="fa fa-trophy fa-lg"></i>Nottingham Advantage Award</a>
                   </li>
                   <li>
-                      <a href="#"><i class="fa fa-line-chart"></i>Data Scholarship</a>
+                      <a href="'{% url 'modulePage' %}?moduleTag=Data Scholarship'"><i class="fa fa-line-chart"></i>Data Scholarship</a>
                   </li>
                   <li>
-                      <a href="#"><i class="fa fa-picture-o"></i>Digital Media Production</a>
+                      <a href="'{% url 'modulePage' %}?moduleTag=Digital Media Production'"><i class="fa fa-picture-o"></i>Digital Media Production</a>
                   </li>
                   <li>
-                      <a href="#"><i class="fa fa-laptop"></i>Technologies for Learning</a>
+                      <a href="'{% url 'modulePage' %}?moduleTag=Technologies for Learning'"><i class="fa fa-laptop"></i>Technologies for Learning</a>
                   </li>
               </ul>
                 <div>
                     {% if user.is_superuser %}
-                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
-                        <p><br>Logged in as superuser : {{ user.username }}!</p>
+
+                    <div>
+                        <a href="{% url 'studentdashboard' %}"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
+                        <a href="{% url 'ProjectUpload' %}"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
+                    </div>
                     {% elif user.is_authenticated %}
                     <div>
-                        <a href="#"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
-                        <a href="#"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
+                        <a href="{% url 'studentdashboard' %}"><button type="button" id="dashboard" class="btn btn-outline-primary">My Dashboard</button></a><br>
+                        <a href="{% url 'ProjectUpload' %}"><button type="button" id="upload-project" class="btn btn-outline-primary">Upload A Project</button></a>
                     </div>
                     {% else %}
                     {% endif %}

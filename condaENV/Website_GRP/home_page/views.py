@@ -19,7 +19,7 @@ from datetime import datetime, timedelta, date
 from django.utils import timezone
 
 from django.db.models import Q
-
+from django.core.paginator import Paginator
 # to call user
 User = get_user_model()
 
@@ -390,20 +390,18 @@ def image_upload_view(request):
     return render(request, 'home_page/uploadimage.html', {'form': form})
 
 
-
-
 def testuploadproject(request):
     Projectformhtml = ProjectForm()
     return render(request, 'home_page/testuploadproject.html', {'Projectformhtml': Projectformhtml})
 
-from django.core.paginator import Paginator
-def testModulePage(request):
+
+def modulePage(request):
     moduleTag = request.GET.get('moduleTag')
     sortSetting = request.GET.get('sort')
     ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=moduleTag))
     imageList = []
     for i in ProjectWithTag:
-        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag",'Project_Owner__Upload_Date')[:2]
+        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag",'Project_Owner__Upload_Date','Project_Owner__id')[:2]
         if len(tempFile) == 2:
             imageList.append(tempFile)
         else:
@@ -431,6 +429,9 @@ def testModulePage(request):
 def testID(request):
     IDproject = request.GET.get('IDTAG')
     print(IDproject)
+    context = Project.objects.all().filter(Q(id=IDproject)).values('videoartefact__videofile', 'videoartefact__Video_Description', 'videoartefact__name',  'imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner', 'Project_Name')
+    print(context)
+    #return all artefacts, and data of project
     return render(request, 'home_page/modulePage.html', {})
 
 

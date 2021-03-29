@@ -59,7 +59,7 @@ urlpatterns = [
     path('indexbase/', views.indexbase, name='indexbase'),
     path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
 
-    path('testModulePage/', views.testModulePage, name='testModulePage'),
+    path('ModulePage/', views.modulePage, name='modulePage'),
     path('testID', views.testID, name='testID'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),

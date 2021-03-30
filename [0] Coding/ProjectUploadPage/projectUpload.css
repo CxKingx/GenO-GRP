@@ -371,3 +371,12 @@ div.count {
 #text-author-field {
 	margin-left: 33.3%;
 }
+
+input#accept {
+    display: inline-block;
+}
+
+label.checkbox-inline {
+    font-size: 16px;
+    text-align: justify;
+}

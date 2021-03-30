@@ -459,7 +459,7 @@ def user_logout(request):
     # Log out the user.
     logout(request)
     # Return to homepage.
-    return HttpResponseRedirect(reverse('index'))  # There is a problem here to return logout page
+    return HttpResponseRedirect(reverse('homePage'))  # There is a problem here to return logout page
 # After logout , redirect using here
 
 

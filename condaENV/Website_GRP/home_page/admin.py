@@ -24,9 +24,9 @@ class StudentIDAdmin(admin.ModelAdmin):
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['User_Owner', 'Project_Name', 'Project_Tag', 'Upload_Date', 'Project_Approval_Status']
-    search_fields = ['Project_Name', 'Project_Approval_Status', 'Project_Tag']
+    search_fields = ['Project_Name', 'Project_Approval_Status', 'Project_Tag', 'User_Owner__user__username']
     list_editable = ['Project_Approval_Status']
-    list_filter = ['Project_Approval_Status','Project_Tag']
+    list_filter = ['Project_Approval_Status','Project_Tag','User_Owner__user__username']
     def save_model(self, request, obj, form, change):
         obj.user = request.user
         #print(obj)
@@ -53,12 +53,12 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class ArtefactAdmin(admin.ModelAdmin):
     list_display = ['Project_Owner', 'Image_Name', 'image']
-    search_fields = ['Image_Name']
+    search_fields = ['Image_Name', 'Project_Owner__Project_Name','Project_Owner__User_Owner__user__username']
 
 
 class VideoAdmin(admin.ModelAdmin):
     list_display = ['Project_Owner', 'name', 'videofile']
-    search_fields = ['name']
+    search_fields = ['name','Project_Owner__Project_Name','Project_Owner__User_Owner__user__username']
 
 
 

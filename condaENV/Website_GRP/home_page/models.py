@@ -86,12 +86,6 @@ class VideoArtefact(models.Model):
         return self.name + ": " + str(self.videofile)
 
 
-class Image(models.Model):
-    title = models.CharField(max_length=500)
-    image = models.ImageField(upload_to='images/', null=True, verbose_name="", validators=[validate_image_size])
-
-    def __str__(self):
-        return self.title
 
 # pip install pillow to use this!
 # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"

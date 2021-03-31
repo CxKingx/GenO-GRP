@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 from home_page.models import VideoArtefact
-from .forms import UserForm, UserProfileInfoForm, VideoForm, ImageForm, ProjectForm, UploadImageForm
+from .forms import UserForm, UserProfileInfoForm, VideoForm, ProjectForm, UploadImageForm
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -607,5 +607,3 @@ def homePage(request):
     page = homepage_paginator.get_page(page_num)
 
     return render(request, 'home_page/homePage.html', {"page": page})
-
-

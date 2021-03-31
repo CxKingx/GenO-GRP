@@ -5,21 +5,9 @@ from . import models
 from .models import Project, User
 
 
-
-# admin.site.register()
-
-# class UserAdmin(admin.ModelAdmin):
-#     search_fields = ['User_Username']
-#
-#     list_display = ['User_Username','StudentID'] #add display as u wish
-#
-#     list_filter =['User_Username','StudentID']
-#
-#     list_editable =['StudentID']
 class StudentIDAdmin(admin.ModelAdmin):
     list_display = ['user', 'StudentID']
     search_fields = ['StudentID']
-
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -64,11 +52,8 @@ class VideoAdmin(admin.ModelAdmin):
 
 admin.site.register(models.UserProfileInfo, StudentIDAdmin)
 admin.site.register(models.Project, ProjectAdmin)
-# admin.site.register(models.Account_Project_Connector)
-# admin.site.register(models.Project_Artefact_Connector)
 admin.site.register(models.ImageArtefact, ArtefactAdmin)
 admin.site.register(models.VideoArtefact, VideoAdmin)
-#admin.site.register(models.Image)
 
 #https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
 

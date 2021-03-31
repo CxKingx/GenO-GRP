@@ -22,10 +22,9 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 
-
 urlpatterns = [
     # Add paths here to add new pages -Ivan
-    #path('', views.welcomepage, name='index'),
+
     path('', views.landingPage, name='landingPage'),
 
     # Base views , login,logout,register
@@ -54,7 +53,6 @@ urlpatterns = [
     path('passToThisProject/', views.passToThisProject, name='passToThisProject'),
     path('modulePage/', views.modulePage, name='modulePage'),
     path('searchbar/', views.searchbar, name='searchbar'),
-
 
     # The 2 Layout that is used by most pages , if want to make small changes in footer / header , can be viewed here
     path('layout/', views.layout, name='layout'),

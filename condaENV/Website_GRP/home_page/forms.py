@@ -3,7 +3,12 @@ from django.contrib.auth.models import User
 from .models import UserProfileInfo, VideoArtefact, Project, ImageArtefact
 
 
-# this is for asking forms from models we have created
+# Forms is used to ease validation from the used
+# by calling  Form.is_valid() we can easily check the content of the input and automatically give out error
+# if an error occur / invalid input was inserted
+
+# Call by giving out the Meta() models , and insert the fields that needs to get input from user
+
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -30,7 +35,6 @@ class ProjectForm(forms.ModelForm):
         model = Project
         fields = ('Project_Name', 'Project_Description', 'Project_Tag', 'Date_of_Completion', 'Author_Comment',
                   'Authors' , 'Module_Name')
-        # Upload_Date Approval_Date Account_ExpiryDate Last_Updated Project_Approval_Status
 
 
 class UploadImageForm(forms.ModelForm):

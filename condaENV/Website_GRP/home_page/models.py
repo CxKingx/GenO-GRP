@@ -6,6 +6,14 @@ from validators import validate_image_size
 
 # Create your models here.
 # These are the building blocks for the database
+# Register Models by:
+
+# class Modelname(models.Model):
+    # dataname = models.Type(Constraints)
+    # dataname2 = models.ForeignKey(Models that it will connect to)
+
+# Where type could be integer , character , symbols , etc ...
+# Contraints could be max number of characters , choices , default value , unique values , etc ...
 
 class UserProfileInfo(models.Model):
     # Connect Foreign Key to the User Object and add extra information , in this case Student ID
@@ -86,7 +94,6 @@ class VideoArtefact(models.Model):
         return self.name + ": " + str(self.videofile)
 
 
-
 # pip install pillow to use this!
 # Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
-# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True) z
+# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)

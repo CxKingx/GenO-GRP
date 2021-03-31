@@ -1,8 +1,11 @@
 from django.contrib import admin
-# from .models import User, login_credential, Project, Account_Project_Connector, Project_Artefact_Connector, Artefact_Info
-# Register your models here.
 from . import models
 from .models import Project, User
+
+# Register your models here.
+# The Admin file is to show the Admin what will be displayed from the Database
+# Then we can change how the admin looks in the table by giving out Django Built in features
+# Example list_display , search_fields , list_editable and list_filter
 
 
 class StudentIDAdmin(admin.ModelAdmin):

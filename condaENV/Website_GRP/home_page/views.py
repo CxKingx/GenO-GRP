@@ -21,7 +21,7 @@ from django.utils import timezone
 from django.db.models import Q
 from django.core.paginator import Paginator
 
-# to call user model to be used later
+# To be used by request
 User = get_user_model()
 
 
@@ -29,7 +29,6 @@ User = get_user_model()
 # views for doing activities behind the scenes
 
 # Return the first page for index
-
 def landingPage(request):
     context = ImageArtefact.objects.all().order_by('Project_Owner__Upload_Date')[:13]
     # Get 13 most recent Pictures to be displayed to the landing page
@@ -46,11 +45,9 @@ def loginPage(request):
 
 # Takes User to Admin Login Page
 def adminLogin(request):
-    # return render(request, 'home_page/login.html')
     wrongpassword = True
     context = {'wrongpassword': wrongpassword}
     return render(request, 'home_page/adminLogin.html', context)
-    # return HttpResponse("hello world")
 
 
 def contactUs(request):
@@ -68,12 +65,14 @@ def secondaryLayout(request):
     return render(request, 'home_page/secondaryLayout.html', {})
 
 
+# This view is to handle the first step of the Upload , which is the details
 @login_required
 def ProjectUpload(request):
     if request.method == 'POST':
         # Get Data from User to be inserted to the object
         Projectformhtml = ProjectForm(request.POST, request.FILES)
 
+        # Automatic check if the input is valid by Django
         if Projectformhtml.is_valid():
             thisuser = request.user
             getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
@@ -98,7 +97,7 @@ def ProjectUpload(request):
             return HttpResponseRedirect(reverse('projectSummary'))
 
         else:
-            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
             print(Projectformhtml.errors.as_data())
             return render(request, 'home_page/projectUploadContent.html', {'errorMessage': errorMessage})
@@ -113,7 +112,8 @@ def ProjectUpload(request):
 @login_required
 def projectSummary(request):
     print("Showing summary")
-    print(request.session['thisdata'])
+    # print(request.session['thisdata'])
+    # Get the Project and its related artefacts that will be displayed in the summary
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
     ProjectImages = ImageArtefact.objects.filter(Project_Owner=CurrentProject)
     ProjectVideos = VideoArtefact.objects.filter(Project_Owner=CurrentProject)
@@ -129,8 +129,8 @@ def editProjectDetail(request):
     # print(request.session['thisdata'])
     # Get current project being edited
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
-    print(CurrentProject)
 
+    # Change the content of the Project Details into the new one
     if request.method == 'POST':
         Projectformhtml = ProjectForm(request.POST)
         if Projectformhtml.is_valid():
@@ -149,7 +149,7 @@ def editProjectDetail(request):
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
-            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
             return render(request, 'home_page/projectEditContent.html',
                           {'errorMessage': errorMessage})
@@ -162,42 +162,44 @@ def editProjectDetail(request):
 
 # User wants to edit the project from student dashboard, so it will take the Project ID , and display it in the
 # ProjectSummary Page
-
 @login_required
 def EditProject(request):
     print("Editing Project")
+    # Get the corresponding ProjectID to be edited
     ProjectID = request.GET.get('ProjectTag')
     # Set the session to edit the Project with the ID
     request.session['thisdata'] = int(ProjectID)
 
-    # Display it in the Project Summary page
+    # Display it in the Project Summary page to be edited further
     return HttpResponseRedirect(reverse('projectSummary'))
 
 
 @login_required
 def ProjectUploadImage(request):
     print("Uploading image")
-    # bruh = request.session['thisdata']
+    # request.session['thisdata']
+    # Get the Project that owns the Image File
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
-
+    # Check if the user pressed submit in the form
     if request.method == "POST":
         imageform = UploadImageForm(request.POST, request.FILES)
+        # Check if the inputs are valid
         if imageform.is_valid():
             uploadedImage = imageform.save(commit=False)
             uploadedImage.Project_Owner = CurrentProject
-            # uploadedImage = imageform.save()
+
             uploadedImage.save()
             print("Image Saved")
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
             print("Failed to Upload")
-            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
             return render(request, 'home_page/uploadImageContent.html', {'errorMessage': errorMessage})
 
     else:
-        imageform = UploadImageForm()
+        # imageform = UploadImageForm()
         print("Load this as a form for uploading image")
         return render(request, 'home_page/uploadImageContent.html')
 
@@ -207,14 +209,16 @@ def ProjectUploadVideo(request):
     # Get the project being edited from The Session Data
     print("Uploading Video")
     # request.session['thisdata']
+    # Get the Project that owns the Video File
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
+    # Check if the user pressed submit in the form
     if request.method == "POST":
         form = VideoForm(request.POST, request.FILES)
-
+        # Check if the inputs are valid
         if form.is_valid():
             uploadedVideo = form.save(commit=False)
             uploadedVideo.Project_Owner = CurrentProject
-            # uploadedVideo = form.save()
+
             uploadedVideo.save()
             print("Video is Saved")
             # Return it back to Summary
@@ -222,12 +226,12 @@ def ProjectUploadVideo(request):
         else:
             print("Not valid")
             print(form.errors.as_data())
-            errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
-            # return render(request, 'home_page/uploadVideoContent.html')
+
             return render(request, 'home_page/uploadVideoContent.html', {'errorMessage': errorMessage})
     else:
-        print("Failed to Upload")
+        print("Load an empty Video form page")
         form = VideoForm()
     return render(request, 'home_page/uploadVideoContent.html', {'form': form})
     # return render(request, 'home_page/uploadVideoContent.html',{'form': form})
@@ -266,11 +270,11 @@ def deleteVideo(request):
 def EditImage(request):
     print("Edit Image")
     # print(request.session['thisdata'])
-    # Get the Current Image ID and Edit the Image
+    # Get the Current Image ID and the Image object corresponds to it, then edit the Image
     ImageID = request.GET.get('ImageTAG')
     ImageWillEdit = ImageArtefact.objects.get(id=int(ImageID))
     if request.method == "POST":
-        imageform = UploadImageForm(request.POST, request.FILES)
+        # imageform = UploadImageForm(request.POST, request.FILES)
         TheImage = request.FILES.get('image')
         ImageName = request.POST.get('Image_Name')
         ImageDesc = request.POST.get('Image_Description')
@@ -280,16 +284,16 @@ def EditImage(request):
         if TheImage:
             print("Change the Image because it received a new image")
             ImageWillEdit.image = TheImage
-
+        # Change the remainder attributes to the input that is inserted by the user
         ImageWillEdit.Image_Name = ImageName
         ImageWillEdit.Image_Description = ImageDesc
         ImageWillEdit.save()
-        print("Changed")
+        print("Image has Changed")
 
         return HttpResponseRedirect(reverse('projectSummary'))
 
     else:
-        imageform = UploadImageForm()
+        # imageform = UploadImageForm()
         print("Load this as normal")
     return render(request, 'home_page/projectEditImage.html', {'ImageWillEdit': ImageWillEdit})
 
@@ -298,6 +302,7 @@ def EditImage(request):
 def EditVideo(request):
     print("EditVideo")
     print(request.session['thisdata'])
+    # Get the VideoID and the object corresponds to it , and edit it
     VideoID = request.GET.get('VideoTAG')
     VideoWillEdit = VideoArtefact.objects.get(id=int(VideoID))
     if request.method == "POST":
@@ -306,7 +311,8 @@ def EditVideo(request):
         VideoName = request.POST.get('name')
         VideoDesc = request.POST.get('Video_Description')
         VideoThumbnail = request.FILES.get('thumbnail')
-        # Check if the image is changed or not
+
+        # Check if the Main Video and Thumbnail is changed or not
 
         if VideoFile:
             print("Change the Video because it received a new Video")
@@ -320,6 +326,7 @@ def EditVideo(request):
         else:
             print("The Image doesnt change")
 
+        # The other attributes will change as normal
         VideoWillEdit.name = VideoName
         VideoWillEdit.Video_Description = VideoDesc
         VideoWillEdit.save()
@@ -330,6 +337,7 @@ def EditVideo(request):
     return render(request, 'home_page/projectEditVideo.html', {'VideoWillEdit': VideoWillEdit})
 
 
+# Displays the projects that the user has uploaded and their details in a table
 @login_required
 def studentdashboard(request):
     thisuser = request.user
@@ -342,8 +350,8 @@ def studentdashboard(request):
 
     # Get today Date to check if user can still edit or not DateField Object
     todayDate = date.today()
-    ProjectExists = False
-    # Approval_Date
+    # ProjectExists = False
+
     if getUserProjects.exists():
         ProjectExists = True
 
@@ -357,6 +365,7 @@ def studentdashboard(request):
     return render(request, 'home_page/studentdashboardcontent.html', context)
 
 
+# Show a specific project detail with all the pictures and videos related to it
 def ProjectView(request):
     print(request.session['thisdata'])
     # Get the Project that will be viewed, and all pictures and videos related to it
@@ -369,12 +378,14 @@ def ProjectView(request):
                    'ProjectVideos': ProjectVideos, })
 
 
+# Get the Project ID that wants to be viewed by clicking on the Image Learn more , then show it in the Project View
 def passToThisProject(request):
     imageID = request.GET.get("goToThisProject")
     request.session['thisdata'] = int(imageID)
     return HttpResponseRedirect(reverse('ProjectView'))
 
 
+# Show this is A page is not found
 def error_404(request, exception):
     # This will only be used if deployed on a server
     return HttpResponse("Page not Found")
@@ -390,6 +401,7 @@ def user_logout(request):
 
 @login_required
 def register(request):
+    # Check if user is staff or admin , if it is not , return them to the admin login page
     if request.user.is_staff or request.user.is_superuser:
         print("Staff has logined")
     else:
@@ -426,12 +438,10 @@ def register(request):
             # One of the forms was invalid if this else gets called.
             # print(user_form.errors, profile_form.errors)
             print(user_form.errors.as_data(), profile_form.errors.as_data())
-
             return render(request, 'home_page/accountRegistration.html',
                           {'user_form': user_form,
                            'profile_form': profile_form,
                            'registered': registered})
-
 
     else:
         # Was not an HTTP post so we just render the forms as blank.
@@ -441,7 +451,6 @@ def register(request):
     # This is the render and context dictionary to feed
     # back to the registration.html file page.
 
-    # return render(request, 'home_page/register.html',
     return render(request, 'home_page/accountRegistration.html',
                   {'user_form': user_form,
                    'profile_form': profile_form,
@@ -497,7 +506,7 @@ def admin_login(request):
             # Check it the account is active
             if user.is_active:
                 # Log the user in.
-
+                # Check if user is staff or superuser
                 if user.is_superuser or user.is_staff:
                     print("Superuser or staff")
                     login(request, user)

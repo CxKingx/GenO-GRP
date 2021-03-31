@@ -32,20 +32,16 @@ User = get_user_model()
 
 def landingPage(request):
     context = ImageArtefact.objects.all().order_by('Project_Owner__Upload_Date')[:13]
-    #13 cards
-    return render(request, 'home_page/landingPage.html',{"context":context})
-
-def index(request):
-    my_dict = {'insert_me': "Hello from home_page in template", 'insert_new': 'do something'}
-    return render(request, 'home_page/front_page.html', context=my_dict)
+    # Get 13 most recent Pictures to be displayed to the landing page
+    return render(request, 'home_page/landingPage.html', {"context": context})
 
 
 # Takes User to Student Login Page
+# Login request will be handled by user_login view
 def loginPage(request):
     wrongpassword = True
     context = {'wrongpassword': wrongpassword}
     return render(request, 'home_page/StudentLogin.html', context)
-    # return HttpResponse("hello world")
 
 
 # Takes User to Admin Login Page
@@ -57,31 +53,13 @@ def adminLogin(request):
     # return HttpResponse("hello world")
 
 
-def oldregister(request):
-    user_form = UserForm()
-    profile_form = UserProfileInfoForm()
-    # print(formcorrect)
-    # This is the render and context dictionary to feed
-    # back to the registration.html file page.
-
-    # return render(request, 'home_page/register.html',
-
-    return render(request, 'home_page/accountRegistrationold.html',
-              {'user_form': user_form,
-               'profile_form': profile_form,})
+def contactUs(request):
+    return render(request, 'home_page/contactUs.html', {})
 
 
-# Test Return Pages
-
-
-def indexbase(request):
-    return render(request, 'home_page/testextention.html', {})
-
-
-def footertest(request):
-    return render(request, 'home_page/footer.html', {})
-
-
+# These 2 Layouts is used for extending the other content page
+# So every page will contain elements from these 2 html without actually putting all html in each page
+# It acts like css but it is html content
 def layout(request):
     return render(request, 'home_page/layout.html', {})
 
@@ -89,9 +67,7 @@ def layout(request):
 def secondaryLayout(request):
     return render(request, 'home_page/secondaryLayout.html', {})
 
-
-def contactUs(request):
-    return render(request, 'home_page/contactUs.html', {})
+#
 
 
 def showUploadProject(request):
@@ -213,7 +189,6 @@ def editProjectDetail(request):
         print("Load the Form with inputs already inserted")
     return render(request, 'home_page/projectEditContent.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
-
 
 
 # User wants to edit the project, so it will take the Project ID , and display it in the ProjectSummary Page
@@ -391,7 +366,6 @@ def EditVideo(request):
 def studentdashboard(request):
     thisuser = request.user
 
-
     # Get the current User ID , then get all the projects that belong to this User ID
     getCurrentUser = User.objects.prefetch_related().get(username=thisuser)
     getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
@@ -417,7 +391,6 @@ def studentdashboard(request):
     else:
         ProjectExists = False
 
-
     context = {'getUserProjects': getUserProjects,
                'ProjectExists': ProjectExists,
                'todayDate': todayDate}
@@ -436,22 +409,17 @@ def ProjectView(request):
                   {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages,
                    'ProjectVideos': ProjectVideos, })
 
+
 def passToThisProject(request):
     imageID = request.GET.get("goToThisProject")
     request.session['thisdata'] = int(imageID)
     return HttpResponseRedirect(reverse('ProjectView'))
 
+
 def error_404(request, exception):
-    #return render(request, 'home_page/ivanoldlogin.html')
     # This will only be used if deployed on a server
     return HttpResponse("Page not Found")
 
-# This special for now is useless
-@login_required
-def special(request):
-    # Remember to also set login url in settings.py!
-    # LOGIN_URL = '/basic_app/user_login/'
-    return HttpResponse("You are logged in. Nice!")
 
 
 @login_required
@@ -459,8 +427,7 @@ def user_logout(request):
     # Log out the user.
     logout(request)
     # Return to homepage.
-    return HttpResponseRedirect(reverse('homePage'))  # There is a problem here to return logout page
-# After logout , redirect using here
+    return HttpResponseRedirect(reverse('landingPage'))  # There is a problem here to return logout page
 
 
 @login_required
@@ -529,8 +496,6 @@ def register(request):
                   {'user_form': user_form,
                    'profile_form': profile_form,
                    'registered': registered})
-
-
 
 
 def user_login(request):
@@ -612,7 +577,7 @@ def admin_login(request):
 
     else:
         # Nothing has been provided for username or password.
-        return render(request, 'home_page/admin_login.html', {})
+        return render(request, 'home_page/adminLogin.html', {})
 
 
 def searchbar(request):
@@ -623,10 +588,22 @@ def searchbar(request):
         if getCurrentUser.exists():
             getCurrentUser = User.objects.prefetch_related().get(username=search)
             getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
-            context = Project.objects.all().filter(Q(User_Owner=getCurrentUserID)&Q(Project_Approval_Status = "Approved")).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
+            context = Project.objects.all().filter(
+                Q(User_Owner=getCurrentUserID) & Q(Project_Approval_Status="Approved")).values(
+                'videoartefact__videofile', 'videoartefact__Video_Description', 'videoartefact__name',
+                'imageartefact__image', 'imageartefact__Image_Description', 'imageartefact__Image_Name', 'User_Owner',
+                'Project_Name')
         else:
-            context = Project.objects.all().filter(Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile','videoartefact__Video_Description','videoartefact__name','imageartefact__image','imageartefact__Image_Description','imageartefact__Image_Name','User_Owner','Project_Name')
-        return render(request, 'home_page/searchbar.html', {"context":context})
+            context = Project.objects.all().filter(
+                Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile',
+                                                                                             'videoartefact__Video_Description',
+                                                                                             'videoartefact__name',
+                                                                                             'imageartefact__image',
+                                                                                             'imageartefact__Image_Description',
+                                                                                             'imageartefact__Image_Name',
+                                                                                             'User_Owner',
+                                                                                             'Project_Name')
+        return render(request, 'home_page/searchbar.html', {"context": context})
 
 
 # The test version Joseph
@@ -706,24 +683,27 @@ def testuploadproject(request):
                                                                 'imageform': imageform})
 
 
-
 def modulePage(request):
     moduleTag = request.GET.get('moduleTag')
     sortSetting = request.GET.get('sort')
-    ProjectWithTag = Project.objects.all().filter(Q(Project_Tag__icontains=moduleTag)&Q(Project_Approval_Status = "Approved"))
+    ProjectWithTag = Project.objects.all().filter(
+        Q(Project_Tag__icontains=moduleTag) & Q(Project_Approval_Status="Approved"))
     imageList = []
     for i in ProjectWithTag:
-        tempFile = ImageArtefact.objects.all().filter(Project_Owner = i).values("image", "Project_Owner__Project_Name","Project_Owner__Project_Tag",'Project_Owner__Upload_Date','Project_Owner__id')[:2]
+        tempFile = ImageArtefact.objects.all().filter(Project_Owner=i).values("image", "Project_Owner__Project_Name",
+                                                                              "Project_Owner__Project_Tag",
+                                                                              'Project_Owner__Upload_Date',
+                                                                              'Project_Owner__id')[:2]
         if len(tempFile) == 2:
             imageList.append(tempFile)
         else:
             imageList.append(tempFile)
 
     if sortSetting == "latestUploaded":
-        for i in range(0,len(imageList)-1):
-            for j in range(0,len(imageList)-i-1):
+        for i in range(0, len(imageList) - 1):
+            for j in range(0, len(imageList) - i - 1):
                 if imageList[j][0]['Project_Owner__Upload_Date'] < imageList[j + 1][0]['Project_Owner__Upload_Date']:
-                    imageList[j], imageList[j+1] = imageList[j+1], imageList[j]
+                    imageList[j], imageList[j + 1] = imageList[j + 1], imageList[j]
     # This is some magical python coding.
     elif sortSetting == "projectName":
         for i in range(0, len(imageList) - 1):
@@ -735,7 +715,7 @@ def modulePage(request):
     page_num = request.GET.get('page')
     page = module_paginator.get_page(page_num)
 
-    return render(request, 'home_page/modulePage.html', {"page": page, "tagName":moduleTag})
+    return render(request, 'home_page/modulePage.html', {"page": page, "tagName": moduleTag})
 
 
 # def testID(request):
@@ -747,8 +727,7 @@ def modulePage(request):
 #     return render(request, 'home_page/modulePage.html', {})
 
 
-
-#remember to return title not a number.
+# remember to return title not a number.
 
 # def testProjectVideo(request):
 #     bruh = request.session['thisdata']
@@ -907,23 +886,31 @@ def testProjectDetailEdit(request):
     return render(request, 'home_page/testProjectDetailEdit.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
+
 def homePage(request):
     sortSetting_homePage = request.GET.get('sort')
     if sortSetting_homePage == "latestUploaded":
-        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id").order_by("-Project_Owner__Upload_Date")
+        homePageArtefacts = ImageArtefact.objects.all().filter(
+            Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
+                                                                         "Project_Owner__Project_Name",
+                                                                         "Project_Owner__id").order_by(
+            "-Project_Owner__Upload_Date")
     elif sortSetting_homePage == "projectName":
-        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id").order_by("Image_Name")
+        homePageArtefacts = ImageArtefact.objects.all().filter(
+            Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
+                                                                         "Project_Owner__Project_Name",
+                                                                         "Project_Owner__id").order_by("Image_Name")
     else:
-        homePageArtefacts = ImageArtefact.objects.all().filter(Q(Project_Owner__Project_Approval_Status = "Approved")).values("image", "Image_Name", "Image_Description", "Project_Owner__Project_Name","Project_Owner__id")
+        homePageArtefacts = ImageArtefact.objects.all().filter(
+            Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
+                                                                         "Project_Owner__Project_Name",
+                                                                         "Project_Owner__id")
 
     homepage_paginator = Paginator(homePageArtefacts, 9)
     page_num = request.GET.get('page')
     page = homepage_paginator.get_page(page_num)
 
-    return render(request, 'home_page/homePage.html',{"page": page})
-
-
-
+    return render(request, 'home_page/homePage.html', {"page": page})
 
 #     if request.method == 'POST':
 #         form = ImageForm(request.POST, request.FILES)

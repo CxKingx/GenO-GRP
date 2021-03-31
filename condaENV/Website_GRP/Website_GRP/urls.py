@@ -59,20 +59,13 @@ urlpatterns = [
     path('modulePage/', views.modulePage, name='modulePage'),
     # Still needs to be edited
 
-
-    path('oldregister/', views.oldregister, name='oldregister'),
-
-
-    #not used
-     # the test urls
+    # The 2 Layout that is used by most pages , if want to make small changes in footer / header , can be viewed here
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
-    #path('UploadVideos/', views.UploadVideos, name='UploadVideos'),
-    path('uploadimage/', views.image_upload_view, name = 'upload_image_view'),
+
+    path('uploadimage/', views.image_upload_view, name='upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
-    path('footertest/', views.footertest, name='footertest'),
-    path('indexbase/', views.indexbase, name='indexbase'),
 
 
     path('testuploadproject/', views.testuploadproject, name='testuploadproject'),

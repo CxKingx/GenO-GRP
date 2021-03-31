@@ -32,10 +32,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # if wanted to test the error pages , uncomment this 2 lines below , and comment the top one
+# However , some interactions might be weird because the project don't have their own error handling
 
-#DEBUG = False
-
-#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# DEBUG = False
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -83,10 +83,7 @@ WSGI_APPLICATION = 'Website_GRP.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-# USER AND NAME IS NOT CHANGE FOR NOW, cause too annoying to set individually - Ivan.
-# Django admin login
-# Username : gen-o-grp-2020
-# Password : PainAuChocolate
+
 
 # database name  = test,  Website_Database
 DATABASES = {
@@ -150,10 +147,12 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-#either use the one above or use os.path.join(BASE_DIR, 'media/') this one need to import os
+# either use the one above or use os.path.join(BASE_DIR, 'media/') this one need to import os
 
-#LOGIN_URL = '/ login page location
-#redirect files back to login page
+# LOGIN_URL and LOGIN_REDIRECT_URL will redirect Users back to Login page
+# if they try to access pages that needs users to be logged in
+# Insert @login_required before the views to enable this function
+
 LOGIN_URL = 'loginPage'
 LOGIN_REDIRECT_URL = 'loginPage'
 

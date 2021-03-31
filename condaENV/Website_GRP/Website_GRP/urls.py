@@ -17,15 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from home_page import views
 from django.conf.urls import include
-
 from django.conf import settings
 from django.conf.urls.static import static
-
-
 from django.contrib.auth import views as auth_views
 
-# naming convention , all is small letters , spaces use _ , so ex like hello_world
-# this is the base redirection
 
 
 urlpatterns = [
@@ -54,27 +49,17 @@ urlpatterns = [
     path('EditVideo/', views.EditVideo, name='EditVideo'),
     path('EditProject/', views.EditProject, name='EditProject'),
     path('ProjectView/', views.ProjectView, name='ProjectView'),
+    # Normal user without an account views
     path('homePage/', views.homePage, name='homePage'),
     path('passToThisProject/', views.passToThisProject, name='passToThisProject'),
     path('modulePage/', views.modulePage, name='modulePage'),
+    path('searchbar/', views.searchbar, name='searchbar'),
 
 
     # The 2 Layout that is used by most pages , if want to make small changes in footer / header , can be viewed here
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
-
-    path('searchbar/', views.searchbar, name='searchbar'),
-
-
-    path('testuploadproject/', views.testuploadproject, name='testuploadproject'),
-    path('testProjectVideo/', views.testProjectVideo, name='testProjectVideo'),
-    path('testProjectImage/', views.testProjectImage, name='testProjectImage'),
-    path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
-    path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
-
-
-    # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 
 # https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-http-error-codes

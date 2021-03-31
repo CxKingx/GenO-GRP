@@ -57,14 +57,13 @@ urlpatterns = [
     path('homePage/', views.homePage, name='homePage'),
     path('passToThisProject/', views.passToThisProject, name='passToThisProject'),
     path('modulePage/', views.modulePage, name='modulePage'),
-    # Still needs to be edited
+
 
     # The 2 Layout that is used by most pages , if want to make small changes in footer / header , can be viewed here
     path('layout/', views.layout, name='layout'),
     path('secondaryLayout/', views.secondaryLayout, name='secondaryLayout'),
 
 
-    path('uploadimage/', views.image_upload_view, name='upload_image_view'),
     path('searchbar/', views.searchbar, name='searchbar'),
 
 
@@ -74,11 +73,6 @@ urlpatterns = [
     path('testProjectSummary/', views.testProjectSummary, name='testProjectSummary'),
     path('testProjectDetailEdit/', views.testProjectDetailEdit, name='testProjectDetailEdit'),
 
-    path('showUploadProject/', views.showUploadProject, name='showUploadProject'),
-    path('showProjectSummary/', views.showProjectSummary, name='showProjectSummary'),
-    path('showProjectEdit/', views.showProjectEdit, name='showProjectEdit'),
-    path('showProjectUploadImage/', views.showProjectUploadImage, name='showProjectUploadImage'),
-    path('showProjectUploadVideo/', views.showProjectUploadVideo, name='showProjectUploadVideo'),
 
     # path('studentdashboard/studentdashboardredirect', views.studentdashboardredirect, name='studentdashboardredirect'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -70,25 +70,6 @@ def secondaryLayout(request):
 #
 
 
-def showUploadProject(request):
-    return render(request, 'home_page/projectUpload.html', {})
-
-
-def showProjectSummary(request):
-    return render(request, 'home_page/projectSummary.html', {})
-
-
-def showProjectEdit(request):
-    return render(request, 'home_page/projectEdit.html', {})
-
-
-def showProjectUploadImage(request):
-    return render(request, 'home_page/uploadImage.html', {})
-
-
-def showProjectUploadVideo(request):
-    return render(request, 'home_page/uploadVideo.html', {})
-
 
 # End of Test Return Pages
 
@@ -191,8 +172,9 @@ def editProjectDetail(request):
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
 
-# User wants to edit the project, so it will take the Project ID , and display it in the ProjectSummary Page
-# Edit from studentdashboard
+# User wants to edit the project from student dashboard, so it will take the Project ID , and display it in the
+# ProjectSummary Page
+
 @login_required
 def EditProject(request):
     print("Editing Project")
@@ -606,18 +588,6 @@ def searchbar(request):
         return render(request, 'home_page/searchbar.html', {"context": context})
 
 
-# The test version Joseph
-def image_upload_view(request):
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            img_obj = form.instance
-            return render(request, 'home_page/uploadimagetest.html', {'form': form, 'img_obj': img_obj})
-    else:
-        form = ImageForm()
-
-    return render(request, 'home_page/uploadimagetest.html', {'form': form})
 
 
 def testuploadproject(request):

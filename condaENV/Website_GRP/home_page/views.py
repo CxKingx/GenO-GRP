@@ -407,7 +407,7 @@ def register(request):
     registered = False
 
     if request.method == 'POST':
-        # Get info from "both" forms
+        # Get info from both forms but
         # It appears as one form to the user on the .html page
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
@@ -441,11 +441,10 @@ def register(request):
                            'registered': registered})
 
     else:
-        # Was not an HTTP post so we just render the forms as blank.
+        # Was not an HTTP post so just render the forms as blank.
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
 
-    # This is the render and context dictionary to feed
     # back to the registration.html file page.
 
     return render(request, 'home_page/accountRegistration.html',
@@ -456,7 +455,7 @@ def register(request):
 
 def user_login(request):
     if request.method == 'POST':
-        # First get the username and password supplied
+        # get the username and password
         username = request.POST.get('username')
         password = request.POST.get('password')
 

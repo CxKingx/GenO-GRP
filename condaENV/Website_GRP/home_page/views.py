@@ -19,8 +19,11 @@ from django.core.paginator import Paginator
 User = get_user_model()
 
 
-# Create your views here.
-# views for doing activities behind the scenes
+# A view function, or view for short, is a Python function that takes a Web request and
+# returns a Web response. This response can be the HTML contents of a Web page, or a redirect, or a 404 error,
+# or an XML document. The view itself contains whatever arbitrary logic is necessary to return that response.
+
+# Quoted from https://docs.djangoproject.com/en/3.1/topics/http/views/
 
 
 # Return the first page for index

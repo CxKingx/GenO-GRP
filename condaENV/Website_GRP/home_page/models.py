@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 
 # Where type could be integer , character , symbols , etc ...
 # Contraints could be max number of characters , choices , default value , unique values , etc ...
+# This will then need to be migrated for django to create and update database on its own
+
 
 class UserProfileInfo(models.Model):
     # Connect Foreign Key to the User Object and add extra information , in this case Student ID

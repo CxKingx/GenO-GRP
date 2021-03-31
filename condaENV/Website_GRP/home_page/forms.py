@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from .models import UserProfileInfo, VideoArtefact, Project, ImageArtefact
 
 
-# Forms is used to ease validation from the used by calling Form.is_valid().
+# Forms is used to ease validation by calling Form.is_valid().
 # We can easily check the content of the input and automatically give out error
 # if an error occur / invalid input was inserted
+# If needed , django can also use these forms to automatically create a simple form in html
 
 # Call by giving out the Meta() models , and insert the fields that needs to get input from user
 

@@ -21,6 +21,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+# Django urls help to ease referencing to pages or other views , so it will not be hardcoded
+# it helps redirect users to certain locations or in templates to provide enough user navigation.
+
 
 urlpatterns = [
     # Add paths here to add new pages -Ivan

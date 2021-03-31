@@ -12,11 +12,7 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <!--
-        <link rel="stylesheet" href="accountRegistration.css">
-        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        -->
+
         <!-- Django version -->
         <link rel="stylesheet" href="{% static 'css/accountRegistration.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
@@ -24,172 +20,136 @@
 
       <title>Register a New Account</title>
   </head>
-
   <body>
   <!--------------------------------------------------------------------- TOP BAR ----------------------------------------------------------------------->
-  <div>
-    <nav class="navbar fixed-top navbar-light bg-light">
-          <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
-          <div class="header-right">
-            <div class="d-flex flex-row-reverse bd-highlight align-items-center">
-                <!-- Logged in username appears here -->
-                <div class="p-2 bd-highlight" id="logged-in">{{ user.username }}</div>
+    <div>
+        <nav class="navbar fixed-top navbar-light bg-light">
+            <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
+            <div class="header-right">
+                <div class="d-flex flex-row-reverse bd-highlight align-items-center">
+                    <!-- Logged in username appears here -->
+                    <div class="p-2 bd-highlight" id="logged-in">{{ user.username }}</div>
 
-                <div class="p-2 bd-highlight">
-                  <div class="user-btn">
-                      <i class="fas fa-user"></i>
-                  </div>
-                </div>
+                    <div class="p-2 bd-highlight">
+                        <div class="user-btn">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
 
-                <div class="p-2 bd-highlight"></div>
-                <div class="p-2 bd-highlight"></div>
-            </div>  <!-- Close flex -->
-          </div> <!-- Close header right -->
+                    <div class="p-2 bd-highlight"></div>
+                    <div class="p-2 bd-highlight"></div>
+                </div>  <!-- Close flex -->
+            </div> <!-- Close header right -->
         </nav>
   </div>
   <!------------------------------------------------------------------- END OF TOP BAR ------------------------------------------------------------------->
 
     <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
-    <div class="container">
-        <div id="content">
+        <div class="container">
+            <div id="content">
 
             <!-------------------------- Registration Form -------------------->
-            <div class="form-border">
-              <h2>New Account Registration</h2>
-              <br>
+                <div class="form-border">
+                    <h2>New Account Registration</h2>
+                    <br>
 
-                <form enctype="multipart/form-data" method="POST">
-                  {% csrf_token %}
-                  <!-- SECTION 1: STUDENT DETAILS -->
-                  <ul class="registration-form">
-                      <i class="fa fa-info-circle"></i>Student Details
-                  </ul>
+                    <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        <!-- SECTION 1: STUDENT DETAILS -->
+                        <ul class="registration-form">
+                            <i class="fa fa-info-circle"></i>Student Details
+                        </ul>
 
-                  <div class="form-group">
-                             {% for error in profile_form.StudentID.errors %}
+                        <div class="form-group">
+                            {% for error in profile_form.StudentID.errors %}
                                 <div class="alert alert-danger" role="alert">
                                    A user with this Student ID has already exists
                                 </div>
-                              {% endfor %}
-                      <!--
-                    <label>Student ID</label>
-                    <input type="number" id="studentID" class="form-control" placeholder="Student ID">
-                    -->
+                            {% endfor %}
 
-                      <label for="studentID">StudentID:</label>
-                      <input type="number" name="StudentID" required="" id="studentID" class="form-control" placeholder="Student ID">
+                            <label for="studentID">StudentID:</label>
+                            <input type="number" name="StudentID" required="" id="studentID" class="form-control" placeholder="Student ID">
 
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Student ID should be 8 characters long.</div>
+                        </div>
 
+                        <div class="form-group">
 
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Student ID should be 8 characters long.</div>
-                  </div>
+                            <label for="firstName">First name:</label>
+                            <input type="text" name="first_name" maxlength="150" id="firstName" class="form-control" placeholder="First name" required>
 
-                  <div class="form-group">
-                      <!--
-                    <label>First name</label>
-                    <input type="text" id="firstName" class="form-control" placeholder="First name">
-                        -->
-                       <label for="firstName">First name:</label>
-                      <input type="text" name="first_name" maxlength="150" id="firstName" class="form-control" placeholder="First name" required>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Name should only consist of letters (2-100 characters long).</div>
+                        </div>
 
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Name should only consist of letters (2-100 characters long).</div>
-                  </div>
+                        <div class="form-group">
 
-                  <div class="form-group">
-                      <!--
-                    <label>Last name</label>
-                    <input type="text" id="lastName" class="form-control" placeholder="Last name">
-                      -->
-                      <label for="lastName">Last name:</label>
-                      <input type="text" name="last_name" maxlength="150" id="lastName" class="form-control" placeholder="Last name" required>
+                            <label for="lastName">Last name:</label>
+                            <input type="text" name="last_name" maxlength="150" id="lastName" class="form-control" placeholder="Last name" required>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Name should only consist of letters (2-100 characters long).</div>
+                        </div>
 
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Name should only consist of letters (2-100 characters long).</div>
-                  </div>
+                        <div class="form-group">
 
-                  <div class="form-group">
-                      <!--
-                        <label>Email address</label>
-                        <input type="text" id="email" class="form-control" placeholder="Email">
-                      -->
-                      <label for="email">Email address:</label>
-                      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
-
-
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Invalid email.</div>
-                  </div>
+                            <label for="email">Email address:</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Invalid email.</div>
+                        </div>
 
                   <!-- SECTION 2: CREATE NEW ACCOUNT -->
-                  <ul id="registration-form">
-                      <i class="fa fa-user-circle"></i>Create New Account
-                  </ul>
+                        <ul id="registration-form">
+                            <i class="fa fa-user-circle"></i>Create New Account
+                        </ul>
 
-                  <div class="information">
-                    The username and password below will be used to log in.
-                  </div>
+                        <div class="information">
+                            The username and password below will be used to log in.
+                        </div>
 
-                  <div class="form-group">
-                      <!--
-                    <label>Username</label>
-                    <input type="text" id="username" class="form-control" placeholder="Username">
-                      -->
-                      {% for error in user_form.username.errors %}
+                        <div class="form-group">
+                            {% for error in user_form.username.errors %}
                                 <div class="alert alert-danger" role="alert">
                                   {{ error|escape }}
                                 </div>
-                      {% endfor %}
-                      <label for="username">Username:</label>
-                      <input type="text" name="username" maxlength="150" required="" id="username" class="form-control" placeholder="Username" >
+                            {% endfor %}
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" maxlength="150" required="" id="username" class="form-control" placeholder="Username" >
 
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Username should only consist of letters and numbers, without space
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Username should only consist of letters and numbers, without space
                       (6-15 characters long).</div>
-                  </div>
+                            </div>
 
-                  <div class="form-group">
-<!--
-                    <label>Password</label>
-                    <input type="text" id="password" class="form-control" placeholder="Password">
-                      -->
-                      <label for="password">Password:</label>
-                      <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                        <div class="form-group">
+
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
 
 
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">At least one uppercase letter, one lowercase letter, one number and
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">At least one uppercase letter, one lowercase letter, one number and
                       one special character (8-15 characters long).</div>
-                  </div>
+                        </div>
 
-                  <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password">
-                    <div class="valid-feedback"></div>
-                    <div class="invalid-feedback">Password and confirm password do not match.</div>
-                  </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Password and confirm password do not match.</div>
+                        </div>
 
-                  <div class="form-row" id="button-row">
-                      <!--
-                            <button type="button" id="submit" class="btn btn-info" onclick="submitForm()" data-toggle="modal"
-                            data-target="#notificationModal">Register account</button>
-                           <button type="submit" class="btn btn-info" name="" value="Register">Register account</button>
-
-                            -->
-                       <button type="submit" id="submit" class="btn btn-info" onclick="submitForm()"
+                        <div class="form-row" id="button-row">
+                            <button type="submit" id="submit" class="btn btn-info" onclick="submitForm()"
                            name="" value="Register">Register account</button>
-
-
-                  </div>
-
-
+                        </div>
                 </form>
-            </div> <!-- Close form border -->
+                </div> <!-- Close form border -->
       <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
         <!-- Close remaining div-->
-        </div> <!--Close content -->
-      </div> <!-- Close container -->
+            </div> <!--Close content -->
+        </div> <!-- Close container -->
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

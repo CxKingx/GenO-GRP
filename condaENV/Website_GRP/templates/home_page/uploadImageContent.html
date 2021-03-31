@@ -9,70 +9,70 @@
 
 {% block content %}
 <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-             {% if errorMessage %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Something went wrong! Please re-check your upload.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    {% csrf_token %}
+    {% if errorMessage %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Something went wrong! Please re-check your upload.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-            {% endif %}
-                  <div class="upload-box">
-                    <div class="upload-icon"> <img class="upload-icon-img" src="{% static 'images/upload-icon.png'%}"></div>
-                    <div class="upload-button">
+    {% endif %}
+    <div class="upload-box">
+        <div class="upload-icon"> <img class="upload-icon-img" src="{% static 'images/upload-icon.png'%}"></div>
+        <div class="upload-button">
 
-                      <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*"  onchange="loadFile(event)"/>
-                      <label for="image" id="upload-button">Click here to upload your image</label>
-                    </div>
-                    <div class="upload-preview">
-                      <img id="output" />
+            <input class="btn btn-primary-preview" type="file" id="image" name="image" accept="image/*"  onchange="loadFile(event)"/>
+            <label for="image" id="upload-button">Click here to upload your image</label>
+        </div>
+        <div class="upload-preview">
+            <img id="output" />
 
-                    </div>
+        </div>
+    </div>
+    <br><br><br>
 
-                  </div>
-                  <br><br><br>
+    <div class="row" id="details">
+        <p class = "heading1">Enter Artefact Details:</p>
+    </div>
 
-                  <div class="row" id="details">
-                    <p class = "heading1">Enter Artefact Details:</p>
-                  </div>
+    <div class="row" id ="title">
+        <div class="col-4">
+            <label>Artefact Title:</label>
+        </div>
+        <div class="col-8" id="field">
+            <input type="text" class="form-control" id="title_field" name="Image_Name" placeholder="Title.." required maxlength="100">
+        </div>
+    </div>
+    <br><br>
 
-                  <div class="row" id ="title">
-                    <div class="col-4">
-                      <label>Artefact Title:</label>
-                    </div>
-                    <div class="col-8" id="field">
-                        <input type="text" class="form-control" id="title_field" name="Image_Name" placeholder="Title.." required maxlength="100">
-                    </div>
-                  </div>
-                  <br><br>
+    <div class="row" id="description">
+        <div class="col-4">
+            <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
+        </div>
 
-                  <div class="row" id="description">
-                    <div class="col-4">
-                      <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
-                    </div>
+        <!-- WORD COUNT -->
+        <div id="count_desc" class="count">
+            <span id="current_desc">0</span>
+            <span id="max_desc">/ 600</span>
+        </div>
 
-                    <!-- WORD COUNT -->
-                    <div id="count_desc" class="count">
-                      <span id="current_desc">0</span>
-                      <span id="max_desc">/ 600</span>
-                    </div>
+        <div class="col-8" id="artefact_col">
+            <textarea name="Image_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
 
-                    <div class="col-8" id="artefact_col">
-                      <textarea name="Image_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
+        </div> <!-- Close col -->
+    </div> <!-- Close row -->
+    <br><br>
 
-                    </div> <!-- Close col -->
-                  </div> <!-- Close row -->
-                  <br><br>
+    <div class="submit-button">
+        <button type="button" class="btn btn-danger btn-sm" onclick="cancelUpload();"><a href="{% url 'projectSummary' %}">Cancel</a></button>
+        <button type="submit" class="btn btn-primary btn-sm">Save and back to project</button>
 
-                  <div class="submit-button">
-                    <button type="button" class="btn btn-danger btn-sm" onclick="cancelUpload();"><a href="{% url 'projectSummary' %}">Cancel</a></button>
-                    <button type="submit" class="btn btn-primary btn-sm">Save and back to project</button>
-
-                  </div>
-                </form>
+    </div>
+</form>
 {% endblock %}
+
 {% block layout_js %}
 <script type="text/javascript" src="{% static 'javascript/imageuploadify.js' %}"></script>
 {% endblock %}

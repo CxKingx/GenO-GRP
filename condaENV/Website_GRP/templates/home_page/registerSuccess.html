@@ -12,11 +12,7 @@
 
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-      <!--
-      <link rel="stylesheet" href="registerSuccess.css">
-        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-      -->
+
         <link rel="stylesheet" href="{% static 'css/registerSuccess.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
         <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
@@ -27,39 +23,37 @@
   <body>
       <!------------------------------------------------------------- TOP NAVIGATION BAR ----------------------------------------------------------------------->
       <div>
-        <nav class="navbar fixed-top navbar-light bg-light">
-          <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
-          <div class="header-right">
-            <div class="d-flex flex-row-reverse bd-highlight align-items-center">
-                <!-- Logged in username appears here -->
-                <div class="p-2 bd-highlight" id="logged-in">{{ user.username }}</div>
-
-                <div class="p-2 bd-highlight">
-                  <div class="user-btn">
-                      <i class="fas fa-user"></i>
-                  </div>
-                </div>
-
-                <div class="p-2 bd-highlight"></div>
-                <div class="p-2 bd-highlight"></div>
-            </div>  <!-- Close flex -->
-          </div> <!-- Close header right -->
-        </nav>
+          <nav class="navbar fixed-top navbar-light bg-light">
+              <a class="navbar-brand" href="WelcomePage.html"><img class="logo" src="{% static 'images/logo.jpg' %}" width=243px height=90px alt=""></a>
+              <div class="header-right">
+                  <div class="d-flex flex-row-reverse bd-highlight align-items-center">
+                      <!-- Logged in username appears here -->
+                      <div class="p-2 bd-highlight" id="logged-in">{{ user.username }}</div>
+                      <div class="p-2 bd-highlight">
+                          <div class="user-btn">
+                              <i class="fas fa-user"></i>
+                          </div>
+                      </div>
+                      <div class="p-2 bd-highlight"></div>
+                      <div class="p-2 bd-highlight"></div>
+                  </div>  <!-- Close flex -->
+              </div> <!-- Close header right -->
+          </nav>
       </div>
       <!------------------------------------------------------------------- END OF SEARCH BAR ----------------------------------------------------------------->
 
         <!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
-        <div class="container">
-            <div id="content">
-                <div class="container">
+      <div class="container">
+          <div id="content">
+              <div class="container">
                   <div class="jumbotron">
                       <img id="checked" src="{% static 'images/checked.png' %}" /><br>
                       <p class="h3">Account has been successfully registered.</p><br>
                       <a class="btn btn-primary btn-lg" href="/admin" role="button">Go back to the Admin page</a>
                   </div>
-                </div>
-            </div> <!--Close content -->
-          </div> <!-- Close container -->
+              </div>
+          </div> <!--Close content -->
+      </div> <!-- Close container -->
           <!---------------------------------------------------------------------- END OF CONTENT ------------------------------------------------------------------->
 
       <!-- jQuery CDN - Slim version (=without AJAX) -->

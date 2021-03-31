@@ -14,20 +14,19 @@
         <link rel="stylesheet" href="{% static 'css/StudentLogin.css' %}"/>
 </head>
     <!-- Change Background Image Here -->
-  <body style = "background-image:url('{% static 'images/LoginBackground.jpg' %} '); " >
-    <div class="background">
-
-      <img src="{% static 'images/logo.jpg' %}" alt="something went wrong" width=243px height=90px>
+    <body style = "background-image:url('{% static 'images/LoginBackground.jpg' %} '); " >
+        <div class="background">
+            <img src="{% static 'images/logo.jpg' %}" alt="something went wrong" width=243px height=90px>
       
-        <div class="container">
-            {% if user.is_authenticated %}
-                <br><br>
-                <h1>Welcome {{ user.username }}!</h1>
-                <h1>You are logged in.</h1>
-                <br>
-                <a href="{% url 'logout' %}"><h3>Logout</h3></a>
-            {% else %}
-                <h1>Log in</h1>
+            <div class="container">
+                {% if user.is_authenticated %}
+                    <br><br>
+                    <h1>Welcome {{ user.username }}!</h1>
+                    <h1>You are logged in.</h1>
+                    <br>
+                    <a href="{% url 'logout' %}"><h3>Logout</h3></a>
+                {% else %}
+                    <h1>Log in</h1>
                 {% if wrongpassword %}
 
                 {% else %}
@@ -36,16 +35,9 @@
                     </div>
                 {% endif %}
 
-
                 <!-- Error message for invalid username and password -->
-
                 <form method="post" action="{% url 'home_page:user_login' %}">
                     {% csrf_token %}
-
-                    <!-- Error message for empty field -->
-                    <!-- <div class="invalid-feedback">
-                    Please fill out this field.
-                    </div> -->
 
                     <div class="form-row">
                         <div class="col">
@@ -68,10 +60,8 @@
                     </div>
                 </form>
             {% endif %}
-
-
+            </div>
         </div>
-      </div>
 
       <!-- Bootstrap Javascript -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

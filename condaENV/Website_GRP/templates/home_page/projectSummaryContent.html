@@ -5,192 +5,187 @@
 <title>Project Summary</title>
 {% endblock %}
 {% block content %}
-<h2> Project upload summary</h2>
-              <br><br>
-              <div class="container">
+  <h2> Project upload summary</h2>
+  <br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <h3 id="project-details">Project details</h3>
+        </div>
+        <div class="col-8">
+        </div>
+      </div>
 
-              <div class="row">
-                <div class="col-4">
-                  <h3 id="project-details">Project details</h3>
-                </div>
-                <div class="col-8">
-                </div>
-              </div>
+      <div class="row">
+        <div class="col-4">
+          <label>Project Title:</label>
+        </div>
 
-                <div class="row">
-                  <div class="col-4">
-                    <label>Project Title:</label>
-                  </div>
+        <div class="col-8">
+          <!-- INSERT PROJECT TITLE HERE -->
+          <p class="text">{{ CurrentProject.Project_Name }}</p>
+        </div>
+      </div>
+      <br>
 
-                  <div class="col-8">
-                    <!-- INSERT PROJECT TITLE HERE -->
-                    <p class="text">{{ CurrentProject.Project_Name }}</p>
-                  </div>
-                </div>
-                <br>
+      <div class="row">
+        <div class="col-4">
+          <label>Project Description:</label>
+        </div>
 
-                <div class="row">
-                  <div class="col-4">
-                    <label>Project Description:</label>
-                  </div>
-
-                  <div class="col-8">
-                    <!-- INSERT PROJECT DESCRIPTION HERE -->
-                      <p class="text">{{CurrentProject.Project_Description}}</p>
-                  </div>
-                </div>
-                <br>
-
-                <div class="row">
-                  <div class="col-4">
-                    <label>Module Name:</label>
-                  </div>
-                  <div class="col-8">
+        <div class="col-8">
+          <!-- INSERT PROJECT DESCRIPTION HERE -->
+          <p class="text">{{CurrentProject.Project_Description}}</p>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <label>Module Name:</label>
+        </div>
+        <div class="col-8">
                     <!-- INSERT MODULE NAME HERE -->
-                    <p class="text">{{CurrentProject.Module_Name}}</p>
-                  </div>
-                </div>
-                <br>
+          <p class="text">{{CurrentProject.Module_Name}}</p>
+        </div>
+      </div>
+      <br>
 
-                <div class="row">
-                  <div class="col-4">
-                    <label>Date of Completion:</label>
-                  </div>
-                  <div class="col-8">
-                    <!-- INSERT DATE OF COMPLETION HERE -->
-                    <p class="text">{{CurrentProject.Date_of_Completion}}</p>
-                  </div>
-                </div>
-                <br>
+      <div class="row">
+        <div class="col-4">
+          <label>Date of Completion:</label>
+        </div>
+        <div class="col-8">
+          <!-- INSERT DATE OF COMPLETION HERE -->
+          <p class="text">{{CurrentProject.Date_of_Completion}}</p>
+        </div>
+      </div>
+      <br>
 
-                <div class="row">
-                  <div class="col-4">
-                    <label>Author(s):</label>
-                  </div>
-                  <div class="col-8">
-                    <!-- INSERT AUTHOR NAMES HERE -->
-                    <p class="text">{{CurrentProject.Authors}}</p>
-                  </div>
-                </div>
-                <br>
+      <div class="row">
+        <div class="col-4">
+          <label>Author(s):</label>
+        </div>
+        <div class="col-8">
+          <!-- INSERT AUTHOR NAMES HERE -->
+          <p class="text">{{CurrentProject.Authors}}</p>
+        </div>
+      </div>
+      <br>
 
-                <div class="row">
-                  <div class="col-4">
-                    <label>Author Comments:</label>
-                  </div>
+      <div class="row">
+        <div class="col-4">
+          <label>Author Comments:</label>
+        </div>
 
-                  <div class="col-8">
-                    <!-- INSERT AUTHOR COMMENTS HERE -->
-                    <p class="text">{{CurrentProject.Author_Comment}}</p>
-                  </div>
-                </div>
-                <br>
+        <div class="col-8">
+          <!-- INSERT AUTHOR COMMENTS HERE -->
+          <p class="text">{{CurrentProject.Author_Comment}}</p>
+        </div>
+      </div>
+      <br>
 
-                <div class="row">
-                  <div class="col-4">
-                    <label>Tag(s):</label>
-                  </div>
-                  <div class="col-8">
-                    <!-- INSERT PROJECT TAGS HERE -->
-                    <p class="text">{{CurrentProject.Project_Tag}}</p>
-                  </div>
-                </div>
-                <br>
+      <div class="row">
+        <div class="col-4">
+          <label>Tag(s):</label>
+        </div>
+        <div class="col-8">
+          <!-- INSERT PROJECT TAGS HERE -->
+          <p class="text">{{CurrentProject.Project_Tag}}</p>
+        </div>
+      </div>
+      <br>
 
-                <div class="submit-button">
-                  <button type="submit" id="edit-project" class="btn btn-primary"><a href="{% url 'editProjectDetail' %}" class="alert-link">Edit project details</a></button>
+      <div class="submit-button">
+        <button type="submit" id="edit-project" class="btn btn-primary"><a href="{% url 'editProjectDetail' %}" class="alert-link">Edit project details</a></button>
 
-                </div>
+      </div>
 
-                <div class="line"></div>
-                <div class="row">
-                  <div class="col-4">
-                    <h3 id="artefact-details">Artefact details</h3>
+      <div class="line"></div>
+      <div class="row">
+        <div class="col-4">
+          <h3 id="artefact-details">Artefact details</h3>
 
-                  </div>
-                  <div class="col-8">
-                  </div>
-                </div>
+        </div>
+        <div class="col-8">
+        </div>
+      </div>
 
-                <!----------------------------------- Image Table --------------------------------->
-                <h4>Images</h4>
-                <div class = "table-responsive">
-                  <table class="table table-hover table-bordered">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Artefact Title</th>
-                        <th>Artefact Description</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
+      <!----------------------------------- Image Table --------------------------------->
+      <h4>Images</h4>
+      <div class = "table-responsive">
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>No</th>
+            <th>Artefact Title</th>
+            <th>Artefact Description</th>
+            <th>Action</th>
+          </tr>
+          </thead>
 
-                    <!-- Fill the table using sql query -->
-                    <tbody>
-                      <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
+          <!-- Fill the table using sql query -->
+          <tbody>
+          <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
 
-                      {% for j in ProjectImages %}
-                      <tr>
-                        <td>{{ forloop.counter }}</td>
-                            <td>{{ j.Image_Name  }}</td>
-                            <td>{{ j.Image_Description  }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary btn-sm" id="image-edit" onclick="location.href='{% url 'EditImage' %}?ImageTAG={{j.id}}'">Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm" id="image-delete" onclick="location.href='{% url 'deleteImage' %}?ImageTAG={{j.id}}'">Delete</button>
-                            </td>
-                        </tr>
-                      {% endfor %}
-
-
-                    </tbody>
-                  <!-- Close table -->
-                  </table>
-                </div>
-                <div class="alert alert-info" role="alert">
-                  <p class="mb-0"><a href="{% url 'ProjectUploadImage' %}" class="alert-link">Please click here to upload more image(s).</a></p>
-
-                </div>
-
-                 <!----------------------------------- Video Table --------------------------------->
-                <h4>Videos</h4>
-                <div class = "table-responsive">
-                  <table class="table table-hover table-bordered">
-                    <thead>
-                      <tr>
-                        <th>No.</th>
-                        <th>Artefact Title</th>
-                        <th>Artefact Description</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-
-                    <!-- Fill the table using sql query -->
-                    <tbody>
-                      <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
-                      {% for k in ProjectVideos %}
-                      <tr>
-                          <td>{{ forloop.counter }}</td>
-                            <td>{{ k.name  }}</td>
-                            <td>{{ k.Video_Description  }}</td>
-                            <td>
-
-                              <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'EditVideo' %}?VideoTAG={{k.id}}'" id="video-edit">Edit</button>
-                              <button type="button" class="btn btn-danger btn-sm" onclick="location.href='{% url 'deleteVideo' %}?VideoTAG={{k.id}}'"  id="video-delete">Delete</button>
+          {% for j in ProjectImages %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ j.Image_Name  }}</td>
+            <td>{{ j.Image_Description  }}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" id="image-edit" onclick="location.href='{% url 'EditImage' %}?ImageTAG={{j.id}}'">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm" id="image-delete" onclick="location.href='{% url 'deleteImage' %}?ImageTAG={{j.id}}'">Delete</button>
+            </td>
+          </tr>
+          {% endfor %}
 
 
-                            </td>
-                        </tr>
-                      {% endfor %}
-                    </tbody>
-                  <!-- Close table -->
-                  </table>
-                </div>
-                <div class="alert alert-info" role="alert">
-                  <p class="mb-0"><a href="{% url 'ProjectUploadVideo' %}" class="alert-link">Please click here to upload more video(s).</a></p>
-                </div>
+          </tbody>
+          <!-- Close table -->
+        </table>
+      </div>
+      <div class="alert alert-info" role="alert">
+        <p class="mb-0"><a href="{% url 'ProjectUploadImage' %}" class="alert-link">Please click here to upload more image(s).</a></p>
 
-                <div class="submit-button">
-                  <button type="submit" id="submit" class="btn btn-primary"><a href="{% url 'studentdashboard' %}">Save all and finish</a></button>
-                </div>
-              </div>
+      </div>
+
+      <!----------------------------------- Video Table --------------------------------->
+      <h4>Videos</h4>
+      <div class = "table-responsive">
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>No.</th>
+            <th>Artefact Title</th>
+            <th>Artefact Description</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+
+          <!-- Fill the table using sql query -->
+          <tbody>
+          <!-- WHILE LOOP STARTS TO ITERATE THROUGH DATA BASE -->
+          {% for k in ProjectVideos %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ k.name  }}</td>
+            <td>{{ k.Video_Description  }}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'EditVideo' %}?VideoTAG={{k.id}}'" id="video-edit">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="location.href='{% url 'deleteVideo' %}?VideoTAG={{k.id}}'"  id="video-delete">Delete</button>
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+          <!-- Close table -->
+        </table>
+      </div>
+      <div class="alert alert-info" role="alert">
+        <p class="mb-0"><a href="{% url 'ProjectUploadVideo' %}" class="alert-link">Please click here to upload more video(s).</a></p>
+      </div>
+
+      <div class="submit-button">
+        <button type="submit" id="submit" class="btn btn-primary"><a href="{% url 'studentdashboard' %}">Save all and finish</a></button>
+      </div>
+    </div>
 {% endblock %}

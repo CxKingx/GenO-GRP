@@ -7,188 +7,180 @@
 
 
 {% block content %}
-<h2> Project details </h2>
-              <br>
-            {% if CurrentProject.Project_Approval_Status == "Rejected" %}
-              <div class="alert alert-info" role="alert">
-                <img id="feedback-img" src="{% static 'images/feedback.png' %}"/><br>
-                <h4 class="alert-heading">Feedback:</h4>
-                <!-- INSERT ADMIN FEEDBACK HERE -->
-                  <!-- You Can take CurrentProject.Admin_Comment to be displayed here as the feedback -->
-                <p class="feedback">Please check your project and artefact(s) details and re-submit your project. If you need more information, please contact your module convener.</p>
-                <hr>
-                <p class="feedback-end">Please do some modifications on your project and re-upload.</p>
-              </div>
-            {% endif %}
-              <div class="container">
-                <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
+    <h2> Project details </h2>
+    <br>
+    {% if CurrentProject.Project_Approval_Status == "Rejected" %}
+    <div class="alert alert-info" role="alert">
+        <img id="feedback-img" src="{% static 'images/feedback.png' %}"/><br>
+        <h4 class="alert-heading">Feedback:</h4>
+        <!-- INSERT ADMIN FEEDBACK HERE -->
+        <!-- You Can take CurrentProject.Admin_Comment to be displayed here as the feedback -->
+        <p class="feedback">Please check your project and artefact(s) details and re-submit your project. If you need more information, please contact your module convener.</p>
+        <hr>
+        <p class="feedback-end">Please do some modifications on your project and re-upload.</p>
+    </div>
+    {% endif %}
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row">
-                  <div class="col-4">
-                    <label for="title">Project Title:</label>
-                  </div>
+                    <div class="col-4">
+                        <label for="title">Project Title:</label>
+                    </div>
 
-                  <div class="col-8">
-                    <!-- INSERT PROJECT TITLE HERE -->
-                    <input type="text" class="form-control" id="title" name="Project_Name" placeholder="Title.."
+                    <div class="col-8">
+                        <!-- INSERT PROJECT TITLE HERE -->
+                        <input type="text" class="form-control" id="title" name="Project_Name" placeholder="Title.."
                            maxlength="100" value="{{ CurrentProject.Project_Name }}" required>
-                  </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <p>Project Description:</p>
+                        <p class="max">(MAX of 3000 characters)</p>
+                    </div>
+
+                    <!-- WORD COUNT JAVASCRIPT -->
+                    <div id="count_project" class="count">
+                        <span id="current_project">0</span>
+                        <span id="max_project">/ 3000</span>
+                    </div>
+
+                    <div class="col-8" id="text-project-field">
+                        <!-- INSERT PROJECT DESCRIPTION HERE -->
+                        <textarea class="form-control" id="text_project" name="Project_Description" placeholder="Enter description.." style="height:400px" maxlength="3000" required>{{CurrentProject.Project_Description}}</textarea>
+                    </div>
                 </div>
                 <br>
 
                 <div class="row">
-                  <div class="col-4">
-                    <p>Project Description:</p>
-                    <p class="max">(MAX of 3000 characters)</p>
-                  </div>
+                    <div class="col-4">
+                        <label for="module">Module Name:</label>
+                    </div>
+                    <div class="col-8">
+                        <!-- INSERT MODULE NAME HERE -->
+                        {% if CurrentProject.Module_Name == "Data Scholarship" %}
+                        <select name="Module_Name" id="module" class="form-control" required>
+                            <option selected="" value="Data Scholarship">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
 
-                  <!-- WORD COUNT JAVASCRIPT -->
-                  <div id="count_project" class="count">
-                    <span id="current_project">0</span>
-                    <span id="max_project">/ 3000</span>
-                  </div>
-
-                  <div class="col-8" id="text-project-field">
-                    <!-- INSERT PROJECT DESCRIPTION HERE -->
-                    <textarea class="form-control" id="text_project" name="Project_Description" placeholder="Enter description.." style="height:400px" maxlength="3000" required>{{CurrentProject.Project_Description}}</textarea>
-                  </div>
-                </div>
-                <br>
-
-                <div class="row">
-                  <div class="col-4">
-                    <label for="module">Module Name:</label>
-                  </div>
-                  <div class="col-8">
-                    <!-- INSERT MODULE NAME HERE -->
-
-                      {% if CurrentProject.Module_Name == "Data Scholarship" %}
-                     <select name="Module_Name" id="module" class="form-control" required>
-
-                        <option selected="" value="Data Scholarship">Data Scholarship</option>
-                        <option value="Digital Media Production">Digital Media Production</option>
-                        <option value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
-
-                    {% elif CurrentProject.Module_Name == "Digital Media Production" %}
-
-                     <select name="Module_Name" id="module" class="form-control" required>
-
-                        <option value="Data Scholarship">Data Scholarship</option>
-                        <option selected="" value="Digital Media Production">Digital Media Production</option>
-                        <option value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
-
-                    {% elif CurrentProject.Module_Name == "Technologies for Learning" %}
+                        {% elif CurrentProject.Module_Name == "Digital Media Production" %}
                         <select name="Module_Name" id="module" class="form-control" required>
 
-                        <option value="Data Scholarship">Data Scholarship</option>
-                        <option value="Digital Media Production">Digital Media Production</option>
-                        <option selected="" value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
+                            <option value="Data Scholarship">Data Scholarship</option>
+                            <option selected="" value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
 
-                    {% else %}
-                     <select name="Project_Tag" id="module" class="form-control" required>
+                        {% elif CurrentProject.Module_Name == "Technologies for Learning" %}
+                        <select name="Module_Name" id="module" class="form-control" required>
 
-                        <option value="Data Scholarship">Data Scholarship</option>
-                        <option value="Digital Media Production">Digital Media Production</option>
-                        <option value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
-                    {% endif %}
-                  </div>
+                            <option value="Data Scholarship">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option selected="" value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
+
+                        {% else %}
+                        <select name="Project_Tag" id="module" class="form-control" required>
+
+                            <option value="Data Scholarship">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
+                        {% endif %}
+                    </div>
                 </div>
                 <br>
 
                 <div class="row">
-                  <div class="col-4">
-                    <label for="completionDate">Date of Completion:</label>
-                  </div>
-                  <div class="col-8">
-                    <!-- INSERT DATE OF COMPLETION HERE -->
-                    <input type="date" class="form-control" id="completionDate" name="Date_of_Completion" value="{{CurrentProject.Date_of_Completion}}" placeholder="Date of completion.." required>
-                  </div>
+                    <div class="col-4">
+                        <label for="completionDate">Date of Completion:</label>
+                    </div>
+                    <div class="col-8">
+                        <!-- INSERT DATE OF COMPLETION HERE -->
+                        <input type="date" class="form-control" id="completionDate" name="Date_of_Completion" value="{{CurrentProject.Date_of_Completion}}" placeholder="Date of completion.." required>
+                    </div>
                 </div>
                 <br>
 
                 <div class="row">
-                  <div class="col-4">
-                    <label for="author">Author(s):</label>
-                  </div>
-                  <div class="col-8">
+                    <div class="col-4">
+                        <label for="author">Author(s):</label>
+                    </div>
+                    <div class="col-8">
                     <!-- INSERT AUTHOR NAMES HERE -->
-                    <input type="text" class="form-control" id="author" name="Authors" placeholder="Name(s)..." value="{{CurrentProject.Authors}}" required>
-                  </div>
+                        <input type="text" class="form-control" id="author" name="Authors" placeholder="Name(s)..." value="{{CurrentProject.Authors}}" required>
+                    </div>
                 </div>
                 <br>
 
                 <div class="row">
-                  <div class="col-4">
-                    <p>Author Comments:</p>
-                    <p class="max">(MAX of 2000 characters)</p>
-                  </div>
+                    <div class="col-4">
+                        <p>Author Comments:</p>
+                        <p class="max">(MAX of 2000 characters)</p>
+                    </div>
 
                   <!-- WORD COUNT JAVASCRIPT -->
-                  <div id="count_author" class="count">
-                    <span id="current_author">0</span>
-                    <span id="max_author">/ 2000</span>
-                  </div>
+                    <div id="count_author" class="count">
+                        <span id="current_author">0</span>
+                        <span id="max_author">/ 2000</span>
+                    </div>
 
-                  <div class="col-8" id="text-author-field">
+                    <div class="col-8" id="text-author-field">
                      <!-- INSERT AUTHOR COMMENTS HERE -->
-                    <textarea class="form-control" id="text_author" name="Author_Comment" placeholder="Write something.." style="height:250px" maxlength="2000">{{CurrentProject.Author_Comment}}</textarea>
-                  </div>
+                        <textarea class="form-control" id="text_author" name="Author_Comment" placeholder="Write something.." style="height:250px" maxlength="2000">{{CurrentProject.Author_Comment}}</textarea>
+                    </div>
                 </div>
                 <br>
 
                 <div class="row">
-                  <div class="col-4">
-                    <label for="tags">Tag(s):</label>
-                  </div>
-                  <div class="col-8">
-                {% if CurrentProject.Project_Tag == "Data Scholarship" %}
-                     <select name="Project_Tag" id="tags" class="form-control" required>
-                        <option value="" >No tags..</option>
-                        <option selected="" value="Data Scholarship">Data Scholarship</option>
-                        <option value="Digital Media Production">Digital Media Production</option>
-                        <option value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
+                    <div class="col-4">
+                        <label for="tags">Tag(s):</label>
+                    </div>
+                    <div class="col-8">
+                    {% if CurrentProject.Project_Tag == "Data Scholarship" %}
+                        <select name="Project_Tag" id="tags" class="form-control" required>
+                            <option value="" >No tags..</option>
+                            <option selected="" value="Data Scholarship">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
 
                     {% elif CurrentProject.Project_Tag == "Digital Media Production" %}
-
-                     <select name="Project_Tag" id="tags" class="form-control" required>
-                        <option value="" >No tags..</option>
-                        <option value="Data Scholarship">Data Scholarship</option>
-                        <option selected="" value="Digital Media Production">Digital Media Production</option>
-                        <option value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
+                        <select name="Project_Tag" id="tags" class="form-control" required>
+                            <option value="" >No tags..</option>
+                            <option value="Data Scholarship">Data Scholarship</option>
+                            <option selected="" value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
 
                     {% elif CurrentProject.Project_Tag == "Technologies for Learning" %}
                         <select name="Project_Tag" id="tags" class="form-control" required>
-                        <option value="" >No tags..</option>
-                        <option value="Data Scholarship">Data Scholarship</option>
-                        <option value="Digital Media Production">Digital Media Production</option>
-                        <option selected="" value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
+                            <option value="" >No tags..</option>
+                            <option value="Data Scholarship">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option selected="" value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
 
                     {% else %}
-                     <select name="Project_Tag" id="tags" class="form-control" required>
-                        <option value="" selected="">No tags..</option>
-                        <option value="Data Scholarship">Data Scholarship</option>
-                        <option value="Digital Media Production">Digital Media Production</option>
-                        <option value="Technologies for Learning">Technologies for Learning</option>
-                    </select>
+                        <select name="Project_Tag" id="tags" class="form-control" required>
+                            <option value="" selected="">No tags..</option>
+                            <option value="Data Scholarship">Data Scholarship</option>
+                            <option value="Digital Media Production">Digital Media Production</option>
+                            <option value="Technologies for Learning">Technologies for Learning</option>
+                        </select>
                     {% endif %}
-
-                  </div>
+                    </div>
                 </div>
                 <br>
-
                 <div class="submit-button">
-                  <button type="submit" id="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Save changes</button>
                 </div>
-
-              </form>
-            </div>
+            </form>
+        </div>
 {% endblock %}
 
 

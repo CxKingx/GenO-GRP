@@ -487,7 +487,7 @@ def user_login(request):
 
     else:
         # Nothing has been provided for username or password.
-        return render(request, 'home_page/login.html', {})
+        return render(request, 'home_page/StudentLogin.html', {})
 
 
 def admin_login(request):

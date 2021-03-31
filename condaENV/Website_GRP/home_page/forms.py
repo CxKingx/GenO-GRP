@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from .models import UserProfileInfo, VideoArtefact, Project, ImageArtefact
 
 
-# Forms is used to ease validation from the used
-# by calling  Form.is_valid() we can easily check the content of the input and automatically give out error
+# Forms is used to ease validation from the used by calling Form.is_valid().
+# We can easily check the content of the input and automatically give out error
 # if an error occur / invalid input was inserted
 
 # Call by giving out the Meta() models , and insert the fields that needs to get input from user
@@ -13,13 +13,13 @@ from .models import UserProfileInfo, VideoArtefact, Project, ImageArtefact
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
-    class Meta():
+    class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'password')  # can add first name last name
+        fields = ('username', 'email', 'first_name', 'last_name', 'password')
 
 
 class UserProfileInfoForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = UserProfileInfo
         fields = ('StudentID',)
 
@@ -33,8 +33,7 @@ class VideoForm(forms.ModelForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ('Project_Name', 'Project_Description', 'Project_Tag', 'Date_of_Completion', 'Author_Comment',
-                  'Authors' , 'Module_Name')
+        fields = ('Project_Name', 'Project_Description', 'Project_Tag', 'Date_of_Completion', 'Author_Comment', 'Authors', 'Module_Name')
 
 
 class UploadImageForm(forms.ModelForm):

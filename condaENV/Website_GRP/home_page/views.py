@@ -1,32 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-
 from home_page.models import VideoArtefact
 from .forms import UserForm, UserProfileInfoForm, VideoForm, ProjectForm, UploadImageForm
-
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-
 from .models import UserProfileInfo
 from .models import Project
 from .models import ImageArtefact
-
 from home_page.models import VideoArtefact
-
 from django.contrib.auth import get_user_model
 from datetime import datetime, timedelta, date
 from django.utils import timezone
-
 from django.db.models import Q
 from django.core.paginator import Paginator
 
 # To be used by request
 User = get_user_model()
 
-
 # Create your views here.
 # views for doing activities behind the scenes
+
 
 # Return the first page for index
 def landingPage(request):
@@ -106,7 +100,6 @@ def ProjectUpload(request):
         # Pass on the empty form as a normal request
         Projectformhtml = ProjectForm()
     return render(request, 'home_page/projectUploadContent.html', {'Projectformhtml': Projectformhtml})
-    # return render(request, 'home_page/ProjectUploadPage.html', {})
 
 
 @login_required
@@ -118,8 +111,7 @@ def projectSummary(request):
     ProjectImages = ImageArtefact.objects.filter(Project_Owner=CurrentProject)
     ProjectVideos = VideoArtefact.objects.filter(Project_Owner=CurrentProject)
 
-    return render(request, 'home_page/projectSummaryContent.html',
-                  {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
+    return render(request, 'home_page/projectSummaryContent.html', {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
 
 
 # Edit the Details of the Project 'Name , Description , Authors, Date .....
@@ -530,12 +522,14 @@ def admin_login(request):
         # Nothing has been provided for username or password.
         return render(request, 'home_page/adminLogin.html', {})
 
-
+# Function to check input from search bar.
 def searchbar(request):
     if request.method == "GET":
         search = request.GET.get('search')
         # This isn't particularly efficient... Too Bad!
         getCurrentUser = User.objects.prefetch_related().filter(Q(username__icontains=search))
+        # The if clause below checks if the string inputted is an existing user.
+        # If it is then then it wil query from user name, else it will use the Project Name or tag.
         if getCurrentUser.exists():
             getCurrentUser = User.objects.prefetch_related().get(username=search)
             getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
@@ -557,6 +551,7 @@ def searchbar(request):
         return render(request, 'home_page/searchbar.html', {"context": context})
 
 
+# Returns a page consisting of all artefacts in that module
 def modulePage(request):
     moduleTag = request.GET.get('moduleTag')
     sortSetting = request.GET.get('sort')
@@ -568,11 +563,12 @@ def modulePage(request):
                                                                               "Project_Owner__Project_Tag",
                                                                               'Project_Owner__Upload_Date',
                                                                               'Project_Owner__id')[:2]
+        # Query the objects and input it into a list.
         if len(tempFile) == 2:
             imageList.append(tempFile)
         else:
             imageList.append(tempFile)
-
+    # Sort it by the variable sortSetting, either by project upload date or alphabetical
     if sortSetting == "latestUploaded":
         for i in range(0, len(imageList) - 1):
             for j in range(0, len(imageList) - i - 1):
@@ -584,22 +580,22 @@ def modulePage(request):
             for j in range(0, len(imageList) - i - 1):
                 if imageList[j][0]['Project_Owner__Project_Name'] > imageList[j + 1][0]['Project_Owner__Project_Name']:
                     imageList[j], imageList[j + 1] = imageList[j + 1], imageList[j]
-
+    # Code to return the data in pages, currently set to return 15 objects per page.
     module_paginator = Paginator(imageList, 15)
     page_num = request.GET.get('page')
     page = module_paginator.get_page(page_num)
 
     return render(request, 'home_page/modulePage.html', {"page": page, "tagName": moduleTag})
 
-
+# Returns home page, which shows all the projects.
 def homePage(request):
     sortSetting_homePage = request.GET.get('sort')
+    # Returns a query according to the picked sort button.
     if sortSetting_homePage == "latestUploaded":
         homePageArtefacts = ImageArtefact.objects.all().filter(
             Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
                                                                          "Project_Owner__Project_Name",
-                                                                         "Project_Owner__id").order_by(
-            "-Project_Owner__Upload_Date")
+                                                                         "Project_Owner__id").order_by("-Project_Owner__Upload_Date")
     elif sortSetting_homePage == "projectName":
         homePageArtefacts = ImageArtefact.objects.all().filter(
             Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
@@ -610,7 +606,7 @@ def homePage(request):
             Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
                                                                          "Project_Owner__Project_Name",
                                                                          "Project_Owner__id")
-
+    # Paging function.
     homepage_paginator = Paginator(homePageArtefacts, 9)
     page_num = request.GET.get('page')
     page = homepage_paginator.get_page(page_num)

@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # if wanted to test the error pages , uncomment this 2 lines below , and comment the top one
-# However , some interactions might be weird because the project don't have their own error handling
+# NOTE : Website CSS, JavaScript, etc will not work when not using DEBUG = True, as it is not set for deployment on a server.
 
 # DEBUG = False
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'Website_GRP.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-# database name  = test,  Website_Database
+# database name  = Website_Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -147,12 +147,11 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-# either use the one above or use os.path.join(BASE_DIR, 'media/') this one need to import os
+
 
 # LOGIN_URL and LOGIN_REDIRECT_URL will redirect Users back to Login page
 # if they try to access pages that needs users to be logged in
 # Insert @login_required before the views to enable this function
-
 LOGIN_URL = 'loginPage'
 LOGIN_REDIRECT_URL = 'loginPage'
 

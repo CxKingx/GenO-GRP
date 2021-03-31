@@ -18,20 +18,19 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['Project_Name', 'Project_Approval_Status', 'Project_Tag', 'User_Owner__user__username']
     list_editable = ['Project_Approval_Status']
     list_filter = ['Project_Approval_Status','Project_Tag','User_Owner__user__username']
+    # Code below is used to override the existing save function in django admin.
     def save_model(self, request, obj, form, change):
         obj.user = request.user
-        #print(obj)
         super().save_model(request, obj, form, change)
 
-        # query for email here
+        # query for the project owner email here.
         projectOwner = Project.objects.get(Project_Name=obj)
         userData = User.objects.get(username=projectOwner.User_Owner)
         if(projectOwner.Project_Approval_Status == "Rejected"):
-            #due to localhost emails are not actually sent. For now we will substitute with an alert
-
+            # NOTE : Due to localhost emails are not actually sent. For now we will substitute with an alert.
             from django.contrib import messages
             messages.add_message(request, messages.INFO, 'Project rejection email has been sent to ' + userData.email)
-            # uncomment the part below if this website was to be deployed.
+            # NOTE : Uncomment the part below if this website was to be deployed.
             # from django.core.mail import send_mail
             # send_mail(
             #     'Project Rejected',
@@ -52,13 +51,8 @@ class VideoAdmin(admin.ModelAdmin):
     search_fields = ['name','Project_Owner__Project_Name','Project_Owner__User_Owner__user__username']
 
 
-
 admin.site.register(models.UserProfileInfo, StudentIDAdmin)
 admin.site.register(models.Project, ProjectAdmin)
 admin.site.register(models.ImageArtefact, ArtefactAdmin)
 admin.site.register(models.VideoArtefact, VideoAdmin)
 
-#https://docs.djangoproject.com/en/3.1/ref/contrib/admin/actions/
-
-# like make all project into approve / rejected / pending
-# or u want to disable with disable_action

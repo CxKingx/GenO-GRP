@@ -7,52 +7,51 @@
 {% block content %}
 
 <!----------------------------------------- Search Results (Table) ------------------------------------------------------>
-        {% if not context %}
-            <h2>No Results Found!</h2>
-        {% else %}
+    {% if not context %}
+        <h2>No Results Found!</h2>
+    {% else %}
         <h2>Results</h2>
         <br><br>
-          <!--All search results will be here -->
-            <div class = "table">
-              <table class="table">
-                  {% for i in context %}
-                <tr><!--ROW-->
-                  <div class="form-row">
-                    <div class="form-group col-md-6" id="artefact">
-                      <!-- FETCH ARTEFACT HERE -->
-                        {% if i.videoartefact__videofile %}
-                            <video controls>
-                                <source src="{{ MEDIA_URL }}{{ i.videoartefact__videofile }}" type='video/mp4'>
-                                Your browser does not support the video tag.
-                            </video>
-                        {% else %}
-                            <img class="project-pic" src='{{ MEDIA_URL }}{{ i.imageartefact__image }}' alt='Image Not Found'/>
-                        {% endif %}
-                    </div>
-                    <div class="form-group col-md-6" id="text">
-                      <!-- FETCH ARTEFACT DETAILS HERE -->
-                    	<h4 class="card-header"> {{ i.Project_Name }}<!-- FETCH FROM DATABASE --></h4>
-                      <br>
-                        {% if i.videofile %}
-                            <h4 class="card-title"> {{ i.videoartefact__name }}<!-- FETCH FROM DATABASE --></h4>
-                            <p class="card-description"> {{ i.videoartefact__Video_Description}}<!-- FETCH FROM DATABASE --></p>
+        <!--All search results will be here -->
+        <div class = "table">
+            <table class="table">
+                {% for i in context %}
+                    <tr><!--ROW-->
+                        <div class="form-row">
+                            <div class="form-group col-md-6" id="artefact">
+                                <!-- FETCH ARTEFACT HERE -->
+                                {% if i.videoartefact__videofile %}
+                                    <video controls>
+                                        <source src="{{ MEDIA_URL }}{{ i.videoartefact__videofile }}" type='video/mp4'>
+                                        Your browser does not support the video tag.
+                                    </video>
+                                {% else %}
+                                    <img class="project-pic" src='{{ MEDIA_URL }}{{ i.imageartefact__image }}' alt='Image Not Found'/>
+                                {% endif %}
+                            </div>
+                            <div class="form-group col-md-6" id="text">
+                                <!-- FETCH ARTEFACT DETAILS HERE -->
+                                <h4 class="card-header"> {{ i.Project_Name }}<!-- FETCH FROM DATABASE --></h4>
+                                <br>
+                                {% if i.videofile %}
+                                    <h4 class="card-title"> {{ i.videoartefact__name }}<!-- FETCH FROM DATABASE --></h4>
+                                    <p class="card-description"> {{ i.videoartefact__Video_Description}}<!-- FETCH FROM DATABASE --></p>
+                                {% else %}
+                                    <h4 class="card-title"> {{ i.imageartefact__Image_Name }}<!-- FETCH FROM DATABASE --></h4>
+                                    <p class="card-description"> {{ i.imageartefact__Image_Description}}<!-- FETCH FROM DATABASE --></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </tr>
 
-                        {% else %}
-                            <h4 class="card-title"> {{ i.imageartefact__Image_Name }}<!-- FETCH FROM DATABASE --></h4>
-                            <p class="card-description"> {{ i.imageartefact__Image_Description}}<!-- FETCH FROM DATABASE --></p>
-                        {% endif %}
+                    <tr><div class="line"></div></tr>
+                {% endfor %}
 
-                    </div>
-                  </div>
-              </tr>
-              <tr><div class="line"></div></tr>
-                    {% endfor %}
-
-             </table>
-            </div>
-            <br><br>
-            <br><br>
-        {% endif %}
+            </table>
+        </div>
+        <br><br>
+        <br><br>
+    {% endif %}
 {% endblock %}
 
 {% block layout_js %}

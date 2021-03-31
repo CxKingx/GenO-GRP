@@ -29,20 +29,19 @@ Listed as per the Team List order.
 - Professor Dave Towey 
 
 ## Installing the Virtual Environment
-- go to Website_GRP File
-- in your terminal , type "conda env create -f environment.yml"
-- it will download everything and says to activate this environment use "conda activate gen-o-grp-2020"
-- activate the virtual environment in your Terminal
-
-- Below are some packages to install (if needed)
-- pip install bcrypt
-- pip install django[argon2] for password hashing 
-- pip install pillow (for images future use) I havent use it  
-
-- NOTE : When installing new packages to the environment UPDATE the environment using "conda env export > environment_vXX.yml
-" XX being the version number (currently v2), then push it to the repository.
-- environment.yml is deprecated.
--Project merged.
+- Go to the "\gen-o-grp-2020\condaENV\Website_GRP" directory.
+- In your pycharm terminal, type "conda env create -f environment_v2.yml"
+- It will download most of the tools needed to run this website.
+- When downloading has finished run the following commands in terminal to complete the installation process :
+    - pip install bcrypt
+    - pip install django[argon2] 
+    - pip install pillow
+- Lastly run this command to activate the virtual environment "conda activate gen-o-grp-2020"
+- To check if the virtual environment has successfully activated :
+    - There should be the string (gen-o-grp-2020) beside your directory in the terminal
+        - Before : D:\gen-o-grp-2020\condaENV\Website_GRP> 
+        - After&nbsp;&nbsp;&nbsp;  : (gen-o-grp-2020) D:\gen-o-grp-2020\condaENV\Website_GRP>
+    
 ## Project Development TestKevin BE Branch
 <table>
   <tr>

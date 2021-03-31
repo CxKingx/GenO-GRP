@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from validators import validate_image_size
-
 
 # Create your models here.
 # These are the building blocks for the database
@@ -49,13 +47,13 @@ class Project(models.Model):
     Project_Name = models.CharField(max_length=100)
     Project_Description = models.TextField()
     Project_Tag = models.CharField(max_length=32, choices=Tags_for_Project, default='', blank=True, null=True)
-    Module_Name = models.CharField(max_length=32, choices=ModuleNames, default='Data Scholarship', blank=True,
-                                   null=True)
+    Module_Name = models.CharField(max_length=32, choices=ModuleNames, default='Data Scholarship', blank=True, null=True)
     Date_of_Completion = models.DateField(default=timezone.now)
     Author_Comment = models.TextField(blank=True, null=True)
 
     Upload_Date = models.DateField(default=timezone.now)
     Approval_Date = models.DateField(blank=True, null=True)
+
     # Make Expire Date 2weeks after upload , code in views.py
     Account_ExpiryDate = models.DateField(blank=True, null=True)
     Last_Updated = models.DateField(blank=True, null=True)
@@ -94,6 +92,5 @@ class VideoArtefact(models.Model):
         return self.name + ": " + str(self.videofile)
 
 
-# pip install pillow to use this!
-# Optional: pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
-# image = models.ImageField(upload_to='basic_app/profile_pics', blank=True)
+
+

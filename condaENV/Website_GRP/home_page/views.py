@@ -18,6 +18,7 @@ from django.core.paginator import Paginator
 # To be used by request
 User = get_user_model()
 
+
 # Create your views here.
 # views for doing activities behind the scenes
 
@@ -104,21 +105,22 @@ def ProjectUpload(request):
 
 @login_required
 def projectSummary(request):
-    print("Showing summary")
-    # print(request.session['thisdata'])
+    # Showing summary of the Project
+    # request.session['thisdata']
     # Get the Project and its related artefacts that will be displayed in the summary
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
     ProjectImages = ImageArtefact.objects.filter(Project_Owner=CurrentProject)
     ProjectVideos = VideoArtefact.objects.filter(Project_Owner=CurrentProject)
 
-    return render(request, 'home_page/projectSummaryContent.html', {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
+    return render(request, 'home_page/projectSummaryContent.html',
+                  {'CurrentProject': CurrentProject, 'ProjectImages': ProjectImages, 'ProjectVideos': ProjectVideos})
 
 
 # Edit the Details of the Project 'Name , Description , Authors, Date .....
 @login_required
 def editProjectDetail(request):
-    print("Edit Project detail")
-    # print(request.session['thisdata'])
+    # Edit Project detail
+
     # Get current project being edited
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
 
@@ -137,17 +139,17 @@ def editProjectDetail(request):
             CurrentProject.Authors = EditedProject.Authors
             CurrentProject.Module_Name = EditedProject.Module_Name
             CurrentProject.save()
-            print("Project Detail Changed , now redirect back to summary")
+            # Project Detail Changed , now redirect back to summary
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
-            # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            # "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
             return render(request, 'home_page/projectEditContent.html',
                           {'errorMessage': errorMessage})
     else:
         Projectformhtml = ProjectForm()
-        print("Load the Form with inputs already inserted")
+        # Load the Form with inputs already inserted
     return render(request, 'home_page/projectEditContent.html',
                   {'Projectformhtml': Projectformhtml, 'CurrentProject': CurrentProject})
 
@@ -156,7 +158,7 @@ def editProjectDetail(request):
 # ProjectSummary Page
 @login_required
 def EditProject(request):
-    print("Editing Project")
+    # Editing Project
     # Get the corresponding ProjectID to be edited
     ProjectID = request.GET.get('ProjectTag')
     # Set the session to edit the Project with the ID
@@ -168,7 +170,7 @@ def EditProject(request):
 
 @login_required
 def ProjectUploadImage(request):
-    print("Uploading image")
+    # Uploading image
     # request.session['thisdata']
     # Get the Project that owns the Image File
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
@@ -181,25 +183,25 @@ def ProjectUploadImage(request):
             uploadedImage.Project_Owner = CurrentProject
 
             uploadedImage.save()
-            print("Image Saved")
+            # Image Saved
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
-            print("Failed to Upload")
+            # Failed to Upload
             # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
             return render(request, 'home_page/uploadImageContent.html', {'errorMessage': errorMessage})
 
     else:
         # imageform = UploadImageForm()
-        print("Load this as a form for uploading image")
+        # Load this as a form for uploading image
         return render(request, 'home_page/uploadImageContent.html')
 
 
 @login_required
 def ProjectUploadVideo(request):
     # Get the project being edited from The Session Data
-    print("Uploading Video")
+    # Uploading Video
     # request.session['thisdata']
     # Get the Project that owns the Video File
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
@@ -212,18 +214,18 @@ def ProjectUploadVideo(request):
             uploadedVideo.Project_Owner = CurrentProject
 
             uploadedVideo.save()
-            print("Video is Saved")
+            # Video is Saved
             # Return it back to Summary
             return HttpResponseRedirect(reverse('projectSummary'))
         else:
-            print("Not valid")
-            print(form.errors.as_data())
-            # errormessage = "Something Went Wrong when Uploading / You did not Upload any files"
+            # Not valid
+
+            # "Something Went Wrong when Uploading / You did not Upload any files"
             errorMessage = True
 
             return render(request, 'home_page/uploadVideoContent.html', {'errorMessage': errorMessage})
     else:
-        print("Load an empty Video form page")
+        # Load an empty Video form page
         form = VideoForm()
     return render(request, 'home_page/uploadVideoContent.html', {'form': form})
     # return render(request, 'home_page/uploadVideoContent.html',{'form': form})
@@ -231,14 +233,14 @@ def ProjectUploadVideo(request):
 
 @login_required
 def deleteImage(request):
-    print("Deleting Image")
+    # Deleting Image
     # Get the Current Image ID and Delete the Image
-    print(request.session['thisdata'])
+    # request.session['thisdata']
     ImageID = request.GET.get('ImageTAG')
 
     # Get the Image that will be deleted and delete it , return to the project summary
     ImageWillDelete = ImageArtefact.objects.get(id=int(ImageID))
-    print(ImageWillDelete.Image_Name)
+
     ImageWillDelete.delete()
 
     return HttpResponseRedirect(reverse('projectSummary'))
@@ -246,22 +248,22 @@ def deleteImage(request):
 
 @login_required
 def deleteVideo(request):
-    print("Deleting Video")
-    print(request.session['thisdata'])
+    # Deleting Video
+    # request.session['thisdata']
     # Get the Current Video ID and Delete the Video
     VideoID = request.GET.get('VideoTAG')
 
     # Get the Video that will be deleted and delete it, then return to the project summary
     VideoWillDelete = VideoArtefact.objects.get(id=int(VideoID))
-    print(VideoWillDelete.name)
+
     VideoWillDelete.delete()
     return HttpResponseRedirect(reverse('projectSummary'))
 
 
 @login_required
 def EditImage(request):
-    print("Edit Image")
-    # print(request.session['thisdata'])
+    # Edit Image
+    # request.session['thisdata']
     # Get the Current Image ID and the Image object corresponds to it, then edit the Image
     ImageID = request.GET.get('ImageTAG')
     ImageWillEdit = ImageArtefact.objects.get(id=int(ImageID))
@@ -274,13 +276,13 @@ def EditImage(request):
         # Check if the image is changed or not
         # If the user does not upload a new image, it will stays the same
         if TheImage:
-            print("Change the Image because it received a new image")
+            # Change the Image because it received a new image
             ImageWillEdit.image = TheImage
         # Change the remainder attributes to the input that is inserted by the user
         ImageWillEdit.Image_Name = ImageName
         ImageWillEdit.Image_Description = ImageDesc
         ImageWillEdit.save()
-        print("Image has Changed")
+        # Image has Changed
 
         return HttpResponseRedirect(reverse('projectSummary'))
 
@@ -292,8 +294,8 @@ def EditImage(request):
 
 @login_required
 def EditVideo(request):
-    print("EditVideo")
-    print(request.session['thisdata'])
+    # EditVideo
+
     # Get the VideoID and the object corresponds to it , and edit it
     VideoID = request.GET.get('VideoTAG')
     VideoWillEdit = VideoArtefact.objects.get(id=int(VideoID))
@@ -307,22 +309,22 @@ def EditVideo(request):
         # Check if the Main Video and Thumbnail is changed or not
 
         if VideoFile:
-            print("Change the Video because it received a new Video")
+            # Change the Video because it received a new Video
             VideoWillEdit.videofile = VideoFile
-        else:
-            print("The Video doesnt change")
+        # else:
+            # The Video doesnt change
 
         if VideoThumbnail:
-            print("Change the Image because it received a new Image Thumbnail")
+            # Change the Image because it received a new Image Thumbnail
             VideoWillEdit.thumbnail = VideoThumbnail
-        else:
-            print("The Image doesnt change")
+        # else:
+            # The Image doesnt change
 
         # The other attributes will change as normal
         VideoWillEdit.name = VideoName
         VideoWillEdit.Video_Description = VideoDesc
         VideoWillEdit.save()
-        print("Changed")
+        # Changed the Database
         return HttpResponseRedirect(reverse('projectSummary'))
     else:
         print("Load this as normal")
@@ -359,7 +361,7 @@ def studentdashboard(request):
 
 # Show a specific project detail with all the pictures and videos related to it
 def ProjectView(request):
-    print(request.session['thisdata'])
+
     # Get the Project that will be viewed, and all pictures and videos related to it
     CurrentProject = Project.objects.get(id=request.session['thisdata'])
     ProjectImages = ImageArtefact.objects.all().filter(Project_Owner=CurrentProject)
@@ -422,13 +424,13 @@ def register(request):
             profile.save()
 
             registered = True
-            print("Registered")
+            # Registered
 
             return render(request, 'home_page/registerSuccess.html', {'registered': registered})
 
         else:
             # One of the forms was invalid if this else gets called.
-            # print(user_form.errors, profile_form.errors)
+
             print(user_form.errors.as_data(), profile_form.errors.as_data())
             return render(request, 'home_page/accountRegistration.html',
                           {'user_form': user_form,
@@ -483,7 +485,7 @@ def user_login(request):
 
 
 def admin_login(request):
-    print("admin login")
+    # admin login
     if request.method == 'POST':
         # First get the username and password supplied
         username = request.POST.get('username')
@@ -500,7 +502,7 @@ def admin_login(request):
                 # Log the user in.
                 # Check if user is staff or superuser
                 if user.is_superuser or user.is_staff:
-                    print("Superuser or staff")
+                    # Superuser or staff has logged in
                     login(request, user)
                     # Send the user back to homepage.
 
@@ -521,6 +523,7 @@ def admin_login(request):
     else:
         # Nothing has been provided for username or password.
         return render(request, 'home_page/adminLogin.html', {})
+
 
 # Function to check input from search bar.
 def searchbar(request):
@@ -587,6 +590,7 @@ def modulePage(request):
 
     return render(request, 'home_page/modulePage.html', {"page": page, "tagName": moduleTag})
 
+
 # Returns home page, which shows all the projects.
 def homePage(request):
     sortSetting_homePage = request.GET.get('sort')
@@ -595,7 +599,8 @@ def homePage(request):
         homePageArtefacts = ImageArtefact.objects.all().filter(
             Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",
                                                                          "Project_Owner__Project_Name",
-                                                                         "Project_Owner__id").order_by("-Project_Owner__Upload_Date")
+                                                                         "Project_Owner__id").order_by(
+            "-Project_Owner__Upload_Date")
     elif sortSetting_homePage == "projectName":
         homePageArtefacts = ImageArtefact.objects.all().filter(
             Q(Project_Owner__Project_Approval_Status="Approved")).values("image", "Image_Name", "Image_Description",

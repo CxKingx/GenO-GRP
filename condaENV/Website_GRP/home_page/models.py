@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from validators import validate_image_size
 
 # Create your models here.
 # These are the building blocks for the database
@@ -68,7 +69,7 @@ class Project(models.Model):
     def __str__(self):
         return self.Project_Name
 
-from validators import validate_image_size
+
 class ImageArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)

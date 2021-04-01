@@ -15,7 +15,7 @@
                 <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
                 <tr>
                     {% for i in page.object_list %}
-                    {{ i.videoartefact__thumbnail }}
+
                     {% if forloop.counter0|divisibleby:3 %}
                 <tr>
                     {% endif %}

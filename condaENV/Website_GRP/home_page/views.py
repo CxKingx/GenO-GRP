@@ -614,7 +614,7 @@ def homePage(request):
                                                                          "Project_Owner__Project_Name",
                                                                          "Project_Owner__id")
     # Paging function.
-    homepage_paginator = Paginator(homePageArtefacts, 9)
+    homepage_paginator = Paginator(homePageArtefacts, 15)
     page_num = request.GET.get('page')
     page = homepage_paginator.get_page(page_num)
 

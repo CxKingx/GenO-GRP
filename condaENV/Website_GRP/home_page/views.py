@@ -28,7 +28,7 @@ User = get_user_model()
 
 # Return the first page for index
 def landingPage(request):
-    context = ImageArtefact.objects.all().order_by('Project_Owner__Upload_Date')[:13]
+    context = ImageArtefact.objects.all().order_by('-Project_Owner__Upload_Date')[:13]
     # Get 13 most recent Pictures to be displayed to the landing page
     return render(request, 'home_page/landingPage.html', {"context": context})
 

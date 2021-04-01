@@ -61,18 +61,22 @@
     </div> <!-- end row -->
 <br>
 
+    {% if CurrentProject.Project_Description %}
     <div class="line"></div>
         <h2>Project description</h2>
     <div class="description">
         <!-- FETCH FROM DATABASE -->
         <p>{{CurrentProject.Project_Description}}</p>
     </div>
+    {% endif %}
 
 <br><br>
+    {% if CurrentProject.Author_Comment %}
     <h2>Author comments</h2>
     <div class="description">
         <p>{{CurrentProject.Author_Comment}}</p>
     </div>
+    {% endif %}
 
     <div id="artefacts">
         <br><br>

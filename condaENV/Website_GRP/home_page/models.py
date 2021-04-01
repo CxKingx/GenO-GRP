@@ -68,14 +68,14 @@ class Project(models.Model):
     def __str__(self):
         return self.Project_Name
 
-
+from validators import validate_image_size
 class ImageArtefact(models.Model):
     # Links to the Project for this artefact
     Project_Owner = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     Image_Name = models.CharField(max_length=100)
     Image_Description = models.TextField()
-    image = models.ImageField(upload_to='artefacts/', null=True, verbose_name="")
+    image = models.ImageField(upload_to='artefacts/', null=True, verbose_name="", validators=[validate_image_size])
 
     def __str__(self):
         return self.Image_Name

@@ -27,6 +27,7 @@
                                     <img class="card-picture" src="{{ MEDIA_URL}}{{i.image}}">
                                 </div>
                                 <div class="flip-card-back">
+                                   <!-- <img class="myImg" id="myImg" src="{{MEDIA_URL}}{{i.image}}" alt=".." style="width:100%;max-width:300px" hidden="true"> -->
                                     <!-- ARTEFACT TITLE -->
                                     <h5 class="card-title">{{ i.Image_Name}}</h5>
                                     <!-- PROJECT NAME -->
@@ -37,6 +38,7 @@
                                     <button onclick="location.href='{% url 'passToThisProject' %}?goToThisProject={{i.Project_Owner__id}}'" type="button" class="btn btn-info">Learn more > </button>
                                 </div>
                             </div>
+                            <!-- insert modal here -->
                         </div>
                     </td>
                     {% endfor %}

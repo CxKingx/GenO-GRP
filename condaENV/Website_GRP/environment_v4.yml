@@ -17,7 +17,10 @@ dependencies:
   - sqlite=3.33.0
   - sqlparse=0.4.1
   - tk=8.6.10
+  - vc=14.2
+  - vs2015_runtime=14.27.29016
   - wheel=0.36.2
+  - wincertstore=0.2
   - zlib=1.2.11
   - pip:
     - argon2-cffi==20.1.0

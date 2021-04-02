@@ -24,9 +24,11 @@ dependencies:
   - zlib=1.2.11=h62dcd97_4
   - pip:
     - argon2-cffi==20.1.0
+    - bcrypt==3.2.0
     - cffi==1.14.5
     - mariadb==1.0.5
     - mysqlclient==2.0.3
+    - pillow==8.2.0
     - pycparser==2.20
     - six==1.15.0
-prefix: D:\Anaconda\envs\gen-o-grp-2020
+prefix: C:\Users\ivanc\anaconda3\envs\gen-o-grp-2020

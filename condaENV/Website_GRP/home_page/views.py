@@ -537,8 +537,9 @@ def searchbar(request):
         # The if clause below checks if the string inputted is an existing user.
         # If it is then then it wil query from user name, else it will use the Project Name or tag.
         if getCurrentUser.exists():
-            getCurrentUser = User.objects.prefetch_related().get(username=search)
-            getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser.id)
+            getCurrentUser = User.objects.prefetch_related().filter(Q(username__icontains=search))
+
+            getCurrentUserID = UserProfileInfo.objects.get(user_id=getCurrentUser[0].id)
             context = Project.objects.all().filter(
                 Q(User_Owner=getCurrentUserID) & Q(Project_Approval_Status="Approved")).values(
                 'videoartefact__videofile', 'videoartefact__Video_Description', 'videoartefact__name',

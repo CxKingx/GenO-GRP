@@ -546,7 +546,7 @@ def searchbar(request):
                 'Project_Name')
         else:
             context = Project.objects.all().filter(
-                Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search)).values('videoartefact__videofile',
+                (Q(Project_Name__icontains=search) | Q(Project_Tag__icontains=search))& Q(Project_Approval_Status="Approved")).values('videoartefact__videofile',
                                                                                              'videoartefact__Video_Description',
                                                                                              'videoartefact__name',
                                                                                              'imageartefact__image',

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+{% load static %}
+    <html lang="en">
+        <head>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+            <!-- Scrollbar Custom CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+            <link rel="stylesheet" href="{% static 'css/landingPage.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"/>
+            <link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
+
+            <title>UNNC Digital Showcasing Platform</title>
+        </head>
+
+        <body>
+            <div id="UNNClogo">
+                <img src="{% static 'images/UNNClogo.jpg' %}" width="100px" height="100px" alt="UNNClogo">
+            </div>
+            <table class="table table-borderless">
+
+                <tbody>
+                    <tr>
+                        <!-- CARD 1 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.0.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.0.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 2 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.1.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.1.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 3 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.2.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.2.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 4 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.3.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.3.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!---------------------------------------------- START ROW 2 ----------------------------------------->
+                    <tr>
+                        <td></td>
+
+                        <!-- CARD 1 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.4.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.4.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 2 -->
+                        <td>
+                            <div id="uni-title" style="color: white; font-size: 30px;">
+                                <nobr> University of Nottingham
+                                <br>Ningbo China
+                                <br>Students'
+                                <br>Digital Artefact
+                                <br>Showcase</nobr>
+                            </div>
+                            <img id="earth" src="{% static 'images/earth.jpg' %}" alt="">
+                            <button onclick="location.href='{% url 'homePage' %}?urlToHome'" class="button button5">Start Exploring    <i class="fa fa-caret-right fa-lg" style="font-size: 21px;"></i></button>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 3 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.5.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.5.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                    </tr>
+
+                    <!---------------------------------------------- ROW 3 -------------------------------->
+                    <tr>
+                        <!-- CARD 1 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.6.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.6.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 2 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.7.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.7.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 3 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.8.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.8.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 4 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.9.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.9.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!---------------------------------------------- START ROW 4 ----------------------------------------->
+                    <tr>
+                        <td></td>
+
+                        <!-- CARD 1 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.10.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.10.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 2 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.11.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.11.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+                        <!-- CARD 3 -->
+                        <td>
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img class="card-picture" src='{{ MEDIA_URL}}{{ context.12.image }}'>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <hr class="card-line">
+                                        <!-- ARTEFACT DESCRIPTION -->
+                                        <p class="card-description">{{ context.12.Image_Description }}</p>
+                                        <hr class="card-line">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+            <!-- jQuery Custom Scroller CDN -->
+            <script type="text/javascript">
+                window.scrollTo({
+                top: 150,
+                left: 400,
+                });
+            </script>
+
+        </body>
+</html>

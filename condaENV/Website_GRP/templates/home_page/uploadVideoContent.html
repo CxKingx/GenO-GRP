@@ -1,0 +1,133 @@
+{% extends "home_page/secondaryLayout.html" %}
+{% load static %}
+{% block layout_css %}
+
+<link rel="stylesheet" href="{% static 'css/uploadVideo.css' %}">
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<title>Video Upload</title>
+{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if errorMessage %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Something went wrong! Please re-check your upload.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+        <div class="upload-box">
+            <div class="upload-icon"> <img class="upload-icon-img" src="{% static 'images/upload-icon.png'%}"></div>
+            <div class="upload-button">
+                <input class="btn btn-primary-preview" type="file" id="video" name="videofile" accept="video/*" onchange="loadFile(event)" />
+                <label for="video" id="upload-button">Click here to upload your video</label>
+            </div>
+            <div class="upload-preview">
+                <video id="output"/>
+            </div>
+
+        </div>
+    <br><br><br>
+
+    <div class="row" id="details">
+        <p class = "heading1">Enter Artefact Details:</p>
+    </div>
+
+    <div class="row" id ="title">
+        <div class="col-4">
+                     <label>Artefact Title:</label>
+        </div>
+        <div class="col-8" id="field">
+            <input type="text" class="form-control" id="title_field" name="name" placeholder="Title.." required maxlength="100">
+        </div>
+    </div>
+    <br><br>
+
+    <div class="row" id="description">
+        <div class="col-4">
+            <p class = "heading2">Artefact Description: <span class="max-word">(MAX of 600 characters)</span></p>
+        </div>
+
+        <!-- WORD COUNT -->
+        <div id="count_desc" class="count">
+            <span id="current_desc">0</span>
+            <span id="max_desc">/ 600</span>
+        </div>
+
+        <div class="col-8" id="artefact_col">
+            <textarea name="Video_Description" class="form-control" id="artefact_desc" placeholder="Enter description.." maxlength="600" required></textarea>
+        </div> <!-- Close col -->
+    </div> <!-- Close row -->
+    <br><br>
+
+    <!-- Select thumbnail image -->
+    <div class="row" id="thumbnail-box">
+        <div class="col-4">
+            <label>Select thumbnail image:</label>
+        </div>
+
+        <div class="col-8">
+            <div class="wrapper">
+                <div class="box">
+                    <div class="image-preview">
+
+                    </div>
+                    <div class="upload-options">
+                        <!--  <div class="row"> -->
+                        <input class="btn btn-primary-preview" type="file" id="image" name="thumbnail" accept="image/*" onchange="loadThumbnail(event)" required/>
+                        <label for="image" id="thumbnail">Click here to choose a thumbnail image</label>
+                        <!--  </div> -->
+
+                        <!--  <div class="row"> -->
+                        <div class="image-preview">
+                            <img id="outputThumbnail"/>
+                        </div>
+                        <!--  </div> -->
+                    </div> <!-- Close upload options -->
+                </div> <!-- Close box -->
+            </div> <!-- Close wrapper -->
+        </div> <!-- Close col-8 -->
+    </div> <!-- Close row -->
+
+    <div class="submit-button">
+        <button type="button" class="btn btn-danger btn-sm" onclick="cancelUpload();"><a href="{% url 'projectSummary' %}">Cancel</a></button>
+        <button type="submit" class="btn btn-primary btn-sm">Save and back to project</button>
+    </div>
+</form>
+{% endblock %}
+
+{% block layout_js %}
+<script src="{% static 'javascript/videouploadify.js' %}"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+          $('input[type="file"]').videouploadify();
+        })
+</script>
+
+<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+</script>
+
+<script>
+  		  var loadFile = function(event) {
+    	  	var reader = new FileReader();
+    		  reader.onload = function(){
+      		var output = document.getElementById('output');
+      		output.src = reader.result;
+    		  };
+    	    reader.readAsDataURL(event.target.files[0]);
+  		  };
+</script>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "home_page/Layout.html" %}
+{% load static %}
+{% block layout_css %}
+    <link rel="stylesheet" href="{% static 'css/modulePage.css' %}">
+    <title>Module Page</title>
+{% endblock %}
+
+{% block content %}
+<!------------------------------------------------------------------ PAGE CONTENT STARTS HERE ---------------------------------------------------------------->
+    <!-- Project flipping cards -->
+    <div class="table-responsive">
+        <table class="table table-borderless">
+            <tbody id="adminTbody">
+
+                <!-- Align cards here, <tr> to start a new row, <td> to start a new column -->
+                <tr>
+                    {% for i in page.object_list %}
+                    {{ i.videoartefact__thumbnail }}
+                    {% if forloop.counter0|divisibleby:3 %}
+                <tr>
+                    {% endif %}
+                <!----------------------- FLIP CARD ---------------------------->
+                    <td>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}' alt='Image Not Found'>
+                                </div>
+                                <div class="flip-card-back">
+                                    {% if i.count == 2 %}
+                                        <img class="card-picture" src='{{ MEDIA_URL }}{{ i.1.image }}' alt='Image Not Found'>
+                                    {% else %}
+                                        <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}' alt='Image Not Found'>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <p class="project-title">{{ i.0.Project_Owner__Project_Name}}</p>
+                        </div>
+                        <div class="learn-more">
+                            <button type="button" class="btn btn-info" onclick="location.href='{% url 'passToThisProject' %}?goToThisProject={{i.0.Project_Owner__id}}'">Learn more > </button>
+                            <hr>
+                        </div>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div> <!-- Close table responsive-->
+
+     <!-- Previous Next buttons -->
+    <div id="pages-button">
+        {% if page.has_previous %}
+            <a style="color: black" href="?page={{ page.previous_page_number }}&moduleTag={{tagName}}"><p id="previous">< Previous</p></a>
+        {% endif %}
+        {% if page.has_previous and page.has_next %}
+            <p id="bar">|</p>
+        {% endif %}
+        {% if page.has_next %}
+            <a style="color: black" href="?page={{ page.next_page_number }}&moduleTag={{tagName}}"><p id="next"> Next  ></p></a>
+        {% endif %}
+    </div>
+<!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
+{% endblock %}

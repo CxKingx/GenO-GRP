@@ -1,0 +1,36 @@
+
+/*------------------------------- Student Dashboard Table ---------------------*/
+h2 {
+    color: #1a296b;
+    text-align: center;
+}
+
+.table {
+    font-size: 14px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert {
+    font-size: 14px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+thead {
+    background: linear-gradient(to right, #18194f, #009bbd);
+	color: white;
+}
+
+.table-hover tbody tr:hover {
+
+    background-color: rgb(159, 218, 231);
+}
+
+hr {
+    border-top: 1px solid #1a296b;
+}
+

@@ -27,8 +27,21 @@ The project won't happen without these awesome people!
 ##### GRP Supervisor 
 - Dr Dave Towey 
 
-
-## Project Development 
+## Installing the Virtual Environment
+- Go to the "\gen-o-grp-2020\condaENV\Website_GRP" directory.
+- In your pycharm terminal, type "conda env create -f environment_v2.yml"
+- It will download most of the tools needed to run this website.
+- When downloading has finished run the following commands in terminal to complete the installation process :
+    - pip install bcrypt
+    - pip install django[argon2] 
+    - pip install pillow
+- Lastly run this command to activate the virtual environment "conda activate gen-o-grp-2020"
+- To check if the virtual environment has successfully activated :
+    - There should be the string (gen-o-grp-2020) beside your directory in the terminal
+        - Before : D:\gen-o-grp-2020\condaENV\Website_GRP> 
+        - After&nbsp;&nbsp;&nbsp;  : (gen-o-grp-2020) D:\gen-o-grp-2020\condaENV\Website_GRP>
+    
+## Project Development TestKevin BE Branch
 <table>
   <tr>
     <td align="center"><b>No.</b></td>

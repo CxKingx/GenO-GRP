@@ -1,0 +1,28 @@
+name: gen-o-grp-2020
+channels:
+  - defaults
+dependencies:
+  - asgiref=3.3.1
+  - ca-certificates=2020.12.8
+  - certifi=2020.12.5
+  - django=3.1.5
+  - krb5=1.17.1
+  - libpq=12.2
+  - openssl=1.1.1i
+  - pip=20.3.3
+  - psycopg2=2.8.5
+  - python=3.6.12
+  - pytz=2020.5
+  - setuptools=51.1.2
+  - sqlite=3.33.0
+  - sqlparse=0.4.1
+  - tk=8.6.10
+  - vc=14.2
+  - vs2015_runtime=14.27.29016
+  - wheel=0.36.2
+  - wincertstore=0.2
+  - zlib=1.2.11
+  - pip:
+    - mariadb==1.0.5
+    - mysqlclient==2.0.3
+prefix: D:\Anaconda\envs\gen-o-grp-2020

@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'Website_GRP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Website_Database',
+        'NAME': 'website_database',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',

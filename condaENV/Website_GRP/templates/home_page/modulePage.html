@@ -21,26 +21,39 @@
                     {% endif %}
                 <!----------------------- FLIP CARD ---------------------------->
                     <td>
-                        <div class="flip-card">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}' alt='Image Not Found'>
+                        <div class="flip-box">
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}'>
                                 </div>
-                                <div class="flip-card-back">
+                                <div class="flip-box-back">
                                     {% if i.count == 2 %}
-                                        <img class="card-picture" src='{{ MEDIA_URL }}{{ i.1.image }}' alt='Image Not Found'>
+                                        <img class="myImg" id="myImg" src='{{ MEDIA_URL }}{{ i.1.image }}'  alt="Image Not Found" style="width:100%;max-width:300px" hidden="true">
+                                        <img class="card-picture" src='{{ MEDIA_URL }}{{ i.1.image }}' >
                                     {% else %}
+                                        <img class="myImg" id="myImg" src='{{ MEDIA_URL }}{{ i.0.image }}'  alt=".." style="width:100%;max-width:300px" hidden="true">
                                         <img class="card-picture" src='{{ MEDIA_URL }}{{ i.0.image }}' alt='Image Not Found'>
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div class="title">
-                            <p class="project-title">{{ i.0.Project_Owner__Project_Name}}</p>
+                            <p class="project-title"> {{ i.0.Project_Owner__Project_Name}} </p>
                         </div>
                         <div class="learn-more">
                             <button type="button" class="btn btn-info" onclick="location.href='{% url 'passToThisProject' %}?goToThisProject={{i.0.Project_Owner__id}}'">Learn more > </button>
                             <hr>
+                        </div>
+
+                        <!-- Trigger the Modal -->
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <!-- The Close Button -->
+                            <span class="close">&times;</span>
+                            <!-- Modal Content (The Image) -->
+                            <img class="modal-content" id="img01">
+                            <!-- Modal Caption (Image Text) -->
+                            <div id="caption"></div>
                         </div>
                     </td>
                     {% endfor %}
@@ -62,4 +75,7 @@
         {% endif %}
     </div>
 <!----------------------------------------------------------------- END OF CONTENT ---------------------------------------------------------------------->
+{% endblock %}
+{% block layout_js %}
+    <script type="text/javascript" src="{% static 'javascript/modulePage.js' %}"></script>
 {% endblock %}

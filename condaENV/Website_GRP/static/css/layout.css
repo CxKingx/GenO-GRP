@@ -305,8 +305,8 @@ footer.btn {
 	color: #18194f;
 }
 
-a#login-button:hover {
-	color: #18194f;
+a.login:hover {
+    color: #03254c;
 }
 
 h5 {

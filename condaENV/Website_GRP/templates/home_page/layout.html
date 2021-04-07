@@ -176,12 +176,12 @@
                                   <div class = "column">
                                       <h5>Artefact portal</h5>
                                       {% if user.is_superuser %}
-                                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}" class="login">Logout</a></button>
                                         <p><br>Logged in as superuser : {{ user.username }}!</p>
                                       {% elif user.is_authenticated %}
-                                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}">Logout</a></button>
+                                        <button type="button" class="btn btn-outline-light"><a href="{% url 'logout' %}" class="login">Logout</a></button>
                                       {% else %}
-                                        <button type="button" class="btn btn-outline-light"><a href="{% url 'loginPage' %}">Login</a></button>
+                                        <button type="button" class="btn btn-outline-light"><a href="{% url 'loginPage' %}" class="login">Login</a></button>
                                       {% endif %}
                                   </div>
                               </div><!--Close row-->

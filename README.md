@@ -31,10 +31,18 @@ The project won't happen without these awesome people!
 
 The Digital Artefact Showcase Platform project was initiated to improve the platform for showcasing the work of the students at University of Nottingham Ningbo China (UNNC). This project was introduced as part of Software Engineering GRP module.
 
+## Steps to Activate the Website
+    
+1. Open the ZIP file or clone the project from GitLab.
+2. Inside please find the "Installation Manual" and follow it.
+3. Ensure that you are able to reach the "Welcome page" after step 2.
+4. Find a file called "User Manual" to see details of the website functions.
+
 ## Code Hierarchy
 
 ![Code-Hierarchy](images/Code Hierarchy Final.png "Code Hierachy")
 
+## Code Structure
 
 Below is the description of each file inside gen-o-grp-2020/condaENV/Website_GRP
 

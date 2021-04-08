@@ -27,59 +27,47 @@ The project won't happen without these awesome people!
 ##### GRP Supervisor 
 - Dr Dave Towey 
 
-## Installing the Virtual Environment
-- Go to the "\gen-o-grp-2020\condaENV\Website_GRP" directory.
-- In your pycharm terminal, type "conda env create -f environment_v2.yml"
-- It will download most of the tools needed to run this website.
-- When downloading has finished run the following commands in terminal to complete the installation process :
-    - pip install bcrypt
-    - pip install django[argon2] 
-    - pip install pillow
-- Lastly run this command to activate the virtual environment "conda activate gen-o-grp-2020"
-- To check if the virtual environment has successfully activated :
-    - There should be the string (gen-o-grp-2020) beside your directory in the terminal
-        - Before : D:\gen-o-grp-2020\condaENV\Website_GRP> 
-        - After&nbsp;&nbsp;&nbsp;  : (gen-o-grp-2020) D:\gen-o-grp-2020\condaENV\Website_GRP>
-    
-## Project Development TestKevin BE Branch
-<table>
-  <tr>
-    <td align="center"><b>No.</b></td>
-    <td align="center"><b>Description</b></td>
-    <td align="center"><b>Links</b></td>
-  </tr>
-  <tr align="center">
-    <th colspan="3">Documentation</th>
-  </tr>
-  <tr>
-    <td>Lab 01</td>
-    <td>Requirements Engineering</td>
-    <td>In Progress</td>
-  </tr>
-</table>
+## Project Description
+
+The Digital Artefact Showcase Platform project was initiated to improve the platform for showcasing the work of the students at University of Nottingham Ningbo China (UNNC). This project was introduced as part of Software Engineering GRP module.
+
+## Code Hierarchy
+
+![Code-Hierarchy](images/Code Hierarchy Final.png "Code Hierachy")
 
 
-## Deliverables
-+ **Requirements Engineering**
-+ **Specifications** 
+Below is the description of each file inside gen-o-grp-2020/condaENV/Website_GRP
+
+home_page =
+    <ul>
+        <li> home_page : A directory which holds all the website backend code. </li>
+        <li> home_page/migrations : A folder used by Django to save files of database structure. </li>
+    </ul>
+
+media =
+    <ul>
+        <li> media/artefacts : Holds all the artefacts that is or will be uploaded to the website. </li>
+    </ul>
+
+static =
+    <ul>
+        <li> static/css : All files regarding CSS. </li>
+        <li> static/font-awesome-4.7.0 : All files used to style fonts in the website </li>
+        <li> static/images : Used to store images that will always exist on the website. e.g : UNNC logo </li>
+        <li> static/javascript : All files regarding Javascript. </li>
+        <li> static/vendor : All files regarding Bootstrap and JQuery </li>
+    </ul>
+
+templates : 
+     <ul>
+        <li> Stores all the HTML files of this website </li>
+    </ul>
+
+Website_GRP :
+     <ul>
+        <li> Stores the backend code needed to run the website</li>
+    </ul>
 
 
-## Source Code
-<table>
-  <tr>
-    <td align="center"><b>No.</b></td>
-    <td align="center"><b>Description</b></td>
-    <td align="center"><b>Links</b></td>
-  </tr>
-  <tr align="center">
-    <th colspan="3">Coding Platform</th>
-  </tr>
-  <tr>
-    <td>-</td>
-    <td>-</td>
-    <td>
-     -
-    </td>
-  </tr>
-</table>
-e>
+
+

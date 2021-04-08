@@ -33,7 +33,7 @@ The Digital Artefact Showcase Platform project was initiated to improve the plat
 
 ## Steps to Activate the Website
     
-1. Open the ZIP file or clone the project from GitLab.
+1. Unzip the ZIP file.
 2. Inside please find the "Installation Manual" and follow it.
 3. Ensure that you are able to reach the "Welcome page" after step 2.
 4. Find a file called "User Manual" to see details of the website functions.
